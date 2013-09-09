@@ -7,6 +7,6 @@
 <title>Hello World</title>
 </head>
 <body>
-<b><% out.println("Hello World Pojat!!"); %></b>
+<b><% out.println("Hello World Pojjaat!!"); %></b>
 </body>
 </html>
