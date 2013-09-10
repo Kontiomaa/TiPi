@@ -4,40 +4,48 @@
 <html>
 <head>
          <meta charset="utf-8">
-         <title>Getting started with Bootstrap</title>
-         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+         <title>Siirtoapu.fi -- Kirjaudu sis‰‰n</title>
+         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
  </head>
  <body>
          
- <div class="container">
+  <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Kirjaudu sis‰‰n</h2>
+        <input type="text" class="input-block-level" placeholder="Email address">
+        <input type="password" class="input-block-level" placeholder="Password">
+        <!--  <label class="checkbox">
+         <input type="checkbox" value="remember-me"> Remember me
+        </label>  -->
+        <button class="btn btn-large btn-inverse" type="submit">Kirjaudu</button>
+      </form>
+
+    </div>
+     
+ </body>
+</html>
+
+
+         <meta charset="utf-8">
+         <title>Siirtoapu.fi -- Kirjaudu sis‰‰n</title>
+         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+ </head>
+ <body>
          
-         <div class="hero-unit">
-         <h1>Awesome responsive layout</h1>
-         <p>Hello guys i am a ".hero-unit" and you can use me if you wanna say something important.</p>
-         <p><a class="btn btn-primary btn-large">Super important &raquo;</a></p>
-         </div><!-- .hero-unit -->
-        
- <div class="row">
-         <div class="span4">
-         <h2>Box Number 1</h2>
-         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-         <p><a class="btn" href="#">Click meeee &raquo;</a></p>
-         </div><!-- .span4 -->
-   
-         <div class="span4">
-                 <h2>Box Number 2</h2>
-         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-         <p><a class="btn" href="#">Click meeee &raquo;</a></p>
-         </div><!-- .span4 -->
-   
-         <div class="span4">
-                 <h2>Box Number 3</h2>
-         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-         <p><a class="btn" href="#">Click meeee &raquo;</a></p>
-         </div><!-- .span4 -->
-   
- </div><!-- .row -->
- </div><!-- .container -->
+  <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Kirjaudu sis‰‰n</h2>
+        <input type="text" class="input-block-level" placeholder="Email address">
+        <input type="password" class="input-block-level" placeholder="Password">
+        <!--  <label class="checkbox">
+         <input type="checkbox" value="remember-me"> Remember me
+        </label>  -->
+        <button class="btn btn-large btn-inverse" type="submit">Kirjaudu</button>
+      </form>
+
+    </div>
      
  </body>
 </html>
