@@ -25,28 +25,3 @@
      
  </body>
 </html>
-
-
-         <meta charset="utf-8">
-         <title>Siirtoapu.fi -- Kirjaudu sisään</title>
-         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
- </head>
- <body>
-         
-  <div class="container">
-
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Kirjaudu sisään</h2>
-        <input type="text" class="input-block-level" placeholder="Email address">
-        <input type="password" class="input-block-level" placeholder="Password">
-        <!--  <label class="checkbox">
-         <input type="checkbox" value="remember-me"> Remember me
-        </label>  -->
-        <button class="btn btn-large btn-inverse" type="submit">Kirjaudu</button>
-      </form>
-
-    </div>
-     
- </body>
-</html>
-
