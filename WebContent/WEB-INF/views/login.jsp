@@ -8,6 +8,31 @@
 <meta charset="utf-8">
 <title>Siirtoapu.fi -- Kirjaudu sisään</title>
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
+
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+
+
+    </style>
+
 </head>
 <body>
 
@@ -19,8 +44,7 @@
 					method="post">
 					<h2 class="form-signin-heading">Kirjaudu sisään</h2>
 					<c:if test="${not empty loginerror}">
-						<p class="alert alert-error">Sisäänkirjautuminen epäonnistui.
-							Käyttäjätunnus tai salasana on syötetty väärin.</p>
+						<p class="alert alert-error">Kirjautuminen epäonnistui</p>
 					</c:if>
 
 					<c:if test="${not empty loggedout}">
