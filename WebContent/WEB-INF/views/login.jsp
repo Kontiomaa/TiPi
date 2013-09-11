@@ -5,14 +5,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
-<title>Sisäänkirjautuminen</title>
-<link rel="stylesheet" href="resources/styles/common.css" type="text/css" />
-<link rel="stylesheet" href="resources/styles/form.css" type="text/css" />
-</head>
-<body>
-	<div id="sisalto">
-	<h1>KIRJAUDU SISÄÄN</h1>
+         <meta charset="utf-8">
+         <title>Siirtoapu.fi -- Kirjaudu sisään</title>
+         <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
+ </head>
+ <body>
+         
+  <div class="container">
 
+      <form class="form-signin" action="j_spring_security_check" method="post">
+        <h2 class="form-signin-heading">Kirjaudu sisään</h2>
+        <input type='text' name='j_username' value='' class="input-block-level" placeholder="Käyttäjätunnus">
+        <input type="password" name='j_password' class="input-block-level" placeholder="Salasana">
+        <!--  <label class="checkbox">
+         <input type="checkbox" value="remember-me"> Remember me
+        </label>  -->
+        <button class="btn btn-large btn-inverse" type="submit">Kirjaudu</button>
+      </form>
 	<c:if test="${not empty loginerror}">
 		<p class="Error">Sisäänkirjautuminen epäonnistui. Käyttäjätunnus tai salasana on syötetty väärin.</p>
 	</c:if>
@@ -20,15 +29,7 @@
 	<c:if test="${not empty loggedout}">
 		<p class="Info">Uloskirjautuminen onnistui</p>
 	</c:if>
-	<form action="j_spring_security_check" method="post">
-	<fieldset>
-		<table>
-		<tr><td>USERNAME:</td><td><input type='text' name='j_username' value=''></td></tr>
-		<tr><td>PASSWORD:</td><td><input type='password' name='j_password' /></td></tr>
-		<tr><td>&nbsp;</td><td><button type="submit">Kirjaudu</button></td></tr>
-		</table>
-	</fieldset>
-	</form>
-	</div>
-</body>
+    </div>
+     
+ </body>
 </html>
