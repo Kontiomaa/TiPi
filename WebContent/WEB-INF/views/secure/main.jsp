@@ -20,7 +20,9 @@
 <p><a href="admin/tools">Admin tools</a></p>
 </sec:authorize>
 
-
+<sec:authorize access="hasRole('ROLE_USER')">
+<p><a href="../kirjautunut/lomake">kirjautunut/lomake</a></p>
+</sec:authorize>
  
 <p><a href="../j_spring_security_logout" > Kirjaudu ulos</a></p>
 

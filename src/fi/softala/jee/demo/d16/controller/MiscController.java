@@ -28,21 +28,21 @@ public class MiscController {
 	@RequestMapping(value = "/admineille", method = RequestMethod.GET)
 	public String vainAdmineille(Model model) {
 		miscService.palveluAdmineille();
-		model.addAttribute("viesti", "Lis√§sivu admineille");
+		model.addAttribute("viesti", "Lis‰sivu admineille");
 		return "misc";
 	}
 	
 	@RequestMapping(value = "/sisaankirjautuneille", method = RequestMethod.GET)
 	public String vainSisaankirjautuneille(Model model) {
 		miscService.palveluSisaankirjautuneille();
-		model.addAttribute("viesti", "Lis√§sivu sis√§√§nkirjautuneille");
+		model.addAttribute("viesti", "Lis‰sivu sis‰‰nkirjautuneille");
 		return "misc";
 	}
 	
 	@RequestMapping(value = "/kaikille", method = RequestMethod.GET)
 	public String kaikille(Model model) {
 		miscService.palveluKaikille();
-		model.addAttribute("viesti", "Lis√§sivu kaikille");
+		model.addAttribute("viesti", "Lis‰sivu kaikille");
 		return "misc";
 	}
 	
