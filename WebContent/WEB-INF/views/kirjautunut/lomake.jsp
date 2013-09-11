@@ -4,12 +4,12 @@
 <html>
 <head>
 <title>Siirtoapu.fi -- Uusi tilaus</title>
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.css">
 </head>
 <body>
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
 
 
 				<ul class="nav">
@@ -20,6 +20,9 @@
 					<li><a href="#">Rekisteröinti</a></li>
 				</ul>
 
+            <form class="navbar-form pull-right">
+              <button type="submit" class="btn">Kirjaudu ulos</button>
+            </form>
 
 			</div>
 		</div>
