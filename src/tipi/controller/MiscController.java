@@ -1,4 +1,4 @@
-package fi.softala.jee.demo.d16.controller;
+package tipi.controller;
 
 import javax.inject.Inject;
 
@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import fi.softala.jee.demo.d16.service.MiscService;
+import tipi.service.MiscService;
 
 @Controller
 @RequestMapping (value="misc")
@@ -28,21 +28,21 @@ public class MiscController {
 	@RequestMapping(value = "/admineille", method = RequestMethod.GET)
 	public String vainAdmineille(Model model) {
 		miscService.palveluAdmineille();
-		model.addAttribute("viesti", "Lisäsivu admineille");
+		model.addAttribute("viesti", "Lisï¿½sivu admineille");
 		return "misc";
 	}
 	
 	@RequestMapping(value = "/sisaankirjautuneille", method = RequestMethod.GET)
 	public String vainSisaankirjautuneille(Model model) {
 		miscService.palveluSisaankirjautuneille();
-		model.addAttribute("viesti", "Lisäsivu sisäänkirjautuneille");
+		model.addAttribute("viesti", "Lisï¿½sivu sisï¿½ï¿½nkirjautuneille");
 		return "misc";
 	}
 	
 	@RequestMapping(value = "/kaikille", method = RequestMethod.GET)
 	public String kaikille(Model model) {
 		miscService.palveluKaikille();
-		model.addAttribute("viesti", "Lisäsivu kaikille");
+		model.addAttribute("viesti", "Lisï¿½sivu kaikille");
 		return "misc";
 	}
 	

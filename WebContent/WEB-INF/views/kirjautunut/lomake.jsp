@@ -11,7 +11,6 @@
       <div class="navbar-inner">
         <div class="container">
 
-
 				<ul class="nav">
 					<li class="active"><a class="brand" href="#">Siirtoapu.fi</a>
 					</li>

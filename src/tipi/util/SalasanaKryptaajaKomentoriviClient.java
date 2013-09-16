@@ -1,4 +1,4 @@
-package fi.softala.jee.demo.d16.util;
+package tipi.util;
 import java.util.Scanner;
 
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
@@ -15,8 +15,8 @@ public class SalasanaKryptaajaKomentoriviClient {
 		String salasana = lukija.nextLine();
 		String kryptattuna = spe.encode(salasana);
 		System.out.println("Salasanasi on kryptattuna (random suola mukana): " +kryptattuna);
-		
-
+		// lisätty lukijan sulkeminen resources leakin takia
+		lukija.close();
 	}
 
 }

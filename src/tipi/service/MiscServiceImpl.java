@@ -1,4 +1,4 @@
-package fi.softala.jee.demo.d16.service;
+package tipi.service;
 
 import org.springframework.stereotype.Service;
 
