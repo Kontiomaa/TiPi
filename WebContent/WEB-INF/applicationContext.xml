@@ -83,8 +83,8 @@
 	 <sec:authentication-manager>
 			<sec:authentication-provider>
 				<sec:user-service>
-					<sec:user name="user" password="userpassu" authorities="ROLE_USER" />
-					<sec:user name="admin" password="adminpassu" authorities="ROLE_ADMIN" />
+					<sec:user name="user" password="U53RP@55Ut!p!innovointi" authorities="ROLE_USER" />
+					<sec:user name="admin" password="4DM!NP@55Ut!p!innovointi" authorities="ROLE_ADMIN" />
 				</sec:user-service>
 			</sec:authentication-provider>
 		</sec:authentication-manager>
