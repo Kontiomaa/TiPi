@@ -226,96 +226,91 @@ body {
 
 						<legend>Palautus</legend>
 
-							<div class="control-group">
-								<label class="control-label" for="textinput">Noudettavissa
-									päivämäärä*</label>
-								<div class="controls">
-									<input id="textinput" name="textinput"
-										placeholder="pp.kk.vvvv esim 18.03.2008" class="input-xxlarge"
-										type="text">
-								</div>
+						<div class="control-group">
+							<label class="control-label" for="textinput">Noudettavissa
+								päivämäärä*</label>
+							<div class="controls">
+								<input id="textinput" name="textinput"
+									placeholder="pp.kk.vvvv esim 18.03.2008" class="input-xxlarge"
+									type="text">
 							</div>
+						</div>
 
-							<div class="control-group">
-								<label class="control-label" for="textinput">Noudettavissa
-									kellonaika*</label>
-								<div class="controls">
-									<input id="textinput" name="textinput"
-										placeholder="tt:mm esim 12:00" class="input-xxlarge"
-										type="text">
-								</div>
+						<div class="control-group">
+							<label class="control-label" for="textinput">Noudettavissa
+								kellonaika*</label>
+							<div class="controls">
+								<input id="textinput" name="textinput"
+									placeholder="tt:mm esim 12:00" class="input-xxlarge"
+									type="text">
 							</div>
+						</div>
 
-							<div class="control-group">
-								<label class="control-label" for="textinput">Perillä
-									päivämäärä*</label>
-								<div class="controls">
-									<input id="textinput" name="textinput"
-										placeholder="pp.kk.vvvv esim 20.03.2008" class="input-xxlarge"
-										type="text">
-								</div>
+						<div class="control-group">
+							<label class="control-label" for="textinput">Perillä
+								päivämäärä*</label>
+							<div class="controls">
+								<input id="textinput" name="textinput"
+									placeholder="pp.kk.vvvv esim 20.03.2008" class="input-xxlarge"
+									type="text">
 							</div>
+						</div>
 
-							<div class="control-group">
-								<label class="control-label" for="textinput">Perillä
-									kellonaika*</label>
-								<div class="controls">
-									<input id="textinput" name="textinput"
-										placeholder="tt:mm esim 15:00" class="input-xxlarge"
-										type="text">
-								</div>
+						<div class="control-group">
+							<label class="control-label" for="textinput">Perillä
+								kellonaika*</label>
+							<div class="controls">
+								<input id="textinput" name="textinput"
+									placeholder="tt:mm esim 15:00" class="input-xxlarge"
+									type="text">
 							</div>
+						</div>
 
-							<div class="control-group">
-								<label class="control-label" for="textinput">Toimitus
-									osoite</label>
-								<div class="controls">
-									<input id="textinput" name="textinput"
-										placeholder="esim Kesäkatu 95" class="input-xxlarge"
-										type="text">
-									<p class="help-block">Jos sama kuin noudettaessa. Jätä
-										tyhjäksi</p>
-								</div>
+						<div class="control-group">
+							<label class="control-label" for="textinput">Toimitus
+								osoite</label>
+							<div class="controls">
+								<input id="textinput" name="textinput"
+									placeholder="esim Kesäkatu 95" class="input-xxlarge"
+									type="text">
+								<p class="help-block">Jos sama kuin noudettaessa. Jätä
+									tyhjäksi</p>
 							</div>
+						</div>
 
-							<div class="control-group">
-								<label class="control-label" for="textinput">Toimitus
-									postinumero</label>
-								<div class="controls">
-									<input id="textinput" name="textinput" placeholder="esim 02100"
-										class="input-xxlarge" type="text">
-									<p class="help-block">Jos sama kuin noudettaessa. Jätä
-										tyhjäksi</p>
-								</div>
+						<div class="control-group">
+							<label class="control-label" for="textinput">Toimitus
+								postinumero</label>
+							<div class="controls">
+								<input id="textinput" name="textinput" placeholder="esim 02100"
+									class="input-xxlarge" type="text">
+								<p class="help-block">Jos sama kuin noudettaessa. Jätä
+									tyhjäksi</p>
 							</div>
+						</div>
 
-							<div class="control-group">
-								<label class="control-label" for="textinput">Toimitus
-									toimipaikka</label>
-								<div class="controls">
-									<input id="textinput" name="textinput" placeholder="esim Espoo"
-										class="input-xxlarge" type="text">
-									<p class="help-block">Jos sama kuin noudettaessa. Jätä
-										tyhjäksi</p>
-								</div>
+						<div class="control-group">
+							<label class="control-label" for="textinput">Toimitus
+								toimipaikka</label>
+							<div class="controls">
+								<input id="textinput" name="textinput" placeholder="esim Espoo"
+									class="input-xxlarge" type="text">
+								<p class="help-block">Jos sama kuin noudettaessa. Jätä
+									tyhjäksi</p>
 							</div>
+						</div>
 
-							<legend>Palautuksen lisätiedot</legend>
-							<div class="control-group">
-								<label class="control-label" for="textarea">Lisätiedot</label>
-								<div class="controls">
-									<textarea rows="3" id="textarea" name="textarea"
-										class="input-xxlarge"></textarea>
-								</div>
+						<legend>Palautuksen lisätiedot</legend>
+						<div class="control-group">
+							<label class="control-label" for="textarea">Lisätiedot</label>
+							<div class="controls">
+								<textarea rows="3" id="textarea" name="textarea"
+									class="input-xxlarge"></textarea>
 							</div>
-				
-
-
+						</div>
+						<button type="reset" class="btn btn-danger">Tyhjennä</button>
 						<button type="submit" class="btn btn-inverse">Lähetä
 							tilaus</button>
-						<button type="button" class="btn btn-danger">Tyhjennä</button>
-
-
 					</fieldset>
 				</form>
 
