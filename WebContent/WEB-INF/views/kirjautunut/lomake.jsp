@@ -4,19 +4,8 @@
 <html>
 <head>
 <title>Siirtoapu.fi -- Uusi tilaus</title>
-<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.css">
-<style type="text/css">
-body {
-	padding-top: 40px;
-	background-color: #f5f5f5;
-}
-
-#area {
-	background-color: white;
-	padding-right: 50px;
-	padding-left: 50px;
-}
-</style>
+<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="resources/styles/style.css">
 </head>
 <body>
 	<div class="container">
@@ -34,7 +23,7 @@ body {
 						</ul>
 
 						<form class="navbar-form pull-right">
-							<a href="../j_spring_security_logout" class="btn">Kirjaudu
+							<a href="j_spring_security_logout" class="btn">Kirjaudu
 								ulos</a>
 						</form>
 					</div>

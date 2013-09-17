@@ -53,15 +53,16 @@
 
 	<sec:http auto-config="true" use-expressions="true">
 		
-		<sec:intercept-url pattern="/secure/admin/**" access="hasRole('ROLE_ADMIN')" />
-		<sec:intercept-url pattern="/secure/*" access="isAuthenticated()" />
-		<sec:intercept-url pattern="/kirjautunut/*" access="hasRole('ROLE_USER')" />
-		<sec:intercept-url pattern="/*" access="permitAll" />
+		<sec:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/main" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/secure/*" access="hasRole('ROLE_USER')" />
+		<sec:intercept-url pattern="/login" access="permitAll" />
 
 		<sec:form-login
 			login-page="/loginpage"
-			default-target-url="/secure/main"
-			authentication-failure-url="/loginfail" />
+			default-target-url="/main"
+			authentication-failure-url="/loginfail" 
+			/>
 			
 		<sec:logout logout-success-url="/logout" />
 		
@@ -89,9 +90,5 @@
 			</sec:authentication-provider>
 		</sec:authentication-manager>
 
-
-
 	<sec:global-method-security pre-post-annotations="enabled" />
-
-
 </beans>
