@@ -23,7 +23,7 @@ public class SecureController {
 		if (roles.contains("ROLE_ADMIN")) {
 			return "admin/adminIndex";
 		}
-		return "/kirjautunut/lomake";
+		return "/user/orderForm";
 	}
 
 }
