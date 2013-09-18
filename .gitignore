@@ -1,3 +1,4 @@
 /build
 /.settings
 /.classpath
+/conf/db_connection.properties
