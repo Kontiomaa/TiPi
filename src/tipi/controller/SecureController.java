@@ -19,11 +19,12 @@ public class SecureController {
 		Set<String> roles = AuthorityUtils
 				.authorityListToSet(SecurityContextHolder.getContext()
 						.getAuthentication().getAuthorities());
-		
+
 		if (roles.contains("ROLE_ADMIN")) {
 			return "admin/adminIndex";
 		}
-		return "/user/orderForm";
+
+		return "redirect:/user/orderFormEmpty";
 	}
 
 }
