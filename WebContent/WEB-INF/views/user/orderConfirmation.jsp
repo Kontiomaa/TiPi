@@ -8,73 +8,169 @@
 <html>
 <head>
 <title>Siirtoapu.fi -- Uusi tilaus</title>
-<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.css">
+<link rel="stylesheet"
+	href="../resources/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="../resources/styles/style.css">
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="navbar navbar-inverse navbar-fixed-top">
-				<div class="navbar-inner">
-					<div class="container">
-
-						<ul class="nav">
-							<li class="active"><a class="brand" href="#">Siirtoapu.fi</a>
-							</li>
-							<li><a href="orderFormEmpty">Etusivu</a></li>
-							<li><a href="#">Käyttäjät</a></li>
-							<li><a href="#">Rekisteröinti</a></li>
-						</ul>
-
-						<form class="navbar-form pull-right">
-							<a href="../j_spring_security_logout" class="btn">Kirjaudu
-								ulos</a>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="span2"></div>
-			<div class="span8" id="area">
-				<table class="table">
+		<%@include file="userNavi.jsp"%>
+		<div class="row-fluid" id="area">
+			<div class="span10 offset1">
+				<table class="table" id="orderConfirmationTable">
 					<thead>
 						<tr>
-							<th colspan="2" style="font-size: 20px">Auto</th>
+							<td colspan="4" style="font-size: 20px; font-weight:700;">Auto</td>
 						</tr>
 					</thead>
 					<tr>
-						<td>Automalli</td>
+						<th>Automalli</th>
 						<td><c:out value="${orderForm.carBrand}" default="-----" /></td>
-					</tr>
-					<tr>
-						<td>Automerkki</td>
-						<td><c:out value="${orderForm.carModel}" default="-----" /></td>
-					</tr>
-					<tr>
-						<td>Rekisterinumero</td>
+						<th>Rekisterinumero</th>
 						<td><c:out value="${orderForm.carRegister}" default="-----" /></td>
 					</tr>
 					<tr>
-						<td>Autoväri</td>
+						<th>Automerkki</th>
+						<td><c:out value="${orderForm.carModel}" default="-----" /></td>
+						<th>Autoväri</th>
 						<td><c:out value="${orderForm.carColor}" default="-----" /></td>
+					</tr>
+
+					<thead>
+						<tr>
+							<td colspan="4" style="font-size: 20px; font-weight:700;">Nouto</td>
+						</tr>
+					</thead>
+
+					<tr>
+						<th>Noudettavissa päivämäärä</th>
+						<td><c:out value="${orderForm.collectionDate}"
+								default="-----" /></td>
+						<th>Perillä päivämäärä</th>
+						<td><c:out value="${orderForm.destinationDate}"
+								default="-----" /></td>
+					</tr>
+					<tr>
+						<th>Noudettavissa kellonaika</th>
+						<td><c:out value="${orderForm.collectionTime}"
+								default="-----" /></td>
+						<th>Perillä kellonaika</th>
+						<td><c:out value="${orderForm.destinationTime}"
+								default="-----" /></td>
+					</tr>
+					<tr>
+						<th>Nouto osoite</th>
+						<td><c:out value="${orderForm.collectionAddress}"
+								default="-----" /></td>
+						<th>Toimitus osoite</th>
+						<td><c:out value="${orderForm.destinationAddress}"
+								default="-----" /></td>
+					</tr>
+					<tr>
+						<th>Nouto postinumero</th>
+						<td><c:out value="${orderForm.collectionPostalCode}"
+								default="-----" /></td>
+						<th>Toimitus postinumero</th>
+						<td><c:out value="${orderForm.destinationPostalCode}"
+								default="-----" /></td>
+					</tr>
+					<tr>
+						<th>Nouto toimipaikka</th>
+						<td><c:out value="${orderForm.collectionCity}"
+								default="-----" /></td>
+						<th>Toimitus toimipaikka</th>
+						<td><c:out value="${orderForm.destinationCity}"
+								default="-----" /></td>
+					</tr>
+
+
+					<thead>
+						<tr>
+							<td colspan="4" style="font-size: 20px; font-weight:700;">Asiakas</td>
+						</tr>
+					</thead>
+
+					<tr>
+						<th>Etunimi</th>
+						<td><c:out value="${orderForm.clientFname}" default="-----" /></td>
+						<th>Puhelinnumero</th>
+						<td><c:out value="${orderForm.clientPhoneNo}" default="-----" /></td>
+					</tr>
+					<tr>
+						<th>Sukunimi</th>
+						<td><c:out value="${orderForm.clientLname}" default="-----" /></td>
+						<th>Yritys</th>
+						<td><c:out value="${orderForm.clientCompany}" default="-----" /></td>
+					</tr>
+
+					<thead>
+						<tr>
+							<td colspan="4" style="font-size: 20px; font-weight:700;">Toimituksen
+								Lisätiedot</td>
+						</tr>
+					</thead>
+
+					<tr>
+						<td colspan="4"><c:out
+								value="${orderForm.additionalInformation}" default="-----" /></td>
 					</tr>
 					<thead>
 						<tr>
-							<th colspan="2" style="font-size: 20px">Nouto</th>
+							<td colspan="4" style="font-size: 20px; font-weight:700;">Palautus</td>
 						</tr>
 					</thead>
+
+					<tr>
+						<th>Nouto Päivämäärä</th>
+						<td><c:out value="${orderForm.nextDestinationCollectionDate}" default="-----" /></td>
+						<th>Palautus Päivämäärä</th>
+						<td><c:out value="${orderForm.nextDestinationDate}" default="-----" /></td>
+					</tr>
+
+					<tr>
+						<th>Nouto aika</th>
+						<td><c:out value="${orderForm.nextDestinationCollectionTime}" default="-----" /></td>
+						<th>Palautus aika</th>
+						<td><c:out value="${orderForm.nextDestinationTime}" default="-----" /></td>
+					</tr>
+
+					<tr>
+						<th>Palautus osoite</th>
+						<td><c:out value="${orderForm.nextDestinationAddress}" default="-----" /></td>
+						<th>Palautus postinumero</th>
+						<td><c:out value="${orderForm.nextDestinationPostalCode}" default="-----" /></td>
+					</tr>
+
+					<tr>
+						<th>Palautus toimipaikka</th>
+						<td><c:out value="${orderForm.nextDestinationCity}" default="-----" /></td>
+						<td colspan="2"></td>
+					</tr>
+
+					<thead>
+						<tr>
+							<td colspan="4" style="font-size: 20px; font-weight:700;">Palautuksen
+								Lisätiedot</th>
+						</tr>
+					</thead>
+
+					<tr>
+						<td colspan="4"><c:out
+								value="${orderForm.nextAdditionalInformation}" default="-----" /></td>
+					</tr>
+
+
 					<tr>
 						<td><a href="orderForm" class="btn btn-danger">Takaisin</a></td>
 						<td>
-							<button type="submit" class="btn btn-inverse">Vahvista
+							<button type="submit" class="btn btn-inverse">Lähetä
 								tilaus</button>
 						</td>
+						<td colspan="2"></td>
 					</tr>
 				</table>
 
 			</div>
-			<div class="span2"></div>
 		</div>
 	</div>
 </body>

@@ -4,16 +4,15 @@
 					<div class="container">
 
 						<ul class="nav">
-							<li class="active"><a class="brand" href="#">Siirtoapu.fi</a>
+							<li class="active"><a class="brand" href="orderForm">Siirtoapu.fi</a>
 							</li>
-							<li><a href="#">Tilaukset</a></li>
+							<li class="active"><a href="orderForm">Etusivu</a></li>
 							<li><a href="#">Käyttäjät</a></li>
 							<li><a href="#">Rekisteröinti</a></li>
-							<li><a href="#">Profiili</a></li>
 						</ul>
 
 						<form class="navbar-form pull-right">
-							<a href="j_spring_security_logout" class="btn">Kirjaudu
+							<a href="../j_spring_security_logout" class="btn">Kirjaudu
 								ulos</a>
 						</form>
 					</div>
