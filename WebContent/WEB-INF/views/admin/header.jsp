@@ -3,8 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../resources/styles/style.css">
+	<head>
+		<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../resources/styles/style.css">
