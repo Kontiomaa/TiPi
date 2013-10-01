@@ -21,7 +21,7 @@ public class SecureController {
 						.getAuthentication().getAuthorities());
 
 		if (roles.contains("ROLE_ADMIN")) {
-			return "admin/adminIndex";
+			return "redirect:/admin/index";
 		}
 
 		return "redirect:/user/orderFormEmpty";

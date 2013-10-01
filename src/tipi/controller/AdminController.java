@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value="/secure/admin")
+@RequestMapping(value="/admin")
+
 public class AdminController {
-
-	@RequestMapping(value = "/tools", method = RequestMethod.GET)
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String paasivu(Model model) {
-
-		return "secure/admin/tools";
+		return "admin/index";
 	}
 }
