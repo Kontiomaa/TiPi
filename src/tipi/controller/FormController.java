@@ -29,9 +29,8 @@ public class FormController {
 	public String create(
 			@ModelAttribute(value = "orderForm") @Valid OrderFormBeanImpl orderForm,
 			BindingResult result) {
-		System.out.println("TESTI2");
 		if (result.hasErrors()) {
-			return "user/orderForm";
+			return "/user/orderForm";
 		} else {
 			System.out.println(orderForm.getCarBrand());
 			return "/user/orderConfirmation";

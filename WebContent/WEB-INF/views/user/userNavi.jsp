@@ -7,8 +7,8 @@
 							<li class="active"><a class="brand" href="orderForm">Siirtoapu.fi</a>
 							</li>
 							<li class="active"><a href="orderForm">Etusivu</a></li>
-							<li><a href="#">Käyttäjät</a></li>
-							<li><a href="#">Rekisteröinti</a></li>
+							<li><a href="#">Tilaukset</a></li>
+							<li><a href="profile">Profiili</a></li>
 						</ul>
 
 						<form class="navbar-form pull-right">
