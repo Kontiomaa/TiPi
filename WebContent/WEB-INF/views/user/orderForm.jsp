@@ -1,20 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@include file="header.jsp"%>
 <title>Siirtoapu.fi -- Uusi tilaus</title>
-<link rel="stylesheet"
-	href="../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../resources/styles/style.css">
 <link rel="stylesheet" href="../resources/datepicker/css/datepicker.css">
 <link rel="stylesheet"
 	href="../resources/bootstrap-timepicker-master/css/bootstrap-timepicker.min.css">
-
 </head>
 <body>
 	<div class="container">
@@ -57,7 +45,7 @@
 
 								<div class="control-group">
 									<form:label path="carColor" class="control-label"
-										for="textinput">Auton v√§ri</form:label>
+										for="textinput">Auton v‰ri</form:label>
 									<div class="controls">
 										<form:input path="carColor" name="textinput"
 											placeholder="esim Musta" class="input-xlarge" type="text" />
@@ -186,7 +174,7 @@
 										for="textinput">Sukunimi*</form:label>
 									<div class="controls">
 										<form:input path="clientLname" name="textinput"
-											placeholder="esim Meik√§l√§inen" class="input-xlarge"
+											placeholder="esim Meik‰l‰inen" class="input-xlarge"
 											type="text" />
 									</div>
 								</div>
@@ -214,10 +202,10 @@
 								</div>
 							</div>
 						</div>
-						<legend>Toimituksen lis√§tiedot</legend>
+						<legend>Toimituksen lis‰tiedot</legend>
 						<div class="control-group">
 							<form:label path="additionalInformation" class="control-label"
-								for="textarea">Lis√§tiedot</form:label>
+								for="textarea">Lis‰tiedot</form:label>
 							<div class="controls">
 								<form:textarea path="additionalInformation" rows="3"
 									name="textarea" class="input-xxlarge"></form:textarea>
@@ -273,7 +261,7 @@
 
 								</div>
 								<div class="span6">
-									<b class="span11 offset1">J√§t√§ n√§m√§ tyhj√§ksi, jos osoite on
+									<b class="span11 offset1">J‰t‰ n‰m‰ tyhj‰ksi, jos osoite on
 										sama kuin noudettaessa</b>
 									<div class="control-group">
 										<form:label path="nextDestinationAddress"
@@ -281,7 +269,7 @@
 								osoite</form:label>
 										<div class="controls">
 											<form:input path="nextDestinationAddress" name="textinput"
-												placeholder="esim Kes√§katu 95" class="input-xlarge"
+												placeholder="esim Kes‰katu 95" class="input-xlarge"
 												type="text" />
 										</div>
 									</div>
@@ -307,17 +295,17 @@
 									</div>
 								</div>
 							</div>
-							<legend>Palautuksen lis√§tiedot</legend>
+							<legend>Palautuksen lis‰tiedot</legend>
 							<div class="control-group">
 								<form:label path="nextAdditionalInformation"
-									class="control-label" for="textarea">Lis√§tiedot</form:label>
+									class="control-label" for="textarea">Lis‰tiedot</form:label>
 								<div class="controls">
 									<form:textarea path="nextAdditionalInformation" rows="3"
 										name="textarea" class="input-xxlarge"></form:textarea>
 								</div>
 							</div>
 						</div>
-						<a href="orderFormEmpty" class="btn btn-danger">Tyhjenn√§</a>
+						<a href="orderFormEmpty" class="btn btn-danger">Tyhjenn‰</a>
 						<button type="submit" class="btn btn-inverse">Seuraava</button>
 					</fieldset>
 				</form:form>
