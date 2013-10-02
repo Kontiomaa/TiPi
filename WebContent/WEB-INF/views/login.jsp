@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <title>Siirtoapu.fi -- Kirjaudu sisään</title>
-<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 
     <style type="text/css">
       body {
