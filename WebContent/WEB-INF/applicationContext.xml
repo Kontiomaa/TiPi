@@ -53,11 +53,11 @@
 
 	<sec:http auto-config="true" use-expressions="true">
 		
-		<sec:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
-		<sec:intercept-url pattern="/main" access="isAuthenticated()" />
-		<sec:intercept-url pattern="/secure/*" access="hasRole('ROLE_USER')" />
-		<sec:intercept-url pattern="/user/*" access="hasRole('ROLE_USER')" />
-		<sec:intercept-url pattern="/login" access="permitAll" />
+		<sec:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>  <!-- requires-channel="https" -->  
+		<sec:intercept-url pattern="/main" access="isAuthenticated()"/>  <!-- requires-channel="https" -->
+		<sec:intercept-url pattern="/secure/*" access="hasRole('ROLE_USER')"/> <!-- requires-channel="https" -->
+		<sec:intercept-url pattern="/user/*" access="hasRole('ROLE_USER')"/> <!-- requires-channel="https" -->
+		<sec:intercept-url pattern="/login" access="permitAll"/> <!-- requires-channel="https" -->
 
 		<sec:form-login
 			login-page="/loginpage"
@@ -71,18 +71,17 @@
 	
 	<bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
 
-	<!-- USER DEFINITIONS BY XML
-	<sec:authentication-manager>
+	<!-- USER DEFINITIONS BY XML -->
+	<!-- <sec:authentication-manager>
 		<sec:authentication-provider>
 			<sec:password-encoder ref="encoder" />
 			<sec:jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select username, password_encrypted, enabled from webuser2 where username=? and enabled = 1"
-				authorities-by-username-query="select u.username, a.role from webuser2 u JOIN webuser2_authority ua ON (u.id = ua.webuser2_id) JOIN authority a ON (a.id = ua.authority_id) WHERE u.username = ?" />
+				users-by-username-query="select username, password, isActive from registeredUsers where username=? and isActive = 1"
+				authorities-by-username-query="select u.username, ur.userRoleName from registeredUsers u JOIN userHasRole uhr ON (u.user_id = uhr.user_id) JOIN userRoles ur ON (ur.userRole_id = uhr.userRole_id) WHERE u.username = ?" />
 		</sec:authentication-provider>
-	</sec:authentication-manager>
-		-->
+	</sec:authentication-manager> -->
 		
-	 <sec:authentication-manager>
+	    <sec:authentication-manager>
 			<sec:authentication-provider>
 				<sec:user-service>
 					<sec:user name="user" password="U53RP@55Ut!p!innovointi" authorities="ROLE_USER" />
