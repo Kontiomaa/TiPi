@@ -4,12 +4,12 @@
 					<div class="container">
 
 						<ul class="nav">
-							<li class="active"><a class="brand" href="#">Siirtoapu.fi</a>
+							<li class="active"><a class="brand" href="index">Siirtoapu.fi</a>
 							</li>
-							<!-- <li><a href="#">Tilaukset</a></li> Tilaukset ovat etusivulla, tarvitaan vain alalinkit -->
-							<li><a href="#">Käyttäjät</a></li>
-							<li><a href="#">Rekisteröinti</a></li>
-							<li><a href="#">Profiili</a></li>
+							<li><a href="index">Etusivu</a></li>
+							<li><a href="users">Käyttäjät</a></li>
+							<li><a href="registerNewUser">Rekisteröinti</a></li>
+							<li><a href="profile">Profiili</a></li>
 						</ul>
 
 						<form class="navbar-form pull-right">
