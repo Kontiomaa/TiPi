@@ -2,12 +2,20 @@ package tipi.bean;
 
 public class UserProfileBeanImpl implements UserProfileBean {
 	
+	private String id;
 	private String fName;
 	private String lName;
 	private String phoneNo;
 	private String email;
 	private String username;
+	private UserCompanyBean company;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getfName() {
 		return fName;
 	}
@@ -37,6 +45,12 @@ public class UserProfileBeanImpl implements UserProfileBean {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public UserCompanyBean getCompany() {
+		return company;
+	}
+	public void setCompany(UserCompanyBean company) {
+		this.company = company;
 	}
 
 }

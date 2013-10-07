@@ -2,6 +2,10 @@ package tipi.bean;
 
 public interface UserProfileBean {
 	
+	public String getId();
+	
+	public void setId(String id);
+	
 	public abstract String getfName();
 	
 	public abstract void setfName(String fName);
@@ -21,4 +25,8 @@ public interface UserProfileBean {
 	public abstract String getUsername();
 	
 	public abstract void setUsername(String username);
+	
+	public abstract UserCompanyBean getCompany();
+	
+	public abstract void setCompany(UserCompanyBean company);
 }
