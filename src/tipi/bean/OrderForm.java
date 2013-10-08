@@ -1,6 +1,6 @@
 package tipi.bean;
 
-public interface OrderFormBean {
+public interface OrderForm {
 	
 	//Car
 	public abstract String getCarBrand();

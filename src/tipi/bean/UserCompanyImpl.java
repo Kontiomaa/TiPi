@@ -1,6 +1,6 @@
 package tipi.bean;
 
-public class UserCompanyBeanImpl implements UserCompanyBean {
+public class UserCompanyImpl implements UserCompany {
 
 	private int company_id;
 	private String name;

@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import tipi.bean.UserCompanyBean;
-import tipi.bean.UserCompanyBeanImpl;
-import tipi.bean.UserProfileBean;
-import tipi.bean.UserProfileBeanImpl;
+import tipi.bean.UserCompany;
+import tipi.bean.UserCompanyImpl;
+import tipi.bean.UserProfile;
+import tipi.bean.UserProfileImpl;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -22,8 +22,8 @@ public class UserProfileController {
 	public String profile(Model model) {
 		if (!model.containsAttribute("userProfile")) {
 			
-			UserProfileBean emptyUser = new UserProfileBeanImpl();
-			UserCompanyBean emptyCompany = new UserCompanyBeanImpl();
+			UserProfile emptyUser = new UserProfileImpl();
+			UserCompany emptyCompany = new UserCompanyImpl();
 			emptyCompany.setAddress("Kuja 3");
 			emptyCompany.setCity("Vantaa");
 			emptyCompany.setCompany_id(4);

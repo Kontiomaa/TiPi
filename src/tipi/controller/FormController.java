@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 
-import tipi.bean.OrderFormBeanImpl;
+import tipi.bean.OrderFormImpl;
 import tipi.service.FormSendService;
 
 @Controller
@@ -36,14 +36,14 @@ public class FormController {
 	// FORMIN TEKEMINEN
 	@RequestMapping(value = "orderFormEmpty", method = RequestMethod.GET)
 	public String getCreateForm(Model model) {
-		model.addAttribute("orderForm", new OrderFormBeanImpl());
+		model.addAttribute("orderForm", new OrderFormImpl());
 		return "redirect:/user/orderForm";
 	}
 
 	// FORMIN TIETOJEN VASTAANOTTO
 	@RequestMapping(value = "orderForm", method = RequestMethod.POST)
 	public String create(
-			@ModelAttribute(value = "orderForm") @Valid OrderFormBeanImpl orderForm,
+			@ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
 			BindingResult result) {
 		System.out.println(orderForm.getCarBrand());
 		if (result.hasErrors()) {
@@ -58,7 +58,7 @@ public class FormController {
 	@RequestMapping(value = "orderForm", method = RequestMethod.GET)
 	public String getOldForm(Model model) {
 		if (!model.containsAttribute("orderForm")) {
-			model.addAttribute("orderForm", new OrderFormBeanImpl());
+			model.addAttribute("orderForm", new OrderFormImpl());
 		}
 
 		return "/user/orderForm";
@@ -66,7 +66,7 @@ public class FormController {
 	
 	// FORMIN TALLENTAMINEN
 	@RequestMapping(value = "orderSend", method = RequestMethod.POST)
-	public String sendOrderForm(@ModelAttribute(value = "orderForm") @Valid OrderFormBeanImpl orderForm,
+	public String sendOrderForm(@ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
 			BindingResult result) {
 
 		formSendService.sendFormToDAO();

@@ -1,6 +1,6 @@
 package tipi.bean;
 
-public class OrderFormBeanImpl implements OrderFormBean {
+public class OrderFormImpl implements OrderForm {
 	
 	private String carBrand;
 	private String carModel;

@@ -1,6 +1,6 @@
 package tipi.bean;
 
-public interface UserCompanyBean {
+public interface UserCompany {
 
 	public int getCompany_id();
 	
