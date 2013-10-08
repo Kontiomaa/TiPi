@@ -45,9 +45,18 @@ public class FormDAOImpl implements FormDAO {
 	
 	@Override
 	public void saveOrderFormDAO() {
-		int id = 1;
-		//String sql = "INSERT INTO companies (name, address, postalCode, city) VALUES (?,?,?,?);";
+		
+		
+		
+		/*
+		String sql = "INSERT INTO companies (name, address, postalCode, city) VALUES (?,?,?,?);";
 
+		jdbcTemplate.update(sql, new Object[] { "Kesko",
+				"Tie 32","00100", "Stadi"  
+			});
+			*/
+		
+		int id = 3;
 		String sql = "select name from companies where company_id=?";
 
 		String name = (String)getJdbcTemplate().queryForObject(
