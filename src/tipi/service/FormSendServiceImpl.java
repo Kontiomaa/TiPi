@@ -23,7 +23,6 @@ public class FormSendServiceImpl implements FormSendService {
 	
 	@Override
 	public void sendFormToDAO() {
-		System.out.println("Terve");		
 		formDao.saveOrderFormDAO();
 	}
 	
