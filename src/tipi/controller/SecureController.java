@@ -19,7 +19,6 @@ public class SecureController {
 		Set<String> roles = AuthorityUtils
 				.authorityListToSet(SecurityContextHolder.getContext()
 						.getAuthentication().getAuthorities());
-
 		if (roles.contains("ROLE_ADMIN")) {
 			return "redirect:/admin/index";
 		}

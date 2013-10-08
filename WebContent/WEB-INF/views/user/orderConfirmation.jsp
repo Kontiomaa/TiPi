@@ -9,7 +9,7 @@
 				<table class="table" id="orderConfirmationTable">
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight:700;">Auto</td>
+							<td colspan="4" style="font-size: 20px; font-weight: 700;">Auto</td>
 						</tr>
 					</thead>
 					<tr>
@@ -27,7 +27,7 @@
 
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight:700;">Nouto</td>
+							<td colspan="4" style="font-size: 20px; font-weight: 700;">Nouto</td>
 						</tr>
 					</thead>
 
@@ -75,7 +75,7 @@
 
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight:700;">Asiakas</td>
+							<td colspan="4" style="font-size: 20px; font-weight: 700;">Asiakas</td>
 						</tr>
 					</thead>
 
@@ -94,7 +94,7 @@
 
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight:700;">Toimituksen
+							<td colspan="4" style="font-size: 20px; font-weight: 700;">Toimituksen
 								Lis‰tiedot</td>
 						</tr>
 					</thead>
@@ -105,41 +105,49 @@
 					</tr>
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight:700;">Palautus</td>
+							<td colspan="4" style="font-size: 20px; font-weight: 700;">Palautus</td>
 						</tr>
 					</thead>
 
 					<tr>
 						<th>Nouto P‰iv‰m‰‰r‰</th>
-						<td><c:out value="${orderForm.nextDestinationCollectionDate}" default="-----" /></td>
+						<td><c:out value="${orderForm.nextDestinationCollectionDate}"
+								default="-----" /></td>
 						<th>Palautus P‰iv‰m‰‰r‰</th>
-						<td><c:out value="${orderForm.nextDestinationDate}" default="-----" /></td>
+						<td><c:out value="${orderForm.nextDestinationDate}"
+								default="-----" /></td>
 					</tr>
 
 					<tr>
 						<th>Nouto aika</th>
-						<td><c:out value="${orderForm.nextDestinationCollectionTime}" default="-----" /></td>
+						<td><c:out value="${orderForm.nextDestinationCollectionTime}"
+								default="-----" /></td>
 						<th>Palautus aika</th>
-						<td><c:out value="${orderForm.nextDestinationTime}" default="-----" /></td>
+						<td><c:out value="${orderForm.nextDestinationTime}"
+								default="-----" /></td>
 					</tr>
 
 					<tr>
 						<th>Palautus osoite</th>
-						<td><c:out value="${orderForm.nextDestinationAddress}" default="-----" /></td>
+						<td><c:out value="${orderForm.nextDestinationAddress}"
+								default="-----" /></td>
 						<th>Palautus postinumero</th>
-						<td><c:out value="${orderForm.nextDestinationPostalCode}" default="-----" /></td>
+						<td><c:out value="${orderForm.nextDestinationPostalCode}"
+								default="-----" /></td>
 					</tr>
 
 					<tr>
 						<th>Palautus toimipaikka</th>
-						<td><c:out value="${orderForm.nextDestinationCity}" default="-----" /></td>
+						<td><c:out value="${orderForm.nextDestinationCity}"
+								default="-----" /></td>
 						<td colspan="2"></td>
 					</tr>
 
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight:700;">Palautuksen
-								Lis‰tiedot</th>
+							<td colspan="4" style="font-size: 20px; font-weight: 700;">Palautuksen
+								Lis‰tiedot
+							</th>
 						</tr>
 					</thead>
 
@@ -150,11 +158,16 @@
 
 
 					<tr>
+
 						<td><a href="orderForm" class="btn btn-danger">Takaisin</a></td>
-						<td>
-							<button type="submit" class="btn btn-inverse">L‰het‰
-								tilaus</button>
-						</td>
+
+						<td><form action="orderSend" method="post"
+								class="form-horizontal">
+								<fieldset>
+									<button type="submit" class="btn btn-inverse">L‰het‰
+										tilaus</button>
+								</fieldset>
+							</form></td>
 						<td colspan="2"></td>
 					</tr>
 				</table>
