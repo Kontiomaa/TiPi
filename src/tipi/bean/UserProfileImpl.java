@@ -2,7 +2,7 @@ package tipi.bean;
 
 public class UserProfileImpl implements UserProfile {
 	
-	private String id;
+	private int id;
 	private String fName;
 	private String lName;
 	private String phoneNo;
@@ -10,10 +10,10 @@ public class UserProfileImpl implements UserProfile {
 	private String username;
 	private UserCompany company;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getfName() {

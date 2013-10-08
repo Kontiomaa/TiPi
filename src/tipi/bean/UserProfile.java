@@ -2,9 +2,9 @@ package tipi.bean;
 
 public interface UserProfile {
 	
-	public String getId();
+	public abstract int getId();
 	
-	public void setId(String id);
+	public abstract void setId(int user_id);
 	
 	public abstract String getfName();
 	
