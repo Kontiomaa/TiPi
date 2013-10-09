@@ -94,4 +94,11 @@
 
 	<sec:global-method-security
 		pre-post-annotations="enabled" />
+		
+		
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource"
+		id="messageSource">
+		<property name="basename" value="messages_error" />
+	</bean>
+		
 </beans>

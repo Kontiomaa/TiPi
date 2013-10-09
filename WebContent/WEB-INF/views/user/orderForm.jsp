@@ -21,6 +21,18 @@
 									<div class="controls">
 										<form:input path="carBrand" name="textinput"
 											placeholder="esim Audi" class="input-xlarge" type="text" />
+
+										<spring:bind path="carBrand">
+											<c:if test="${status.error}">
+												<img src="<c:url value="../resources/alert.png"/>"
+													width="31" height="32" rel="tooltip" id="blah"
+													title="${status.errorMessage}" />
+											</c:if>
+										</spring:bind>
+
+										<%-- 
+										<form:errors path="carBrand" rel="tooltip" id="blah"
+											title="Teksti" /> --%>
 									</div>
 								</div>
 
@@ -322,6 +334,10 @@
 	<script type="text/javascript"
 		src="../resources/bootstrap-timepicker-master/js/bootstrap-timepicker.min.js"></script>
 	<script type="text/javascript">
+		$("[rel=tooltip]").tooltip({
+			placement : 'right'
+		});
+
 		var nowTemp = new Date();
 		var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp
 				.getDate(), 0, 0, 0, 0);

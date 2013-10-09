@@ -1,7 +1,10 @@
 package tipi.bean;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class OrderFormImpl implements OrderForm {
 	
+	@NotEmpty
 	private String carBrand;
 	private String carModel;
 	private String carRegister;
