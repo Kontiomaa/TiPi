@@ -54,7 +54,7 @@ public class FormDAOImpl implements FormDAO {
 				+ " clientFname, clientLname, clientPhoneNo, clientCompany, additionalInformation,"
 				+ "	nextDestinationCollectionDate, nextDestinationCollectionTime, nextDestinationDate,	nextDestinationTime,"
 				+ " nextDestinationAddress, nextDestinationPostalCode, nextDestinationCity, "
-				+ "nextAdditionalInformation, orderStatus) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+				+ "nextAdditionalInformation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
 		jdbcTemplate.update(
 				sql,
@@ -80,7 +80,7 @@ public class FormDAOImpl implements FormDAO {
 						orderForm.getNextDestinationAddress(),
 						orderForm.getNextDestinationPostalCode(),
 						orderForm.getNextDestinationCity(),
-						orderForm.getNextAdditionalInformation(), 1 });
+						orderForm.getNextAdditionalInformation()});
 
 		/*
 		 * String sql =
