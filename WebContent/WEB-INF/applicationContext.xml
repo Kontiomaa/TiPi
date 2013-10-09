@@ -74,15 +74,14 @@
 		class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
 
 	<!-- USER DEFINITIONS BY XML -->
-	<!-- <sec:authentication-manager> <sec:authentication-provider> <sec:password-encoder 
+	<sec:authentication-manager> <sec:authentication-provider> <sec:password-encoder 
 		ref="encoder" /> <sec:jdbc-user-service data-source-ref="dataSource" users-by-username-query="select 
-		username, password, isActive from registeredUsers where username=? and isActive 
-		= 1" authorities-by-username-query="select u.username, ur.userRoleName from 
-		registeredUsers u JOIN userHasRole uhr ON (u.user_id = uhr.user_id) JOIN 
-		userRoles ur ON (ur.userRole_id = uhr.userRole_id) WHERE u.username = ?" 
-		/> </sec:authentication-provider> </sec:authentication-manager> -->
+		email, password, isActive from registeredUsers where email=? and isActive 
+		= 1" authorities-by-username-query="select u.email, ur.userRoleName from 
+		registeredUsers u JOIN userRoles ur ON (u.myRole = ur.userRole_id) WHERE u.email = ?" 
+		/> </sec:authentication-provider> </sec:authentication-manager>
 
-	<sec:authentication-manager>
+	<!-- <sec:authentication-manager>
 		<sec:authentication-provider>
 			<sec:user-service>
 				<sec:user name="user" password="U53RP@55Ut!p!innovointi"
@@ -91,7 +90,7 @@
 					authorities="ROLE_ADMIN" />
 			</sec:user-service>
 		</sec:authentication-provider>
-	</sec:authentication-manager>
+	</sec:authentication-manager> -->
 
 	<sec:global-method-security
 		pre-post-annotations="enabled" />
