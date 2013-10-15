@@ -13,13 +13,13 @@
 						</tr>
 					</thead>
 					<tr>
-						<th>Automalli</th>
+						<th>Automerkki</th>
 						<td><c:out value="${orderForm.carBrand}" default="-----" /></td>
 						<th>Rekisterinumero</th>
 						<td><c:out value="${orderForm.carRegister}" default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Automerkki</th>
+						<th>Automalli</th>
 						<td><c:out value="${orderForm.carModel}" default="-----" /></td>
 						<th>Autoväri</th>
 						<td><c:out value="${orderForm.carColor}" default="-----" /></td>

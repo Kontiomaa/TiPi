@@ -51,7 +51,7 @@
 						<p class="alert alert-success">Uloskirjautuminen onnistui</p>
 					</c:if>
 					<input type='text' name='j_username' value=''
-						class="input-block-level" placeholder="Käyttäjätunnus"> <input
+						class="input-block-level" placeholder="Sähköposti"> <input
 						type="password" name='j_password' class="input-block-level"
 						placeholder="Salasana">
 					<!--  <label class="checkbox">

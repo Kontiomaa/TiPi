@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import tipi.bean.OrderFormImpl;
+import tipi.bean.OrderForm;
 
 @Repository
 public class FormDAOImpl implements FormDAO {
@@ -25,7 +25,9 @@ public class FormDAOImpl implements FormDAO {
 	}
 
 	@Override
-	public void saveOrderFormDAO(OrderFormImpl orderForm) {
+	public void saveOrderFormDAO(OrderForm orderForm) {
+		System.out.println("TULEEKO?");
+		
 		SimpleDateFormat oldFormat = new SimpleDateFormat("dd.MM.yyyy");
 		SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
 

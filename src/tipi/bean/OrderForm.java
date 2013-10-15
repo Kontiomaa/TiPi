@@ -2,6 +2,11 @@ package tipi.bean;
 
 public interface OrderForm {
 	
+	public abstract int getOrders_id();
+
+	public abstract void setOrders_id(int orders_id);
+	
+	
 	//Car
 	public abstract String getCarBrand();
 
@@ -53,9 +58,6 @@ public interface OrderForm {
 
 	public abstract void setDestinationAddress(String destinationAddress);
 
-	
-	
-	
 	public abstract String getDestinationPostalCode();
 
 	public abstract void setDestinationPostalCode(String destinationPostalCode);
@@ -86,7 +88,12 @@ public interface OrderForm {
 
 	public abstract void setAdditionalInformation(String additionalInformation);
 	
+	
 	//Return
+	public abstract boolean isHasNewDestination();
+	
+	public abstract void setHasNewDestination(boolean hasNewDestination);
+	
 	public abstract String getNextDestinationCollectionDate();
 
 	public abstract void setNextDestinationCollectionDate(String nextDestinationCollectionDate);
@@ -119,4 +126,15 @@ public interface OrderForm {
 
 	public abstract void setNextAdditionalInformation(String nextAdditionalInformation);
 		
+	
+	//Other
+	public abstract void setCompanyMadeOrder(int companyMadeOrder);
+
+	public abstract int getUserMadeOrder();
+
+	public abstract void setUserMadeOrder(int userMadeOrder);
+
+	public abstract String getLastTimeEdited();
+
+	public abstract void setLastTimeEdited(String lastTimeEdited);
 }

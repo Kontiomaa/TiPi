@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import tipi.bean.OrderForm;
 import tipi.bean.OrderFormImpl;
 import tipi.service.FormSendService;
 
@@ -34,7 +35,8 @@ public class FormController {
 	// FORMIN TEKEMINEN
 	@RequestMapping(value = "orderFormEmpty", method = RequestMethod.GET)
 	public String getCreateForm(Model model) {
-		model.addAttribute("orderForm", new OrderFormImpl());
+		OrderForm orderForm = new OrderFormImpl();
+		model.addAttribute("orderForm", orderForm);
 		return "redirect:/user/orderForm";
 	}
 
@@ -43,6 +45,8 @@ public class FormController {
 	public String create(
 			@ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
 			BindingResult result) {
+		System.out.println(orderForm.isHasNewDestination());
+		System.out.println(orderForm.getCarBrand());
 		if (result.hasErrors()) {
 			return "/user/orderForm";
 		} else {
