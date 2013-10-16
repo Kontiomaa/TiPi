@@ -12,16 +12,20 @@
 				<form:form modelAttribute="orderForm" method="post"
 					class="form-horizontal">
 					<fieldset>
-						<legend>Tilauslomake - Auto</legend>
-						<strong> * (tähdellä)  merkityt kentät ovat pakollisia</strong>
-						<div class="row-fluid" style="padding-top:10px;">
+						<legend>
+							Tilauslomake - Auto <i class="icon-info-sign" rel="tooltip"
+								title="Täytä tähän auton tiedot"></i>
+						</legend>
+						<strong> * (tähdellä) merkityt kentät ovat pakollisia</strong>
+						<div class="row-fluid" style="padding-top: 10px;">
 							<div class="span6">
 								<div class="control-group">
 									<form:label path="carBrand" id="carBrand" class="control-label"
 										for="textinput">Automerkki*</form:label>
 									<div class="controls span6">
 										<form:input path="carBrand" name="textinput"
-											placeholder="esim Audi" id="carBrand" class="input-large" type="text" />
+											placeholder="esim Audi" id="carBrand" class="input-large"
+											type="text" />
 									</div>
 
 									<spring:bind path="carBrand">
@@ -84,11 +88,15 @@
 						</div>
 						<div class="row-fluid">
 							<div class="span6">
-							<legend>Nouto</legend>
+								<legend>
+									Nouto <i class="icon-info-sign" rel="tooltip"
+										title="Täytä tähän koska auto on noudettavissa ja mistä"></i>
+								</legend>
 								<div class="row-fluid">
 									<div class="span6 offset2">
 										<div class="control-group span12">
-											<p class="span2 offset2" path="collectionDate" for="textinput">Aika*</p>
+											<p class="span2 offset2" path="collectionDate"
+												for="textinput">Aika*</p>
 											<div class="input-append date span7" id="collectionDate"
 												data-date="" data-date-format="dd.mm.yyyy">
 												<form:input path="collectionDate" class="span9" type="text"
@@ -167,11 +175,15 @@
 								</div>
 							</div>
 							<div class="span6">
-							<legend>Toimitus</legend>
+								<legend>
+									Toimitus <i class="icon-info-sign" rel="tooltip"
+										title="Täytä tähän koska auto pitää olla toimitettuna ja missä"></i>
+								</legend>
 								<div class="row-fluid">
 									<div class="span6 offset2">
 										<div class="control-group span12">
-											<p class="span2 offset2" path="destinationDate" for="textinput">Aika*</p>
+											<p class="span2 offset2" path="destinationDate"
+												for="textinput">Aika*</p>
 											<div class="input-append date span7" id="destinationDate"
 												data-date="" data-date-format="dd.mm.yyyy">
 												<form:input path="destinationDate" class="span9" type="text"
@@ -250,7 +262,10 @@
 								</div>
 							</div>
 						</div>
-						<legend>Asiakkaan tiedot</legend>
+						<legend>
+							Asiakkaan tiedot <i class="icon-info-sign" rel="tooltip"
+								title="Täytä tähän toisen osapuolen tiedot"></i>
+						</legend>
 						<div class="row-fluid">
 							<div class="span6">
 								<div class="control-group">
@@ -318,7 +333,10 @@
 								</div>
 							</div>
 						</div>
-						<legend>Toimituksen lisätiedot</legend>
+						<legend>
+							Toimituksen lisätiedot <i class="icon-info-sign" rel="tooltip"
+								title="Kirjoita tähän toimitukseen liittyviä lisätietoja"></i>
+						</legend>
 						<div class="control-group">
 							<form:label path="additionalInformation" class="control-label"
 								for="textarea">Lisätiedot</form:label>
@@ -334,10 +352,14 @@
 							</spring:bind>
 						</div>
 
-						<legend>Palautus</legend>
+						<legend>
+							Palautus <i class="icon-info-sign" rel="tooltip"
+								title="Laita rasti, jos on palautus. Täytä palautuksen tiedot"></i>
+						</legend>
 						<div class="checkbox">
 							<form:label style="font-size: 120%" path="hasNewDestination">
-								<form:checkbox  id="hasNewDestination" type="checkbox" path="hasNewDestination" />
+								<form:checkbox id="hasNewDestination" type="checkbox"
+									path="hasNewDestination" />
 								Palautus <%-- data-toggle="collapse" data-target="#returnArea" --%>
 							</form:label>
 						</div>
@@ -348,7 +370,10 @@
 									<div class="control-group">
 										<form:label path="nextDestinationCollectionDate"
 											style="padding-right: 8px;" class="control-label"
-											for="textinput">Noutoaika*</form:label>
+											for="textinput">Noutoaika* <i
+												class="icon-info-sign" rel="tooltip"
+												title="Koska auto valmis haettavaksi toimituspaikalta"></i>
+										</form:label>
 										<div class="input-append date span4"
 											id="nextDestinationCollectionDate" data-date=""
 											data-date-format="dd.mm.yyyy">
@@ -371,7 +396,10 @@
 									<div class="control-group">
 										<form:label path="nextDestinationDate"
 											style="padding-right: 8px;" class="control-label"
-											for="textinput">Palautusaika*</form:label>
+											for="textinput">Palautusaika* <i
+												class="icon-info-sign" rel="tooltip"
+												title="Koska auto pitää olla palautettuna"></i>
+										</form:label>
 										<div class="input-append date span4" id="nextDestinationDate"
 											data-date="" data-date-format="dd.mm.yyyy">
 											<form:input path="nextDestinationDate" class="span8"
@@ -392,12 +420,14 @@
 								<div class="span6">
 									<div class="checkbox span11 offset1 control-group">
 										<label> <input type="checkbox"
-											id="sameAsCollectionAddress"> Sama kuin palautuspaikka kuin noudettaessa
+											id="sameAsCollectionAddress"> Sama palautuspaikka
+											kuin noudettaessa <i class="icon-info-sign" rel="tooltip"
+											title="Rastita tämä jos osoite on sama kuin autoa noudettaessa toimitukseen"></i>
 										</label>
 									</div>
 									<div class="control-group">
 										<form:label path="nextDestinationAddress"
-											class="control-label" for="textinput">Osoite</form:label>
+											class="control-label" for="textinput">Osoite*</form:label>
 										<div class="controls span6">
 											<form:input path="nextDestinationAddress" name="textinput"
 												placeholder="esim Kesäkatu 95" class="input-large"
@@ -407,7 +437,7 @@
 
 									<div class="control-group">
 										<form:label path="nextDestinationPostalCode"
-											class="control-label" for="textinput">Postinumero</form:label>
+											class="control-label" for="textinput">Postinumero*</form:label>
 										<div class="controls span6">
 											<form:input path="nextDestinationPostalCode" name="textinput"
 												placeholder="esim 02100" class="input-large" type="text" />
@@ -416,7 +446,7 @@
 
 									<div class="control-group">
 										<form:label path="nextDestinationCity" class="control-label"
-											for="textinput">Toimipaikka</form:label>
+											for="textinput">Toimipaikka*</form:label>
 										<div class="controls span6">
 											<form:input path="nextDestinationCity" name="textinput"
 												placeholder="esim Espoo" class="input-large" type="text" />
@@ -424,7 +454,10 @@
 									</div>
 								</div>
 							</div>
-							<legend>Palautuksen lisätiedot</legend>
+							<legend>
+								Palautuksen lisätiedot <i class="icon-info-sign" rel="tooltip"
+									title="Kirjoita tähän palautukseen liittyviä lisätietoja"></i>
+							</legend>
 							<div class="control-group">
 								<form:label path="nextAdditionalInformation"
 									class="control-label" for="textarea">Lisätiedot</form:label>
@@ -456,14 +489,14 @@
 						function() {
 							$("#hasNewDestination").is(function() {
 								if ($('#hasNewDestination').is(':checked')) {
-									$("#returnArea").collapse('hide');			
+									$("#returnArea").collapse('hide');
 								}
 							});
-							
+
 							$("#hasNewDestination").change(function() {
-									$("#returnArea").collapse('toggle');
-							}); 
-							
+								$("#returnArea").collapse('toggle');
+							});
+
 							$("#sameAsCollectionAddress")
 									.change(
 											function() {
