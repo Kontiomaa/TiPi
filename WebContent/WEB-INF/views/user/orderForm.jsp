@@ -13,14 +13,15 @@
 					class="form-horizontal">
 					<fieldset>
 						<legend>Tilauslomake - Auto</legend>
-						<div class="row-fluid">
+						<strong> * (tähdellä)  merkityt kentät ovat pakollisia</strong>
+						<div class="row-fluid" style="padding-top:10px;">
 							<div class="span6">
 								<div class="control-group">
-									<form:label path="carBrand" class="control-label"
+									<form:label path="carBrand" id="carBrand" class="control-label"
 										for="textinput">Automerkki*</form:label>
 									<div class="controls span6">
 										<form:input path="carBrand" name="textinput"
-											placeholder="esim Audi" class="input-large" type="text" />
+											placeholder="esim Audi" id="carBrand" class="input-large" type="text" />
 									</div>
 
 									<spring:bind path="carBrand">
@@ -81,14 +82,13 @@
 								</div>
 							</div>
 						</div>
-						<legend>Nouto</legend>
 						<div class="row-fluid">
 							<div class="span6">
+							<legend>Nouto</legend>
 								<div class="row-fluid">
 									<div class="span6 offset2">
 										<div class="control-group span12">
-											<p class="span4" path="collectionDate" for="textinput">Nouto
-												aika*</p>
+											<p class="span2 offset2" path="collectionDate" for="textinput">Aika*</p>
 											<div class="input-append date span7" id="collectionDate"
 												data-date="" data-date-format="dd.mm.yyyy">
 												<form:input path="collectionDate" class="span9" type="text"
@@ -122,8 +122,7 @@
 								</div>
 								<div class="control-group">
 									<form:label path="collectionAddress" class="control-label"
-										for="textinput">Nouto
-								osoite*</form:label>
+										for="textinput">Osoite*</form:label>
 									<div class="controls span6">
 										<form:input path="collectionAddress" name="textinput"
 											placeholder="esim Valtakatu 54b" class="input-large"
@@ -139,8 +138,7 @@
 
 								<div class="control-group">
 									<form:label path="collectionPostalCode" class="control-label"
-										for="textinput">Nouto
-								postinumero*</form:label>
+										for="textinput">Postinumero*</form:label>
 									<div class="controls span6">
 										<form:input path="collectionPostalCode" name="textinput"
 											placeholder="esim 00100" class="input-large" type="text" />
@@ -155,8 +153,7 @@
 
 								<div class="control-group">
 									<form:label path="collectionCity" class="control-label"
-										for="textinput">Nouto
-								toimipaikka*</form:label>
+										for="textinput">Toimipaikka*</form:label>
 									<div class="controls span6">
 										<form:input path="collectionCity" name="textinput"
 											placeholder="esim Helsinki" class="input-large" type="text" />
@@ -170,12 +167,12 @@
 								</div>
 							</div>
 							<div class="span6">
+							<legend>Toimitus</legend>
 								<div class="row-fluid">
-									<div class="span7 offset1">
+									<div class="span6 offset2">
 										<div class="control-group span12">
-											<p class="span5" path="destinationDate" for="textinput">Toimitus
-												aika*</p>
-											<div class="input-append date span6" id="destinationDate"
+											<p class="span2 offset2" path="destinationDate" for="textinput">Aika*</p>
+											<div class="input-append date span7" id="destinationDate"
 												data-date="" data-date-format="dd.mm.yyyy">
 												<form:input path="destinationDate" class="span9" type="text"
 													value="" readonly="true" />
@@ -208,8 +205,7 @@
 								</div>
 								<div class="control-group">
 									<form:label path="destinationAddress" class="control-label"
-										for="textinput">Toimitus
-								osoite*</form:label>
+										for="textinput">Osoite*</form:label>
 									<div class="controls span6">
 										<form:input path="destinationAddress" name="textinput"
 											placeholder="esim Yhdystie 32a 54" class="input-large"
@@ -225,8 +221,7 @@
 
 								<div class="control-group">
 									<form:label path="destinationPostalCode" class="control-label"
-										for="textinput">Toimitus
-								postinumero*</form:label>
+										for="textinput">Postinumero*</form:label>
 									<div class="controls span6">
 										<form:input path="destinationPostalCode" name="textinput"
 											placeholder="esim 01300" class="input-large" type="text" />
@@ -241,8 +236,7 @@
 
 								<div class="control-group">
 									<form:label path="destinationCity" class="control-label"
-										for="textinput">Toimitus
-								toimipaikka*</form:label>
+										for="textinput">Toimipaikka*</form:label>
 									<div class="controls span6">
 										<form:input path="destinationCity" name="textinput"
 											placeholder="esim Vantaa" class="input-large" type="text" />
@@ -354,7 +348,7 @@
 									<div class="control-group">
 										<form:label path="nextDestinationCollectionDate"
 											style="padding-right: 8px;" class="control-label"
-											for="textinput">Nouto aika*</form:label>
+											for="textinput">Noutoaika*</form:label>
 										<div class="input-append date span4"
 											id="nextDestinationCollectionDate" data-date=""
 											data-date-format="dd.mm.yyyy">
@@ -377,7 +371,7 @@
 									<div class="control-group">
 										<form:label path="nextDestinationDate"
 											style="padding-right: 8px;" class="control-label"
-											for="textinput">Palautus aika*</form:label>
+											for="textinput">Palautusaika*</form:label>
 										<div class="input-append date span4" id="nextDestinationDate"
 											data-date="" data-date-format="dd.mm.yyyy">
 											<form:input path="nextDestinationDate" class="span8"
@@ -398,13 +392,12 @@
 								<div class="span6">
 									<div class="checkbox span11 offset1 control-group">
 										<label> <input type="checkbox"
-											id="sameAsCollectionAddress"> Sama kuin noudettaessa
+											id="sameAsCollectionAddress"> Sama kuin palautuspaikka kuin noudettaessa
 										</label>
 									</div>
 									<div class="control-group">
 										<form:label path="nextDestinationAddress"
-											class="control-label" for="textinput">Palautus
-								osoite</form:label>
+											class="control-label" for="textinput">Osoite</form:label>
 										<div class="controls span6">
 											<form:input path="nextDestinationAddress" name="textinput"
 												placeholder="esim Kesäkatu 95" class="input-large"
@@ -414,8 +407,7 @@
 
 									<div class="control-group">
 										<form:label path="nextDestinationPostalCode"
-											class="control-label" for="textinput">Palautus
-								postinumero</form:label>
+											class="control-label" for="textinput">Postinumero</form:label>
 										<div class="controls span6">
 											<form:input path="nextDestinationPostalCode" name="textinput"
 												placeholder="esim 02100" class="input-large" type="text" />
@@ -424,8 +416,7 @@
 
 									<div class="control-group">
 										<form:label path="nextDestinationCity" class="control-label"
-											for="textinput">Palautus
-								toimipaikka</form:label>
+											for="textinput">Toimipaikka</form:label>
 										<div class="controls span6">
 											<form:input path="nextDestinationCity" name="textinput"
 												placeholder="esim Espoo" class="input-large" type="text" />
