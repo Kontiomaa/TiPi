@@ -45,8 +45,6 @@ public class FormController {
 	public String create(
 			@ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
 			BindingResult result) {
-		System.out.println(orderForm.isHasNewDestination());
-		System.out.println(orderForm.getCarBrand());
 		if (result.hasErrors()) {
 			return "/user/orderForm";
 		} else {

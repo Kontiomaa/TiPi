@@ -27,47 +27,48 @@
 
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight: 700;">Nouto</td>
+							<td colspan="2" style="font-size: 20px; font-weight: 700;">Nouto</td>
+							<td colspan="2" style="font-size: 20px; font-weight: 700;">Toimitus</td>
 						</tr>
 					</thead>
 
 					<tr>
-						<th>Noudettavissa p‰iv‰m‰‰r‰</th>
+						<th>P‰iv‰</th>
 						<td><c:out value="${orderForm.collectionDate}"
 								default="-----" /></td>
-						<th>Perill‰ p‰iv‰m‰‰r‰</th>
+						<th>P‰iv‰</th>
 						<td><c:out value="${orderForm.destinationDate}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Noudettavissa kellonaika</th>
+						<th>Kellonaika</th>
 						<td><c:out value="${orderForm.collectionTime}"
 								default="-----" /></td>
-						<th>Perill‰ kellonaika</th>
+						<th>Kellonaika</th>
 						<td><c:out value="${orderForm.destinationTime}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Nouto osoite</th>
+						<th>Osoite</th>
 						<td><c:out value="${orderForm.collectionAddress}"
 								default="-----" /></td>
-						<th>Toimitus osoite</th>
+						<th>Osoite</th>
 						<td><c:out value="${orderForm.destinationAddress}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Nouto postinumero</th>
+						<th>Postinumero</th>
 						<td><c:out value="${orderForm.collectionPostalCode}"
 								default="-----" /></td>
-						<th>Toimitus postinumero</th>
+						<th>Postinumero</th>
 						<td><c:out value="${orderForm.destinationPostalCode}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Nouto toimipaikka</th>
+						<th>Toimipaikka</th>
 						<td><c:out value="${orderForm.collectionCity}"
 								default="-----" /></td>
-						<th>Toimitus toimipaikka</th>
+						<th>Toimipaikka</th>
 						<td><c:out value="${orderForm.destinationCity}"
 								default="-----" /></td>
 					</tr>
@@ -103,59 +104,64 @@
 						<td colspan="4"><c:out
 								value="${orderForm.additionalInformation}" default="-----" /></td>
 					</tr>
-					<thead>
+
+					<c:if test="${orderForm.hasNewDestination}">
+
+						<thead>
+							<tr>
+								<td colspan="4" style="font-size: 20px; font-weight: 700;">Palautus</td>
+							</tr>
+						</thead>
+
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight: 700;">Palautus</td>
+							<th>Noutop‰iv‰</th>
+							<td><c:out
+									value="${orderForm.nextDestinationCollectionDate}"
+									default="-----" /></td>
+							<th>Palautusp‰iv‰</th>
+							<td><c:out value="${orderForm.nextDestinationDate}"
+									default="-----" /></td>
 						</tr>
-					</thead>
 
-					<tr>
-						<th>Nouto P‰iv‰m‰‰r‰</th>
-						<td><c:out value="${orderForm.nextDestinationCollectionDate}"
-								default="-----" /></td>
-						<th>Palautus P‰iv‰m‰‰r‰</th>
-						<td><c:out value="${orderForm.nextDestinationDate}"
-								default="-----" /></td>
-					</tr>
-
-					<tr>
-						<th>Nouto aika</th>
-						<td><c:out value="${orderForm.nextDestinationCollectionTime}"
-								default="-----" /></td>
-						<th>Palautus aika</th>
-						<td><c:out value="${orderForm.nextDestinationTime}"
-								default="-----" /></td>
-					</tr>
-
-					<tr>
-						<th>Palautus osoite</th>
-						<td><c:out value="${orderForm.nextDestinationAddress}"
-								default="-----" /></td>
-						<th>Palautus postinumero</th>
-						<td><c:out value="${orderForm.nextDestinationPostalCode}"
-								default="-----" /></td>
-					</tr>
-
-					<tr>
-						<th>Palautus toimipaikka</th>
-						<td><c:out value="${orderForm.nextDestinationCity}"
-								default="-----" /></td>
-						<td colspan="2"></td>
-					</tr>
-
-					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight: 700;">Palautuksen
-								Lis‰tiedot
-							</th>
+							<th>Noutoaika</th>
+							<td><c:out
+									value="${orderForm.nextDestinationCollectionTime}"
+									default="-----" /></td>
+							<th>Palautusaika</th>
+							<td><c:out value="${orderForm.nextDestinationTime}"
+									default="-----" /></td>
 						</tr>
-					</thead>
 
-					<tr>
-						<td colspan="4"><c:out
-								value="${orderForm.nextAdditionalInformation}" default="-----" /></td>
-					</tr>
+						<tr>
+							<th>Osoite</th>
+							<td><c:out value="${orderForm.nextDestinationAddress}"
+									default="-----" /></td>
+							<th>Postinumero</th>
+							<td><c:out value="${orderForm.nextDestinationPostalCode}"
+									default="-----" /></td>
+						</tr>
 
+						<tr>
+							<th>Toimipaikka</th>
+							<td><c:out value="${orderForm.nextDestinationCity}"
+									default="-----" /></td>
+							<td colspan="2"></td>
+						</tr>
+
+						<thead>
+							<tr>
+								<td colspan="4" style="font-size: 20px; font-weight: 700;">Palautuksen
+									Lis‰tiedot
+								</th>
+							</tr>
+						</thead>
+
+						<tr>
+							<td colspan="4"><c:out
+									value="${orderForm.nextAdditionalInformation}" default="-----" /></td>
+						</tr>
+					</c:if>
 
 					<tr>
 

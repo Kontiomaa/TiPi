@@ -21,7 +21,6 @@ public class OrderFormImpl implements OrderForm {
 	@NotEmpty(message="Tyhjä")
 	@Size(max=30,message="Liian pitkä")
 	private String carRegister;
-	@NotEmpty(message="Tyhjä")
 	@Size(max=30,message="Liian pitkä")
 	private String carColor;
 	

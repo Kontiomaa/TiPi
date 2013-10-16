@@ -26,8 +26,7 @@ public class FormDAOImpl implements FormDAO {
 
 	@Override
 	public void saveOrderFormDAO(OrderForm orderForm) {
-		System.out.println("TULEEKO?");
-		
+
 		SimpleDateFormat oldFormat = new SimpleDateFormat("dd.MM.yyyy");
 		SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -41,6 +40,13 @@ public class FormDAOImpl implements FormDAO {
 					.getCollectionDate()));
 			destinationDate = newFormat.format(oldFormat.parse(orderForm
 					.getDestinationDate()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(orderForm.isHasNewDestination()) {
+		try {
 			nextDestinationCollectionDate = newFormat.format(oldFormat
 					.parse(orderForm.getNextDestinationCollectionDate()));
 			nextDestinationDate = newFormat.format(oldFormat.parse(orderForm
@@ -49,14 +55,17 @@ public class FormDAOImpl implements FormDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
+		
 
 		String sql = "INSERT INTO orders ( carMake, carModel, carRegister, carColor,"
 				+ " collectionDate, collectionTime, collectionAddress, collectionPostalCode, collectionCity,"
 				+ " destinationDate, destinationTime, destinationAddress, destinationPostalCode, destinationCity,"
 				+ " clientFname, clientLname, clientPhoneNo, clientCompany, additionalInformation,"
+				+ " companyMadeOrder, userMadeOrder, statusOfOrder, hasNewDestination,"
 				+ "	nextDestinationCollectionDate, nextDestinationCollectionTime, nextDestinationDate,	nextDestinationTime,"
 				+ " nextDestinationAddress, nextDestinationPostalCode, nextDestinationCity, "
-				+ "nextAdditionalInformation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+				+ "nextAdditionalInformation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
 		jdbcTemplate.update(
 				sql,
@@ -74,7 +83,8 @@ public class FormDAOImpl implements FormDAO {
 						orderForm.getClientFname(), orderForm.getClientLname(),
 						orderForm.getClientPhoneNo(),
 						orderForm.getClientCompany(),
-						orderForm.getAdditionalInformation(),
+						orderForm.getAdditionalInformation(), 1, 1, 1,
+						orderForm.isHasNewDestination(),
 						nextDestinationCollectionDate,
 						orderForm.getNextDestinationCollectionTime(),
 						nextDestinationDate,
@@ -82,7 +92,7 @@ public class FormDAOImpl implements FormDAO {
 						orderForm.getNextDestinationAddress(),
 						orderForm.getNextDestinationPostalCode(),
 						orderForm.getNextDestinationCity(),
-						orderForm.getNextAdditionalInformation()});
+						orderForm.getNextAdditionalInformation() });
 
 		/*
 		 * String sql =

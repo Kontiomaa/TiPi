@@ -20,12 +20,11 @@
 						<div class="row-fluid" style="padding-top: 10px;">
 							<div class="span6">
 								<div class="control-group">
-									<form:label path="carBrand" id="carBrand" class="control-label"
+									<form:label path="carBrand" class="control-label"
 										for="textinput">Automerkki*</form:label>
 									<div class="controls span6">
 										<form:input path="carBrand" name="textinput"
-											placeholder="esim Audi" id="carBrand" class="input-large"
-											type="text" />
+											placeholder="esim Audi" class="input-large" type="text" />
 									</div>
 
 									<spring:bind path="carBrand">
@@ -360,7 +359,7 @@
 							<form:label style="font-size: 120%" path="hasNewDestination">
 								<form:checkbox id="hasNewDestination" type="checkbox"
 									path="hasNewDestination" />
-								Palautus <%-- data-toggle="collapse" data-target="#returnArea" --%>
+								Palautus
 							</form:label>
 						</div>
 
