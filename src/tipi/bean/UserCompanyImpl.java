@@ -38,5 +38,13 @@ public class UserCompanyImpl implements UserCompany {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	@Override
+	public String toString() {
+		return "UserCompanyImpl [company_id=" + company_id + ", name=" + name
+				+ ", address=" + address + ", postalCode=" + postalCode
+				+ ", city=" + city + "]";
+	}
+	
+	
 	
 }

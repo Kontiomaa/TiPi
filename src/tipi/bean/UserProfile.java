@@ -2,9 +2,9 @@ package tipi.bean;
 
 public interface UserProfile {
 	
-	public abstract int getId();
-	
-	public abstract void setId(int user_id);
+	public abstract int getUser_id();
+
+	public abstract void setUser_id(int user_id);
 	
 	public abstract String getfName();
 	
@@ -22,11 +22,22 @@ public interface UserProfile {
 	
 	public abstract void setEmail(String email);
 	
-	public abstract String getUsername();
+	public abstract boolean isActive();
 	
-	public abstract void setUsername(String username);
+	public abstract void setActive(boolean isActive);
+	
+	public abstract int getMyRole();
+	
+	public abstract void setMyRole(int myRole);
+	
+	public abstract int getMyCompany();
+	
+	public abstract void setMyCompany(int myCompany);
 	
 	public abstract UserCompany getCompany();
 	
 	public abstract void setCompany(UserCompany company);
+	
+	public abstract String toString();
+	
 }
