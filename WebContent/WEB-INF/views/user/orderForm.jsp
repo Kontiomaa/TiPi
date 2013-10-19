@@ -89,7 +89,7 @@
 							<div class="span6">
 								<legend>
 									Nouto <i class="icon-info-sign" rel="tooltip"
-										title="Täytä tähän koska auto on noudettavissa ja mistä"></i>
+										title="Täytä tähän milloin ja mistä auto on noudettavissa"></i>
 								</legend>
 								<div class="row-fluid">
 									<div class="span6 offset2">
@@ -176,7 +176,7 @@
 							<div class="span6">
 								<legend>
 									Toimitus <i class="icon-info-sign" rel="tooltip"
-										title="Täytä tähän koska auto pitää olla toimitettuna ja missä"></i>
+										title="Täytä tähän milloin ja missä auton pitää olla toimitettuna"></i>
 								</legend>
 								<div class="row-fluid">
 									<div class="span6 offset2">
@@ -353,7 +353,7 @@
 
 						<legend>
 							Palautus <i class="icon-info-sign" rel="tooltip"
-								title="Laita rasti, jos on palautus. Täytä palautuksen tiedot"></i>
+								title="Rastita jos tilaukseen liittyy palautus ja täytä palautuksen tiedot"></i>
 						</legend>
 						<div class="checkbox">
 							<form:label style="font-size: 120%" path="hasNewDestination">
@@ -371,7 +371,7 @@
 											style="padding-right: 8px;" class="control-label"
 											for="textinput">Noutoaika* <i
 												class="icon-info-sign" rel="tooltip"
-												title="Koska auto valmis haettavaksi toimituspaikalta"></i>
+												title="Milloin auto on valmis haettavaksi toimituspaikasta"></i>
 										</form:label>
 										<div class="input-append date span4"
 											id="nextDestinationCollectionDate" data-date=""
@@ -397,7 +397,7 @@
 											style="padding-right: 8px;" class="control-label"
 											for="textinput">Palautusaika* <i
 												class="icon-info-sign" rel="tooltip"
-												title="Koska auto pitää olla palautettuna"></i>
+												title="Milloin auton tulee olla palautettuna"></i>
 										</form:label>
 										<div class="input-append date span4" id="nextDestinationDate"
 											data-date="" data-date-format="dd.mm.yyyy">
@@ -421,7 +421,7 @@
 										<label> <input type="checkbox"
 											id="sameAsCollectionAddress"> Sama palautuspaikka
 											kuin noudettaessa <i class="icon-info-sign" rel="tooltip"
-											title="Rastita tämä jos osoite on sama kuin autoa noudettaessa toimitukseen"></i>
+											title="Rastita tämä jos auto palautetaan nouto-osoitteeseen"></i>
 										</label>
 									</div>
 									<div class="control-group">
