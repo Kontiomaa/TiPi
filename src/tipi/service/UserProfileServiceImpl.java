@@ -1,5 +1,7 @@
 package tipi.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -33,6 +35,11 @@ public class UserProfileServiceImpl implements UserProfileService {
 
 	public void sendNewCompanyToDAO(UserCompany registerCompany){
 		userDao.registerNewCompanyDAO(registerCompany);
+	}
+	
+	public List<UserCompany> getAllCompanies(){
+		List<UserCompany> allCompanies = userDao.getAllCompaniesDAO();
+		return allCompanies;
 	}
 	
 }

@@ -1,8 +1,11 @@
 package tipi.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,6 +52,8 @@ public class RegisterUserController {
 		if (!model.containsAttribute("registerUser")) {
 			return "redirect:/admin/registerEmptyUser";
 		}
+		List<UserCompany> allCompanies = userProfileService.getAllCompanies();		
+		model.addAttribute("allCompanies", allCompanies);
 		return "admin/registerNewUser";
 	}
 	
@@ -56,12 +61,15 @@ public class RegisterUserController {
 	public String getUserConfirmation(
 			@ModelAttribute(value = "registerUser") @Valid UserProfileImpl registerUser,
 			BindingResult result) {
+		StandardPasswordEncoder spe = new StandardPasswordEncoder();
+		registerUser.setPassword(spe.encode(registerUser.getPassword()));
+		System.out.println("ID" + registerUser.getMyCompany());
+		System.out.println("ID" + registerUser.getfName());
+		System.out.println("salasana" + registerUser.getPassword());
 		if (result.hasErrors()) {
 			return "/admin/registerNewUser";
 		} else {
-			//return "/admin/registerNewUserConfirmation";
-			System.out.println(registerUser.getfName());
-			return null;
+			return "/admin/confirmationNewUser";
 		}
 	}
 	
