@@ -163,6 +163,26 @@
 						</tr>
 					</c:if>
 
+					<thead>
+						<tr>
+							<td colspan="4" style="font-size: 20px; font-weight: 700;">Tilaajan
+								Tiedot</td>
+						</tr>
+					</thead>
+					<tr>
+						<th>Etunimi</th>
+						<td><c:out value="${userProfile.fName}" default="-----" /></td>
+						<th>Puhelinnumero</th>
+						<td><c:out value="${userProfile.phoneNo}" default="-----" /></td>
+					</tr>
+					<tr>
+						<th>Sukunimi</th>
+						<td><c:out value="${userProfile.lName}" default="-----" /></td>
+						<th>Yritys</th>
+						<td><c:out value="${userProfile.company.name}"
+								default="-----" /></td>
+					</tr>
+
 					<tr>
 
 						<td><a href="orderForm" class="btn btn-danger">Takaisin</a></td>

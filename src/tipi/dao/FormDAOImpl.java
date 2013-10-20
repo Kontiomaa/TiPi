@@ -25,7 +25,7 @@ public class FormDAOImpl implements FormDAO {
 	}
 
 	@Override
-	public void saveOrderFormDAO(OrderForm orderForm) {
+	public void saveOrderFormDAO(OrderForm orderForm, int userID, int userCompanyID) {
 
 		SimpleDateFormat oldFormat = new SimpleDateFormat("dd.MM.yyyy");
 		SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -83,7 +83,7 @@ public class FormDAOImpl implements FormDAO {
 						orderForm.getClientFname(), orderForm.getClientLname(),
 						orderForm.getClientPhoneNo(),
 						orderForm.getClientCompany(),
-						orderForm.getAdditionalInformation(), 1, 1, 1,
+						orderForm.getAdditionalInformation(), userCompanyID, userID, 1,
 						orderForm.isHasNewDestination(),
 						nextDestinationCollectionDate,
 						orderForm.getNextDestinationCollectionTime(),

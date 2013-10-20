@@ -7,6 +7,8 @@ public interface UserDAO {
 
 	public abstract UserProfile getRegisteredUsersInformationDAO(String userEmail, UserProfile userProfile);
 	
-	public UserCompany getRegisteredUsersCompanyInformationDAO(int companyID, UserCompany userCompany);
+	public abstract UserCompany getRegisteredUsersCompanyInformationDAO(int companyID, UserCompany userCompany);
+	
+	public abstract void registerNewCompanyDAO(UserCompany registerCompany);
 	
 }

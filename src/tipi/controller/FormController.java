@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tipi.bean.OrderForm;
 import tipi.bean.OrderFormImpl;
+import tipi.bean.UserProfileImpl;
 import tipi.service.FormSendService;
 
 @Controller
 @RequestMapping(value = "/user")
-@SessionAttributes("orderForm")
+@SessionAttributes({"orderForm","userProfile"})
 public class FormController {
 	
 	
@@ -56,6 +57,8 @@ public class FormController {
 	// FORMIN TEKEMINEN
 	@RequestMapping(value = "orderForm", method = RequestMethod.GET)
 	public String getOldForm(Model model) {
+
+		
 		if (!model.containsAttribute("orderForm")) {
 			return "redirect:/user/orderFormEmpty";
 		}
@@ -66,9 +69,9 @@ public class FormController {
 	// FORMIN TALLENTAMINEN
 	@RequestMapping(value = "orderSend", method = RequestMethod.POST)
 	public String sendOrderForm(@ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
-			BindingResult result) {
-		
-		formSendService.sendFormToDAO(orderForm);
+			BindingResult result, @ModelAttribute(value = "userProfile") UserProfileImpl userProfile) {
+
+		formSendService.sendFormToDAO(orderForm, userProfile.getUser_id(), userProfile.getMyCompany());
 		
 		return "redirect:/user/orderFormEmpty";
 	}

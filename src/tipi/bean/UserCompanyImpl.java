@@ -1,11 +1,23 @@
 package tipi.bean;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserCompanyImpl implements UserCompany {
 
 	private int company_id;
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String name;
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String address;
+	@Pattern(regexp = "\\d{5}",message="Postinumeron pit‰‰ olla 5 numeroa")
 	private String postalCode;
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String city;
 	
 	public int getCompany_id() {

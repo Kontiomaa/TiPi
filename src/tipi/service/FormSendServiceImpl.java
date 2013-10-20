@@ -23,8 +23,8 @@ public class FormSendServiceImpl implements FormSendService {
 	}
 	
 	@Override
-	public void sendFormToDAO(OrderForm orderForm) {
-		formDao.saveOrderFormDAO(orderForm);
+	public void sendFormToDAO(OrderForm orderForm, int userID, int userCompanyID) {
+		formDao.saveOrderFormDAO(orderForm, userID, userCompanyID);
 	}
 	
 }

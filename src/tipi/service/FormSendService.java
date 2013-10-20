@@ -8,5 +8,5 @@ import tipi.bean.OrderForm;
 public interface FormSendService {
 
 	@PreAuthorize("hasRole('ROLE_USER')")
-	public abstract void sendFormToDAO(OrderForm orderForm);
+	public abstract void sendFormToDAO(OrderForm orderForm, int userID, int userCompanyID);
 }

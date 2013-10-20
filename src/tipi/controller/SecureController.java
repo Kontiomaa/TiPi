@@ -42,8 +42,6 @@ public class SecureController {
 		
 		userProfile = userProfileService.getRegisteredUsersInformationFromDAO(userEmail, userProfile);
 		model.addAttribute("userProfile", userProfile);
-		System.out.println("CONTROLLER " + userProfile.toString());
-		System.out.println("TÄÄÖÖÄ" + userProfile.getCompany().toString());
 		
 		Set<String> roles = AuthorityUtils
 				.authorityListToSet(SecurityContextHolder.getContext()

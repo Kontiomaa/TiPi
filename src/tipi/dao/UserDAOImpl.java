@@ -37,8 +37,6 @@ public class UserDAOImpl implements UserDAO {
 				new Object[] { userEmail },
 				new BeanPropertyRowMapper(UserProfileImpl.class));
 
-		System.out.println(userProfile.toString());
-
 		return userProfile;
 	}
 	
@@ -52,9 +50,19 @@ public class UserDAOImpl implements UserDAO {
 				new Object[] { companyID },
 				new BeanPropertyRowMapper(UserCompanyImpl.class));
 
-		System.out.println(userCompany.toString());
-
 		return userCompany;
+	}
+	
+	@Override
+	public void registerNewCompanyDAO(UserCompany registerCompany){
+		
+		String sql = "INSERT INTO companies (name, address, postalCode, city) VALUES (?,?,?,?);";
+		  
+		jdbcTemplate.update(sql, new Object[] { 
+		registerCompany.getName(),
+		registerCompany.getAddress(),
+		registerCompany.getPostalCode(),
+		registerCompany.getCity() });
 	}
 
 }

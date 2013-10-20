@@ -1,5 +1,6 @@
 package tipi.controller;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -10,14 +11,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import tipi.bean.OrderFormImpl;
+import tipi.bean.UserCompany;
+import tipi.bean.UserCompanyImpl;
 import tipi.bean.UserProfile;
 import tipi.bean.UserProfileImpl;
+import tipi.service.UserProfileService;
 
 
 @Controller
 @RequestMapping(value="/admin")
-@SessionAttributes("registerUser")
+@SessionAttributes({"registerUser","registerCompany"})
 public class RegisterUserController {
+	
+	
+	@Inject
+	private UserProfileService userProfileService;
+	
+	public UserProfileService getUserProfileService() {
+		return userProfileService;
+	}
+	
+	public void setUserProfileService(UserProfileService userProfileService) {
+		this.userProfileService = userProfileService;
+	}
+	
 	
 	@RequestMapping(value = "/registerEmptyUser", method = RequestMethod.GET)
 	public String getEmptyUser(Model model) {
@@ -35,17 +53,52 @@ public class RegisterUserController {
 	}
 	
 	@RequestMapping(value = "/registerNewUser", method = RequestMethod.POST)
-	public String getConfirmation(
+	public String getUserConfirmation(
 			@ModelAttribute(value = "registerUser") @Valid UserProfileImpl registerUser,
 			BindingResult result) {
 		if (result.hasErrors()) {
 			return "/admin/registerNewUser";
 		} else {
-			// System.out.println(orderForm.getCarBrand());
 			//return "/admin/registerNewUserConfirmation";
 			System.out.println(registerUser.getfName());
 			return null;
 		}
+	}
+	
+	
+	
+	@RequestMapping(value = "/registerEmptyCompany", method = RequestMethod.GET)
+	public String getCompanyUser(Model model) {
+		UserCompany registerCompany = new UserCompanyImpl();
+		model.addAttribute("registerCompany", registerCompany);
+		return "redirect:/admin/registerNewCompany";
+	}
+	
+	@RequestMapping(value = "/registerNewCompany", method = RequestMethod.GET)
+	public String registerNewCompany(Model model) {
+		if (!model.containsAttribute("registerCompany")) {
+			return "redirect:/admin/registerEmptyCompany";
+		}
+		return "admin/registerNewCompany";
+	}
+	
+	@RequestMapping(value = "/registerNewCompany", method = RequestMethod.POST)
+	public String getCompanyConfirmation(
+			@ModelAttribute(value = "registerCompany") @Valid UserCompanyImpl registerCompany,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return "/admin/registerNewCompany";
+		} else {
+			return "/admin/confirmationNewCompany";
+		}
+	}
+	
+	// FORMIN TALLENTAMINEN
+	@RequestMapping(value = "registerNewCompanySend", method = RequestMethod.POST)
+	public String registerNewCompanySend(@ModelAttribute(value = "registerCompany") @Valid UserCompanyImpl registerCompany,
+			BindingResult result) {
+		userProfileService.sendNewCompanyToDAO(registerCompany);
+		return "redirect:/admin/registerEmptyCompany";
 	}
 
 }
