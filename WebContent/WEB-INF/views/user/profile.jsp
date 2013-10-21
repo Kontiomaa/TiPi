@@ -65,7 +65,7 @@
 								<div class="control-group">
 									<label id="newPassword" class="control-label" for="textinput">Uusi</label>
 									<div class="controls">
-										<input type="password" class="input-xlarge" name="password"
+										<input type="password" class="input-xlarge" name="newPassword"
 											id="password" placeholder="Kirjoita uusi salasana" />
 
 									</div>
