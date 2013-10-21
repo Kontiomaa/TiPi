@@ -14,11 +14,6 @@ public class AdminController {
 		return "admin/index";
 	}
 	
-	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public String kayttajat(Model model) {
-		return "admin/users";
-	}
-	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profiili(Model model) {
 		return "admin/profile";

@@ -4,14 +4,13 @@
 </head>
 <body>
 	<div class="container">
-
 		<%@include file="navi.jsp"%>
 		<div class="row-fluid" id="area">
 			<div class="row-fluid">
 				<div class="span12">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="users">Asiakas</a></li>
-						<li><a href="admins">Admin</a></li>
+						<li><a href="users">Asiakas</a></li>
+						<li class="active"><a href="admins">Admin</a></li>
 						<li><a href="companies">Yritys</a></li>
 					</ul>
 				</div>
@@ -20,7 +19,7 @@
 				<div class="span10 offset1">
 
 					<fieldset>
-						<legend>Asiakkaat</legend>
+						<legend>Admin</legend>
 						<div class="row-fluid">
 							<div class="span12">
 								<table class="table table-striped">
@@ -47,7 +46,6 @@
 							</div>
 						</div>
 					</fieldset>
-
 				</div>
 			</div>
 		</div>
