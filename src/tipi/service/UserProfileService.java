@@ -1,5 +1,7 @@
 package tipi.service;
 
+import java.util.List;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import tipi.bean.UserCompany;
@@ -12,6 +14,9 @@ public interface UserProfileService {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public abstract void sendNewCompanyToDAO(UserCompany registerCompany);
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public abstract List<UserCompany> getAllCompanies();
 	
 	@PreAuthorize("isAuthenticated()")
 	public abstract void sendNewPasswordToDao(String email, String newPassword);

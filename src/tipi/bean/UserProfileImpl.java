@@ -7,6 +7,7 @@ public class UserProfileImpl implements UserProfile {
 	private String lName;
 	private String phoneNo;
 	private String email;
+	private String password;
 	private boolean isActive;
 	private int myRole;
 	private int myCompany;
@@ -41,6 +42,12 @@ public class UserProfileImpl implements UserProfile {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public boolean isActive() {
 		return isActive;

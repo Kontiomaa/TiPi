@@ -1,5 +1,7 @@
 package tipi.dao;
 
+import java.util.List;
+
 import tipi.bean.UserCompany;
 import tipi.bean.UserProfile;
 
@@ -10,6 +12,8 @@ public interface UserDAO {
 	public abstract UserCompany getRegisteredUsersCompanyInformationDAO(int companyID, UserCompany userCompany);
 	
 	public abstract void registerNewCompanyDAO(UserCompany registerCompany);
+	
+	public abstract List<UserCompany> getAllCompaniesDAO();
 	
 	public abstract void saveRegisteredUsersNewPassword(String email, String newPassword);
 	

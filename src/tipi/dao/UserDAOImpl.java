@@ -4,10 +4,10 @@ import javax.inject.Inject;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 
-import tipi.bean.UserCompany;
+import java.util.List;
+
 import tipi.bean.UserCompany;
 import tipi.bean.UserCompanyImpl;
 import tipi.bean.UserProfile;
@@ -63,6 +63,19 @@ public class UserDAOImpl implements UserDAO {
 		registerCompany.getAddress(),
 		registerCompany.getPostalCode(),
 		registerCompany.getCity() });
+	}
+	
+	public List<UserCompany> getAllCompaniesDAO(){
+		String sql = "SELECT * FROM companies;";
+
+		List<UserCompany> allCompanies = getJdbcTemplate().query(sql,
+				new BeanPropertyRowMapper(UserCompanyImpl.class));
+		
+		for (UserCompany userCompany2 : allCompanies) {
+			System.out.println(userCompany2.toString());
+		}
+		return allCompanies;
+		
 	}
 	
 	@Override

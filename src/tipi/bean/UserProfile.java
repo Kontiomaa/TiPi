@@ -22,6 +22,10 @@ public interface UserProfile {
 	
 	public abstract void setEmail(String email);
 	
+	public abstract String getPassword();
+
+	public abstract void setPassword(String password);
+	
 	public abstract boolean isActive();
 	
 	public abstract void setActive(boolean isActive);

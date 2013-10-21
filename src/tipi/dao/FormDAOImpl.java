@@ -58,7 +58,7 @@ public class FormDAOImpl implements FormDAO {
 		}
 		
 
-		String sql = "INSERT INTO orders ( carMake, carModel, carRegister, carColor,"
+		String sql = "INSERT INTO orders ( carBrand, carModel, carRegister, carColor,"
 				+ " collectionDate, collectionTime, collectionAddress, collectionPostalCode, collectionCity,"
 				+ " destinationDate, destinationTime, destinationAddress, destinationPostalCode, destinationCity,"
 				+ " clientFname, clientLname, clientPhoneNo, clientCompany, additionalInformation,"

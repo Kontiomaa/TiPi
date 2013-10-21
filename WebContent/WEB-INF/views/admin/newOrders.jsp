@@ -25,10 +25,6 @@
 							<legend>Tehdyt tilaukset</legend>
 							<div class="row-fluid">
 								<div class="span12">
-										<%--
-										<span class="span6"><c:out value="${orderForm.clientCompany}" default="-----" /></span>
-										<span class="span6"><c:out value="${orderForm.collectionTime}" default="xx:xx" /> <c:out value="${orderForm.collectionDate}" default="xx.xx.xx" /></span>
-										--%>
 										
 										<table class="table table-striped">
 											<thead>
@@ -42,22 +38,22 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>Monty AB</td>
-													<td>Vantaa, Vantaankatu 6</td>
+												<c:forEach items="${orders}" var="order"><tr>
+													<td><c:out value="${order.clientCompany}" /></td>
+													<td><c:out value="${order.collectionCity}" />, <c:out value="${order.collectionAddress}" /></td>
 													<td><i class="icon-arrow-right"></i></td>
-													<td>Espoo, Espoonkuja 3</td>
-													<td>xx:xx xx.xx.xxxx</td>
+													<td><c:out value="${order.destinationCity}" />, <c:out value="${order.destinationAddress}" /></td>
+													<td><c:out value="${order.destinationTime}" /> <c:out value="${order.destinationDate}" /></td>
 													<td><button class="btn btn-primary">Avaa</button> <button class="btn btn-success">Kuittaa</button></td>
-												</tr>
-												<tr>
+												</tr></c:forEach>
+												<%--<tr>
 													<td>Yritys Oy</td>
 													<td>Helsinki, Mannerheimintie 6</td>
 													<td><i class="icon-arrow-right"></td>
 													<td>Espoo, Kurapolku 1</td>
 													<td>xx:xx xx.xx.xxxx</td>
 													<td><button class="btn btn-primary">Avaa</button> <button class="btn btn-success">Kuittaa</button></td>
-												</tr>
+												</tr>--%>
 											</tbody>
 										</table>
 								</div>
