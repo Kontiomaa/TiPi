@@ -3,6 +3,7 @@ package tipi.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
@@ -61,16 +62,20 @@ public class RegisterUserController {
 	public String getUserConfirmation(
 			@ModelAttribute(value = "registerUser") @Valid UserProfileImpl registerUser,
 			BindingResult result) {
-		StandardPasswordEncoder spe = new StandardPasswordEncoder();
-		registerUser.setPassword(spe.encode(registerUser.getPassword()));
-		System.out.println("ID" + registerUser.getMyCompany());
-		System.out.println("ID" + registerUser.getfName());
-		System.out.println("salasana" + registerUser.getPassword());
 		if (result.hasErrors()) {
 			return "/admin/registerNewUser";
 		} else {
 			return "/admin/confirmationNewUser";
 		}
+	}
+	
+	@RequestMapping(value = "registerNewUserSend", method = RequestMethod.POST)
+	public String registerNewUserSend(@ModelAttribute(value = "registerUser") @Valid UserProfileImpl registerUser,
+			BindingResult result, HttpServletRequest req) {
+		StandardPasswordEncoder spe = new StandardPasswordEncoder();
+		registerUser.setPassword(spe.encode(req.getParameter("password"))); //Password is now encrypted for safety
+		userProfileService.sendNewUserToDAO(registerUser);
+		return "redirect:/admin/registerEmptyUser";
 	}
 	
 	
@@ -101,7 +106,6 @@ public class RegisterUserController {
 		}
 	}
 	
-	// FORMIN TALLENTAMINEN
 	@RequestMapping(value = "registerNewCompanySend", method = RequestMethod.POST)
 	public String registerNewCompanySend(@ModelAttribute(value = "registerCompany") @Valid UserCompanyImpl registerCompany,
 			BindingResult result) {

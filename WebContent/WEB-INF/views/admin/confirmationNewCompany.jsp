@@ -32,8 +32,7 @@
 						<td><form action="registerNewCompanySend" method="post"
 								class="form-horizontal">
 								<fieldset>
-									<button type="submit" class="btn btn-inverse">Lähetä
-										tilaus</button>
+									<button type="submit" class="btn btn-inverse">Rekisteröi yritys</button>
 								</fieldset>
 							</form></td>
 						<td colspan="2"></td>

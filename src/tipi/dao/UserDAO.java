@@ -13,6 +13,8 @@ public interface UserDAO {
 	
 	public abstract void registerNewCompanyDAO(UserCompany registerCompany);
 	
+	public abstract void registerNewUserDAO(UserProfile registerUser);
+	
 	public abstract List<UserCompany> getAllCompaniesDAO();
 	
 	public abstract void saveRegisteredUsersNewPassword(String email, String newPassword);

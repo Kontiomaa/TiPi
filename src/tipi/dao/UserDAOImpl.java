@@ -65,6 +65,23 @@ public class UserDAOImpl implements UserDAO {
 		registerCompany.getCity() });
 	}
 	
+	@Override
+	public void registerNewUserDAO(UserProfile registerUser){
+		
+		String sql = "INSERT INTO registeredUsers (fName, lName, phoneNo, email, password, myRole, myCompany) VALUES (?,?,?,?,?,?,?);";
+		System.out.println(registerUser.toString());
+		
+		jdbcTemplate.update(sql, new Object[] { 
+			registerUser.getfName(),
+			registerUser.getlName(),
+			registerUser.getPhoneNo(),
+			registerUser.getEmail(),
+			registerUser.getPassword(),
+			registerUser.getMyRole(),
+			registerUser.getMyCompany()
+		});
+	}
+	
 	public List<UserCompany> getAllCompaniesDAO(){
 		String sql = "SELECT * FROM companies;";
 

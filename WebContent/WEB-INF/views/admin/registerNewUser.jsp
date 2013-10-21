@@ -37,11 +37,11 @@
 									</div>
 								</div>
 								<div class="control-group">
-									<form:label path="fName" class="control-label" for="textinput">Yritys*</form:label>
+									<form:label path="myCompany" class="control-label" for="textinput">Yritys*</form:label>
 									<div class="controls span6">
 										<form:select path="myCompany">
 											<c:forEach var="company" items="${allCompanies}">
-												<option value="${company.company_id}" selected>${company.name}</option>
+												<option value="${company.company_id}">${company.name}</option>
 											</c:forEach>
 										</form:select>
 									</div>
@@ -65,11 +65,12 @@
 									</div>
 								</div>
 								<div class="control-group">
-									<form:label path="password" class="control-label" for="textinput">Salasana*</form:label>
+									<form:label path="myRole" class="control-label" for="textinput">Rooli*</form:label>
 									<div class="controls span6">
-										<form:input path="password" name="password"
-											class="input-large"
-											type="password" />
+										<form:select path="myRole">
+												<option value="1" selected>Asiakas</option>
+												<option value="2">Admin</option>
+										</form:select>
 									</div>
 								</div>
 							</div>

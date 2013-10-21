@@ -37,6 +37,10 @@ public class UserProfileServiceImpl implements UserProfileService {
 		userDao.registerNewCompanyDAO(registerCompany);
 	}
 	
+	public void sendNewUserToDAO(UserProfile registerUser){
+		userDao.registerNewUserDAO(registerUser);
+	}
+	
 	public List<UserCompany> getAllCompanies(){
 		List<UserCompany> allCompanies = userDao.getAllCompaniesDAO();
 		return allCompanies;

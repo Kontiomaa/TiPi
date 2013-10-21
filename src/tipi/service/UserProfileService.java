@@ -16,6 +16,9 @@ public interface UserProfileService {
 	public abstract void sendNewCompanyToDAO(UserCompany registerCompany);
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public abstract void sendNewUserToDAO(UserProfile registerUser);
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public abstract List<UserCompany> getAllCompanies();
 	
 	@PreAuthorize("isAuthenticated()")
