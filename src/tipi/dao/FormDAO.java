@@ -1,9 +1,9 @@
 package tipi.dao;
 
-import tipi.bean.OrderFormImpl;
+import tipi.bean.OrderForm;
 
 public interface FormDAO {
 
-	public abstract void saveOrderFormDAO(OrderFormImpl orderForm);
+	public abstract void saveOrderFormDAO(OrderForm orderForm, int userID, int userCompanyID);
 	
 }

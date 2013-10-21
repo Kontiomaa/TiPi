@@ -4,7 +4,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import tipi.bean.OrderFormImpl;
+import tipi.bean.OrderForm;
 import tipi.dao.FormDAO;
 
 
@@ -23,8 +23,8 @@ public class FormSendServiceImpl implements FormSendService {
 	}
 	
 	@Override
-	public void sendFormToDAO(OrderFormImpl orderForm) {
-		formDao.saveOrderFormDAO(orderForm);
+	public void sendFormToDAO(OrderForm orderForm, int userID, int userCompanyID) {
+		formDao.saveOrderFormDAO(orderForm, userID, userCompanyID);
 	}
 	
 }

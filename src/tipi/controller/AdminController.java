@@ -34,16 +34,6 @@ public class AdminController {
 		return "admin/newOrders";
 	}
 	
-	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public String kayttajat(Model model) {
-		return "admin/users";
-	}
-	
-	@RequestMapping(value = "/registerNewUser", method = RequestMethod.GET)
-	public String rekisteroi(Model model) {
-		return "admin/registerNewUser";
-	}
-	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profiili(Model model) {
 		return "admin/profile";

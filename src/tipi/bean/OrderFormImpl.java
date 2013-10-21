@@ -1,44 +1,95 @@
 package tipi.bean;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotEmpty;
+
+import tipi.bean.validation.CollectionDestinationTime;
 
 public class OrderFormImpl implements OrderForm {
 	
-	@NotEmpty
+	private int orders_id;
+
+	//Car
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String carBrand;
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String carModel;
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String carRegister;
+	@Size(max=30,message="Liian pitk‰")
 	private String carColor;
 	
+	//Delivery
+	//@CollectionDestinationTime(first = "collectionDate", second = "destinationDate")
+	@Pattern(regexp = "\\d{2}[.]\\d{2}[.]\\d{4}",message="Valitse p‰iv‰m‰‰r‰")
 	private String collectionDate;
+	@Pattern(regexp = "\\d{2}[:]\\d{2}",message="Virheellinen Aika")
 	private String collectionTime;
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String collectionAddress;
+	@Pattern(regexp = "\\d{5}",message="Postinumeron pit‰‰ olla 5 numeroa")
 	private String collectionPostalCode;
-	
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String collectionCity;
+	@Pattern(regexp = "\\d{2}[.]\\d{2}[.]\\d{4}",message="Valitse p‰iv‰m‰‰r‰")
 	private String destinationDate;
+	@Pattern(regexp = "\\d{2}[:]\\d{2}",message="Virheellinen Aika")
 	private String destinationTime;
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String destinationAddress;
-	
+	@Pattern(regexp = "\\d{5}",message="Postinumeron pit‰‰ olla 5 numeroa")
 	private String destinationPostalCode;
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String destinationCity;
+	
+	//Client
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String clientFname;
+	@NotEmpty(message="Tyhj‰clientLname")
+	@Size(max=30,message="Liian pitk‰")
 	private String clientLname;
-	
+	@NotEmpty(message="Tyhj‰")
+	@Size(max=30,message="Liian pitk‰")
 	private String clientPhoneNo;
+	@Size(max=30,message="Liian pitk‰")
 	private String clientCompany;
+	@Size(max=1000,message="Liian pitk‰")
 	private String additionalInformation;
-	private String nextDestinationCollectionDate;
 	
+	//Return
+	private boolean hasNewDestination;
+	private String nextDestinationCollectionDate;
 	private String nextDestinationCollectionTime;
 	private String nextDestinationDate;
 	private String nextDestinationTime;
 	private String nextDestinationAddress;
-	
 	private String nextDestinationPostalCode;
 	private String nextDestinationCity;
 	private String nextAdditionalInformation;
 	
+	//Other
+	private int companyMadeOrder;
+	private int userMadeOrder;
+	private String lastTimeEdited;
+	
+	public int getOrders_id() {
+		return orders_id;
+	}
+
+	public void setOrders_id(int orders_id) {
+		this.orders_id = orders_id;
+	}
+
 	public String getCarBrand() {
 		return carBrand;
 	}
@@ -191,6 +242,14 @@ public class OrderFormImpl implements OrderForm {
 		this.additionalInformation = additionalInformation;
 	}
 
+	public boolean isHasNewDestination() {
+		return hasNewDestination;
+	}
+
+	public void setHasNewDestination(boolean hasNewDestination) {
+		this.hasNewDestination = hasNewDestination;
+	}
+
 	public String getNextDestinationCollectionDate() {
 		return nextDestinationCollectionDate;
 	}
@@ -255,5 +314,28 @@ public class OrderFormImpl implements OrderForm {
 
 	public void setNextAdditionalInformation(String nextAdditionalInformation) {
 		this.nextAdditionalInformation = nextAdditionalInformation;
+	}
+	public int getCompanyMadeOrder() {
+		return companyMadeOrder;
+	}
+
+	public void setCompanyMadeOrder(int companyMadeOrder) {
+		this.companyMadeOrder = companyMadeOrder;
+	}
+
+	public int getUserMadeOrder() {
+		return userMadeOrder;
+	}
+
+	public void setUserMadeOrder(int userMadeOrder) {
+		this.userMadeOrder = userMadeOrder;
+	}
+
+	public String getLastTimeEdited() {
+		return lastTimeEdited;
+	}
+
+	public void setLastTimeEdited(String lastTimeEdited) {
+		this.lastTimeEdited = lastTimeEdited;
 	}
 }

@@ -8,7 +8,7 @@
 			<div class="span10 offset1">
 
 
-				<table class="table" id="orderConfirmationTable">
+				<table class="table" id="userProfileTable">
 					<thead>
 						<tr>
 							<td colspan="4" style="font-size: 20px; font-weight: 700;">Käyttäjä</td>
@@ -26,14 +26,10 @@
 						<th>Sähköposti</th>
 						<td><c:out value="${userProfile.email}" default="-----" /></td>
 					</tr>
+
 					<tr>
-						<th>Käyttäjänimi</th>
-						<td colspan="3"><c:out value="${userProfile.username}"
-								default="-----" /></td>
-					<thead>
-						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight: 700;">Yritys</td>
-						</tr>
+						<td colspan="4" style="font-size: 20px; font-weight: 700;">Yritys</td>
+					</tr>
 					</thead>
 
 					<tr>
@@ -53,7 +49,6 @@
 						<td><c:out value="${userProfile.company.city}"
 								default="-----" /></td>
 					</tr>
-
 				</table>
 
 				<form action="changePassword" method="post" class="form-horizontal">
@@ -64,35 +59,40 @@
 								<div class="control-group">
 									<label id="oldPassword" class="control-label" for="textinput">Nykyinen</label>
 									<div class="controls">
-										<input type="password" class="input-xlarge" name="oldPassword" id="oldPassword" 
-											placeholder="Kirjoita nykyinen salasana" />
+										<input type="password" class="input-xlarge" name="oldPassword"
+											id="oldPassword" placeholder="Kirjoita nykyinen salasana" />
 									</div>
 								</div>
 
 								<div class="control-group">
-								<label id="newPassword" class="control-label" for="textinput">Uusi</label> 
-								<div class="controls">
-								<input type="password" class="input-xlarge" name="password" id="password" placeholder="Kirjoita uusi salasana"/>
-								
-								</div>
-								</div>
-									
-									<div class="control-group">
-									<label id="newRePassword" class="control-label" for="textinput">Varmista uusi</label> 
+									<label id="newPassword" class="control-label" for="textinput">Uusi</label>
 									<div class="controls">
-									<input type="password" class="input-xlarge" name="password-check" id="password-check" placeholder="Kirjoita uusi salasana uudelleen"/> 
+										<input type="password" class="input-xlarge" name="password"
+											id="password" placeholder="Kirjoita uusi salasana" />
+
 									</div>
+								</div>
+
+								<div class="control-group">
+									<label id="newRePassword" class="control-label" for="textinput">Varmista
+										uusi</label>
+									<div class="controls">
+										<input type="password" class="input-xlarge"
+											name="password-check" id="password-check"
+											placeholder="Kirjoita uusi salasana uudelleen" />
 									</div>
-									
-							
-														
-							<div class="row-fluid">
-							<div class="offset2" style="padding-left:1%;">
-								<button type="submit" class="btn btn-success" value="Submit" id="submit">Vaihda salasana</button>
-							</div>
-							
-							</div>
-							
+								</div>
+
+
+
+								<div class="row-fluid">
+									<div class="offset2" style="padding-left: 1%;">
+										<button type="submit" class="btn btn-success" value="Submit"
+											id="submit">Vaihda salasana</button>
+									</div>
+
+								</div>
+
 							</div>
 						</div>
 					</fieldset>
@@ -105,8 +105,7 @@
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript">
-		
-	$(document)
+		$(document)
 				.ready(
 						function() {
 							$("#submit")
@@ -149,11 +148,9 @@
 												}
 											});
 
-							$('#password').keyup(
-									function() {
-												checkStrength($('#password')
-														.val());
-									});
+							$('#password').keyup(function() {
+								checkStrength($('#password').val());
+							});
 
 							function checkStrength(password) {
 
@@ -165,10 +162,10 @@
 								$(".text-info").hide();
 
 								//if the password length is less than 6, return message.
-								if (password.length < 6) {						
+								if (password.length < 6) {
 									$("#password")
-									.after(
-											'<span id="info" class="text-error">Lyhyt</span>');
+											.after(
+													'<span id="info" class="text-error">Lyhyt</span>');
 									return 'Lyhyt';
 								}
 
@@ -206,18 +203,18 @@
 								//if value is less than 2
 								if (strength < 2) {
 									$("#password")
-									.after(
-											'<span id="info" class="text-warning">Heikko</span>');
+											.after(
+													'<span id="info" class="text-warning">Heikko</span>');
 									return 'Heikko';
 								} else if (strength == 2) {
 									$("#password")
-									.after(
-											'<span id="info" class="text-success">Hyvä</span>');
+											.after(
+													'<span id="info" class="text-success">Hyvä</span>');
 									return 'Hyvä';
 								} else {
 									$("#password")
-									.after(
-											'<span id="info" class="text-info">Vahva</span>');
+											.after(
+													'<span id="info" class="text-info">Vahva</span>');
 									return 'Vahva';
 								}
 							}
