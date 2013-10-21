@@ -64,5 +64,15 @@ public class UserDAOImpl implements UserDAO {
 		registerCompany.getPostalCode(),
 		registerCompany.getCity() });
 	}
+	
+	@Override
+	public void saveRegisteredUsersNewPassword(String email, String newPassword){		
+		System.out.println("DAO: "+email+" "+newPassword);		
+		String newPasswordQuery = "UPDATE registeredUsers SET password='"+newPassword+"' WHERE email='"+email+"';";
+		System.out.println("Query:");
+		System.out.println(newPasswordQuery);
+		jdbcTemplate.update(newPasswordQuery);
+		System.out.println("Accessed the database...");
+	}
 
 }

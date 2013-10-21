@@ -35,4 +35,9 @@ public class UserProfileServiceImpl implements UserProfileService {
 		userDao.registerNewCompanyDAO(registerCompany);
 	}
 	
+	public void sendNewPasswordToDao(String email, String newPassword){
+		System.out.println("Service: "+email+" "+newPassword);
+		userDao.saveRegisteredUsersNewPassword(email, newPassword);
+	}
+	
 }

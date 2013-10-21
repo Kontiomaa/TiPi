@@ -30,8 +30,6 @@
 					<tr>
 						<td colspan="4" style="font-size: 20px; font-weight: 700;">Yritys</td>
 					</tr>
-					</thead>
-
 					<tr>
 						<th>Nimi</th>
 						<td><c:out value="${userProfile.company.name}"

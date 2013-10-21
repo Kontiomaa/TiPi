@@ -12,5 +12,7 @@ public interface UserProfileService {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public abstract void sendNewCompanyToDAO(UserCompany registerCompany);
-
+	
+	@PreAuthorize("isAuthenticated()")
+	public abstract void sendNewPasswordToDao(String email, String newPassword);
 }
