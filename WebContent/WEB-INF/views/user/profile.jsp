@@ -54,14 +54,16 @@
 						<legend>Vaihda salasana</legend>
 						<div class="row-fluid">
 							<div class="span12">
-								<c:if test="${not empty passworldChangeSuccessful}">
-									<p class="alert alert-success">Salasana vaihdettu onnistuneesti</p>
-								</c:if>
-								<c:if test="${not empty passworldChangeFailed}">
-									<p class="alert alert-error">Salasanan vaihto epäonnistui</p>
-								</c:if>
 								<div class="control-group">
-									<label id="oldPassword" class="control-label" for="textinput">Nykyinen</label>
+								
+									<c:if test="${not empty passwordChangeSuccessful}">
+										<p class="alert alert-success">Salasana vaihdettu onnistuneesti</p>
+									</c:if>
+									<c:if test="${not empty passwordChangeFailed}">
+										<p class="alert alert-error">Nykyinen salasana on väärä</p>
+									</c:if>
+								
+									<label id="oldPasswordL" class="control-label" for="textinput">Nykyinen</label>
 									<div class="controls">
 										<input type="password" class="input-xlarge" name="oldPassword"
 											id="oldPassword" placeholder="Kirjoita nykyinen salasana" />
@@ -120,31 +122,22 @@
 												$(".text-success").hide();
 												$(".text-info").hide();
 												var hasError = false;
-												var passwordVal = $("#password")
-														.val();
-												var checkVal = $(
-														"#password-check")
-														.val();
-												if (passwordVal == '') {
-													$("#password")
-															.after(
-																	'<span id="info" class="text-error">Syötä uusi salasana</span>');
-													hasError = true;
+												var oldPasswordVal = $("#oldPassword").val();
+												var passwordVal = $("#password").val();
+												var checkVal = $("#password-check").val();
+												
+												if (oldPasswordVal == ''){
+													$("#oldPassword").after('<span id="info" class="text-error">Syötä nykyinen salasana</span>');
+												} else if (passwordVal == '') {
+													$("#password").after('<span id="info" class="text-error">Syötä uusi salasana</span>');
 												} else if (checkVal == '') {
-													$("#password-check")
-															.after(
-																	'<span id="info" class="text-error">Syötä uusi salasana uudelleen</span>');
-													hasError = true;
+													$("#password-check").after('<span id="info" class="text-error">Syötä uusi salasana uudelleen</span>');
 												} else if (passwordVal != checkVal) {
-													$("#password-check")
-															.after(
-																	'<span id="info" class="text-error">Salasanat eivät täsmää</span>');
-													hasError = true;
+													$("#password-check").after('<span id="info" class="text-error">Salasanat eivät täsmää</span>');
 												} else if (passwordVal.length < 6) {
-													$("#password")
-															.after(
-																	'<span id="info" class="text-error">Salasana on liian lyhyt</span>');
-													hasError = true;
+													$("#password").after('<span id="info" class="text-error">Salasana on liian lyhyt</span>');
+												} else{
+													hasError = false;
 												}
 
 												if (hasError == true) {

@@ -47,12 +47,12 @@ public class UserProfileController {
 		if(correctPassword){
 			String email = userProfile.getEmail();
 			userProfileService.sendNewPasswordToDao(email, newPassword);
-			model.addAttribute("passworldChangeSuccessful", "true");
+			model.addAttribute("passwordChangeSuccessful", "true");
 		}
 		else
 		{
 			System.out.println("Wrong password!");
-			model.addAttribute("passworldChangeFailed", "true");
+			model.addAttribute("passwordChangeFailed", "true");
 		}
 		
 		return "/user/profile";
