@@ -47,7 +47,7 @@ public class SecureController {
 				.authorityListToSet(SecurityContextHolder.getContext()
 						.getAuthentication().getAuthorities());
 		if (roles.contains("ROLE_ADMIN")) {
-			return "redirect:/admin/index";
+			return "redirect:/admin/new";
 		}
 		else if (roles.contains("ROLE_USER")) {
 			return "redirect:/user/orderFormEmpty";

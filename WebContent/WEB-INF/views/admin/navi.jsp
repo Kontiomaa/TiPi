@@ -4,9 +4,9 @@
 					<div class="container">
 
 						<ul class="nav">
-							<li class="active"><a class="brand" href="index">Siirtoapu.fi</a>
+							<li class="active"><a class="brand" href="new">Siirtoapu.fi</a>
 							</li>
-							<li><a href="index">Etusivu</a></li>
+							<li><a href="new">Etusivu</a></li>
 							<li><a href="users">Käyttäjät</a></li>
 							<li><a href="registerNewUser">Rekisteröinti</a></li>
 							<li><a href="profile">Profiili</a></li>

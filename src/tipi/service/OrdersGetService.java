@@ -12,6 +12,6 @@ public interface OrdersGetService {
 	public abstract OrderForm getOrderFromDAO(int id);
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public abstract List<OrderForm> getOrderListFromDAO();
+	public abstract List<OrderForm> getOrderListFromDAO(int statusOfOrder);
 	
 }

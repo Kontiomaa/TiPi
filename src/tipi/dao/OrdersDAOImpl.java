@@ -27,11 +27,10 @@ public class OrdersDAOImpl implements OrdersDAO {
 	
 
 	@Override
-	public List<OrderForm> getOrderList() {
+	public List<OrderForm> getOrderList(int statusOfOrder) {
+		String sql = "SELECT * FROM orders WHERE statusOfOrder = ?;";
 		
-		String sql = "SELECT * FROM orders;";
-		
-		List<OrderForm> resultList = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(OrderFormImpl.class));
+		List<OrderForm> resultList = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(OrderFormImpl.class), new Object[]{statusOfOrder} );
 		
 		return resultList;
 
