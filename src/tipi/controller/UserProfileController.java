@@ -48,6 +48,7 @@ public class UserProfileController {
 			String email = userProfile.getEmail();
 			userProfileService.sendNewPasswordToDao(email, newPassword);
 			model.addAttribute("passwordChangeSuccessful", "true");
+			userProfile.setPassword(newPassword); //In case you want  to change your password multiple times.
 		}
 		else
 		{

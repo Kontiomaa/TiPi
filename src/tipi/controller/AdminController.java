@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tipi.bean.OrderForm;
+import tipi.bean.UserProfile;
 import tipi.bean.UserProfileImpl;
 import tipi.service.OrdersGetService;
 import tipi.service.UserProfileService;
@@ -69,6 +70,7 @@ public class AdminController {
 			String email = userProfile.getEmail();
 			userProfileService.sendNewPasswordToDao(email, newPassword);
 			model.addAttribute("passwordChangeSuccessful", "true");
+			userProfile.setPassword(newPassword); //In case you want  to change your password multiple times.
 		}
 		else
 		{
