@@ -54,6 +54,12 @@
 						<legend>Vaihda salasana</legend>
 						<div class="row-fluid">
 							<div class="span12">
+								<c:if test="${not empty passworldChangeSuccessful}">
+									<p class="alert alert-success">Salasana vaihdettu onnistuneesti</p>
+								</c:if>
+								<c:if test="${not empty passworldChangeFailed}">
+									<p class="alert alert-error">Salasanan vaihto epäonnistui</p>
+								</c:if>
 								<div class="control-group">
 									<label id="oldPassword" class="control-label" for="textinput">Nykyinen</label>
 									<div class="controls">
