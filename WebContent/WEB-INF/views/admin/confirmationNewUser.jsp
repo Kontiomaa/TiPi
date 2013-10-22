@@ -24,8 +24,28 @@
 						<th>Sähköposti</th>
 						<td><c:out value="${registerUser.email}" default="-----" /></td>
 					</tr>
+					<tr>
+						<th>Yritys</th>
+						<c:forEach var="company" items="${allCompanies}">
+							<c:choose>
+								<c:when test="${registerUser.myCompany==company.company_id}">
+									<td><c:out value="${company.name}" /></td>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+						<th>Rooli</th>
+						<c:choose>
+							<c:when test="${registerUser.myRole=='1'}">
+								<td>Asiakas</td>
+							</c:when>
+							<c:otherwise>
+								<td>Admin</td>
+							</c:otherwise>
+						</c:choose>
+					</tr>
 				</table>
-				<form action="registerNewUserSend" method="post" class="form-horizontal">
+				<form action="registerNewUserSend" method="post"
+					class="form-horizontal">
 					<fieldset>
 						<legend>Anna käyttäjälle salasana</legend>
 						<div class="row-fluid">
@@ -48,9 +68,9 @@
 								</div>
 
 								<div class="row-fluid">
-								<div>
-								<a href="registerNewUser" class="btn btn-danger">Takaisin</a>
-									
+									<div>
+										<a href="registerNewUser" class="btn btn-danger">Takaisin</a>
+
 										<button type="submit" class="btn btn-inverse" value="submit"
 											id="submit">Rekisteröi käyttäjä</button>
 									</div>
@@ -64,8 +84,8 @@
 			</div>
 		</div>
 	</div>
-	
-		<script type="text/javascript"
+
+	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(document)
@@ -183,6 +203,6 @@
 							}
 						});
 	</script>
-	
+
 </body>
 </html>

@@ -1,11 +1,23 @@
 package tipi.bean;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserProfileImpl implements UserProfile {
 	
 	private int user_id;
+	@NotEmpty(message="Tyhjä")
+	@Size(max=30,message="Liian pitkä")
 	private String fName;
+	@NotEmpty(message="Tyhjä")
+	@Size(max=30,message="Liian pitkä")
 	private String lName;
+	@NotEmpty(message="Tyhjä")
+	@Size(max=30,message="Liian pitkä")
 	private String phoneNo;
+	@NotEmpty(message="Tyhjä")
+	@Size(max=40,message="Liian pitkä")
 	private String email;
 	private String password;
 	private boolean isActive;

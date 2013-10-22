@@ -27,6 +27,12 @@
 										<form:input path="fName" name="textinput"
 											placeholder="esim Matti" class="input-large" type="text" />
 									</div>
+									<spring:bind path="fName">
+										<c:if test="${status.error}">
+											<strong style="font-size: 200%" class="span1 text-error"
+												rel="tooltip" title="${status.errorMessage}"> x </strong>
+										</c:if>
+									</spring:bind>
 								</div>
 								<div class="control-group">
 									<form:label path="lName" class="control-label" for="textinput">Sukunimi*</form:label>
@@ -35,9 +41,16 @@
 											placeholder="esim Meikäläinen" class="input-large"
 											type="text" />
 									</div>
+									<spring:bind path="lName">
+										<c:if test="${status.error}">
+											<strong style="font-size: 200%" class="span1 text-error"
+												rel="tooltip" title="${status.errorMessage}"> x </strong>
+										</c:if>
+									</spring:bind>
 								</div>
 								<div class="control-group">
-									<form:label path="myCompany" class="control-label" for="textinput">Yritys*</form:label>
+									<form:label path="myCompany" class="control-label"
+										for="textinput">Yritys*</form:label>
 									<div class="controls span6">
 										<form:select path="myCompany">
 											<c:forEach var="company" items="${allCompanies}">
@@ -55,6 +68,12 @@
 										<form:input path="phoneNo" name="textinput"
 											placeholder="esim 0400123123" class="input-large" type="text" />
 									</div>
+									<spring:bind path="phoneNo">
+										<c:if test="${status.error}">
+											<strong style="font-size: 200%" class="span1 text-error"
+												rel="tooltip" title="${status.errorMessage}"> x </strong>
+										</c:if>
+									</spring:bind>
 								</div>
 								<div class="control-group">
 									<form:label path="email" class="control-label" for="textinput">Sähköposti*</form:label>
@@ -63,13 +82,19 @@
 											placeholder="esim matti.meikäläinen@esim.fi"
 											class="input-large" type="text" />
 									</div>
+									<spring:bind path="email">
+										<c:if test="${status.error}">
+											<strong style="font-size: 200%" class="span1 text-error"
+												rel="tooltip" title="${status.errorMessage}"> x </strong>
+										</c:if>
+									</spring:bind>
 								</div>
 								<div class="control-group">
 									<form:label path="myRole" class="control-label" for="textinput">Rooli*</form:label>
 									<div class="controls span6">
 										<form:select path="myRole">
-												<option value="1" selected>Asiakas</option>
-												<option value="2">Admin</option>
+											<option value="1" selected>Asiakas</option>
+											<option value="2">Admin</option>
 										</form:select>
 									</div>
 								</div>
@@ -82,5 +107,16 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("[rel=tooltip]").tooltip({
+				placement : 'bottom'
+			});
+		});
+	</script>
 </body>
 </html>

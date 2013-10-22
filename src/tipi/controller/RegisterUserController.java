@@ -25,7 +25,7 @@ import tipi.service.UserProfileService;
 
 @Controller
 @RequestMapping(value="/admin")
-@SessionAttributes({"registerUser","registerCompany"})
+@SessionAttributes({"registerUser","registerCompany","allCompanies"})
 public class RegisterUserController {
 	
 	
@@ -61,7 +61,7 @@ public class RegisterUserController {
 	@RequestMapping(value = "/registerNewUser", method = RequestMethod.POST)
 	public String getUserConfirmation(
 			@ModelAttribute(value = "registerUser") @Valid UserProfileImpl registerUser,
-			BindingResult result) {
+			BindingResult result) {		
 		if (result.hasErrors()) {
 			return "/admin/registerNewUser";
 		} else {
