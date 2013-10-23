@@ -9,5 +9,7 @@ public interface OrdersDAO {
 	public abstract List<OrderForm> getOrderList(int statusOfOrder);
 
 	public abstract OrderForm getOrderBean(int id);
+	
+	public abstract void updateOrderStatusDAO(int orders_id, int statusOfOrder);
 
 }

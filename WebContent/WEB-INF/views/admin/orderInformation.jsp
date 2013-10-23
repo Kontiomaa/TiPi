@@ -162,7 +162,7 @@
 									value="${orderInformation.nextAdditionalInformation}" default="-----" /></td>
 						</tr>
 					</c:if>
-<%--
+
 					<thead>
 						<tr>
 							<td colspan="4" style="font-size: 20px; font-weight: 700;">Tilaajan
@@ -171,18 +171,25 @@
 					</thead>
 					<tr>
 						<th>Etunimi</th>
-						<td><c:out value="${userProfile.fName}" default="-----" /></td>
+						<td><c:out value="${orderInformation.userProfile.fName}" default="-----" /></td>
 						<th>Puhelinnumero</th>
-						<td><c:out value="${userProfile.phoneNo}" default="-----" /></td>
+						<td><c:out value="${orderInformation.userProfile.phoneNo}" default="-----" /></td>
 					</tr>
 					<tr>
 						<th>Sukunimi</th>
-						<td><c:out value="${userProfile.lName}" default="-----" /></td>
+						<td><c:out value="${orderInformation.userProfile.lName}" default="-----" /></td>
 						<th>Yritys</th>
-						<td><c:out value="${userProfile.company.name}"
+						<td><c:out value="${orderInformation.userProfile.company.name}"
 								default="-----" /></td>
 					</tr>
-
+					<tr>
+						<th>Muokattu</th>
+						<td><c:out value="${orderInformation.lastTimeEdited}" default="-----" /></td>
+						<th>Status</th>
+						<td><c:out value="${orderInformation.statusOfOrder}"
+								default="-----" /></td>
+					</tr>
+<%-- 
 					<tr>
 
 						<td><a href="orderForm" class="btn btn-danger">Takaisin</a></td>
@@ -195,7 +202,7 @@
 								</fieldset>
 							</form></td>
 						<td colspan="2"></td>
-					</tr> --%>
+					</tr>--%>
 				</table>
 
 			</div>

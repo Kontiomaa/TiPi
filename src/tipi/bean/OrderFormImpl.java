@@ -10,7 +10,6 @@ import tipi.bean.validation.CollectionDestinationTime;
 public class OrderFormImpl implements OrderForm {
 	
 	private int orders_id;
-
 	
 	//Car
 	@NotEmpty(message="Tyhjä")
@@ -82,7 +81,9 @@ public class OrderFormImpl implements OrderForm {
 	private int companyMadeOrder;
 	private int userMadeOrder;
 	private String lastTimeEdited;
-	
+	private int statusOfOrder;
+	private UserProfile userProfile;
+
 	public int getOrders_id() {
 		return orders_id;
 	}
@@ -338,5 +339,21 @@ public class OrderFormImpl implements OrderForm {
 
 	public void setLastTimeEdited(String lastTimeEdited) {
 		this.lastTimeEdited = lastTimeEdited;
+	}
+	
+	public int getStatusOfOrder() {
+		return statusOfOrder;
+	}
+
+	public void setStatusOfOrder(int statusOfOrder) {
+		this.statusOfOrder = statusOfOrder;
+	}
+
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
 	}
 }

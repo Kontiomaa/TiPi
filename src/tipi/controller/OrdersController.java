@@ -49,31 +49,48 @@ public class OrdersController{
 	
 	@RequestMapping(value = "/collected", method = RequestMethod.GET)
 	public String collectedOrders(Model model) {
+		int statusOfOrder = 3;
+		List<OrderForm> orders = ordersGetService.getOrderListFromDAO(statusOfOrder);
+		model.addAttribute("orders", orders);
 		return "admin/collectedOrders";
 	}
 	
 	@RequestMapping(value = "/taken", method = RequestMethod.GET)
 	public String takenOrders(Model model) {
+		int statusOfOrder = 4;
+		List<OrderForm> orders = ordersGetService.getOrderListFromDAO(statusOfOrder);
+		model.addAttribute("orders", orders);
 		return "admin/takenOrders";
 	}
 	
 	@RequestMapping(value = "/returned", method = RequestMethod.GET)
 	public String returnedOrders(Model model) {
+		int statusOfOrder = 5;
+		List<OrderForm> orders = ordersGetService.getOrderListFromDAO(statusOfOrder);
+		model.addAttribute("orders", orders);
 		return "admin/returnedOrders";
 	}
 	
 	@RequestMapping(value = "/completed", method = RequestMethod.GET)
 	public String completedOrders(Model model) {
+		int statusOfOrder = 6;
+		List<OrderForm> orders = ordersGetService.getOrderListFromDAO(statusOfOrder);
+		model.addAttribute("orders", orders);
 		return "admin/completedOrders";
 	}
 	
 	@RequestMapping(value = "/orderInformation", method = RequestMethod.POST)
 	public String orderInformation(Model model, HttpServletRequest req) {
-		String newPassword= req.getParameter("orderID");
-		System.out.println("ID" + newPassword);
 		OrderForm orderInformation = new OrderFormImpl();
 		orderInformation = ordersGetService.getOrderFromDAO(Integer.parseInt(req.getParameter("orderID")));
 		model.addAttribute("orderInformation", orderInformation);
 		return "admin/orderInformation";
 	}
+	
+	@RequestMapping(value = "/changeOrderStatus", method = RequestMethod.POST)
+	public String changeOrderStatus(Model model, HttpServletRequest req) {
+		ordersGetService.updateOrderStatus(Integer.parseInt(req.getParameter("orderID")), Integer.parseInt(req.getParameter("statusOfOrder")));
+		return "redirect:/admin/new";
+	}
+	
 }

@@ -28,7 +28,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public UserProfile getRegisteredUsersInformationDAO(String userEmail,
+	public UserProfile getRegisteredUsersInformationWithEmailDAO(String userEmail,
 			UserProfile userProfile) {
 
 		String sql = "SELECT * FROM registeredUsers WHERE email=?;";
@@ -106,6 +106,19 @@ public class UserDAOImpl implements UserDAO {
 				email
 		});
 		System.out.println("Accessed the database...");
+	}
+	
+	@Override
+	public UserProfile getUsersInformationWithIdDAO(int id,
+			UserProfile userProfile) {
+
+		String sql = "SELECT * FROM registeredUsers WHERE user_id=?;";
+
+		userProfile = (UserProfile) getJdbcTemplate().queryForObject(sql,
+				new Object[] { id },
+				new BeanPropertyRowMapper(UserProfileImpl.class));
+		
+		return userProfile;
 	}
 
 }

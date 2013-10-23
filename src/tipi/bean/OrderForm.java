@@ -137,4 +137,12 @@ public interface OrderForm {
 	public abstract String getLastTimeEdited();
 
 	public abstract void setLastTimeEdited(String lastTimeEdited);
+	
+	public abstract UserProfile getUserProfile();
+
+	public abstract void setUserProfile(UserProfile userProfile);
+	
+	public abstract int getStatusOfOrder();
+	
+	public abstract void setStatusOfOrder(int statusOfOrder);
 }

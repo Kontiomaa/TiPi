@@ -40,13 +40,18 @@ public class OrdersDAOImpl implements OrdersDAO {
 	public OrderForm getOrderBean(int id) {
 				
 		String sql = "SELECT * FROM orders WHERE orders_id = ?";
-		
 		Object[] data = new Object[] {id};
-		
 		OrderForm resultObject = getJdbcTemplate().queryForObject(sql, data, new BeanPropertyRowMapper(OrderFormImpl.class));
 		
 		return resultObject;
-		
 	}
 	
+	public void updateOrderStatusDAO(int orders_id, int statusOfOrder) {
+		statusOfOrder++;
+		String newPasswordQuery = "UPDATE orders SET statusOfOrder=? WHERE orders_id=?;";
+		jdbcTemplate.update(newPasswordQuery, new Object[] {
+				statusOfOrder,
+				orders_id
+		});
+	}
 }

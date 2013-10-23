@@ -27,7 +27,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	
 	public UserProfile getRegisteredUsersInformationFromDAO(String userEmail, UserProfile userProfile){
 		UserCompany userCompany = new UserCompanyImpl();
-		userProfile = userDao.getRegisteredUsersInformationDAO(userEmail, userProfile);
+		userProfile = userDao.getRegisteredUsersInformationWithEmailDAO(userEmail, userProfile);
 		userCompany = userDao.getRegisteredUsersCompanyInformationDAO(userProfile.getMyCompany(), userCompany);
 		userProfile.setCompany(userCompany);
 		return userProfile;

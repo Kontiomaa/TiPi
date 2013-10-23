@@ -7,7 +7,7 @@ import tipi.bean.UserProfile;
 
 public interface UserDAO {
 
-	public abstract UserProfile getRegisteredUsersInformationDAO(String userEmail, UserProfile userProfile);
+	public abstract UserProfile getRegisteredUsersInformationWithEmailDAO(String userEmail, UserProfile userProfile);
 	
 	public abstract UserCompany getRegisteredUsersCompanyInformationDAO(int companyID, UserCompany userCompany);
 	
@@ -18,5 +18,7 @@ public interface UserDAO {
 	public abstract List<UserCompany> getAllCompaniesDAO();
 	
 	public abstract void saveRegisteredUsersNewPassword(String email, String newPassword);
+	
+	public abstract UserProfile getUsersInformationWithIdDAO(int id, UserProfile userProfile);
 	
 }
