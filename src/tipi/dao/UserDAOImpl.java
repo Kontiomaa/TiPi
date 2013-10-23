@@ -37,8 +37,6 @@ public class UserDAOImpl implements UserDAO {
 				new Object[] { userEmail },
 				new BeanPropertyRowMapper(UserProfileImpl.class));
 		
-		System.out.println("Käyttäjä" + userProfile.toString());
-
 		return userProfile;
 	}
 	

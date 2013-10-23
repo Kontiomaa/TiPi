@@ -20,7 +20,7 @@ public class UserProfileImpl implements UserProfile {
 	@Size(max=40,message="Liian pitkä")
 	private String email;
 	private String password;
-	private boolean isActive;
+	private boolean userIsActive;
 	private int myRole;
 	private int myCompany;
 	private UserCompany company;
@@ -61,11 +61,11 @@ public class UserProfileImpl implements UserProfile {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isActive() {
-		return isActive;
+	public boolean isUserIsActive() {
+		return userIsActive;
 	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setUserIsActive(boolean userIsActive) {
+		this.userIsActive = userIsActive;
 	}
 	public int getMyRole() {
 		return myRole;
@@ -91,8 +91,9 @@ public class UserProfileImpl implements UserProfile {
 	public String toString() {
 		return "UserProfileImpl [user_id=" + user_id + ", fName=" + fName
 				+ ", lName=" + lName + ", phoneNo=" + phoneNo + ", email="
-				+ email + ", isActive=" + isActive
-				+ ", myRole=" + myRole + ", myCompany=" + myCompany + "]";
+				+ email + ", password=" + password + ", userIsActive="
+				+ userIsActive + ", myRole=" + myRole + ", myCompany="
+				+ myCompany + ", company=" + company + "]";
 	}
 	
 }

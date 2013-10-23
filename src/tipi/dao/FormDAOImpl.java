@@ -55,17 +55,15 @@ public class FormDAOImpl implements FormDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		}
 		
-
 		String sql = "INSERT INTO orders ( carBrand, carModel, carRegister, carColor,"
 				+ " collectionDate, collectionTime, collectionAddress, collectionPostalCode, collectionCity,"
 				+ " destinationDate, destinationTime, destinationAddress, destinationPostalCode, destinationCity,"
 				+ " clientFname, clientLname, clientPhoneNo, clientCompany, additionalInformation,"
-				+ " companyMadeOrder, userMadeOrder, statusOfOrder, hasNewDestination,"
+				+ " companyMadeOrder, userMadeOrder, hasNewDestination,"
 				+ "	nextDestinationCollectionDate, nextDestinationCollectionTime, nextDestinationDate,	nextDestinationTime,"
 				+ " nextDestinationAddress, nextDestinationPostalCode, nextDestinationCity, "
-				+ "nextAdditionalInformation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+				+ "nextAdditionalInformation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
 		jdbcTemplate.update(
 				sql,
@@ -83,7 +81,7 @@ public class FormDAOImpl implements FormDAO {
 						orderForm.getClientFname(), orderForm.getClientLname(),
 						orderForm.getClientPhoneNo(),
 						orderForm.getClientCompany(),
-						orderForm.getAdditionalInformation(), userCompanyID, userID, 1,
+						orderForm.getAdditionalInformation(), userCompanyID, userID,
 						orderForm.isHasNewDestination(),
 						nextDestinationCollectionDate,
 						orderForm.getNextDestinationCollectionTime(),
@@ -93,6 +91,34 @@ public class FormDAOImpl implements FormDAO {
 						orderForm.getNextDestinationPostalCode(),
 						orderForm.getNextDestinationCity(),
 						orderForm.getNextAdditionalInformation() });
+		} else {
+			String sql = "INSERT INTO orders ( carBrand, carModel, carRegister, carColor,"
+					+ " collectionDate, collectionTime, collectionAddress, collectionPostalCode, collectionCity,"
+					+ " destinationDate, destinationTime, destinationAddress, destinationPostalCode, destinationCity,"
+					+ " clientFname, clientLname, clientPhoneNo, clientCompany, additionalInformation,"
+					+ " companyMadeOrder, userMadeOrder, hasNewDestination)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+
+			jdbcTemplate.update(
+					sql,
+					new Object[] { orderForm.getCarBrand(),
+							orderForm.getCarModel(), orderForm.getCarRegister(),
+							orderForm.getCarColor(), collectionDate,
+							orderForm.getCollectionTime(),
+							orderForm.getCollectionAddress(),
+							orderForm.getCollectionPostalCode(),
+							orderForm.getCollectionCity(), destinationDate,
+							orderForm.getDestinationTime(),
+							orderForm.getDestinationAddress(),
+							orderForm.getDestinationPostalCode(),
+							orderForm.getDestinationCity(),
+							orderForm.getClientFname(), orderForm.getClientLname(),
+							orderForm.getClientPhoneNo(),
+							orderForm.getClientCompany(),
+							orderForm.getAdditionalInformation(), userCompanyID, userID,
+							orderForm.isHasNewDestination()
+							});
+		}
 
 		/*
 		 * String sql =

@@ -26,9 +26,9 @@ public interface UserProfile {
 
 	public abstract void setPassword(String password);
 	
-	public abstract boolean isActive();
+	public boolean isUserIsActive();
 	
-	public abstract void setActive(boolean isActive);
+	public void setUserIsActive(boolean userIsActive);
 	
 	public abstract int getMyRole();
 	
