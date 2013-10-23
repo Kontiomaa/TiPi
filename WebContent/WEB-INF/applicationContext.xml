@@ -76,7 +76,7 @@
 	<!-- USER DEFINITIONS BY XML -->
 	<sec:authentication-manager> <sec:authentication-provider> <sec:password-encoder 
 		ref="encoder" /> <sec:jdbc-user-service data-source-ref="dataSource" users-by-username-query="select 
-		email, password, isActive from registeredUsers where email=? and isActive 
+		email, password, userIsActive from registeredUsers where email=? and userIsActive 
 		= 1" authorities-by-username-query="select u.email, ur.userRoleName from 
 		registeredUsers u JOIN userRoles ur ON (u.myRole = ur.userRole_id) WHERE u.email = ?" 
 		/> </sec:authentication-provider> </sec:authentication-manager>

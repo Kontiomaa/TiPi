@@ -1,5 +1,5 @@
-#9.10.2013 11:28
-#tested.
+#23.10.2013
+#Latest isActive -> userIsActive
 
 CREATE TABLE userRoles(
 	userRole_id INT NOT NULL AUTO_INCREMENT,
@@ -29,7 +29,7 @@ CREATE TABLE registeredUsers(
 	phoneNo VARCHAR(100) NOT NULL,
 	email VARCHAR(100) NOT NULL,
 	password VARCHAR(100) NOT NULL,
-	isActive BOOLEAN NOT NULL default 1,
+	userIsActive BOOLEAN NOT NULL default 1,
 	myRole INT NOT NULL,
 	myCompany INT NOT NULL,
 	PRIMARY KEY (user_id),
@@ -39,7 +39,7 @@ CREATE TABLE registeredUsers(
 
 CREATE TABLE orders(
 	orders_id INT NOT NULL AUTO_INCREMENT,
-	carMake VARCHAR(100) NOT NULL,
+	carBrand VARCHAR(100) NOT NULL,
 	carModel VARCHAR(100) NOT NULL,
 	carRegister VARCHAR(100) NOT NULL,
 	carColor VARCHAR(100),
@@ -60,7 +60,7 @@ CREATE TABLE orders(
 	additionalInformation TEXT,
 	companyMadeOrder INT NOT NULL,
 	userMadeOrder INT NOT NULL,
-	statusOfOrder INT NOT NULL,
+	statusOfOrder INT NOT NULL default 1,
 	lastTimeEdited timestamp NOT NULL,
 	hasNewDestination boolean NOT NULL default 0,
 	#if 1, read nextDestination -data.
