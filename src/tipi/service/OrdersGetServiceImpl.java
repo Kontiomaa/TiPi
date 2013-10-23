@@ -15,55 +15,65 @@ import tipi.dao.OrdersDAO;
 public class OrdersGetServiceImpl implements OrdersGetService {
 
 	@Inject
-    private OrdersDAO ordersDAO;
-    
-    public OrdersDAO getOrdersDAO() {
-            return ordersDAO;
-    }
+	private OrdersDAO ordersDAO;
 
-    public void setOrderDAO(OrdersDAO ordersDAO) {
-            this.ordersDAO = ordersDAO;
-    }
-    
-    public OrderForm getOrderFromDAO(int id) {
-    	OrderForm order = ordersDAO.getOrderBean(id);
-    	return order;
-    }
-    
-    public List<OrderForm> getOrderListFromDAO(int statusOfOrder) {
-    	List<OrderForm> allOrders = ordersDAO.getOrderList(statusOfOrder);
+	public OrdersDAO getOrdersDAO() {
+		return ordersDAO;
+	}
+
+	public void setOrderDAO(OrdersDAO ordersDAO) {
+		this.ordersDAO = ordersDAO;
+	}
+
+	public OrderForm getOrderFromDAO(int id) {
+		OrderForm order = ordersDAO.getOrderBean(id);
+		order = parseMySQLToJavaDate(order);
+		return order;
+	}
+
+	public List<OrderForm> getOrderListFromDAO(int statusOfOrder) {
+		List<OrderForm> allOrders = ordersDAO.getOrderList(statusOfOrder);
+		for (OrderForm order : allOrders) {
+			order = parseMySQLToJavaDate(order);
+		}
+		return allOrders;
+	}
+
+	public OrderForm parseMySQLToJavaDate(OrderForm order) {
 		SimpleDateFormat oldFormat = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat newFormat = new SimpleDateFormat("dd.MM.yyyy");
-    	for (OrderForm order : allOrders) {
 
+		try {
+			order.setCollectionDate(newFormat.format(oldFormat.parse(order
+					.getCollectionDate())));
+			order.setDestinationDate(newFormat.format(oldFormat.parse(order
+					.getDestinationDate())));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (order.getNextDestinationCollectionDate() != null) {
 			try {
-				order.setCollectionDate(newFormat.format(oldFormat.parse(order
-						.getCollectionDate())));
-				order.setDestinationDate(newFormat.format(oldFormat.parse(order
-						.getDestinationDate())));
+				order.setNextDestinationCollectionDate(newFormat
+						.format(oldFormat.parse(order
+								.getNextDestinationCollectionDate())));
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			if(order.isHasNewDestination()) {
+		}
+
+		if (order.getNextDestinationDate() != null) {
 			try {
 				order.setNextDestinationDate(newFormat.format(oldFormat
-						.parse(order.getNextDestinationCollectionDate())));
-				order.setNextDestinationDate(newFormat.format(oldFormat.parse(order
-						.getNextDestinationDate())));
+						.parse(order.getNextDestinationDate())));
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println(order.getNextDestinationDate());
-			System.out.println(order.getNextDestinationCollectionDate());
-			}
-			System.out.println(order.getCollectionDate());
-			System.out.println(order.getDestinationDate());
-		}    	
-    	
-    	return allOrders;
-    }
-	
+		}
+		return order;
+	}
+
 }
