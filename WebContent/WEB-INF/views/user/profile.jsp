@@ -121,7 +121,7 @@
 												$(".text-warning").hide();
 												$(".text-success").hide();
 												$(".text-info").hide();
-												var hasError = false;
+												var hasError = true;
 												var oldPasswordVal = $("#oldPassword").val();
 												var passwordVal = $("#password").val();
 												var checkVal = $("#password-check").val();
