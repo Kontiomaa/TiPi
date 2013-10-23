@@ -97,11 +97,14 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public void saveRegisteredUsersNewPassword(String email, String newPassword){		
-		System.out.println("DAO: "+email+" "+newPassword);		
-		String newPasswordQuery = "UPDATE registeredUsers SET password='"+newPassword+"' WHERE email='"+email+"';";
+		System.out.println("DAO: "+email+": "+newPassword);		
+		String newPasswordQuery = "UPDATE registeredUsers SET password=? WHERE email=?;";
 		System.out.println("Query:");
 		System.out.println(newPasswordQuery);
-		jdbcTemplate.update(newPasswordQuery);
+		jdbcTemplate.update(newPasswordQuery, new Object[] {
+				newPassword,
+				email
+		});
 		System.out.println("Accessed the database...");
 	}
 
