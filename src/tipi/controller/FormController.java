@@ -21,6 +21,7 @@ import tipi.service.FormSendService;
 @SessionAttributes({"orderForm","userProfile"})
 public class FormController {
 	
+	boolean orderSuccessful=false;
 	
 	@Inject
 	private FormSendService formSendService;
@@ -46,10 +47,10 @@ public class FormController {
 	public String create(
 			@ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
 			BindingResult result) {
+		orderSuccessful=false;
 		if (result.hasErrors()) {
 			return "/user/orderForm";
 		} else {
-			// System.out.println(orderForm.getCarBrand());
 			return "/user/orderConfirmation";
 		}
 	}
@@ -58,9 +59,11 @@ public class FormController {
 	@RequestMapping(value = "orderForm", method = RequestMethod.GET)
 	public String getOldForm(Model model) {
 
-		
 		if (!model.containsAttribute("orderForm")) {
 			return "redirect:/user/orderFormEmpty";
+		}
+		if(orderSuccessful){
+			model.addAttribute("orderSuccessful", "true");
 		}
 
 		return "/user/orderForm";
@@ -72,6 +75,8 @@ public class FormController {
 			BindingResult result, @ModelAttribute(value = "userProfile") UserProfileImpl userProfile) {
 
 		formSendService.sendFormToDAO(orderForm, userProfile.getUser_id(), userProfile.getMyCompany());
+		
+		orderSuccessful=true;
 		
 		return "redirect:/user/orderFormEmpty";
 	}

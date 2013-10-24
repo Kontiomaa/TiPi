@@ -82,6 +82,9 @@
 								</div>
 							</div>
 						</div>
+						<c:if test="${not empty registerNewCompanySuccessful}">
+							<p class="alert alert-success">Uusi yritys lisätty</p>
+						</c:if>
 						<br> <a href="registerEmptyCompany" class="btn btn-danger">Tyhjennä</a>
 						<button type="submit" class="btn btn-inverse">Seuraava</button>
 					</fieldset>

@@ -100,6 +100,9 @@
 								</div>
 							</div>
 						</div>
+						<c:if test="${not empty registerNewUserSuccessful}">
+							<p class="alert alert-success">Uusi käyttäjä lisätty</p>
+						</c:if>
 						<br> <a href="registerEmptyUser" class="btn btn-danger">Tyhjennä</a>
 						<button type="submit" class="btn btn-inverse">Seuraava</button>
 					</fieldset>

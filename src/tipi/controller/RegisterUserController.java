@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import tipi.bean.OrderFormImpl;
 import tipi.bean.UserCompany;
 import tipi.bean.UserCompanyImpl;
 import tipi.bean.UserProfile;
@@ -28,6 +27,8 @@ import tipi.service.UserProfileService;
 @SessionAttributes({"registerUser","registerCompany","allCompanies"})
 public class RegisterUserController {
 	
+	boolean newUserAdded=false;
+	boolean newCompanyAdded=false;
 	
 	@Inject
 	private UserProfileService userProfileService;
@@ -55,13 +56,17 @@ public class RegisterUserController {
 		}
 		List<UserCompany> allCompanies = userProfileService.getAllCompanies();		
 		model.addAttribute("allCompanies", allCompanies);
+		if(newUserAdded){
+			model.addAttribute("registerNewUserSuccessful", "true");
+		}
 		return "admin/registerNewUser";
 	}
 	
 	@RequestMapping(value = "/registerNewUser", method = RequestMethod.POST)
 	public String getUserConfirmation(
 			@ModelAttribute(value = "registerUser") @Valid UserProfileImpl registerUser,
-			BindingResult result) {		
+			BindingResult result) {
+		newUserAdded=false;
 		if (result.hasErrors()) {
 			return "/admin/registerNewUser";
 		} else {
@@ -75,6 +80,7 @@ public class RegisterUserController {
 		StandardPasswordEncoder spe = new StandardPasswordEncoder();
 		registerUser.setPassword(spe.encode(req.getParameter("password"))); //Password is now encrypted for safety
 		userProfileService.sendNewUserToDAO(registerUser);
+		newUserAdded=true;
 		return "redirect:/admin/registerEmptyUser";
 	}
 	
@@ -84,6 +90,7 @@ public class RegisterUserController {
 	public String getCompanyUser(Model model) {
 		UserCompany registerCompany = new UserCompanyImpl();
 		model.addAttribute("registerCompany", registerCompany);
+		
 		return "redirect:/admin/registerNewCompany";
 	}
 	
@@ -92,6 +99,10 @@ public class RegisterUserController {
 		if (!model.containsAttribute("registerCompany")) {
 			return "redirect:/admin/registerEmptyCompany";
 		}
+		if(newCompanyAdded){
+			model.addAttribute("registerNewCompanySuccessful", "true");
+		}
+		
 		return "admin/registerNewCompany";
 	}
 	
@@ -99,6 +110,7 @@ public class RegisterUserController {
 	public String getCompanyConfirmation(
 			@ModelAttribute(value = "registerCompany") @Valid UserCompanyImpl registerCompany,
 			BindingResult result) {
+		newCompanyAdded=false;
 		if (result.hasErrors()) {
 			return "/admin/registerNewCompany";
 		} else {
@@ -110,6 +122,7 @@ public class RegisterUserController {
 	public String registerNewCompanySend(@ModelAttribute(value = "registerCompany") @Valid UserCompanyImpl registerCompany,
 			BindingResult result) {
 		userProfileService.sendNewCompanyToDAO(registerCompany);
+		newCompanyAdded=true;
 		return "redirect:/admin/registerEmptyCompany";
 	}
 
