@@ -59,6 +59,8 @@ public class RegisterUserController {
 		if(newUserAdded){
 			model.addAttribute("registerNewUserSuccessful", "true");
 		}
+		newUserAdded=false;
+		
 		return "admin/registerNewUser";
 	}
 	
@@ -66,7 +68,7 @@ public class RegisterUserController {
 	public String getUserConfirmation(
 			@ModelAttribute(value = "registerUser") @Valid UserProfileImpl registerUser,
 			BindingResult result) {
-		newUserAdded=false;
+		
 		if (result.hasErrors()) {
 			return "/admin/registerNewUser";
 		} else {
@@ -102,6 +104,7 @@ public class RegisterUserController {
 		if(newCompanyAdded){
 			model.addAttribute("registerNewCompanySuccessful", "true");
 		}
+		newCompanyAdded=false;
 		
 		return "admin/registerNewCompany";
 	}
@@ -110,7 +113,7 @@ public class RegisterUserController {
 	public String getCompanyConfirmation(
 			@ModelAttribute(value = "registerCompany") @Valid UserCompanyImpl registerCompany,
 			BindingResult result) {
-		newCompanyAdded=false;
+
 		if (result.hasErrors()) {
 			return "/admin/registerNewCompany";
 		} else {

@@ -47,7 +47,7 @@ public class FormController {
 	public String create(
 			@ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
 			BindingResult result) {
-		orderSuccessful=false;
+
 		if (result.hasErrors()) {
 			return "/user/orderForm";
 		} else {
@@ -65,6 +65,7 @@ public class FormController {
 		if(orderSuccessful){
 			model.addAttribute("orderSuccessful", "true");
 		}
+		orderSuccessful=false;
 
 		return "/user/orderForm";
 	}

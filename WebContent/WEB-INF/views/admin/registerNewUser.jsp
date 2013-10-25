@@ -17,6 +17,9 @@
 			<div class="span10 offset1">
 				<form:form modelAttribute="registerUser" method="post"
 					class="form-horizontal">
+					<c:if test="${not empty registerNewUserSuccessful}">
+						<p class="alert alert-success">Uusi käyttäjä lisätty</p>
+					</c:if>
 					<fieldset>
 						<legend>Rekisteröi käyttäjä</legend>
 						<div class="row-fluid">
@@ -100,9 +103,6 @@
 								</div>
 							</div>
 						</div>
-						<c:if test="${not empty registerNewUserSuccessful}">
-							<p class="alert alert-success">Uusi käyttäjä lisätty</p>
-						</c:if>
 						<br> <a href="registerEmptyUser" class="btn btn-danger">Tyhjennä</a>
 						<button type="submit" class="btn btn-inverse">Seuraava</button>
 					</fieldset>

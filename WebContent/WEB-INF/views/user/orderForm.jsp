@@ -11,14 +11,14 @@
 			<div class="span10 offset1">
 				<form:form modelAttribute="orderForm" method="post"
 					class="form-horizontal">
+					<c:if test="${not empty orderSuccessful}">
+						<p class="alert alert-success">Tilaus lähetetty onnistuneesti</p>
+					</c:if>
 					<fieldset>
 						<legend>
 							Tilauslomake - Auto <i class="icon-info-sign" rel="tooltip"
 								title="Täytä tähän auton tiedot"></i>
 						</legend>
-						<c:if test="${not empty orderSuccessful}">
-							<p class="alert alert-success">Tilaus lähetetty onnistuneesti</p>
-						</c:if>
 						<strong> * (tähdellä) merkityt kentät ovat pakollisia</strong>
 						<div class="row-fluid" style="padding-top: 10px;">
 							<div class="span6">
