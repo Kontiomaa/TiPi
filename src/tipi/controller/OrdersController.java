@@ -17,7 +17,7 @@ import tipi.service.OrdersGetService;
 
 @Controller
 @RequestMapping(value = "/admin")
-@SessionAttributes({"orderInformation"})
+@SessionAttributes({"orderInformation", "pageIdentifier"})
 public class OrdersController {
 
 	@Inject
@@ -38,6 +38,7 @@ public class OrdersController {
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
 		model.addAttribute("orders", orders);
+		model.addAttribute("pageIdentifier", "orders");
 		return "admin/newOrders";
 	}
 
@@ -48,6 +49,7 @@ public class OrdersController {
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
 		model.addAttribute("orders", orders);
+		model.addAttribute("pageIdentifier", "orders");
 		return "admin/acceptedOrders";
 	}
 
@@ -58,6 +60,7 @@ public class OrdersController {
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
 		model.addAttribute("orders", orders);
+		model.addAttribute("pageIdentifier", "orders");
 		return "admin/collectingOrders";
 	}
 
@@ -68,6 +71,7 @@ public class OrdersController {
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
 		model.addAttribute("orders", orders);
+		model.addAttribute("pageIdentifier", "orders");
 		return "admin/takenOrders";
 	}
 
@@ -78,6 +82,7 @@ public class OrdersController {
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
 		model.addAttribute("orders", orders);
+		model.addAttribute("pageIdentifier", "orders");
 		return "admin/returningOrders";
 	}
 
@@ -88,6 +93,7 @@ public class OrdersController {
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
 		model.addAttribute("orders", orders);
+		model.addAttribute("pageIdentifier", "orders");
 		return "admin/completedOrders";
 	}
 
@@ -98,6 +104,7 @@ public class OrdersController {
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
 		model.addAttribute("orders", orders);
+		model.addAttribute("pageIdentifier", "orders");
 		return "admin/billedOrders";
 	}
 
@@ -107,6 +114,7 @@ public class OrdersController {
 		orderInformation = ordersGetService.getOrderFromDAO(Integer
 				.parseInt(req.getParameter("orderID")));
 		model.addAttribute("orderInformation", orderInformation);
+		model.addAttribute("pageIdentifier", "orders");
 		
 		if (orderInformation.getStatusOfOrder() == 1) {
 			model.addAttribute("changeStatusButton", "Kuittaa");
