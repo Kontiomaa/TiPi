@@ -12,7 +12,7 @@
 				<div class="span10 offset1">
 
 					<fieldset>
-						<legend>Viedyt tilaukset</legend>
+						<legend>Noudetaan tilaukset</legend>
 						<div class="row-fluid">
 							<div class="span12">
 
@@ -49,6 +49,8 @@
 														value="${order.statusOfOrder}" />
 														<input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
+														<input type="hidden" name="hasNewDestination" id="hasNewDestination"
+														value="${order.hasNewDestination}" />
 													<button class="btn btn-success">Kuittaa</button>
 												</td>
 												</form>

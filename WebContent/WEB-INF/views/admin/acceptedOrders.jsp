@@ -1,26 +1,16 @@
 
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Hyväksytyt tilaukset</title>
+<title>Siirtoapu.fi -- Kuitatut tilaukset</title>
 </head>
 <body>
 	<div class="container">
 
 		<%@include file="navi.jsp"%>
 		<div class="row-fluid" id="area">
-			<div class="row-fluid">
-				<div class="span12">
-					<ul class="nav nav-tabs">
-						<li><a href="new">Uudet</a></li>
-						<li class="active"><a href="accepted">Kuitatut</a></li>
-						<li><a href="collected">Haetut</a></li>
-						<li><a href="taken">Viedyt</a></li>
-						<li><a href="returned">Palautetut</a></li>
-						<li><a href="completed">Valmiit</a></li>
-					</ul>
-				</div>
-			</div>
+		<%@include file="ordersNavi.jsp"%>
 			<div class="row-fluid">
 				<div class="span10 offset1">
+
 					<fieldset>
 						<legend>Kuitatut tilaukset</legend>
 						<div class="row-fluid">
@@ -40,7 +30,7 @@
 									<tbody>
 										<c:forEach items="${orders}" var="order">
 											<tr>
-												<td><c:out value="${order.clientCompany}" /></td>
+												<td><c:out value="${order.userProfile.company.name}" /></td>
 												<td><c:out value="${order.collectionCity}" />, <c:out
 														value="${order.collectionAddress}" /></td>
 												<td><i class="icon-arrow-right"></i></td>
@@ -48,14 +38,20 @@
 														value="${order.destinationAddress}" /></td>
 												<td><c:out value="${order.destinationDate}" /> <c:out
 														value="${order.destinationTime}" /></td>
-													<form action="orderInformation" method="post" class="span5">
-														<td><input type="hidden" name="orderID" id="orderID"
-															value="${order.orders_id}" />
-														<button class="btn btn-primary" type="submit" value="submit">Avaa</button></td>
-													</form>
-												<td>
+												<form action="orderInformation" method="post" class="span4">
+													<td><input type="hidden" name="orderID" id="orderID"
+														value="${order.orders_id}" />
+														<button class="btn btn-primary" type="submit"
+															value="submit">Avaa</button></td>
+												</form>
+												<form action="changeOrderStatus" method="post" class="span4">
+													<td><input type="hidden" name="statusOfOrder" id="statusOfOrder"
+														value="${order.statusOfOrder}" />
+														<input type="hidden" name="orderID" id="orderID"
+														value="${order.orders_id}" />
 													<button class="btn btn-success">Kuittaa</button>
 												</td>
+												</form>
 											</tr>
 										</c:forEach>
 									</tbody>

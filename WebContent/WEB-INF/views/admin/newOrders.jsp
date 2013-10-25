@@ -7,19 +7,7 @@
 
 		<%@include file="navi.jsp"%>
 		<div class="row-fluid" id="area">
-			<div class="row-fluid">
-				<div class="span12">
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="new">Uudet</a></li>
-						<li><a href="accepted">Kuitatut</a></li>
-						<li><a href="collected">Noudetut</a></li>
-						<li><a href="taken">Toimitetut</a></li>
-						<li><a href="returned">Palautuksessa</a></li>
-						<li><a href="completed">Valmiit</a></li>
-						<li><a href="billed">Laskutettu</a></li>
-					</ul>
-				</div>
-			</div>
+		<%@include file="ordersNavi.jsp"%>
 			<div class="row-fluid">
 				<div class="span10 offset1">
 

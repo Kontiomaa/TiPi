@@ -14,15 +14,19 @@
 					</thead>
 					<tr>
 						<th>Automerkki</th>
-						<td><c:out value="${orderInformation.carBrand}" default="-----" /></td>
+						<td><c:out value="${orderInformation.carBrand}"
+								default="-----" /></td>
 						<th>Rekisterinumero</th>
-						<td><c:out value="${orderInformation.carRegister}" default="-----" /></td>
+						<td><c:out value="${orderInformation.carRegister}"
+								default="-----" /></td>
 					</tr>
 					<tr>
 						<th>Automalli</th>
-						<td><c:out value="${orderInformation.carModel}" default="-----" /></td>
+						<td><c:out value="${orderInformation.carModel}"
+								default="-----" /></td>
 						<th>Autoväri</th>
-						<td><c:out value="${orderInformation.carColor}" default="-----" /></td>
+						<td><c:out value="${orderInformation.carColor}"
+								default="-----" /></td>
 					</tr>
 
 					<thead>
@@ -82,15 +86,19 @@
 
 					<tr>
 						<th>Etunimi</th>
-						<td><c:out value="${orderInformation.clientFname}" default="-----" /></td>
+						<td><c:out value="${orderInformation.clientFname}"
+								default="-----" /></td>
 						<th>Puhelinnumero</th>
-						<td><c:out value="${orderInformation.clientPhoneNo}" default="-----" /></td>
+						<td><c:out value="${orderInformation.clientPhoneNo}"
+								default="-----" /></td>
 					</tr>
 					<tr>
 						<th>Sukunimi</th>
-						<td><c:out value="${orderInformation.clientLname}" default="-----" /></td>
+						<td><c:out value="${orderInformation.clientLname}"
+								default="-----" /></td>
 						<th>Yritys</th>
-						<td><c:out value="${orderInformation.clientCompany}" default="-----" /></td>
+						<td><c:out value="${orderInformation.clientCompany}"
+								default="-----" /></td>
 					</tr>
 
 					<thead>
@@ -102,7 +110,8 @@
 
 					<tr>
 						<td colspan="4"><c:out
-								value="${orderInformation.additionalInformation}" default="-----" /></td>
+								value="${orderInformation.additionalInformation}"
+								default="-----" /></td>
 					</tr>
 
 					<c:if test="${orderInformation.hasNewDestination}">
@@ -135,10 +144,12 @@
 
 						<tr>
 							<th>Osoite</th>
-							<td><c:out value="${orderInformation.nextDestinationAddress}"
+							<td><c:out
+									value="${orderInformation.nextDestinationAddress}"
 									default="-----" /></td>
 							<th>Postinumero</th>
-							<td><c:out value="${orderInformation.nextDestinationPostalCode}"
+							<td><c:out
+									value="${orderInformation.nextDestinationPostalCode}"
 									default="-----" /></td>
 						</tr>
 
@@ -159,7 +170,8 @@
 
 						<tr>
 							<td colspan="4"><c:out
-									value="${orderInformation.nextAdditionalInformation}" default="-----" /></td>
+									value="${orderInformation.nextAdditionalInformation}"
+									default="-----" /></td>
 						</tr>
 					</c:if>
 
@@ -171,25 +183,31 @@
 					</thead>
 					<tr>
 						<th>Etunimi</th>
-						<td><c:out value="${orderInformation.userProfile.fName}" default="-----" /></td>
+						<td><c:out value="${orderInformation.userProfile.fName}"
+								default="-----" /></td>
 						<th>Puhelinnumero</th>
-						<td><c:out value="${orderInformation.userProfile.phoneNo}" default="-----" /></td>
+						<td><c:out value="${orderInformation.userProfile.phoneNo}"
+								default="-----" /></td>
 					</tr>
 					<tr>
 						<th>Sukunimi</th>
-						<td><c:out value="${orderInformation.userProfile.lName}" default="-----" /></td>
+						<td><c:out value="${orderInformation.userProfile.lName}"
+								default="-----" /></td>
 						<th>Yritys</th>
-						<td><c:out value="${orderInformation.userProfile.company.name}"
+						<td><c:out
+								value="${orderInformation.userProfile.company.name}"
 								default="-----" /></td>
 					</tr>
 					<tr>
 						<th>Muokattu</th>
-						<td><c:out value="${orderInformation.lastTimeEdited}" default="-----" /></td>
+						<td><c:out value="${orderInformation.lastTimeEdited}"
+								default="-----" /></td>
 						<th>Status</th>
 						<td><c:out value="${orderInformation.statusOfOrder}"
 								default="-----" /></td>
 					</tr>
-<%-- 
+
+					<%-- 
 					<tr>
 
 						<td><a href="orderForm" class="btn btn-danger">Takaisin</a></td>

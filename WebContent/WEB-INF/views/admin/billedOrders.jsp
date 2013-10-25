@@ -12,7 +12,7 @@
 				<div class="span10 offset1">
 
 					<fieldset>
-						<legend>Viedyt tilaukset</legend>
+						<legend>Laskutetut tilaukset</legend>
 						<div class="row-fluid">
 							<div class="span12">
 
