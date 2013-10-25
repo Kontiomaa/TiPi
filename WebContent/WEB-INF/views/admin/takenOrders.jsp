@@ -24,7 +24,7 @@
 											<th></th>
 											<th>Mihin</th>
 											<th>Luontip‰iv‰m‰‰r‰</th>
-											<th></th>
+											<th colspan="2"></th>
 										</tr>
 									</thead>
 									<tbody>

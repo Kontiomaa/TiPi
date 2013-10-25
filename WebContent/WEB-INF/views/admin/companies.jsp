@@ -21,25 +21,31 @@
 						<legend>Yritys</legend>
 						<div class="row-fluid">
 							<div class="span12">
-								<table class="table table-striped">
+								<table id="myTable" class="table table-striped">
 									<thead>
 										<tr>
-											<th>Etunimi</th>
-											<th>Sukunimi</th>
-											<th>Yritys</th>
-											<th>Rooli</th>
+											<th>Nimi</th>
+											<th>Osoite</th>
+											<th>Postiosoite</th>
+											<th>Kaupunki</th>
 											<th></th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Monty AB</td>
-											<td>Vantaa, Vantaankatu 6</td>
-											<td>Espoo, Espoonkuja 3</td>
-											<td>xx:xx xx.xx.xxxx</td>
-											<td><button class="btn btn-primary">Avaa</button>
-												<button class="btn btn-success">Muokkaa</button></td>
-										</tr>
+										<c:forEach items="${allCompanies}" var="company">
+											<tr>
+												<td><c:out value="${company.name}" /></td>
+												<td><c:out value="${company.address}" /></td>
+												<td><c:out value="${company.postalCode}" /></td>
+												<td><c:out value="${company.city}" /></td>
+												<form action="orderInformation" method="post" class="span4">
+													<td><input type="hidden" name="orderID" id="orderID"
+														value="${order.orders_id}" />
+														<button class="btn btn-primary" type="submit"
+															value="submit">Muokkaa</button></td>
+												</form>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>

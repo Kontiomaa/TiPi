@@ -17,7 +17,7 @@ import tipi.service.OrdersGetService;
 
 @Controller
 @RequestMapping(value = "/admin")
-@SessionAttributes({ "orderInformation", "orderPage" })
+@SessionAttributes({"orderInformation"})
 public class OrdersController {
 
 	@Inject
