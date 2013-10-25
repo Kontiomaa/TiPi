@@ -107,6 +107,23 @@ public class OrdersController {
 		orderInformation = ordersGetService.getOrderFromDAO(Integer
 				.parseInt(req.getParameter("orderID")));
 		model.addAttribute("orderInformation", orderInformation);
+		
+		if (orderInformation.getStatusOfOrder() == 1) {
+			model.addAttribute("changeStatusButton", "Kuittaa");
+		} else if (orderInformation.getStatusOfOrder() == 2) {
+			model.addAttribute("changeStatusButton", "Nouda");
+		} else if (orderInformation.getStatusOfOrder() == 3) {
+			model.addAttribute("changeStatusButton", "Viety");
+		} else if (orderInformation.getStatusOfOrder() == 4) {
+			model.addAttribute("changeStatusButton", "Nouda");
+		} else if (orderInformation.getStatusOfOrder() == 5) {
+			model.addAttribute("changeStatusButton", "Palauta");
+		} else if (orderInformation.getStatusOfOrder() == 6) {
+			model.addAttribute("changeStatusButton", "Laskuta");
+		} else {
+			model.addAttribute("changeStatusButton", "------");
+		}
+		
 		return "admin/orderInformation";
 	}
 
@@ -124,19 +141,52 @@ public class OrdersController {
 		
 		ordersGetService.updateOrderStatus(
 				Integer.parseInt(req.getParameter("orderID")), orderStatus);
-		if (1 == Integer.parseInt(req.getParameter("statusOfOrder"))) {
+		if (Integer.parseInt(req.getParameter("statusOfOrder")) == 1) {
 			return "redirect:/admin/new";
-		} else if (2 == Integer.parseInt(req.getParameter("statusOfOrder"))) {
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 2) {
 			return "redirect:/admin/accepted";
-		} else if (3 == Integer.parseInt(req.getParameter("statusOfOrder"))) {
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 3) {
 			return "redirect:/admin/collecting";
-		} else if (4 == Integer.parseInt(req.getParameter("statusOfOrder"))) {
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 4) {
 			return "redirect:/admin/taken";
-		} else if (5 == Integer.parseInt(req.getParameter("statusOfOrder"))) {
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 5) {
 			return "redirect:/admin/returning";
-		} else if (6 == Integer.parseInt(req.getParameter("statusOfOrder"))) {
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 6) {
 			return "redirect:/admin/completed";
-		} else if (7 == Integer.parseInt(req.getParameter("statusOfOrder"))) {
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 7) {
+			return "redirect:/admin/billed";
+		}
+
+		return "redirect:/admin/new";
+	}
+	
+	@RequestMapping(value = "/returnPreviousOrderStatus", method = RequestMethod.POST)
+	public String returnPreviousOrderStatus(Model model, HttpServletRequest req) {
+		int orderStatus = Integer.parseInt(req.getParameter("statusOfOrder"));
+		boolean hasNewDestination = false;
+		if(req.getParameter("hasNewDestination") != null)
+		hasNewDestination = Boolean.parseBoolean(req.getParameter("hasNewDestination"));
+		if(orderStatus == 6 && hasNewDestination == false) {
+			orderStatus-=3;
+		} else {
+			orderStatus--;
+		}
+		
+		ordersGetService.updateOrderStatus(
+				Integer.parseInt(req.getParameter("orderID")), orderStatus);
+		if (Integer.parseInt(req.getParameter("statusOfOrder")) == 1) {
+			return "redirect:/admin/new";
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 2) {
+			return "redirect:/admin/accepted";
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 3) {
+			return "redirect:/admin/collecting";
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 4) {
+			return "redirect:/admin/taken";
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 5) {
+			return "redirect:/admin/returning";
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 6) {
+			return "redirect:/admin/completed";
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 7) {
 			return "redirect:/admin/billed";
 		}
 

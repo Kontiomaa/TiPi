@@ -203,24 +203,99 @@
 						<td><c:out value="${orderInformation.lastTimeEdited}"
 								default="-----" /></td>
 						<th>Status</th>
-						<td><c:out value="${orderInformation.statusOfOrder}"
-								default="-----" /></td>
+
+						<c:choose>
+							<c:when test="${orderInformation.statusOfOrder == 1}">
+								<td><c:out value="Uusi" default="-----" /></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 2}">
+								<td><c:out value="Kuitattu" default="-----" /></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 3}">
+								<td><c:out value="Noudettu" default="-----" /></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 4}">
+								<td><c:out value="Toimitettu" default="-----" /></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 5}">
+								<td><c:out value="Palautuksessa" default="-----" /></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 6}">
+								<td><c:out value="Valmis" default="-----" /></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 7}">
+								<td><c:out value="Laskutettu" default="-----" /></td>
+							</c:when>
+						</c:choose>
 					</tr>
 
-					<%-- 
 					<tr>
+						<c:choose>
+							<c:when test="${orderInformation.statusOfOrder == 1}">
+								<td><a href="new" class="btn btn-primary">Takaisin</a></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 2}">
+								<td><a href="accepted" class="btn btn-primary">Takaisin</a></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 3}">
+								<td><a href="collecting" class="btn btn-primary">Takaisin</a></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 4}">
+								<td><a href="taken" class="btn btn-primary">Takaisin</a></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 5}">
+								<td><a href="returning" class="btn btn-primary">Takaisin</a></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 6}">
+								<td><a href="completed" class="btn btn-primary">Takaisin</a></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 7}">
+								<td><a href="billed" class="btn btn-primary">Takaisin</a></td>
+							</c:when>
+							<c:otherwise>
+								<td><a href="new" class="btn btn-danger">Takaisin</a></td>
+							</c:otherwise>
+						</c:choose>
 
-						<td><a href="orderForm" class="btn btn-danger">Takaisin</a></td>
+						<c:choose>
+							<c:when test="${orderInformation.statusOfOrder == 7}">
+								<td colspan="2"></td>
+							</c:when>
+							<c:otherwise>
+								<form action="changeOrderStatus" method="post" class="span4">
+									<td colspan="2"><input type="hidden" name="statusOfOrder"
+										id="statusOfOrder" value="${orderInformation.statusOfOrder}" />
+										<input type="hidden" name="orderID" id="orderID"
+										value="${orderInformation.orders_id}" /> <input type="hidden"
+										name="hasNewDestination" id="hasNewDestination"
+										value="${orderInformation.hasNewDestination}" />
+										<button class="btn btn-success">
+											<c:out value="${changeStatusButton}" default="-----" />
+										</button></td>
+								</form>
+							</c:otherwise>
+						</c:choose>
 
-						<td><form action="orderSend" method="post"
-								class="form-horizontal">
-								<fieldset>
-									<button type="submit" class="btn btn-inverse">Lähetä
-										tilaus</button>
-								</fieldset>
-							</form></td>
-						<td colspan="2"></td>
-					</tr>--%>
+						<c:choose>
+							<c:when test="${orderInformation.statusOfOrder == 1}">
+								<td></td>
+							</c:when>
+							<c:otherwise>
+								<form action="returnPreviousOrderStatus" method="post" class="span4">
+									<td><input type="hidden" name="statusOfOrder"
+										id="statusOfOrder" value="${orderInformation.statusOfOrder}" />
+										<input type="hidden" name="orderID" id="orderID"
+										value="${orderInformation.orders_id}" /> <input type="hidden"
+										name="hasNewDestination" id="hasNewDestination"
+										value="${orderInformation.hasNewDestination}" />
+										<button class="btn btn-danger">
+											Edellinen status
+										</button></td>
+								</form>
+							</c:otherwise>
+						</c:choose>
+
+					</tr>
 				</table>
 
 			</div>

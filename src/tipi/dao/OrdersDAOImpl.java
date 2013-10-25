@@ -46,6 +46,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		return resultObject;
 	}
 	
+	@Override
 	public void updateOrderStatusDAO(int orders_id, int statusOfOrder) {
 		String newPasswordQuery = "UPDATE orders SET statusOfOrder=? WHERE orders_id=?;";
 		jdbcTemplate.update(newPasswordQuery, new Object[] {

@@ -25,6 +25,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 		this.userDao = userDao;
 	}
 	
+	@Override
 	public UserProfile getRegisteredUsersInformationFromDAO(String userEmail, UserProfile userProfile){
 		UserCompany userCompany = new UserCompanyImpl();
 		userProfile = userDao.getRegisteredUsersInformationWithEmailDAO(userEmail, userProfile);
@@ -33,19 +34,23 @@ public class UserProfileServiceImpl implements UserProfileService {
 		return userProfile;
 	}
 
+	@Override
 	public void sendNewCompanyToDAO(UserCompany registerCompany){
 		userDao.registerNewCompanyDAO(registerCompany);
 	}
 	
+	@Override
 	public void sendNewUserToDAO(UserProfile registerUser){
 		userDao.registerNewUserDAO(registerUser);
 	}
 	
+	@Override
 	public List<UserCompany> getAllCompanies(){
 		List<UserCompany> allCompanies = userDao.getAllCompaniesDAO();
 		return allCompanies;
 	}
 	
+	@Override
 	public void sendNewPasswordToDao(String email, String newPassword){
 		System.out.println("Service: "+email+" "+newPassword);
 		userDao.saveRegisteredUsersNewPassword(email, newPassword);

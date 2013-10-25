@@ -82,6 +82,7 @@ public class UserDAOImpl implements UserDAO {
 		});
 	}
 	
+	@Override
 	public List<UserCompany> getAllCompaniesDAO(){
 		String sql = "SELECT * FROM companies;";
 

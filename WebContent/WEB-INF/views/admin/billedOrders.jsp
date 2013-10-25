@@ -44,14 +44,7 @@
 														<button class="btn btn-primary" type="submit"
 															value="submit">Avaa</button></td>
 												</form>
-												<form action="changeOrderStatus" method="post" class="span4">
-													<td><input type="hidden" name="statusOfOrder" id="statusOfOrder"
-														value="${order.statusOfOrder}" />
-														<input type="hidden" name="orderID" id="orderID"
-														value="${order.orders_id}" />
-													<button class="btn btn-success">Kuittaa</button>
-												</td>
-												</form>
+													<td></td>
 											</tr>
 										</c:forEach>
 									</tbody>

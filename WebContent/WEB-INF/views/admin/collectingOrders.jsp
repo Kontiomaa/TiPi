@@ -51,7 +51,7 @@
 														value="${order.orders_id}" />
 														<input type="hidden" name="hasNewDestination" id="hasNewDestination"
 														value="${order.hasNewDestination}" />
-													<button class="btn btn-success">Kuittaa</button>
+													<button class="btn btn-success">Viety</button>
 												</td>
 												</form>
 											</tr>

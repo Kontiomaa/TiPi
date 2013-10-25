@@ -49,7 +49,7 @@
 														value="${order.statusOfOrder}" />
 														<input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
-													<button class="btn btn-success">Kuittaa</button>
+													<button class="btn btn-success">Laskuta</button>
 												</td>
 												</form>
 											</tr>
