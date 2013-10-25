@@ -56,4 +56,25 @@ public class UserProfileServiceImpl implements UserProfileService {
 		userDao.saveRegisteredUsersNewPassword(email, newPassword);
 	}
 	
+	@Override
+	public UserCompany getCompany(int company_id, UserCompany company) {
+		company = userDao.getRegisteredUsersCompanyInformationDAO(company_id, company);
+		return company;
+	}
+	
+	@Override
+	public void sendModifiedCompanyToDAO(UserCompany company){
+		userDao.updateCompanyInformationDAO(company);
+	}
+	
+	@Override
+	public List<UserProfile> getUsersByRole(int role){
+		List<UserProfile> users = userDao.getUsersByRoleDAO(role);
+		for (UserProfile user : users) {
+			UserCompany userCompany = new UserCompanyImpl();
+			userCompany = userDao.getRegisteredUsersCompanyInformationDAO(user.getMyCompany(), userCompany);
+			user.setCompany(userCompany);
+		}
+		return users;
+	}
 }

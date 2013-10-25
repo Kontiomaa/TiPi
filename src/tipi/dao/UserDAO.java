@@ -21,4 +21,8 @@ public interface UserDAO {
 	
 	public abstract UserProfile getUsersInformationWithIdDAO(int id, UserProfile userProfile);
 	
+	public abstract void updateCompanyInformationDAO(UserCompany company);
+	
+	public abstract List<UserProfile> getUsersByRoleDAO(int role);
+	
 }

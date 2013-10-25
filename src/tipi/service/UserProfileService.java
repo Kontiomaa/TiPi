@@ -23,4 +23,13 @@ public interface UserProfileService {
 	
 	@PreAuthorize("isAuthenticated()")
 	public abstract void sendNewPasswordToDao(String email, String newPassword);
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public abstract UserCompany getCompany(int company_id, UserCompany company);
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public void sendModifiedCompanyToDAO(UserCompany company);
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public abstract List<UserProfile> getUsersByRole(int role);
 }

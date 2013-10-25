@@ -22,25 +22,38 @@
 						<legend>Admin</legend>
 						<div class="row-fluid">
 							<div class="span12">
-								<table class="table table-striped">
+								<table id="myTable" class="table table-striped">
 									<thead>
 										<tr>
-											<th>Etunimi</th>
-											<th>Sukunimi</th>
+											<th>Nimi</th>
+											<th>Puhelinnumero</th>
+											<th>Sähköposti</th>
 											<th>Yritys</th>
-											<th>Rooli</th>
+											<th></th>
 											<th></th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Monty AB</td>
-											<td>Vantaa, Vantaankatu 6</td>
-											<td>Espoo, Espoonkuja 3</td>
-											<td>xx:xx xx.xx.xxxx</td>
-											<td><button class="btn btn-primary">Avaa</button>
-												<button class="btn btn-success">Muokkaa</button></td>
-										</tr>
+										<c:forEach items="${users}" var="user">
+											<tr>
+												<td><c:out value="${user.fName}" /> <c:out value="${user.lName}" /></td>
+												<td><c:out value="${user.phoneNo}" /></td>
+												<td><c:out value="${user.email}" /></td>
+												<td><c:out value="${user.company.name}" /></td>
+												<form action="modifyCompany" method="post">
+													<td><input type="hidden" name="company_id" id="company_id"
+														value="${user.user_id}" />
+														<button class="btn btn-primary" type="submit"
+															value="submit">Muokkaa</button></td>
+												</form>
+												<form action="modifyCompany" method="post">
+													<td><input type="hidden" name="company_id" id="company_id"
+														value="${user.user_id}" />
+														<button class="btn btn-danger" type="submit"
+															value="submit">Poista</button></td>
+												</form>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
