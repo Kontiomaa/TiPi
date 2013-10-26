@@ -23,6 +23,10 @@ public interface UserDAO {
 	
 	public abstract void updateCompanyInformationDAO(UserCompany company);
 	
+	public abstract void updateUserInformationDAO(UserProfile user);
+	
+	public abstract void changeUserIsActiveStatusDAO(UserProfile user);
+	
 	public abstract List<UserProfile> getUsersByRoleDAO(int role);
 	
 }

@@ -28,8 +28,17 @@ public interface UserProfileService {
 	public abstract UserCompany getCompany(int company_id, UserCompany company);
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void sendModifiedCompanyToDAO(UserCompany company);
+	public void sendModifiedCompany(UserCompany company);
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public void sendModifiedUser(UserProfile user);
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public void changeUserIsActiveStatus(UserProfile user);
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public abstract List<UserProfile> getUsersByRole(int role);
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public abstract UserProfile getUserById(int user_id, UserProfile user);
 }

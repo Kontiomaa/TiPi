@@ -63,8 +63,18 @@ public class UserProfileServiceImpl implements UserProfileService {
 	}
 	
 	@Override
-	public void sendModifiedCompanyToDAO(UserCompany company){
+	public void sendModifiedCompany(UserCompany company){
 		userDao.updateCompanyInformationDAO(company);
+	}
+	
+	@Override
+	public void sendModifiedUser(UserProfile user){
+		userDao.updateUserInformationDAO(user);
+	}
+	
+	@Override
+	public void changeUserIsActiveStatus(UserProfile user){
+		userDao.changeUserIsActiveStatusDAO(user);
 	}
 	
 	@Override
@@ -76,5 +86,11 @@ public class UserProfileServiceImpl implements UserProfileService {
 			user.setCompany(userCompany);
 		}
 		return users;
+	}
+	
+	@Override
+	public UserProfile getUserById(int user_id, UserProfile user) {
+		user = userDao.getUsersInformationWithIdDAO(user_id, user);
+		return user;
 	}
 }

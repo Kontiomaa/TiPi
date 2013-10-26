@@ -126,6 +126,30 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	public void updateUserInformationDAO(UserProfile user) {
+		String newPasswordQuery = "UPDATE registeredUsers SET fName = ?, lName = ?, phoneNo = ?,"
+				+ " email = ?, myRole = ?, myCompany = ? WHERE user_id = ?;";
+		jdbcTemplate.update(newPasswordQuery, new Object[] {
+				user.getfName(),
+				user.getlName(),
+				user.getPhoneNo(),
+				user.getEmail(),
+				user.getMyRole(),
+				user.getMyCompany(),
+				user.getUser_id()
+		});
+	}
+	
+	@Override
+	public void changeUserIsActiveStatusDAO(UserProfile user) {
+		String newPasswordQuery = "UPDATE registeredUsers SET userIsActive = ? WHERE user_id = ?;";
+		jdbcTemplate.update(newPasswordQuery, new Object[] {
+				user.isUserIsActive(),
+				user.getUser_id()
+		});
+	}
+
+	@Override
 	public List<UserProfile> getUsersByRoleDAO(int role) {
 
 		String sql = "select * from registeredUsers where myRole=?;";

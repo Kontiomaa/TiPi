@@ -17,11 +17,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import tipi.bean.UserCompany;
 import tipi.bean.UserCompanyImpl;
 import tipi.bean.UserProfile;
+import tipi.bean.UserProfileImpl;
 import tipi.service.UserProfileService;
 
 @Controller
 @RequestMapping(value="/admin")
-@SessionAttributes({"allUsers","allCompanies, modifyCompany"})
+@SessionAttributes({"allUsers","allCompanies, modifyCompany, modifyUser"})
 public class UsersController {
 	
 	@Inject
@@ -51,7 +52,8 @@ public class UsersController {
 	
 	@RequestMapping(value = "/companies", method = RequestMethod.GET)
 	public String companies(Model model) {
-		List<UserCompany> allCompanies = userProfileService.getAllCompanies();		
+		List<UserCompany> allCompanies = userProfileService.getAllCompanies();
+		model.addAttribute("allCompanies", allCompanies);
 		return "admin/companies";
 	}
 	
@@ -69,8 +71,36 @@ public class UsersController {
 		if (result.hasErrors()) {
 			return "admin/modifyCompany";
 		} else {
-			userProfileService.sendModifiedCompanyToDAO(company);
+			userProfileService.sendModifiedCompany(company);
 			return "redirect:/admin/companies";
 		}	
+	}
+	
+	@RequestMapping(value = "/modifyUser", method = RequestMethod.POST)
+	public String modifyUser(Model model, HttpServletRequest req) {
+		UserProfile user = new UserProfileImpl();
+		user = userProfileService.getUserById(Integer.parseInt(req.getParameter("user_id")), user);
+		model.addAttribute("modifyUser", user);
+		List<UserCompany> allCompanies = userProfileService.getAllCompanies();
+		model.addAttribute("allCompanies", allCompanies);
+		return "admin/modifyUser";
+	}
+	
+	@RequestMapping(value = "/saveModifiedUser", method = RequestMethod.POST)
+	public String saveModifiedUser(@ModelAttribute(value = "modifyUser") @Valid UserProfileImpl user,
+			BindingResult result, Model model, HttpServletRequest req) {
+		if (result.hasErrors()) {
+			List<UserCompany> allCompanies = userProfileService.getAllCompanies();
+			model.addAttribute("allCompanies", allCompanies);
+			return "admin/modifyUser";
+		} else if (Boolean.parseBoolean(req.getParameter("changeUserIsActiveStatus")) == true) {
+			userProfileService.changeUserIsActiveStatus(user);
+		} else {
+			userProfileService.sendModifiedUser(user);
+		}	
+		if(user.getMyRole() == 2) {
+			return "redirect:/admin/admins";
+		}
+		return "redirect:/admin/users";
 	}
 }
