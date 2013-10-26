@@ -18,7 +18,7 @@ import tipi.service.FormSendService;
 
 @Controller
 @RequestMapping(value = "/user")
-@SessionAttributes({"orderForm","userProfile"})
+@SessionAttributes({"orderForm", "userProfile", "pageIdentifier"})
 public class FormController {
 	
 	boolean orderSuccessful=false;
@@ -39,18 +39,21 @@ public class FormController {
 	public String getCreateForm(Model model) {
 		OrderForm orderForm = new OrderFormImpl();
 		model.addAttribute("orderForm", orderForm);
+		model.addAttribute("pageIdentifier", "orderForm");
 		return "redirect:/user/orderForm";
 	}
 
 	// FORMIN TIETOJEN VASTAANOTTO
 	@RequestMapping(value = "orderForm", method = RequestMethod.POST)
-	public String create(
+	public String create(Model model,
 			@ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
 			BindingResult result) {
 
 		if (result.hasErrors()) {
+			model.addAttribute("pageIdentifier", "orderForm");
 			return "/user/orderForm";
 		} else {
+			model.addAttribute("pageIdentifier", "orderForm");
 			return "/user/orderConfirmation";
 		}
 	}
@@ -67,18 +70,20 @@ public class FormController {
 		}
 		orderSuccessful=false;
 
+		model.addAttribute("pageIdentifier", "orderForm");
 		return "/user/orderForm";
 	}
 	
 	// FORMIN TALLENTAMINEN
 	@RequestMapping(value = "orderSend", method = RequestMethod.POST)
-	public String sendOrderForm(@ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
+	public String sendOrderForm(Model model, @ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
 			BindingResult result, @ModelAttribute(value = "userProfile") UserProfileImpl userProfile) {
 
 		formSendService.sendFormToDAO(orderForm, userProfile.getUser_id(), userProfile.getMyCompany());
 		
 		orderSuccessful=true;
 		
+		model.addAttribute("pageIdentifier", "orderForm");
 		return "redirect:/user/orderFormEmpty";
 	}
 	

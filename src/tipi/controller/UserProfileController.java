@@ -17,11 +17,12 @@ import tipi.service.UserProfileService;
 
 @Controller
 @RequestMapping(value = "/user")
-@SessionAttributes("userProfile")
+@SessionAttributes({"userProfile", "pageIdentifier"})
 public class UserProfileController {
 
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profile(Model model) {
+		model.addAttribute("pageIdentifier", "profile");
 		return "/user/profile";
 	}
 	
@@ -55,6 +56,8 @@ public class UserProfileController {
 			System.out.println("Wrong password!");
 			model.addAttribute("passwordChangeFailed", "true");
 		}
+		
+		model.addAttribute("pageIdentifier", "profile");
 		
 		return "/user/profile";
 	}

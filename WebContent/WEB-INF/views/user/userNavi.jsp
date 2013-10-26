@@ -4,11 +4,35 @@
 					<div class="container">
 
 						<ul class="nav">
-							<li class="active"><a class="brand" href="orderForm">Siirtoapu.fi</a>
-							</li>
-							<li class="active"><a href="orderForm">Etusivu</a></li>
-							<li><a href="#">Tilaukset</a></li>
-							<li><a href="profile">Profiili</a></li>
+							<li class="active"><a class="brand" href="orderForm">Siirtoapu.fi</a></li>
+							
+							<c:choose>
+								<c:when test="${pageIdentifier == 'orderForm'}">
+									<li class="active"><a href="orderForm">Tilauslomake</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="orderForm">Tilauslomake</a></li>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:choose>
+								<c:when test="${pageIdentifier == 'orders'}">
+									<li class="active"><a href="#">Tilaukset</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="#">Tilaukset</a></li>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:choose>
+								<c:when test="${pageIdentifier == 'profile'}">
+									<li class="active"><a href="profile">Profiili</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="profile">Profiili</a></li>
+								</c:otherwise>
+							</c:choose>
+						
 						</ul>
 
 						<form class="navbar-form pull-right">
