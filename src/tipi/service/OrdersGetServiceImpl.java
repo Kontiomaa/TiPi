@@ -170,4 +170,12 @@ public class OrdersGetServiceImpl implements OrdersGetService {
 
 		return order;
 	}
+	
+	@Override
+	public List<OrderForm> getOrderListForUserFromDAO(String userEmail) {
+		List<OrderForm> orderList = ordersDAO.getOrderListForUser(userEmail);
+		
+		return orderList;
+	}
+	
 }

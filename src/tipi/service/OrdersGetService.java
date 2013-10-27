@@ -20,4 +20,6 @@ public interface OrdersGetService {
 	
 	public abstract void updateOrderStatus(int orders_id, int statusOfOrder);
 	
+	public abstract List<OrderForm> getOrderListForUserFromDAO(String userEmail);
+	
 }

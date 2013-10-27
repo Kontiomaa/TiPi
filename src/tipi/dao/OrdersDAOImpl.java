@@ -29,17 +29,15 @@ public class OrdersDAOImpl implements OrdersDAO {
 	@Override
 	public List<OrderForm> getOrderList(int statusOfOrder) {
 		String sql = "SELECT * FROM orders WHERE statusOfOrder = ?;";
-		
-		List<OrderForm> resultList = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(OrderFormImpl.class), new Object[]{statusOfOrder} );
+		Object[] data = new Object[] {statusOfOrder};
+		List<OrderForm> resultList = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(OrderFormImpl.class), data);
 		
 		return resultList;
-
 	}
 
 	@Override
 	public OrderForm getOrderBean(int id) {
-				
-		String sql = "SELECT * FROM orders WHERE orders_id = ?";
+		String sql = "SELECT * FROM orders WHERE orders_id = ?;";
 		Object[] data = new Object[] {id};
 		OrderForm resultObject = getJdbcTemplate().queryForObject(sql, data, new BeanPropertyRowMapper(OrderFormImpl.class));
 		
@@ -53,5 +51,14 @@ public class OrdersDAOImpl implements OrdersDAO {
 				statusOfOrder,
 				orders_id
 		});
+	}
+	
+	@Override
+	public List<OrderForm> getOrderListForUser(String userEmail) {
+		String sql = "SELECT * FROM orders WHERE userMadeOrder = (SELECT user_id FROM registeredUsers WHERE email = ?);";
+		Object[] data = new Object[] {userEmail};
+		List<OrderForm> resultList = jdbcTemplate.query(sql, new BeanPropertyRowMapper(OrderFormImpl.class), data);
+		
+		return resultList;
 	}
 }

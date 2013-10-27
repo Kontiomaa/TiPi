@@ -16,11 +16,11 @@
 							</c:choose>
 							
 							<c:choose>
-								<c:when test="${pageIdentifier == 'orders'}">
-									<li class="active"><a href="#">Tilaukset</a></li>
+								<c:when test="${pageIdentifier == 'show-orders'}">
+									<li class="active"><a href="orders">Tilaukset</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="#">Tilaukset</a></li>
+									<li><a href="show-orders">Tilaukset</a></li>
 								</c:otherwise>
 							</c:choose>
 							
