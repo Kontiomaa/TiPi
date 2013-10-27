@@ -57,7 +57,16 @@
 									<div class="controls span6">
 										<form:select path="myCompany">
 											<c:forEach var="company" items="${allCompanies}">
-												<option value="${company.company_id}">${company.name}</option>
+												<c:choose>
+													<c:when
+														test="${registerUser.myCompany == company.company_id}">
+														<option selected value="${company.company_id}">${company.name}</option>
+													</c:when>
+													<c:otherwise>
+														<option value="${company.company_id}">${company.name}</option>
+													</c:otherwise>
+												</c:choose>
+
 											</c:forEach>
 										</form:select>
 									</div>
@@ -96,15 +105,24 @@
 									<form:label path="myRole" class="control-label" for="textinput">Rooli*</form:label>
 									<div class="controls span6">
 										<form:select path="myRole">
-											<option value="1" selected>Asiakas</option>
-											<option value="2">Admin</option>
+											<c:choose>
+												<c:when test="${registerUser.myRole == '2'}">
+													<option value="1">Asiakas</option>
+													<option value="2" selected>Admin</option>
+												</c:when>
+												<c:otherwise>
+													<option value="1" selected>Asiakas</option>
+													<option value="2">Admin</option>
+												</c:otherwise>
+											</c:choose>
 										</form:select>
+
 									</div>
 								</div>
 							</div>
 						</div>
 						<br> <a href="registerEmptyUser" class="btn btn-danger">Tyhjennä</a>
-						<button type="submit" class="btn btn-inverse">Seuraava</button>
+						<button type="submit" class="btn btn-primary">Seuraava</button>
 					</fieldset>
 				</form:form>
 			</div>

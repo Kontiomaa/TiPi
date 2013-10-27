@@ -1,6 +1,6 @@
 
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Admins</title>
+<title>Siirtoapu.fi -- Adminit</title>
 </head>
 <body>
 	<div class="container">

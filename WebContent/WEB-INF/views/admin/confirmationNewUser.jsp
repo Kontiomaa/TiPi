@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Uusi tilaus</title>
+<title>Siirtoapu.fi -- Käyttäjän tiedot</title>
 </head>
 <body>
 	<div class="container">
@@ -69,9 +69,9 @@
 
 								<div class="row-fluid">
 									<div>
-										<a href="registerNewUser" class="btn btn-danger">Takaisin</a>
+										<a href="registerNewUser" class="btn btn-primary">Takaisin</a>
 
-										<button type="submit" class="btn btn-inverse" value="submit"
+										<button type="submit" class="btn btn-success" value="submit"
 											id="submit">Rekisteröi käyttäjä</button>
 									</div>
 

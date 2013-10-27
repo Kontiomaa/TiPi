@@ -62,6 +62,7 @@
 		<sec:intercept-url pattern="/secure/*" access="hasRole('ROLE_USER')" /> <!-- requires-channel="https" -->
 		<sec:intercept-url pattern="/user/*" access="hasRole('ROLE_USER')" /> <!-- requires-channel="https" -->
 		<sec:intercept-url pattern="/login" access="permitAll" /> <!-- requires-channel="https" -->
+		<sec:intercept-url pattern="/error" access="permitAll" /> <!-- requires-channel="https" -->
 
 		<sec:form-login login-page="/loginpage"
 			default-target-url="/main" authentication-failure-url="/loginfail" />

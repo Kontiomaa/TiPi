@@ -1,6 +1,6 @@
 
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Uudet tilaukset</title>
+<title>Siirtoapu.fi -- Toimitetut tilaukset</title>
 </head>
 <body>
 	<div class="container">
@@ -12,7 +12,7 @@
 				<div class="span10 offset1">
 
 					<fieldset>
-						<legend>Viedyt tilaukset</legend>
+						<legend>Toimitetut tilaukset</legend>
 						<div class="row-fluid">
 							<div class="span12">
 
@@ -23,7 +23,7 @@
 											<th>Mist‰</th>
 											<th></th>
 											<th>Mihin</th>
-											<th>Luontip‰iv‰m‰‰r‰</th>
+											<th>Noutoaika</th>
 											<th colspan="2"></th>
 										</tr>
 									</thead>
@@ -31,13 +31,13 @@
 										<c:forEach items="${orders}" var="order">
 											<tr>
 												<td><c:out value="${order.userProfile.company.name}" /></td>
-												<td><c:out value="${order.collectionCity}" />, <c:out
-														value="${order.collectionAddress}" /></td>
-												<td><i class="icon-arrow-right"></i></td>
 												<td><c:out value="${order.destinationCity}" />, <c:out
 														value="${order.destinationAddress}" /></td>
-												<td><c:out value="${order.destinationDate}" /> <c:out
-														value="${order.destinationTime}" /></td>
+												<td><i class="icon-arrow-right"></i></td>
+												<td><c:out value="${order.nextDestinationCity}" />, <c:out
+														value="${order.nextDestinationAddress}" /></td>
+												<td><c:out value="${order.nextDestinationCollectionDate}" /> <c:out
+														value="${order.nextDestinationCollectionTime}" /></td>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />

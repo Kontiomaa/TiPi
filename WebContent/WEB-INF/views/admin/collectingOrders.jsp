@@ -1,6 +1,6 @@
 
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Uudet tilaukset</title>
+<title>Siirtoapu.fi -- Noudetut tilaukset</title>
 </head>
 <body>
 	<div class="container">
@@ -12,7 +12,7 @@
 				<div class="span10 offset1">
 
 					<fieldset>
-						<legend>Noudetaan tilaukset</legend>
+						<legend>Noudetut tilaukset</legend>
 						<div class="row-fluid">
 							<div class="span12">
 
@@ -23,7 +23,7 @@
 											<th>Mist‰</th>
 											<th></th>
 											<th>Mihin</th>
-											<th>Luontip‰iv‰m‰‰r‰</th>
+											<th>Toimitusaika</th>
 											<th colspan="2"></th>
 										</tr>
 									</thead>

@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Uusi tilaus</title>
+<title>Siirtoapu.fi -- Yrityksen tiedot</title>
 </head>
 <body>
 	<div class="container">
@@ -27,12 +27,12 @@
 					
 					<tr>
 
-						<td><a href="registerNewCompany" class="btn btn-danger">Takaisin</a></td>
+						<td><a href="registerNewCompany" class="btn btn-primary">Takaisin</a></td>
 
 						<td><form action="registerNewCompanySend" method="post"
 								class="form-horizontal">
 								<fieldset>
-									<button type="submit" class="btn btn-inverse">Rekisteröi yritys</button>
+									<button type="submit" class="btn btn-success">Rekisteröi yritys</button>
 								</fieldset>
 							</form></td>
 						<td colspan="2"></td>

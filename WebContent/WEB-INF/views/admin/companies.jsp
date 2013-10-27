@@ -1,6 +1,6 @@
 
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- käyttäjät</title>
+<title>Siirtoapu.fi -- Yritykset</title>
 </head>
 <body>
 	<div class="container">

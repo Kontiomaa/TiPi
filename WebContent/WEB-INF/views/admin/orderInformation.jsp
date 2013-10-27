@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Uusi tilaus</title>
+<title>Siirtoapu.fi -- Tilauksen tiedot</title>
 </head>
 <body>
 	<div class="container">
