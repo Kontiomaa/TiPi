@@ -8,7 +8,6 @@ import tipi.bean.OrderForm;
 
 public interface OrdersGetService {
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public abstract OrderForm getOrderFromDAO(int id);
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
