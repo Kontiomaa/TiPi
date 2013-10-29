@@ -3,6 +3,7 @@
 <title>Siirtoapu.fi -- Uudet tilaukset</title>
 </head>
 <body>
+<% response.addHeader("Refresh","300"); %>
 	<div class="container">
 
 		<%@include file="navi.jsp"%>
