@@ -155,56 +155,7 @@
 						</tbody>
 					</table>
 				</c:if>
-
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th colspan="4"><h4>Tilaajan tiedot</h4></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Etunimi</td>
-							<td><c:out value="${order.userProfile.fName}" default="-----" /></td>
-							<td>Puhelinnumero</td>
-							<td><c:out value="${order.userProfile.phoneNo}" default="-----" /></td>
-						</tr>
-						<tr>
-							<td>Sukunimi</td>
-							<td><c:out value="${order.userProfile.lName}" default="-----" /></td>
-							<td>Yritys</td>
-							<td><c:out value="${order.userProfile.company.name}" default="-----" /></td>
-						</tr>
-						<tr>
-							<td>Muokattu</td>
-							<td><c:out value="${order.lastTimeEdited}" default="-----" /></td>
-							<td>Status</td>
-							
-						<c:choose>
-							<c:when test="${order.statusOfOrder == 1}">
-								<td><c:out value="Uusi" default="-----" /></td>
-							</c:when>
-							<c:when test="${order.statusOfOrder == 2}">
-								<td><c:out value="Kuitattu" default="-----" /></td>
-							</c:when>
-							<c:when test="${order.statusOfOrder == 3}">
-								<td><c:out value="Noudettu" default="-----" /></td>
-							</c:when>
-							<c:when test="${order.statusOfOrder == 4}">
-								<td><c:out value="Toimitettu" default="-----" /></td>
-							</c:when>
-							<c:when test="${order.statusOfOrder == 5}">
-								<td><c:out value="Palautuksessa" default="-----" /></td>
-							</c:when>
-							<c:when test="${order.statusOfOrder == 6}">
-								<td><c:out value="Valmis" default="-----" /></td>
-							</c:when>
-							<c:when test="${order.statusOfOrder == 7}">
-								<td><c:out value="Laskutettu" default="-----" /></td>
-							</c:when>
-						</c:choose>
-					</tr>
-				</table>
+				
 				<div class="row-fluid">
 					<div class="span6">
 						<form method="post" action="showOrders" style="float:left;">
