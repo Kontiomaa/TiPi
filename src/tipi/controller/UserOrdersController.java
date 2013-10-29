@@ -56,4 +56,16 @@ public class UserOrdersController {
 		return "user/oneOrder";
 	}
 	
+	@RequestMapping(value = "/getModificateOrder", method = RequestMethod.POST)
+	public String showOrderForModification(Model model, HttpServletRequest request) {
+		int orderId = Integer.parseInt(request.getParameter("orderId"));
+		System.out.println("-------------------------------------------------------------------" + String.valueOf(orderId));
+		OrderForm order = ordersGetService.getOrderForUserFromDAO(orderId);
+		
+		model.addAttribute("order", order);
+		model.addAttribute("pageIdentifier", "orders");
+		
+		return "user/modifyOrder";
+	}
+	
 }

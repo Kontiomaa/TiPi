@@ -86,7 +86,7 @@
 							</div>
 						</div>
 						<br> <a href="registerEmptyCompany" class="btn btn-danger">Tyhjennä</a>
-						<button type="submit" class="btn btn-inverse">Seuraava</button>
+						<button type="submit" class="btn btn-primary">Seuraava</button>
 					</fieldset>
 				</form:form>
 			</div>

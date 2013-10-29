@@ -18,3 +18,8 @@ body {
 	padding: 0px;
 	margin: 0px;
 }
+
+/* Used for td-cells with header-like content */
+.data-header {
+	font-weight: bolder;
+}

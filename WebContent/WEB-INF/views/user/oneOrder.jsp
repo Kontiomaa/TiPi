@@ -18,15 +18,15 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>Automerkki</td>
+							<td class="data-header">Automerkki</td>
 							<td><c:out value="${order.carBrand}" default="-----" /></td>
-							<td>Rekisterinumero</td>
+							<td class="data-header">Rekisterinumero</td>
 							<td><c:out value="${order.carRegister}" default="-----" /></td>
 						</tr>
 						<tr>
-							<td>Automalli</td>
+							<td class="data-header">Automalli</td>
 							<td><c:out value="${order.carModel}" default="-----" /></td>
-							<td>Autoväri</td>
+							<td class="data-header">Autoväri</td>
 							<td><c:out value="${order.carColor}" default="-----" /></td>
 						</tr>
 					</tbody>
@@ -41,33 +41,33 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>Päivä</td>
+							<td class="data-header">Päivä</td>
 							<td><c:out value="${order.collectionDate}" default="-----" /></td>
-							<td>Päivä</td>
+							<td class="data-header">Päivä</td>
 							<td><c:out value="${order.destinationDate}" default="-----" /></td>
 						</tr>
 						<tr>
-							<td>Kellonaika</td>
+							<td class="data-header">Kellonaika</td>
 							<td><c:out value="${order.collectionTime}" default="-----" /></td>
-							<td>Kellonaika</td>
+							<td class="data-header">Kellonaika</td>
 							<td><c:out value="${order.destinationTime}" default="-----" /></td>
 						</tr>
 						<tr>
-							<td>Osoite</td>
+							<td class="data-header">Osoite</td>
 							<td><c:out value="${order.collectionAddress}" default="-----" /></td>
-							<td>Osoite</td>
+							<td class="data-header">Osoite</td>
 							<td><c:out value="${order.destinationAddress}" default="-----" /></td>
 						</tr>
 						<tr>
-							<td>Postinumero</td>
+							<td class="data-header">Postinumero</td>
 							<td><c:out value="${order.collectionPostalCode}" default="-----" /></td>
-							<td>Postinumero</td>
+							<td class="data-header">Postinumero</td>
 							<td><c:out value="${order.destinationPostalCode}" default="-----" /></td>
 						</tr>
 						<tr>
-							<td>Toimipaikka</td>
+							<td class="data-header">Toimipaikka</td>
 							<td><c:out value="${order.collectionCity}" default="-----" /></td>
-							<td>Toimipaikka</td>
+							<td class="data-header">Toimipaikka</td>
 							<td><c:out value="${order.destinationCity}" default="-----" /></td>
 						</tr>
 					</tbody>
@@ -81,15 +81,15 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>Etunimi</td>
+							<td class="data-header">Etunimi</td>
 							<td><c:out value="${order.clientFname}" default="-----" /></td>
-							<td>Puhelinnumero</td>
+							<td class="data-header">Puhelinnumero</td>
 							<td><c:out value="${order.clientPhoneNo}" default="-----" /></td>
 						</tr>
 						<tr>
-							<td>Sukunimi</td>
+							<td class="data-header">Sukunimi</td>
 							<td><c:out value="${order.clientLname}" default="-----" /></td>
-							<td>Yritys</td>
+							<td class="data-header">Yritys</td>
 							<td><c:out value="${order.clientCompany}" default="-----" /></td>
 						</tr>
 					</tbody>
@@ -117,25 +117,25 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>Noutopäivä</td>
+								<td class="data-header">Noutopäivä</td>
 								<td><c:out value="${order.nextDestinationCollectionDate}" default="-----" /></td>
-								<td>Palautuspäivä</td>
+								<td class="data-header">Palautuspäivä</td>
 								<td><c:out value="${order.nextDestinationDate}" default="-----" /></td>
 							</tr>
 							<tr>
-								<td>Noutoaika</td>
+								<td class="data-header">Noutoaika</td>
 								<td><c:out value="${order.nextDestinationCollectionTime}" default="-----" /></td>
-								<td>Palautusaika</td>
+								<td class="data-header">Palautusaika</td>
 								<td><c:out value="${order.nextDestinationTime}" default="-----" /></td>
 							</tr>
 							<tr>
-								<td>Osoite</td>
+								<td class="data-header">Osoite</td>
 								<td><c:out value="${order.nextDestinationAddress}" default="-----" /></td>
-								<td>Postinumero</td>
+								<td class="data-header">Postinumero</td>
 								<td><c:out value="${order.nextDestinationPostalCode}" default="-----" /></td>
 							</tr>
 							<tr>
-								<th>Toimipaikka</th>
+								<td class="data-header">Toimipaikka</td>
 								<td><c:out value="${order.nextDestinationCity}" default="-----" /></td>
 								<td colspan="2"></td>
 							</tr>
@@ -163,12 +163,13 @@
 						</form>
 					</div>
 					<div class="span6">
-						<form method="post" action="#" style="float:right;">
+						<form method="post" action="getModificateOrder" style="float:right;">
 							<input name="orderId" type="hidden" value="${order.orders_id}" />
 							<button class="btn btn-primary">Muokkaa</button>
 						</form>
 					</div>
 				</div>
+				
 			</div>
 			<div class="span1"></div>
 		</div>

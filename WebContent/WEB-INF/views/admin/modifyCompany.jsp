@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Uusi yritys</title>
+<title>Siirtoapu.fi -- Muokkaa yritystä</title>
 </head>
 <body>
 	<div class="container">
@@ -77,8 +77,8 @@
 						</div>
 						<form:input type="hidden" path="company_id"
 							value="${order.orders_id}" />
-						<br> <a href="companies" class="btn btn-danger">Takaisin</a>
-						<button type="submit" class="btn btn-inverse">Tallenna</button>
+						<br> <a href="companies" class="btn btn-primary">Takaisin</a>
+						<button type="submit" class="btn btn-success">Tallenna</button>
 					</fieldset>
 				</form:form>
 			</div>
