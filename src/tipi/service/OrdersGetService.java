@@ -8,7 +8,6 @@ import tipi.bean.OrderForm;
 
 public interface OrdersGetService {
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public abstract OrderForm getOrderFromDAO(int id);
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -18,6 +17,7 @@ public interface OrdersGetService {
 	public abstract OrderForm parseMySQLToJavaTime(OrderForm order);
 	public abstract OrderForm parseMySQLToJavaTimeStamp(OrderForm order);
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public abstract void updateOrderStatus(int orders_id, int statusOfOrder);
 	
 	public abstract List<OrderForm> getOrderListForUserFromDAO(String userEmail);
