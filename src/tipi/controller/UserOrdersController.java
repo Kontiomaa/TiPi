@@ -48,7 +48,7 @@ public class UserOrdersController {
 	@RequestMapping(value = "/getOneOrder", method = RequestMethod.POST)
 	public String showOrder(Model model, HttpServletRequest request) {
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
-		OrderForm order = ordersGetService.getOrderFromDAO(orderId);
+		OrderForm order = ordersGetService.getOrderForUserFromDAO(orderId);
 		
 		model.addAttribute("order", order);
 		model.addAttribute("pageIdentifier", "orders");
