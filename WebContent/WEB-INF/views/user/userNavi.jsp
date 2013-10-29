@@ -4,7 +4,7 @@
 					<div class="container">
 
 						<ul class="nav">
-							<li class="active"><a class="brand" href="orderForm">Siirtoapu.fi</a></li>
+							<li><a class="brand" href="orderForm">Siirtoapu.fi</a></li>
 							
 							<c:choose>
 								<c:when test="${pageIdentifier == 'orderForm'}">
@@ -16,11 +16,11 @@
 							</c:choose>
 							
 							<c:choose>
-								<c:when test="${pageIdentifier == 'show-orders'}">
-									<li class="active"><a href="orders">Tilaukset</a></li>
+								<c:when test="${pageIdentifier == 'orders'}">
+									<li class="active"><a href="showOrders">Tilaukset</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="show-orders">Tilaukset</a></li>
+									<li><a href="showOrders">Tilaukset</a></li>
 								</c:otherwise>
 							</c:choose>
 							

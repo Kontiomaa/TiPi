@@ -17,7 +17,6 @@ public interface OrdersGetService {
 	public abstract OrderForm parseMySQLToJavaTime(OrderForm order);
 	public abstract OrderForm parseMySQLToJavaTimeStamp(OrderForm order);
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public abstract void updateOrderStatus(int orders_id, int statusOfOrder);
 	
 	public abstract List<OrderForm> getOrderListForUserFromDAO(String userEmail);

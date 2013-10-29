@@ -12,3 +12,9 @@ body {
 #orderConfirmationTable th {
 	color: rgb(100,100,100);
 }
+
+/* Class for buttons in forms which will do requests */
+.buttonForm {
+	padding: 0px;
+	margin: 0px;
+}

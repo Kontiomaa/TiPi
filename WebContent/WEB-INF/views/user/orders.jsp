@@ -1,5 +1,8 @@
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Profiili</title>
+<title>Siirtoapu.fi -- Tilaukset</title>
+
+	<script type="text/javascript" src="../resources/jquery-tablesorter/jquery.tablesorter.min.js"></script>
+
 </head>
 <body>
 	<div class="container">
@@ -7,34 +10,41 @@
 		<div class="row-fluid" id="area">
 			<div class="span10 offset1">
 
-				<fieldset>
-					<legend>Tehdyt tilaukset</legend>
+				<h3>Tilaukset</h3>
+
 				<table id="myTable" class="table table-striped">
 					<thead>
 						<tr>
-							<th>Yritys</th>
+							<th>Rekisterinro.</th>
 							<th>Mist‰</th>
 							<th></th>
 							<th>Mihin</th>
-							<th>Luontip‰iv‰m‰‰r‰</th>
+							<th>Viimeksi muokattu</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${orders}" var="order">
 							<tr>
-								<td><c:out value="${order.companyMadeOrder}" /></td>
+								<td><c:out value="${order.carRegister}" /></td>
 								<td><c:out value="${order.collectionCity}" />, <c:out value="${order.collectionAddress}" /></td>
 								<td><i class="icon-arrow-right"></i></td>
 								<td><c:out value="${order.destinationCity}" />, <c:out value="${order.destinationAddress}" /></td>
-								<td><c:out value="${order.destinationDate}" /> <c:out value="${order.destinationTime}" /></td>
+								<td><c:out value="${order.lastTimeEdited}" /></td>
+								<td>
+									<form method="post" action="getOneOrder" class="buttonForm">
+										<input name="orderId" type="hidden" value="${order.orders_id}" />
+										<button class="btn btn-primary">Tarkastele</button>
+									</form>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-					</div>
-				</fieldset>
+				
 			</div>
 		</div>
 	</div>
+	
 </body>
 </html>
