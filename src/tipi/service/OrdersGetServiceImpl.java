@@ -123,8 +123,8 @@ public class OrdersGetServiceImpl implements OrdersGetService {
 		SimpleDateFormat newFormat = new SimpleDateFormat("HH:mm");
 
 		try {
-			order.setCollectionTime(newFormat.format(oldFormat.parse(order
-					.getCollectionTime())));
+			order.setCollectionTimeFrom(newFormat.format(oldFormat.parse(order
+					.getCollectionTimeFrom())));
 			order.setDestinationTime(newFormat.format(oldFormat.parse(order
 					.getDestinationTime())));
 		} catch (ParseException e) {
@@ -132,11 +132,11 @@ public class OrdersGetServiceImpl implements OrdersGetService {
 			e.printStackTrace();
 		}
 
-		if (order.getNextDestinationCollectionTime() != null) {
+		if (order.getNextDestinationCollectionTimeFrom() != null) {
 			try {
-				order.setNextDestinationCollectionTime(newFormat
+				order.setNextDestinationCollectionTimeFrom(newFormat
 						.format(oldFormat.parse(order
-								.getNextDestinationCollectionTime())));
+								.getNextDestinationCollectionTimeFrom())));
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

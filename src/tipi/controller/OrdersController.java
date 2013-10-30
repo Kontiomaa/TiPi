@@ -53,21 +53,10 @@ public class OrdersController {
 		return "admin/acceptedOrders";
 	}
 
-	@RequestMapping(value = "/collecting", method = RequestMethod.GET)
-	public String collectedOrders(Model model) {
-		model.addAttribute("orderPage", "collecting");
-		int statusOfOrder = 3;
-		List<OrderForm> orders = ordersGetService
-				.getOrderListFromDAO(statusOfOrder);
-		model.addAttribute("orders", orders);
-		model.addAttribute("pageIdentifier", "orders");
-		return "admin/collectingOrders";
-	}
-
 	@RequestMapping(value = "/taken", method = RequestMethod.GET)
 	public String takenOrders(Model model) {
 		model.addAttribute("orderPage", "taken");
-		int statusOfOrder = 4;
+		int statusOfOrder = 3;
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
 		model.addAttribute("orders", orders);
@@ -75,21 +64,11 @@ public class OrdersController {
 		return "admin/takenOrders";
 	}
 
-	@RequestMapping(value = "/returning", method = RequestMethod.GET)
-	public String returnedOrders(Model model) {
-		model.addAttribute("orderPage", "returning");
-		int statusOfOrder = 5;
-		List<OrderForm> orders = ordersGetService
-				.getOrderListFromDAO(statusOfOrder);
-		model.addAttribute("orders", orders);
-		model.addAttribute("pageIdentifier", "orders");
-		return "admin/returningOrders";
-	}
 
 	@RequestMapping(value = "/completed", method = RequestMethod.GET)
 	public String completedOrders(Model model) {
 		model.addAttribute("orderPage", "completed");
-		int statusOfOrder = 6;
+		int statusOfOrder = 4;
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
 		model.addAttribute("orders", orders);
@@ -100,7 +79,7 @@ public class OrdersController {
 	@RequestMapping(value = "/billed", method = RequestMethod.GET)
 	public String billedOrders(Model model) {
 		model.addAttribute("orderPage", "billed");
-		int statusOfOrder = 7;
+		int statusOfOrder = 5;
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
 		model.addAttribute("orders", orders);
@@ -119,14 +98,10 @@ public class OrdersController {
 		if (orderInformation.getStatusOfOrder() == 1) {
 			model.addAttribute("changeStatusButton", "Kuittaa");
 		} else if (orderInformation.getStatusOfOrder() == 2) {
-			model.addAttribute("changeStatusButton", "Nouda");
+			model.addAttribute("changeStatusButton", "Toimita");
 		} else if (orderInformation.getStatusOfOrder() == 3) {
-			model.addAttribute("changeStatusButton", "Viety");
-		} else if (orderInformation.getStatusOfOrder() == 4) {
-			model.addAttribute("changeStatusButton", "Nouda");
-		} else if (orderInformation.getStatusOfOrder() == 5) {
 			model.addAttribute("changeStatusButton", "Palauta");
-		} else if (orderInformation.getStatusOfOrder() == 6) {
+		} else if (orderInformation.getStatusOfOrder() == 4) {
 			model.addAttribute("changeStatusButton", "Laskuta");
 		} else {
 			model.addAttribute("changeStatusButton", "------");
@@ -141,11 +116,12 @@ public class OrdersController {
 		boolean hasNewDestination = false;
 		if(req.getParameter("hasNewDestination") != null)
 		hasNewDestination = Boolean.parseBoolean(req.getParameter("hasNewDestination"));
-		if(orderStatus == 3 && hasNewDestination == false) {
-			orderStatus+=3;
+		if(orderStatus == 2 && hasNewDestination == false) {
+			orderStatus+=2;
 		} else {
 			orderStatus++;
 		}
+		System.out.println(hasNewDestination);
 		
 		ordersGetService.updateOrderStatus(
 				Integer.parseInt(req.getParameter("orderID")), orderStatus);
@@ -154,14 +130,10 @@ public class OrdersController {
 		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 2) {
 			return "redirect:/admin/accepted";
 		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 3) {
-			return "redirect:/admin/collecting";
-		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 4) {
 			return "redirect:/admin/taken";
-		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 5) {
-			return "redirect:/admin/returning";
-		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 6) {
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 4) {
 			return "redirect:/admin/completed";
-		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 7) {
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 5) {
 			return "redirect:/admin/billed";
 		}
 
@@ -174,8 +146,8 @@ public class OrdersController {
 		boolean hasNewDestination = false;
 		if(req.getParameter("hasNewDestination") != null)
 		hasNewDestination = Boolean.parseBoolean(req.getParameter("hasNewDestination"));
-		if(orderStatus == 6 && hasNewDestination == false) {
-			orderStatus-=3;
+		if(orderStatus == 4 && hasNewDestination == false) {
+			orderStatus-=2;
 		} else {
 			orderStatus--;
 		}
@@ -187,14 +159,10 @@ public class OrdersController {
 		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 2) {
 			return "redirect:/admin/accepted";
 		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 3) {
-			return "redirect:/admin/collecting";
-		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 4) {
 			return "redirect:/admin/taken";
-		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 5) {
-			return "redirect:/admin/returning";
-		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 6) {
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 4) {
 			return "redirect:/admin/completed";
-		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 7) {
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 5) {
 			return "redirect:/admin/billed";
 		}
 

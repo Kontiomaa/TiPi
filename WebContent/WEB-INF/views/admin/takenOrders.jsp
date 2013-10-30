@@ -37,7 +37,7 @@
 												<td><c:out value="${order.nextDestinationCity}" />, <c:out
 														value="${order.nextDestinationAddress}" /></td>
 												<td><c:out value="${order.nextDestinationCollectionDate}" /> <c:out
-														value="${order.nextDestinationCollectionTime}" /></td>
+														value="${order.nextDestinationCollectionTimeFrom}" /></td>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
@@ -49,7 +49,7 @@
 														value="${order.statusOfOrder}" />
 														<input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
-													<button class="btn btn-success">Nouda</button>
+													<button class="btn btn-success">Palauta</button>
 												</td>
 												</form>
 											</tr>

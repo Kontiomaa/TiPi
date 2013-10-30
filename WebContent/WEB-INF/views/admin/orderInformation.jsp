@@ -46,7 +46,7 @@
 					</tr>
 					<tr>
 						<th>Kellonaika</th>
-						<td><c:out value="${orderInformation.collectionTime}"
+						<td><c:out value="${orderInformation.collectionTimeFrom}"
 								default="-----" /></td>
 						<th>Kellonaika</th>
 						<td><c:out value="${orderInformation.destinationTime}"
@@ -135,7 +135,7 @@
 						<tr>
 							<th>Noutoaika</th>
 							<td><c:out
-									value="${orderInformation.nextDestinationCollectionTime}"
+									value="${orderInformation.nextDestinationCollectionTimeFrom}"
 									default="-----" /></td>
 							<th>Palautusaika</th>
 							<td><c:out value="${orderInformation.nextDestinationTime}"
@@ -212,18 +212,12 @@
 								<td><c:out value="Kuitattu" default="-----" /></td>
 							</c:when>
 							<c:when test="${orderInformation.statusOfOrder == 3}">
-								<td><c:out value="Noudettu" default="-----" /></td>
-							</c:when>
-							<c:when test="${orderInformation.statusOfOrder == 4}">
 								<td><c:out value="Toimitettu" default="-----" /></td>
 							</c:when>
-							<c:when test="${orderInformation.statusOfOrder == 5}">
-								<td><c:out value="Palautuksessa" default="-----" /></td>
-							</c:when>
-							<c:when test="${orderInformation.statusOfOrder == 6}">
+							<c:when test="${orderInformation.statusOfOrder == 4}">
 								<td><c:out value="Valmis" default="-----" /></td>
 							</c:when>
-							<c:when test="${orderInformation.statusOfOrder == 7}">
+							<c:when test="${orderInformation.statusOfOrder == 5}">
 								<td><c:out value="Laskutettu" default="-----" /></td>
 							</c:when>
 						</c:choose>
@@ -238,18 +232,12 @@
 								<td><a href="accepted" class="btn btn-primary">Takaisin</a></td>
 							</c:when>
 							<c:when test="${orderInformation.statusOfOrder == 3}">
-								<td><a href="collecting" class="btn btn-primary">Takaisin</a></td>
-							</c:when>
-							<c:when test="${orderInformation.statusOfOrder == 4}">
 								<td><a href="taken" class="btn btn-primary">Takaisin</a></td>
 							</c:when>
-							<c:when test="${orderInformation.statusOfOrder == 5}">
-								<td><a href="returning" class="btn btn-primary">Takaisin</a></td>
-							</c:when>
-							<c:when test="${orderInformation.statusOfOrder == 6}">
+							<c:when test="${orderInformation.statusOfOrder == 4}">
 								<td><a href="completed" class="btn btn-primary">Takaisin</a></td>
 							</c:when>
-							<c:when test="${orderInformation.statusOfOrder == 7}">
+							<c:when test="${orderInformation.statusOfOrder == 5}">
 								<td><a href="billed" class="btn btn-primary">Takaisin</a></td>
 							</c:when>
 							<c:otherwise>
@@ -258,7 +246,7 @@
 						</c:choose>
 
 						<c:choose>
-							<c:when test="${orderInformation.statusOfOrder == 7}">
+							<c:when test="${orderInformation.statusOfOrder == 5}">
 								<td colspan="2"></td>
 							</c:when>
 							<c:otherwise>

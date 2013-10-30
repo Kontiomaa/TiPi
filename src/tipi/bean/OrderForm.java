@@ -30,9 +30,13 @@ public interface OrderForm {
 
 	public abstract void setCollectionDate(String collectionDate);
 	
-	public abstract String getCollectionTime();
+	public String getCollectionTimeFrom();
 
-	public abstract void setCollectionTime(String collectionTime);
+	public void setCollectionTimeFrom(String collectionTimeFrom);
+	
+	public String getCollectionTimeTo();
+
+	public void setCollectionTimeTo(String collectionTimeTo);
 	
 	public abstract String getCollectionAddress();
 
@@ -98,9 +102,15 @@ public interface OrderForm {
 
 	public abstract void setNextDestinationCollectionDate(String nextDestinationCollectionDate);
 
-	public abstract String getNextDestinationCollectionTime();
+	public String getNextDestinationCollectionTimeFrom();
 
-	public abstract void setNextDestinationCollectionTime(String nextDestinationCollectionTime);
+	public void setNextDestinationCollectionTimeFrom(
+			String nextDestinationCollectionTimeFrom);
+
+	public String getNextDestinationCollectionTimeTo();
+
+	public void setNextDestinationCollectionTimeTo(
+			String nextDestinationCollectionTimeTo);
 	
 	public abstract String getNextDestinationDate();
 

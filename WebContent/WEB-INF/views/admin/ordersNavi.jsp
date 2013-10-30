@@ -21,29 +21,11 @@
 			</c:choose>
 
 			<c:choose>
-				<c:when test="${orderPage == 'collecting'}">
-					<li class="active"><a href="collecting">Noudetut</a></li>
-				</c:when>
-				<c:otherwise>
-					<li><a href="collecting">Noudetut</a></li>
-				</c:otherwise>
-			</c:choose>
-
-			<c:choose>
 				<c:when test="${orderPage == 'taken'}">
 					<li class="active"><a href="taken">Toimitetut</a></li>
 				</c:when>
 				<c:otherwise>
 					<li><a href="taken">Toimitetut</a></li>
-				</c:otherwise>
-			</c:choose>
-
-			<c:choose>
-				<c:when test="${orderPage == 'returning'}">
-					<li class="active"><a href="returning">Palautuksessa</a></li>
-				</c:when>
-				<c:otherwise>
-					<li><a href="returning">Palautuksessa</a></li>
 				</c:otherwise>
 			</c:choose>
 

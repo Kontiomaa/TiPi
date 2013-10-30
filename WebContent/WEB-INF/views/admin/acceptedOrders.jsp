@@ -7,7 +7,7 @@
 
 		<%@include file="navi.jsp"%>
 		<div class="row-fluid" id="area">
-		<%@include file="ordersNavi.jsp"%>
+			<%@include file="ordersNavi.jsp"%>
 			<div class="row-fluid">
 				<div class="span10 offset1">
 
@@ -37,7 +37,7 @@
 												<td><c:out value="${order.destinationCity}" />, <c:out
 														value="${order.destinationAddress}" /></td>
 												<td><c:out value="${order.collectionDate}" /> <c:out
-														value="${order.collectionTime}" /></td>
+														value="${order.collectionTimeFrom}" /></td>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
@@ -45,12 +45,13 @@
 															value="submit">Avaa</button></td>
 												</form>
 												<form action="changeOrderStatus" method="post" class="span4">
-													<td><input type="hidden" name="statusOfOrder" id="statusOfOrder"
-														value="${order.statusOfOrder}" />
-														<input type="hidden" name="orderID" id="orderID"
-														value="${order.orders_id}" />
-													<button class="btn btn-success">Nouda</button>
-												</td>
+													<td><input type="hidden" name="statusOfOrder"
+														id="statusOfOrder" value="${order.statusOfOrder}" /> <input
+														type="hidden" name="orderID" id="orderID"
+														value="${order.orders_id}" /> <input type="hidden"
+														name="hasNewDestination" id="hasNewDestination"
+														value="${order.hasNewDestination}" />
+														<button class="btn btn-success">Toimita</button></td>
 												</form>
 											</tr>
 										</c:forEach>
