@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +52,8 @@ public class RegisterUserController {
 	
 	@RequestMapping(value = "/registerNewUser", method = RequestMethod.GET)
 	public String registerNewUser(Model model) {
+		System.out.println("NIMI " + SecurityContextHolder.getContext()
+				.getAuthentication().getName());
 		if (!model.containsAttribute("registerUser")) {
 			return "redirect:/admin/registerEmptyUser";
 		}

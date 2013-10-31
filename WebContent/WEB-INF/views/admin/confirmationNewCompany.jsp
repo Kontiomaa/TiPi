@@ -6,7 +6,7 @@
 		<%@include file="navi.jsp"%>
 		<div class="row-fluid" id="area">
 			<div class="span10 offset1">
-				<table class="table" id="confirmationCompanyTable">
+				<table class="table table-striped" id="confirmationCompanyTable">
 					<thead>
 						<tr>
 							<td colspan="4" style="font-size: 20px; font-weight: 700;">Firma</td>

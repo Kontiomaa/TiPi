@@ -6,7 +6,7 @@
 		<%@include file="navi.jsp"%>
 		<div class="row-fluid" id="area">
 			<div class="span10 offset1">
-				<table class="table" id="orderConfirmationTable">
+				<table class="table table-striped" id="orderConfirmationTable">
 					<thead>
 						<tr>
 							<td colspan="4" style="font-size: 20px; font-weight: 700;">Auto</td>
@@ -47,6 +47,7 @@
 					<tr>
 						<th>Kellonaika</th>
 						<td><c:out value="${orderInformation.collectionTimeFrom}"
+								default="-----" /> - <c:out value="${orderInformation.collectionTimeTo}"
 								default="-----" /></td>
 						<th>Kellonaika</th>
 						<td><c:out value="${orderInformation.destinationTime}"
@@ -136,6 +137,8 @@
 							<th>Noutoaika</th>
 							<td><c:out
 									value="${orderInformation.nextDestinationCollectionTimeFrom}"
+									default="-----" /> - <c:out
+									value="${orderInformation.nextDestinationCollectionTimeTo}"
 									default="-----" /></td>
 							<th>Palautusaika</th>
 							<td><c:out value="${orderInformation.nextDestinationTime}"

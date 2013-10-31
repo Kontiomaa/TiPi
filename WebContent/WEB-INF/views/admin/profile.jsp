@@ -8,7 +8,7 @@
 			<div class="span10 offset1">
 
 
-				<table class="table" id="userProfileTable">
+				<table class="table table-striped" id="userProfileTable">
 					<thead>
 						<tr>
 							<td colspan="4" style="font-size: 20px; font-weight: 700;">Käyttäjä</td>

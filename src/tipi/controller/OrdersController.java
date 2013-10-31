@@ -121,7 +121,6 @@ public class OrdersController {
 		} else {
 			orderStatus++;
 		}
-		System.out.println(hasNewDestination);
 		
 		ordersGetService.updateOrderStatus(
 				Integer.parseInt(req.getParameter("orderID")), orderStatus);

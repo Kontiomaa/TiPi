@@ -7,7 +7,7 @@
 
 		<%@include file="navi.jsp"%>
 		<div class="row-fluid" id="area">
-		<%@include file="ordersNavi.jsp"%>
+			<%@include file="ordersNavi.jsp"%>
 			<div class="row-fluid">
 				<div class="span10 offset1">
 
@@ -20,10 +20,11 @@
 									<thead>
 										<tr>
 											<th>Yritys</th>
-											<th>Mistä</th>
+											<th>Nouto</th>
 											<th></th>
-											<th>Mihin</th>
-											<th>Toimitettuaika</th>
+											<th>Toimitus</th>
+											<th></th>
+											<th>Palautus</th>
 											<th colspan="2"></th>
 										</tr>
 									</thead>
@@ -36,7 +37,16 @@
 												<td><i class="icon-arrow-right"></i></td>
 												<td><c:out value="${order.destinationCity}" />, <c:out
 														value="${order.destinationAddress}" /></td>
-												<td>TULOSSA</td>
+												<c:choose>
+													<c:when test="${order.hasNewDestination}">
+														<td><i class="icon-arrow-right"></i></td>
+														<td><c:out value="${order.nextDestinationCity}" />,
+															<c:out value="${order.nextDestinationAddress}" /></td>
+													</c:when>
+													<c:otherwise>
+														<td colspan="2"></td>
+													</c:otherwise>
+												</c:choose>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
@@ -44,12 +54,11 @@
 															value="submit">Avaa</button></td>
 												</form>
 												<form action="changeOrderStatus" method="post" class="span4">
-													<td><input type="hidden" name="statusOfOrder" id="statusOfOrder"
-														value="${order.statusOfOrder}" />
-														<input type="hidden" name="orderID" id="orderID"
+													<td><input type="hidden" name="statusOfOrder"
+														id="statusOfOrder" value="${order.statusOfOrder}" /> <input
+														type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
-													<button class="btn btn-success">Laskuta</button>
-												</td>
+														<button class="btn btn-success">Laskuta</button></td>
 												</form>
 											</tr>
 										</c:forEach>

@@ -37,7 +37,8 @@
 												<td><c:out value="${order.destinationCity}" />, <c:out
 														value="${order.destinationAddress}" /></td>
 												<td><c:out value="${order.collectionDate}" /> <c:out
-														value="${order.collectionTimeFrom}" /></td>
+														value="${order.collectionTimeFrom}" /> - <c:out
+														value="${order.collectionTimeTo}" /></td>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />

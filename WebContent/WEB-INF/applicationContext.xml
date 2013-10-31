@@ -65,7 +65,8 @@
                 <sec:intercept-url pattern="/error" access="permitAll" /> <!-- requires-channel="https" -->
 
                 <sec:form-login login-page="/loginpage"
-                        default-target-url="/main" authentication-failure-url="/loginfail" />
+                        default-target-url="/main" authentication-failure-url="/loginfail" 
+                        always-use-default-target="true"/>
 
                 <sec:logout logout-success-url="/logout" />
 

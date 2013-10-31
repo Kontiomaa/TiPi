@@ -125,6 +125,8 @@ public class OrdersGetServiceImpl implements OrdersGetService {
 		try {
 			order.setCollectionTimeFrom(newFormat.format(oldFormat.parse(order
 					.getCollectionTimeFrom())));
+			order.setCollectionTimeTo(newFormat.format(oldFormat.parse(order
+					.getCollectionTimeTo())));
 			order.setDestinationTime(newFormat.format(oldFormat.parse(order
 					.getDestinationTime())));
 		} catch (ParseException e) {
@@ -137,6 +139,17 @@ public class OrdersGetServiceImpl implements OrdersGetService {
 				order.setNextDestinationCollectionTimeFrom(newFormat
 						.format(oldFormat.parse(order
 								.getNextDestinationCollectionTimeFrom())));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if (order.getNextDestinationCollectionTimeTo() != null) {
+			try {
+				order.setNextDestinationCollectionTimeTo(newFormat
+						.format(oldFormat.parse(order
+								.getNextDestinationCollectionTimeTo())));
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

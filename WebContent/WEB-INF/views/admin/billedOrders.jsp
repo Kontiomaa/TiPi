@@ -18,12 +18,13 @@
 
 								<table id="myTable" class="table table-striped">
 									<thead>
-										<tr>
+																				<tr>
 											<th>Yritys</th>
-											<th>Mistä</th>
+											<th>Nouto</th>
 											<th></th>
-											<th>Mihin</th>
-											<th>Laskutettuaika</th>
+											<th>Toimitus</th>
+											<th></th>
+											<th>Palautus</th>
 											<th colspan="2"></th>
 										</tr>
 									</thead>
@@ -36,7 +37,16 @@
 												<td><i class="icon-arrow-right"></i></td>
 												<td><c:out value="${order.destinationCity}" />, <c:out
 														value="${order.destinationAddress}" /></td>
-												<td>TULOSSA</td>
+												<c:choose>
+													<c:when test="${order.hasNewDestination}">
+														<td><i class="icon-arrow-right"></i></td>
+														<td><c:out value="${order.nextDestinationCity}" />,
+															<c:out value="${order.nextDestinationAddress}" /></td>
+													</c:when>
+													<c:otherwise>
+														<td colspan="2"></td>
+													</c:otherwise>
+												</c:choose>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
