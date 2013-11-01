@@ -97,18 +97,16 @@
 								<div class="row-fluid">
 									<div class="span6 offset2">
 										<div class="control-group span12">
-											<p class="span2 offset2" path="collectionDate"
-												for="textinput">Aika*</p>
-											<div class="input-append date span7" id="collectionDate"
-												data-date="" data-date-format="dd.mm.yyyy">
-												<form:input path="collectionDate" class="span9" type="text"
-													value="" readonly="true" />
-												<span class="add-on"><i class="icon-calendar"></i></span>
+											<p class="span2 offset2" path="collectionDate" for="textinput">Aika*</p>
+											<div class="input-append date span7" id="collectionDate" data-date="" data-date-format="dd.mm.yyyy">
+												<form:input path="collectionDate" class="span9" type="text" value="" readonly="true" />
+												<span class="add-on">
+													<i class="icon-calendar"></i>
+												</span>
 											</div>
 											<spring:bind path="collectionDate">
 												<c:if test="${status.error}">
-													<strong style="font-size: 200%" class="span1 text-error"
-														rel="tooltip" title="${status.errorMessage}"> x </strong>
+													<strong style="font-size: 200%" class="span1 text-error" rel="tooltip" title="${status.errorMessage}"> x </strong>
 												</c:if>
 											</spring:bind>
 										</div>
@@ -116,15 +114,31 @@
 									<div class="span4">
 										<div class="control-group">
 											<div class="input-append bootstrap-timepicker span7">
-												<form:input path="collectionTime" id="collectionTime"
-													type="text" class="span8" />
-												<span class="add-on"> <i class="icon-time"></i>
+												<form:input path="collectionTimeFrom" id="collectionTimeFrom" type="text" class="span8" />
+												<span class="add-on">
+													<i class="icon-time"></i>
 												</span>
 											</div>
-											<spring:bind path="collectionTime">
+											<spring:bind path="collectionTimeFrom">
 												<c:if test="${status.error}">
-													<strong style="font-size: 200%" class="span1 text-error"
-														rel="tooltip" title="${status.errorMessage}"> x </strong>
+													<strong style="font-size: 200%" class="span1 text-error" rel="tooltip" title="${status.errorMessage}"> x </strong>
+												</c:if>
+											</spring:bind>
+										</div>
+									</div>
+								</div>
+								<div class="row-fluid">
+									<div class="span4 offset8">
+										<div class="control-group">
+											<div class="input-append bootstrap-timepicker span7">
+												<form:input path="collectionTimeTo" id="collectionTimeTo" type="text" class="span8" />
+												<span class="add-on">
+													<i class="icon-time"></i>
+												</span>
+											</div>
+											<spring:bind path="collectionTimeTo">
+												<c:if test="${status.error}">
+													<strong style="font-size: 200%" class="span1 text-error" rel="tooltip" title="${status.errorMessage}"> x </strong>
 												</c:if>
 											</spring:bind>
 										</div>
@@ -134,9 +148,7 @@
 									<form:label path="collectionAddress" class="control-label"
 										for="textinput">Osoite*</form:label>
 									<div class="controls span6">
-										<form:input path="collectionAddress" name="textinput"
-											placeholder="esim Valtakatu 54b" class="input-large"
-											type="text" />
+										<form:input path="collectionAddress" name="textinput" placeholder="esim Valtakatu 54b" class="input-large" type="text" />
 									</div>
 									<spring:bind path="collectionAddress">
 										<c:if test="${status.error}">
@@ -370,26 +382,28 @@
 							<div class="row-fluid">
 								<div class="span6">
 									<div class="control-group">
-										<form:label path="nextDestinationCollectionDate"
-											style="padding-right: 8px;" class="control-label"
-											for="textinput">Noutoaika* <i
-												class="icon-info-sign" rel="tooltip"
-												title="Milloin auto on valmis haettavaksi toimituspaikasta"></i>
+										<form:label path="nextDestinationCollectionDate" style="padding-right: 8px;" class="control-label" for="textinput">
+											Noutoaika*
+											<i class="icon-info-sign" rel="tooltip" title="Milloin auto on valmis haettavaksi toimituspaikasta"></i>
 										</form:label>
-										<div class="input-append date span4"
-											id="nextDestinationCollectionDate" data-date=""
-											data-date-format="dd.mm.yyyy">
-											<form:input path="nextDestinationCollectionDate"
-												class="span8" type="text" value="" readonly="true" />
-											<span class="add-on"><i class="icon-calendar"></i></span>
+										<div class="input-append date span4" id="nextDestinationCollectionDate" data-date="" data-date-format="dd.mm.yyyy">
+											<form:input path="nextDestinationCollectionDate" class="span8" type="text" value="" readonly="true" />
+											<span class="add-on">
+												<i class="icon-calendar"></i>
+											</span>
 										</div>
 
-										<div style="padding-left: 5px;"
-											class="input-append bootstrap-timepicker">
-											<form:input path="nextDestinationCollectionTime"
-												id="nextDestinationCollectionTime" type="text"
-												class="input-small" />
-											<span class="add-on"> <i class="icon-time"></i>
+										<div style="padding-left: 5px;" class="input-append bootstrap-timepicker">
+											<form:input path="nextDestinationCollectionTimeFrom" id="nextDestinationCollectionTimeFrom" type="text" class="input-small" />
+											<span class="add-on">
+												<i class="icon-time"></i>
+											</span>
+										</div>
+										
+										<div style="padding-left: 5px;" class="input-append bootstrap-timepicker">
+											<form:input path="nextDestinationCollectionTimeTo" id="nextDestinationCollectionTimeTo" type="text" class="input-small" />
+											<span class="add-on">
+												<i class="icon-time"></i>
 											</span>
 										</div>
 
