@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tipi.bean.OrderForm;
 import tipi.service.OrdersGetService;
+import tipi.util.PasswordRecoverHashGenerator;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -38,7 +39,7 @@ public class UserOrdersController {
 		String userEmail = userDetails.getUsername();
 				
 		List<OrderForm> orders = ordersGetService.getOrderListForUserFromDAO(userEmail);
-		
+				
 		model.addAttribute("orders", orders);
 		model.addAttribute("pageIdentifier", "orders");
 		
@@ -59,7 +60,6 @@ public class UserOrdersController {
 	@RequestMapping(value = "/getModificateOrder", method = RequestMethod.POST)
 	public String showOrderForModification(Model model, HttpServletRequest request) {
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
-		System.out.println("-------------------------------------------------------------------" + String.valueOf(orderId));
 		OrderForm order = ordersGetService.getOrderForUserFromDAO(orderId);
 		
 		model.addAttribute("order", order);
