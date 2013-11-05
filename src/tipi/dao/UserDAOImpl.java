@@ -69,7 +69,6 @@ public class UserDAOImpl implements UserDAO {
 	public void registerNewUserDAO(UserProfile registerUser) {
 
 		String sql = "INSERT INTO registeredUsers (fName, lName, phoneNo, email, password, myRole, myCompany) VALUES (?,?,?,?,?,?,?);";
-		System.out.println(registerUser.toString());
 
 		jdbcTemplate.update(sql, new Object[] { registerUser.getfName(),
 				registerUser.getlName(), registerUser.getPhoneNo(),
@@ -80,13 +79,8 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<UserCompany> getAllCompaniesDAO() {
 		String sql = "SELECT * FROM companies;";
-
 		List<UserCompany> allCompanies = getJdbcTemplate().query(sql,
 				new BeanPropertyRowMapper(UserCompanyImpl.class));
-
-		for (UserCompany userCompany2 : allCompanies) {
-			System.out.println(userCompany2.toString());
-		}
 		return allCompanies;
 
 	}
