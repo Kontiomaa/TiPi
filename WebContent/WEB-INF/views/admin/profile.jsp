@@ -7,7 +7,6 @@
 		<div class="row-fluid" id="area">
 			<div class="span10 offset1">
 
-
 				<table class="table table-striped" id="userProfileTable">
 					<thead>
 						<tr>
@@ -87,8 +86,6 @@
 									</div>
 								</div>
 
-
-
 								<div class="row-fluid">
 									<div class="offset2" style="padding-left: 1%;">
 										<button type="submit" class="btn btn-success" value="Submit"
@@ -101,7 +98,6 @@
 						</div>
 					</fieldset>
 				</form>
-
 			</div>
 		</div>
 	</div>

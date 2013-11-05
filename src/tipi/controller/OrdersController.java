@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tipi.bean.OrderForm;
 import tipi.bean.OrderFormImpl;
+import tipi.bean.OrdersCount;
 import tipi.service.OrdersGetService;
 
 @Controller
 @RequestMapping(value = "/admin")
-@SessionAttributes({"orderInformation", "pageIdentifier"})
+@SessionAttributes({"orderInformation", "pageIdentifier", "ordersCount"})
 public class OrdersController {
 
 	@Inject
@@ -37,6 +38,8 @@ public class OrdersController {
 		int statusOfOrder = 1;
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
+		OrdersCount ordersCount = ordersGetService.getOrdersCount();
+		model.addAttribute("ordersCount", ordersCount);
 		model.addAttribute("orders", orders);
 		model.addAttribute("pageIdentifier", "orders");
 		return "admin/newOrders";
@@ -48,6 +51,8 @@ public class OrdersController {
 		int statusOfOrder = 2;
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
+		OrdersCount ordersCount = ordersGetService.getOrdersCount();
+		model.addAttribute("ordersCount", ordersCount);
 		model.addAttribute("orders", orders);
 		model.addAttribute("pageIdentifier", "orders");
 		return "admin/acceptedOrders";
@@ -59,6 +64,8 @@ public class OrdersController {
 		int statusOfOrder = 3;
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
+		OrdersCount ordersCount = ordersGetService.getOrdersCount();
+		model.addAttribute("ordersCount", ordersCount);
 		model.addAttribute("orders", orders);
 		model.addAttribute("pageIdentifier", "orders");
 		return "admin/takenOrders";
@@ -71,6 +78,8 @@ public class OrdersController {
 		int statusOfOrder = 4;
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
+		OrdersCount ordersCount = ordersGetService.getOrdersCount();
+		model.addAttribute("ordersCount", ordersCount);
 		model.addAttribute("orders", orders);
 		model.addAttribute("pageIdentifier", "orders");
 		return "admin/completedOrders";
@@ -82,6 +91,8 @@ public class OrdersController {
 		int statusOfOrder = 5;
 		List<OrderForm> orders = ordersGetService
 				.getOrderListFromDAO(statusOfOrder);
+		OrdersCount ordersCount = ordersGetService.getOrdersCount();
+		model.addAttribute("ordersCount", ordersCount);
 		model.addAttribute("orders", orders);
 		model.addAttribute("pageIdentifier", "orders");
 		return "admin/billedOrders";

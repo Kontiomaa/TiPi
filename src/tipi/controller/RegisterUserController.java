@@ -25,7 +25,7 @@ import tipi.service.UserProfileService;
 
 @Controller
 @RequestMapping(value="/admin")
-@SessionAttributes({"registerUser","registerCompany","allCompanies"})
+@SessionAttributes({"registerUser","registerCompany","allCompanies", "pageIdentifier"})
 public class RegisterUserController {
 	
 	boolean newUserAdded=false;
@@ -52,8 +52,7 @@ public class RegisterUserController {
 	
 	@RequestMapping(value = "/registerNewUser", method = RequestMethod.GET)
 	public String registerNewUser(Model model) {
-		System.out.println("NIMI " + SecurityContextHolder.getContext()
-				.getAuthentication().getName());
+		model.addAttribute("pageIdentifier", "register");
 		if (!model.containsAttribute("registerUser")) {
 			return "redirect:/admin/registerEmptyUser";
 		}

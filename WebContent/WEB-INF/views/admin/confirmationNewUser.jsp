@@ -74,9 +74,7 @@
 										<button type="submit" class="btn btn-success" value="submit"
 											id="submit">Rekisteröi käyttäjä</button>
 									</div>
-
 								</div>
-
 							</div>
 						</div>
 					</fieldset>

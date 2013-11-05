@@ -3,6 +3,7 @@ package tipi.dao;
 import java.util.List;
 
 import tipi.bean.OrderForm;
+import tipi.bean.OrdersCount;
 
 public interface OrdersDAO {
 
@@ -13,5 +14,7 @@ public interface OrdersDAO {
 	public abstract void updateOrderStatusDAO(int orders_id, int statusOfOrder);
 	
 	public abstract List<OrderForm> getOrderListForUser(String userEmail);
+	
+	public abstract OrdersCount ordersCountDAO(OrdersCount ordersCount);
 
 }

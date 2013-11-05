@@ -3,12 +3,11 @@
 <title>Siirtoapu.fi -- Uudet tilaukset</title>
 </head>
 <body>
-<% response.addHeader("Refresh","300"); %>
 	<div class="container">
 
 		<%@include file="navi.jsp"%>
 		<div class="row-fluid" id="area">
-		<%@include file="ordersNavi.jsp"%>
+			<%@include file="ordersNavi.jsp"%>
 			<div class="row-fluid">
 				<div class="span10 offset1">
 
@@ -45,12 +44,11 @@
 															value="submit">Avaa</button></td>
 												</form>
 												<form action="changeOrderStatus" method="post" class="span4">
-													<td><input type="hidden" name="statusOfOrder" id="statusOfOrder"
-														value="${order.statusOfOrder}" />
-														<input type="hidden" name="orderID" id="orderID"
+													<td><input type="hidden" name="statusOfOrder"
+														id="statusOfOrder" value="${order.statusOfOrder}" /> <input
+														type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
-													<button class="btn btn-success">Kuittaa</button>
-												</td>
+														<button class="btn btn-success">Kuittaa</button></td>
 												</form>
 											</tr>
 										</c:forEach>

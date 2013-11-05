@@ -7,7 +7,7 @@
 
 		<%@include file="navi.jsp"%>
 		<div class="row-fluid" id="area">
-		<%@include file="ordersNavi.jsp"%>
+			<%@include file="ordersNavi.jsp"%>
 			<div class="row-fluid">
 				<div class="span10 offset1">
 
@@ -18,7 +18,7 @@
 
 								<table id="myTable" class="table table-striped">
 									<thead>
-																				<tr>
+										<tr>
 											<th>Yritys</th>
 											<th>Nouto</th>
 											<th></th>
@@ -53,7 +53,7 @@
 														<button class="btn btn-primary" type="submit"
 															value="submit">Avaa</button></td>
 												</form>
-													<td></td>
+												<td></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -61,7 +61,6 @@
 							</div>
 						</div>
 					</fieldset>
-
 				</div>
 			</div>
 		</div>

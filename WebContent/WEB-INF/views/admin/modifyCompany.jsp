@@ -5,7 +5,6 @@
 	<div class="container">
 
 		<%@include file="navi.jsp"%>
-
 		<div class="row-fluid" id="area">
 			<div class="span10 offset1">
 				<form:form action="saveModifiedCompany"

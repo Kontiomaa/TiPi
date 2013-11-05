@@ -22,7 +22,7 @@ import tipi.service.UserProfileService;
 
 @Controller
 @RequestMapping(value="/admin")
-@SessionAttributes({"allUsers","allCompanies, modifyCompany, modifyUser"})
+@SessionAttributes({"allUsers","allCompanies, modifyCompany, modifyUser", "pageIdentifier"})
 public class UsersController {
 	
 	@Inject
@@ -38,6 +38,7 @@ public class UsersController {
 	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public String users(Model model) {
+		model.addAttribute("pageIdentifier", "users");
 		List<UserProfile> users = userProfileService.getUsersByRole(1);
 		model.addAttribute("users", users);
 		return "admin/users";

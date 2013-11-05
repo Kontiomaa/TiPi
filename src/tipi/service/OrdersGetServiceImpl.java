@@ -9,6 +9,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import tipi.bean.OrderForm;
+import tipi.bean.OrdersCount;
+import tipi.bean.OrdersCountImpl;
 import tipi.bean.UserCompany;
 import tipi.bean.UserCompanyImpl;
 import tipi.bean.UserProfile;
@@ -205,6 +207,11 @@ public class OrdersGetServiceImpl implements OrdersGetService {
 		//order.setUserProfile(userProfile);
 		return order;
 	}
-
 	
+	@Override
+	public OrdersCount getOrdersCount() {
+		OrdersCount ordersCount = new OrdersCountImpl();
+		ordersCount = ordersDAO.ordersCountDAO(ordersCount);
+		return ordersCount;
+	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import tipi.bean.OrderForm;
+import tipi.bean.OrdersCount;
 
 public interface OrdersGetService {
 
@@ -24,5 +25,8 @@ public interface OrdersGetService {
 	
 	@PreAuthorize("hasRole('ROLE_USER')")
 	public abstract OrderForm getOrderForUserFromDAO(int id);
+	
+	@PreAuthorize("isAuthenticated()")
+	public abstract OrdersCount getOrdersCount();
 	
 }

@@ -20,25 +20,23 @@
 					</tr>
 					<tr>
 						<th>Postinumero</th>
-						<td><c:out value="${registerCompany.postalCode}" default="-----" /></td>
+						<td><c:out value="${registerCompany.postalCode}"
+								default="-----" /></td>
 						<th>Kaupunki</th>
 						<td><c:out value="${registerCompany.city}" default="-----" /></td>
 					</tr>
-					
 					<tr>
-
 						<td><a href="registerNewCompany" class="btn btn-primary">Takaisin</a></td>
-
 						<td><form action="registerNewCompanySend" method="post"
 								class="form-horizontal">
 								<fieldset>
-									<button type="submit" class="btn btn-success">Rekisteröi yritys</button>
+									<button type="submit" class="btn btn-success">Rekisteröi
+										yritys</button>
 								</fieldset>
 							</form></td>
 						<td colspan="2"></td>
 					</tr>
 				</table>
-
 			</div>
 		</div>
 	</div>
