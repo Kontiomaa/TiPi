@@ -1,6 +1,8 @@
 package tipi.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -73,5 +75,14 @@ public class OrdersDAOImpl implements OrdersDAO {
 		ordersCount = (OrdersCount) jdbcTemplate.queryForObject(sql,
 				new BeanPropertyRowMapper(OrdersCountImpl.class));
 		return ordersCount;
+	}
+	
+	@Override
+	public Map<String, Object> getOrdeDatesAndTimes(int id) {
+		String sql = "SELECT collectionDate, collectionTimeFrom, collectionTimeTo, destinationDate, destinationTime, nextDestinationCollectionDate, nextDestinationCollectionTimeFrom, nextDestinationCollectionTimeTo, nextDestinationDate, nextDestinationTime FROM orders WHERE orders_id = ?;";
+		Object[] data = new Object[] { id };
+		Map<String, Object> resultMap = jdbcTemplate.queryForMap(sql, data);
+		
+		return resultMap;
 	}
 }
