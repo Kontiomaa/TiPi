@@ -30,7 +30,7 @@ th.header {
 	background-repeat: no-repeat;
 	background-position: center right;
 	padding-left: 10px;
-	border-right: 1px solid;
+	border-right: 1px solid #BEBEBE;
 }
 
 th.headerSortDown {

@@ -20,7 +20,7 @@
 									<thead>
 										<tr>
 											<th>Yritys</th>
-											<th colspan=2>Mistä</th>
+											<th>Mistä</th>
 											<th>Mihin</th>
 											<th>Noutoaika</th>
 										</tr>
@@ -30,8 +30,7 @@
 											<tr>
 												<td><c:out value="${order.userProfile.company.name}" /></td>
 												<td><c:out value="${order.collectionCity}" />, <c:out
-														value="${order.collectionAddress}" /></td>
-												<td><i class="icon-arrow-right"></i></td>
+														value="${order.collectionAddress}" /><div style="float:right; text-align:right"><i class="icon-arrow-right"></i></div></td>
 												<td><c:out value="${order.destinationCity}" />, <c:out
 														value="${order.destinationAddress}" /></td>
 												<td><c:out value="${order.collectionDate}" /> <c:out
@@ -72,7 +71,7 @@
 		$(document).ready(function() {
 			$(function() {
 				$("table#myTable").tablesorter({
-					sortList : [ [ 1, 0 ] ]
+					sortList : [[3,0]]
 				});
 			});
 		});
