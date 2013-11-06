@@ -20,11 +20,9 @@
 									<thead>
 										<tr>
 											<th>Yritys</th>
-											<th>Mistä</th>
-											<th></th>
+											<th colspan=2>Mistä</th>
 											<th>Mihin</th>
 											<th>Muokkausaika</th>
-											<th></th>
 										</tr>
 									</thead>
 									<tbody>

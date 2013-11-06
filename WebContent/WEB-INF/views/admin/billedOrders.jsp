@@ -20,12 +20,9 @@
 									<thead>
 										<tr>
 											<th>Yritys</th>
-											<th>Nouto</th>
-											<th></th>
-											<th>Toimitus</th>
-											<th></th>
+											<th colspan=2>Nouto</th>
+											<th colspan=2>Toimitus</th>
 											<th>Palautus</th>
-											<th colspan="2"></th>
 										</tr>
 									</thead>
 									<tbody>

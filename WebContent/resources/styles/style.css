@@ -23,3 +23,20 @@ body {
 .data-header {
 	font-weight: bolder;
 }
+
+/*For admin's order listing*/
+th.header {
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: center right;
+	padding-left: 10px;
+	border-right: 1px solid;
+}
+
+th.headerSortDown {
+	background-image: url(arrows/desc.gif);
+}
+
+th.headerSortUp {
+	background-image: url(arrows/asc.gif);
+}
