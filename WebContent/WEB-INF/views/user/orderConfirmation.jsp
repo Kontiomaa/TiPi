@@ -42,8 +42,9 @@
 					</tr>
 					<tr>
 						<th>Kellonaika</th>
-						<td><c:out value="${orderForm.collectionTime}"
-								default="-----" /></td>
+						<td><c:out value="${orderForm.collectionTimeFrom}"
+								default="-----" /> - <c:out
+								value="${orderForm.collectionTimeTo}" default="-----" /></td>
 						<th>Kellonaika</th>
 						<td><c:out value="${orderForm.destinationTime}"
 								default="-----" /></td>
@@ -126,7 +127,9 @@
 						<tr>
 							<th>Noutoaika</th>
 							<td><c:out
-									value="${orderForm.nextDestinationCollectionTime}"
+									value="${orderForm.nextDestinationCollectionTimeFrom}"
+									default="-----" /> - <c:out
+									value="${orderForm.nextDestinationCollectionTimeTo}"
 									default="-----" /></td>
 							<th>Palautusaika</th>
 							<td><c:out value="${orderForm.nextDestinationTime}"
@@ -185,12 +188,12 @@
 
 					<tr>
 
-						<td><a href="orderForm" class="btn btn-danger">Takaisin</a></td>
+						<td><a href="orderForm" class="btn btn-primary">Takaisin</a></td>
 
 						<td><form action="orderSend" method="post"
 								class="form-horizontal">
 								<fieldset>
-									<button type="submit" class="btn btn-inverse">Lähetä
+									<button type="submit" class="btn btn-success">Lähetä
 										tilaus</button>
 								</fieldset>
 							</form></td>

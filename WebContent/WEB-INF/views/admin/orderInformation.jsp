@@ -244,7 +244,7 @@
 								<td><a href="billed" class="btn btn-primary">Takaisin</a></td>
 							</c:when>
 							<c:otherwise>
-								<td><a href="new" class="btn btn-danger">Takaisin</a></td>
+								<td><a href="new" class="btn btn-primary">Takaisin</a></td>
 							</c:otherwise>
 						</c:choose>
 

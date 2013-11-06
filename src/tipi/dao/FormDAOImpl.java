@@ -57,13 +57,13 @@ public class FormDAOImpl implements FormDAO {
 		}
 		
 		String sql = "INSERT INTO orders ( carBrand, carModel, carRegister, carColor,"
-				+ " collectionDate, collectionTime, collectionAddress, collectionPostalCode, collectionCity,"
+				+ " collectionDate, collectionTimeFrom, collectionTimeTo, collectionAddress, collectionPostalCode, collectionCity,"
 				+ " destinationDate, destinationTime, destinationAddress, destinationPostalCode, destinationCity,"
 				+ " clientFname, clientLname, clientPhoneNo, clientCompany, additionalInformation,"
 				+ " companyMadeOrder, userMadeOrder, hasNewDestination,"
-				+ "	nextDestinationCollectionDate, nextDestinationCollectionTime, nextDestinationDate,	nextDestinationTime,"
+				+ "	nextDestinationCollectionDate, nextDestinationCollectionTimeFrom, nextDestinationCollectionTimeTo, nextDestinationDate,	nextDestinationTime,"
 				+ " nextDestinationAddress, nextDestinationPostalCode, nextDestinationCity, "
-				+ "nextAdditionalInformation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+				+ "nextAdditionalInformation) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
 		jdbcTemplate.update(
 				sql,
@@ -71,6 +71,7 @@ public class FormDAOImpl implements FormDAO {
 						orderForm.getCarModel(), orderForm.getCarRegister(),
 						orderForm.getCarColor(), collectionDate,
 						orderForm.getCollectionTimeFrom(),
+						orderForm.getCollectionTimeTo(),
 						orderForm.getCollectionAddress(),
 						orderForm.getCollectionPostalCode(),
 						orderForm.getCollectionCity(), destinationDate,
@@ -85,6 +86,7 @@ public class FormDAOImpl implements FormDAO {
 						orderForm.isHasNewDestination(),
 						nextDestinationCollectionDate,
 						orderForm.getNextDestinationCollectionTimeFrom(),
+						orderForm.getNextDestinationCollectionTimeTo(),
 						nextDestinationDate,
 						orderForm.getNextDestinationTime(),
 						orderForm.getNextDestinationAddress(),
@@ -93,11 +95,11 @@ public class FormDAOImpl implements FormDAO {
 						orderForm.getNextAdditionalInformation() });
 		} else {
 			String sql = "INSERT INTO orders ( carBrand, carModel, carRegister, carColor,"
-					+ " collectionDate, collectionTime, collectionAddress, collectionPostalCode, collectionCity,"
+					+ " collectionDate, collectionTimeFrom, collectionTimeTo, collectionAddress, collectionPostalCode, collectionCity,"
 					+ " destinationDate, destinationTime, destinationAddress, destinationPostalCode, destinationCity,"
 					+ " clientFname, clientLname, clientPhoneNo, clientCompany, additionalInformation,"
 					+ " companyMadeOrder, userMadeOrder, hasNewDestination)"
-					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
 			jdbcTemplate.update(
 					sql,
@@ -105,6 +107,7 @@ public class FormDAOImpl implements FormDAO {
 							orderForm.getCarModel(), orderForm.getCarRegister(),
 							orderForm.getCarColor(), collectionDate,
 							orderForm.getCollectionTimeFrom(),
+							orderForm.getCollectionTimeTo(),
 							orderForm.getCollectionAddress(),
 							orderForm.getCollectionPostalCode(),
 							orderForm.getCollectionCity(), destinationDate,
