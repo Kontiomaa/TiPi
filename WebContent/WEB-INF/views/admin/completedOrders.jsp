@@ -23,6 +23,7 @@
 											<th>Nouto</th>
 											<th>Toimitus</th>
 											<th>Palautus</th>
+											<th>Valmis</th> <!-- Yrityksen nimi, tilausksen numero (id) valmistunut aika (tilauksen haluttu palautusaika)-->
 										</tr>
 									</thead>
 									<tbody>
@@ -37,13 +38,18 @@
 														<c:out value="${order.destinationAddress}" /></td>
 														<td><c:out value="${order.nextDestinationCity}" />,
 															<c:out value="${order.nextDestinationAddress}" /></td>
+														<td><c:out value="${order.nextDestinationDate}" />,
+															<c:out value="${order.nextDestinationTime}" /></td>
 													</c:when>
 													<c:otherwise>
 														<td><c:out value="${order.destinationCity}" />, <c:out
 														value="${order.destinationAddress}" /></td>
-														<td colspan="1"></td>
+														<td></td>
+														<td><c:out value="${order.destinationDate}" />,
+															<c:out value="${order.destinationTime}" /></td>
 													</c:otherwise>
 												</c:choose>
+												<td></td>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />

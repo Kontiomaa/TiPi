@@ -71,7 +71,7 @@
 		$(document).ready(function() {
 			$(function() {
 				$("table#myTable").tablesorter({
-					sortList : [[3,0]]
+					sortList : [[3,1]]
 				});
 			});
 		});
