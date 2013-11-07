@@ -19,5 +19,7 @@ public interface OrdersDAO {
 	public abstract OrdersCount ordersCountDAO(OrdersCount ordersCount);
 	
 	public abstract Map<String, Object> getOrdeDatesAndTimes(int id);
+	
+	public abstract List<OrderForm> searchOrdersFromDAO(OrderForm searchOrders);
 
 }

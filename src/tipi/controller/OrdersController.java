@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -18,7 +19,7 @@ import tipi.service.OrdersGetService;
 
 @Controller
 @RequestMapping(value = "/admin")
-@SessionAttributes({"orderInformation", "pageIdentifier", "ordersCount"})
+@SessionAttributes({"pageIdentifier", "searchOrders"})
 public class OrdersController {
 
 	@Inject
@@ -96,6 +97,29 @@ public class OrdersController {
 		model.addAttribute("orders", orders);
 		model.addAttribute("pageIdentifier", "orders");
 		return "admin/billedOrders";
+	}
+	
+	@RequestMapping(value = "/searchOrders", method = RequestMethod.GET)
+	public String searchOrders(Model model) {
+		model.addAttribute("orderPage", "searchOrders");
+		OrderForm searchOrders = new OrderFormImpl();
+		model.addAttribute("searchOrders", searchOrders);
+		OrdersCount ordersCount = ordersGetService.getOrdersCount();
+		model.addAttribute("ordersCount", ordersCount);
+		model.addAttribute("pageIdentifier", "orders");
+		return "admin/searchOrders";
+	}
+	
+	@RequestMapping(value = "/searchOrders", method = RequestMethod.POST)
+	public String searchOrdersForm(Model model, @ModelAttribute(value = "searchOrders") OrderFormImpl searchOrders) {
+		model.addAttribute("orderPage", "searchOrders");
+		List<OrderForm> orders = ordersGetService
+				.searchOrdersService(searchOrders);
+		OrdersCount ordersCount = ordersGetService.getOrdersCount();
+		model.addAttribute("ordersCount", ordersCount);
+		model.addAttribute("orders", orders);
+		model.addAttribute("pageIdentifier", "orders");
+		return "admin/searchOrders";
 	}
 
 	@RequestMapping(value = "/orderInformation", method = RequestMethod.POST)

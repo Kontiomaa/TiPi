@@ -214,4 +214,22 @@ public class OrdersGetServiceImpl implements OrdersGetService {
 		ordersCount = ordersDAO.ordersCountDAO(ordersCount);
 		return ordersCount;
 	}
+	
+	@Override
+	public List<OrderForm> searchOrdersService(OrderForm searchOrders) {
+
+		List<OrderForm> orders = ordersDAO.searchOrdersFromDAO(searchOrders);
+		for (OrderForm order : orders) {
+			order = parseMySQLToJavaDate(order);
+			order = parseMySQLToJavaTime(order);
+			order = parseMySQLToJavaTimeStamp(order);
+			UserProfile userProfile = new UserProfileImpl();
+			userProfile = userDao.getUsersInformationWithIdDAO(order.getUserMadeOrder(), userProfile);
+			UserCompany userCompany = new UserCompanyImpl();
+			userCompany = userDao.getRegisteredUsersCompanyInformationDAO(userProfile.getMyCompany(), userCompany);
+			userProfile.setCompany(userCompany);
+			order.setUserProfile(userProfile);
+		}
+		return orders;
+	}
 }

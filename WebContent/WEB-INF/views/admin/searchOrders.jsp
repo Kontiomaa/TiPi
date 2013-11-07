@@ -1,0 +1,163 @@
+
+<%@include file="header.jsp"%>
+<title>Siirtoapu.fi -- Hae tilauksia</title>
+</head>
+<body>
+	<div class="container">
+
+		<%@include file="navi.jsp"%>
+		<div class="row-fluid" id="area">
+			<%@include file="ordersNavi.jsp"%>
+			<div class="row-fluid">
+				<div class="span10 offset1">
+
+					<form:form action="searchOrders" modelAttribute="searchOrders"
+						method="post" class="form-horizontal">
+						<fieldset>
+							<legend>Hae tilauksia</legend>
+							<div class="row-fluid">
+								<div class="span6">
+									<div class="control-group">
+										<form:label path="carBrand" class="control-label"
+											for="textinput">Automerkki</form:label>
+										<div class="controls span6">
+											<form:input path="carBrand" name="textinput"
+												placeholder="esim Audi" class="input-large" type="text" />
+										</div>
+									</div>
+
+									<div class="control-group">
+										<form:label path="carModel" class="control-label"
+											for="textinput">Automalli</form:label>
+										<div class="controls span6">
+											<form:input path="carModel" name="textinput"
+												placeholder="esim A5" class="input-large" type="text" />
+										</div>
+									</div>
+
+									<div class="control-group">
+										<form:label path="carRegister" class="control-label"
+											for="textinput">Rekisterinumero</form:label>
+										<div class="controls span6">
+											<form:input path="carRegister" name="textinput"
+												placeholder="esim ABC-123" class="input-large" type="text" />
+										</div>
+									</div>
+
+								</div>
+								<div class="span6">
+									<div class="control-group">
+										<form:label path="collectionCity" class="control-label"
+											for="textinput">Nouto toimipaikka</form:label>
+										<div class="controls span6">
+											<form:input path="collectionCity" name="textinput"
+												placeholder="esim Helsinki" class="input-large" type="text" />
+										</div>
+									</div>
+									<div class="control-group">
+										<form:label path="destinationCity" class="control-label"
+											for="textinput">Toimitus toimipaikka</form:label>
+										<div class="controls span6">
+											<form:input path="destinationCity" name="textinput"
+												placeholder="esim Vantaa" class="input-large" type="text" />
+										</div>
+									</div>
+									<div class="control-group">
+										<form:label path="nextDestinationCity" class="control-label"
+											for="textinput">Palautus toimipaikka</form:label>
+										<div class="controls span6">
+											<form:input path="nextDestinationCity" name="textinput"
+												placeholder="esim Espoo" class="input-large" type="text" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="btn btn-success">Hae</button>
+						</fieldset>
+					</form:form>
+
+					<fieldset>
+						<legend>Haetut tilaukset</legend>
+						<div class="row-fluid">
+							<div class="span12">
+
+								<table id="myTable" class="table table-striped">
+									<thead>
+										<tr>
+											<th>Yritys</th>
+											<th>Nouto</th>
+											<th>Toimitus</th>
+											<th>Palautus</th>
+											<th>Valmis</th>
+											<!-- Yrityksen nimi, tilausksen numero (id) valmistunut aika (tilauksen haluttu palautusaika)-->
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${orders}" var="order">
+											<tr>
+												<td><c:out value="${order.userProfile.company.name}" /></td>
+												<td><c:out value="${order.collectionCity}" />, <c:out
+														value="${order.collectionAddress}" />
+													<div style="float: right; text-align: right">
+														<i class="icon-arrow-right"></i>
+													</div></td>
+												<c:choose>
+													<c:when test="${order.hasNewDestination}">
+														<td><c:out value="${order.destinationCity}" />
+															<div style="float: right; text-align: right">
+																<i class="icon-arrow-right"></i>
+															</div>, <c:out value="${order.destinationAddress}" /></td>
+														<td><c:out value="${order.nextDestinationCity}" />,
+															<c:out value="${order.nextDestinationAddress}" /></td>
+														<td><c:out value="${order.nextDestinationDate}" />,
+															<c:out value="${order.nextDestinationTime}" /></td>
+													</c:when>
+													<c:otherwise>
+														<td><c:out value="${order.destinationCity}" />, <c:out
+																value="${order.destinationAddress}" /></td>
+														<td></td>
+														<td><c:out value="${order.destinationDate}" />, <c:out
+																value="${order.destinationTime}" /></td>
+													</c:otherwise>
+												</c:choose>
+												<td></td>
+												<form action="orderInformation" method="post" class="span4">
+													<td><input type="hidden" name="orderID" id="orderID"
+														value="${order.orders_id}" />
+														<button class="btn btn-primary" type="submit"
+															value="submit">Avaa</button></td>
+												</form>
+												<form action="changeOrderStatus" method="post" class="span4">
+													<td><input type="hidden" name="statusOfOrder"
+														id="statusOfOrder" value="${order.statusOfOrder}" /> <input
+														type="hidden" name="orderID" id="orderID"
+														value="${order.orders_id}" />
+														<button class="btn btn-success">Laskuta</button></td>
+												</form>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</fieldset>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="../resources/jquery-tablesorter/jquery.tablesorter.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(function() {
+				$("table#myTable").tablesorter({
+					sortList : [ [ 0, 0 ] ]
+				});
+			});
+		});
+	</script>
+</body>
+</html>

@@ -29,4 +29,7 @@ public interface OrdersGetService {
 	@PreAuthorize("isAuthenticated()")
 	public abstract OrdersCount getOrdersCount();
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public abstract List<OrderForm> searchOrdersService(OrderForm searchOrders);
+	
 }

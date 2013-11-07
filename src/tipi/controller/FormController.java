@@ -48,7 +48,6 @@ public class FormController {
 	public String create(Model model,
 			@ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm,
 			BindingResult result) {
-
 		if (result.hasErrors()) {
 			model.addAttribute("pageIdentifier", "orderForm");
 			return "/user/orderForm";

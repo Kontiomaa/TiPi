@@ -64,6 +64,24 @@
 					<li><a href="billed">Laskutettu</a></li>
 				</c:otherwise>
 			</c:choose>
+
+			<c:choose>
+				<c:when test="${orderPage == 'searchOrders'}">
+					<li class="active"><a href="searchOrders">Hae tilauksia</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="searchOrders">Hae tilauksia</a></li>
+				</c:otherwise>
+			</c:choose>
+
+			<c:choose>
+				<c:when test="${orderPage == 'deletedOrders'}">
+					<li class="active"><a href="deletedOrders">Poistetut</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="deletedOrders">Poistetut</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</div>
 </div>

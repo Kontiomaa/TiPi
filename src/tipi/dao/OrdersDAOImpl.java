@@ -76,13 +76,46 @@ public class OrdersDAOImpl implements OrdersDAO {
 				new BeanPropertyRowMapper(OrdersCountImpl.class));
 		return ordersCount;
 	}
-	
+
 	@Override
 	public Map<String, Object> getOrdeDatesAndTimes(int id) {
 		String sql = "SELECT collectionDate, collectionTimeFrom, collectionTimeTo, destinationDate, destinationTime, nextDestinationCollectionDate, nextDestinationCollectionTimeFrom, nextDestinationCollectionTimeTo, nextDestinationDate, nextDestinationTime FROM orders WHERE orders_id = ?;";
 		Object[] data = new Object[] { id };
 		Map<String, Object> resultMap = jdbcTemplate.queryForMap(sql, data);
-		
+
 		return resultMap;
+	}
+
+	@Override
+	public List<OrderForm> searchOrdersFromDAO(OrderForm searchOrders) {
+		String carBrand = "%";
+		String carModel = "%";
+		String carRegister = "%";
+		String collectionCity = "%";
+		String destinationCity = "%";
+		String nextDestinationCity = "%";
+
+		if (!searchOrders.getCarBrand().isEmpty())
+			carBrand = searchOrders.getCarBrand();
+		if (!searchOrders.getCarModel().isEmpty())
+			carModel = searchOrders.getCarModel();
+		if (!searchOrders.getCarRegister().isEmpty())
+			carRegister = searchOrders.getCarRegister();
+		if (!searchOrders.getCollectionCity().isEmpty())
+			collectionCity = searchOrders.getCollectionCity();
+		if (!searchOrders.getDestinationCity().isEmpty())
+			destinationCity = searchOrders.getDestinationCity();
+		if (!searchOrders.getNextDestinationCity().isEmpty())
+			nextDestinationCity = searchOrders.getNextDestinationCity();
+
+		String sql = "SELECT * FROM orders WHERE carBrand LIKE ? AND carModel LIKE ? AND carRegister LIKE ?"
+				+ " AND collectionCity LIKE ? AND destinationCity LIKE ? AND (nextDestinationCity LIKE ? OR nextDestinationCity IS NULL);";
+		Object[] data = new Object[] { 
+				carBrand, carModel,
+				carRegister, collectionCity,
+				destinationCity, nextDestinationCity};
+		List<OrderForm> orders = getJdbcTemplate().query(sql,
+				new BeanPropertyRowMapper(OrderFormImpl.class), data);
+		return orders;
 	}
 }
