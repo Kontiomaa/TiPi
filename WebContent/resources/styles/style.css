@@ -23,3 +23,9 @@ body {
 .data-header {
 	font-weight: bolder;
 }
+
+/* Font style for  */
+.timeLimitOver {
+	color: #AAAAAA;
+	font-style: italic;
+}

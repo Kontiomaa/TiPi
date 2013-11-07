@@ -9,8 +9,11 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import tipi.dao.OrdersDAO;
 
+@Service
 public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 
 	@Inject
@@ -24,21 +27,22 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 		this.ordersDAO = ordersDAO;
 	}
 	
-	@Override
-	public boolean checkCollectionTime(int id, int minuteLimitBefore) {
-		
+	/**
+	 * Compares given date to current time. DateString must be given in 'HH:mm:ss yyyy-MM-dd' -format.
+	 * @param dateString
+	 * @param minuteLimit
+	 * @return
+	 */
+	private boolean compare(String dateString, int minuteLimit) {
 		DateFormat formatter = new SimpleDateFormat("HH:mm:ss yyyy-MM-dd");
 		
-		// Create Date from orders data
-		Map<String, Object> timeMap = ordersDAO.getOrdeDatesAndTimes(id);
-		String collectionDate = (String)timeMap.get("collectionDate");
-		String collectionTimeFrom = (String)timeMap.get("collectionTimeFrom");
+		// Create Date from order's dateString
 		Date collectionTimestamp = new Date();
 		try {
-			collectionTimestamp = formatter.parse(collectionTimeFrom + " " + collectionDate);
+			collectionTimestamp = formatter.parse(dateString);
 		} catch(ParseException e) {
 			e.printStackTrace();
-			collectionTimestamp = null;
+			return false;
 		}
 		
 		// Create Calendar from current time
@@ -47,15 +51,27 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 		// Create Calendar from orders data
 		Calendar compareTimestampCal = Calendar.getInstance();
 		compareTimestampCal.setTime(collectionTimestamp);
-		compareTimestampCal.add(Calendar.MINUTE, minuteLimitBefore);
+		compareTimestampCal.add(Calendar.MINUTE, minuteLimit);
 		
 		// Compare!
 		if (compareTimestampCal.compareTo(currentTimestampCal) > 0 && compareTimestampCal.compareTo(currentTimestampCal) == 0 ) {
+			// Over timelimit
 			return false;
 		}
 		else {
+			// Under timelimit
 			return true;
 		}
+	}
+	
+	@Override
+	public boolean checkCollectionTime(int id, int minuteLimitBefore) {
+
+		Map<String, Object> timeMap = ordersDAO.getOrdeDatesAndTimes(id);
+		String collectionTimeFrom = timeMap.get("collectionTimeFrom").toString();
+		String collectionDate = timeMap.get("collectionDate").toString();
+		
+		return compare(collectionTimeFrom + " " + collectionDate, 180);
 	}
 	
 }

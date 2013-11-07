@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tipi.bean.OrderForm;
 import tipi.service.OrdersGetService;
+import tipi.service.OrdersTimeCheckService;
 import tipi.util.PasswordRecoverHashGenerator;
 
 @Controller
@@ -29,8 +30,19 @@ public class UserOrdersController {
 		return ordersGetService;
 	}
 
-	public void setFormSendService(OrdersGetService ordersGetService) {
+	public void setOrdersGetService(OrdersGetService ordersGetService) {
 		this.ordersGetService = ordersGetService;
+	}
+	
+	@Inject
+	private OrdersTimeCheckService ordersTimeCheckService;
+
+	public OrdersTimeCheckService getOrdersTimeCheckService() {
+		return ordersTimeCheckService;
+	}
+
+	public void setOrdersTimeCheckService(OrdersTimeCheckService ordersTimeCheckService) {
+		this.ordersTimeCheckService = ordersTimeCheckService;
 	}
 	
 	@RequestMapping(value = "/showOrders", method = RequestMethod.GET)
@@ -61,7 +73,9 @@ public class UserOrdersController {
 	public String showOrderForModification(Model model, HttpServletRequest request) {
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
 		OrderForm order = ordersGetService.getOrderForUserFromDAO(orderId);
+		boolean collectionTimeLimit = ordersTimeCheckService.checkCollectionTime(orderId, 180);
 		
+		model.addAttribute("collectionTimeLimit", collectionTimeLimit);
 		model.addAttribute("order", order);
 		model.addAttribute("pageIdentifier", "orders");
 		
