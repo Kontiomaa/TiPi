@@ -23,6 +23,7 @@
 											<th>Nouto</th>
 											<th>Toimitus</th>
 											<th>Palautus</th>
+											<th>Valmis</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -37,11 +38,15 @@
 														<c:out value="${order.destinationAddress}" /></td>
 														<td><c:out value="${order.nextDestinationCity}" />,
 															<c:out value="${order.nextDestinationAddress}" /></td>
+														<td><c:out value="${order.nextDestinationDate}" />,
+															<c:out value="${order.nextDestinationTime}" /></td>
 													</c:when>
 													<c:otherwise>
 														<td><c:out value="${order.destinationCity}" />, <c:out
 														value="${order.destinationAddress}" /></td>
-														<td colspan="1"></td>
+														<td></td>
+														<td><c:out value="${order.destinationDate}" />,
+															<c:out value="${order.destinationTime}" /></td>
 													</c:otherwise>
 												</c:choose>
 												<form action="orderInformation" method="post" class="span4">
@@ -70,7 +75,7 @@
 		$(document).ready(function() {
 			$(function() {
 				$("table#myTable").tablesorter({
-					sortList : [[0,0]]
+					sortList : [[4,1]]
 				});
 			});
 		});

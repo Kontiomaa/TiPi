@@ -130,6 +130,8 @@
 													$("#oldPassword").after('<span id="info" class="text-error">Syötä nykyinen salasana</span>');
 												} else if (passwordVal.length < 6) {
 													$("#password").after('<span id="info" class="text-error">Uusi salasana on liian lyhyt</span>');
+												} else if (passwordVal.length > 100) {
+													$("#password").after('<span id="info" class="text-error">Salasana on liian pitkä</span>');
 												} else if (passwordVal != checkVal) {
 													$("#password-check").after('<span id="info" class="text-error">Ei täsmää uuden salasanan kanssa</span>');
 												} else{
