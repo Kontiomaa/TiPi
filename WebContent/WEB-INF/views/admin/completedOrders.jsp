@@ -23,7 +23,7 @@
 											<th>Nouto</th>
 											<th>Toimitus</th>
 											<th>Palautus</th>
-											<th>Valmis</th> <!-- Yrityksen nimi, tilausksen numero (id) valmistunut aika (tilauksen haluttu palautusaika)-->
+											<th>Valmis</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -83,7 +83,7 @@
 		$(document).ready(function() {
 			$(function() {
 				$("table#myTable").tablesorter({
-					sortList : [[0,0]]
+					sortList : [[4,1]]
 				});
 			});
 		});
