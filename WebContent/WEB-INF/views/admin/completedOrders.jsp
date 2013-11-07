@@ -21,11 +21,9 @@
 										<tr>
 											<th>Yritys</th>
 											<th>Nouto</th>
-											<th></th>
 											<th>Toimitus</th>
-											<th></th>
 											<th>Palautus</th>
-											<th colspan="2"></th>
+											<th>Valmis</th> <!-- Yrityksen nimi, tilausksen numero (id) valmistunut aika (tilauksen haluttu palautusaika)-->
 										</tr>
 									</thead>
 									<tbody>
@@ -33,20 +31,25 @@
 											<tr>
 												<td><c:out value="${order.userProfile.company.name}" /></td>
 												<td><c:out value="${order.collectionCity}" />, <c:out
-														value="${order.collectionAddress}" /></td>
-												<td><i class="icon-arrow-right"></i></td>
-												<td><c:out value="${order.destinationCity}" />, <c:out
-														value="${order.destinationAddress}" /></td>
+														value="${order.collectionAddress}" /><div style="float:right; text-align:right"><i class="icon-arrow-right"></i></div></td>
 												<c:choose>
 													<c:when test="${order.hasNewDestination}">
-														<td><i class="icon-arrow-right"></i></td>
+														<td><c:out value="${order.destinationCity}" /><div style="float:right; text-align:right"><i class="icon-arrow-right"></i></div>,
+														<c:out value="${order.destinationAddress}" /></td>
 														<td><c:out value="${order.nextDestinationCity}" />,
 															<c:out value="${order.nextDestinationAddress}" /></td>
+														<td><c:out value="${order.nextDestinationDate}" />,
+															<c:out value="${order.nextDestinationTime}" /></td>
 													</c:when>
 													<c:otherwise>
-														<td colspan="2"></td>
+														<td><c:out value="${order.destinationCity}" />, <c:out
+														value="${order.destinationAddress}" /></td>
+														<td></td>
+														<td><c:out value="${order.destinationDate}" />,
+															<c:out value="${order.destinationTime}" /></td>
 													</c:otherwise>
 												</c:choose>
+												<td></td>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
@@ -80,7 +83,7 @@
 		$(document).ready(function() {
 			$(function() {
 				$("table#myTable").tablesorter({
-					sortList : [ [ 1, 0 ] ]
+					sortList : [[0,0]]
 				});
 			});
 		});

@@ -30,8 +30,6 @@
 											<th>Puhelinnumero</th>
 											<th>Sähköposti</th>
 											<th>Yritys</th>
-											<th></th>
-											<th></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -67,11 +65,18 @@
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript"
+		src="../resources/jquery-tablesorter/jquery.tablesorter.min.js"></script>
+	<script type="text/javascript"
 		src="../resources/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("[rel=tooltip]").tooltip({
 				placement : 'bottom'
+			});
+			$(function() {
+				$("table#myTable").tablesorter({
+					sortList : [[0,0],[2,0]]
+				});
 			});
 		});
 	</script>

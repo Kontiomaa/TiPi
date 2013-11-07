@@ -1,5 +1,5 @@
-#23.10.2013
-#Latest isActive -> userIsActive
+#06.11.2013 10:30
+#not tested. Latest: lastTimeEdited timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 CREATE TABLE userRoles(
 	userRole_id INT NOT NULL AUTO_INCREMENT,
@@ -44,7 +44,8 @@ CREATE TABLE orders(
 	carRegister VARCHAR(100) NOT NULL,
 	carColor VARCHAR(100),
 	collectionDate date NOT NULL,
-	collectionTime time NOT NULL,
+	collectionTimeFrom time NOT NULL,
+	collectionTimeTo time NOT NULL,
 	collectionAddress VARCHAR(100) NOT NULL,
 	collectionPostalCode VARCHAR(100) NOT NULL,
 	collectionCity VARCHAR(100) NOT NULL,
@@ -61,11 +62,12 @@ CREATE TABLE orders(
 	companyMadeOrder INT NOT NULL,
 	userMadeOrder INT NOT NULL,
 	statusOfOrder INT NOT NULL default 1,
-	lastTimeEdited timestamp NOT NULL,
+	lastTimeEdited timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	hasNewDestination boolean NOT NULL default 0,
 	#if 1, read nextDestination -data.
 	nextDestinationCollectionDate date,
-	nextDestinationCollectionTime time,
+	nextDestinationCollectionTimeFrom time,
+	nextDestinationCollectionTimeTo time,
 	nextDestinationDate date,
 	nextDestinationTime time,
 	nextDestinationAddress VARCHAR(100),
