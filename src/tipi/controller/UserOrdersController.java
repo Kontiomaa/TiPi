@@ -74,8 +74,10 @@ public class UserOrdersController {
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
 		OrderForm order = ordersGetService.getOrderForUserFromDAO(orderId);
 		boolean collectionTimeLimit = ordersTimeCheckService.checkCollectionTime(orderId, 180);
+		boolean nextDestinationTimeLimit = ordersTimeCheckService.checkNextDestinationTime(orderId, 180);
 		
 		model.addAttribute("collectionTimeLimit", collectionTimeLimit);
+		model.addAttribute("nextDestinationTimeLimit", nextDestinationTimeLimit);
 		model.addAttribute("order", order);
 		model.addAttribute("pageIdentifier", "orders");
 		

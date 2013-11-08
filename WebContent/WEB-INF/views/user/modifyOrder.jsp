@@ -8,7 +8,7 @@
 			<div class="span1"></div>
 			<div class="span10">
 
-				<h3>Tilauksen tarkastelu</h3>
+				<h3>Muokkaa tilaustasi</h3>
 				
 				<form:hidden path="order.orders_id" />
 				
@@ -191,6 +191,13 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:choose>
+							<c:when test="${nextDestinationTimeLimit}">
+								<tr>
+									<td colspan="4" class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
 							<tr>
 								<td class="data-header">Noutop‰iv‰</td>
 								<td>
@@ -248,28 +255,42 @@
 								<td><form:input path="order.nextDestinationCity" name="textinput" class="input-large" type="text" /></td>
 								<td colspan="2"></td>
 							</tr>
+						</c:otherwise>
+						</c:choose>
 						</tbody>
 					</table>
 
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th colspan="4"><h4>Palautuksen lis‰tiedot</h4></th>
+								<th><h4>Palautuksen lis‰tiedot</h4></th>
 							</tr>
 						</thead>
 						<tbody>
+						<c:choose>
+							<c:when test="${nextDestinationTimeLimit}">
+								<tr>
+									<td class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
 							<tr>
-								<td colspan="4">
+								<td>
 									<form:textarea path="order.nextAdditionalInformation" class="input-xxlarge" row="5" />
 								</td>
 							</tr>
+							</c:otherwise>
+						</c:choose>
 						</tbody>
 					</table>
 				</c:if>
 				
 					<span class="row-fluid">
 						<span class="12">
-							<button class="btn btn-primary">Muokkaa</button>
+							<button class="btn btn-primary" style="float:left;">Takaisin</button>
+							<c:if test="${!nextDestinationTimeLimit}">
+								<button class="btn btn-success" style="float:right;">Muokkaa</button>
+							</c:if>
 						</span>
 					</span>
 				

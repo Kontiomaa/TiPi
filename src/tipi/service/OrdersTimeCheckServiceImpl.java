@@ -74,4 +74,14 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 		return compare(collectionTimeFrom + " " + collectionDate, 180);
 	}
 	
+	@Override
+	public boolean checkNextDestinationTime(int id, int minuteLimitBefore) {
+
+		Map<String, Object> timeMap = ordersDAO.getOrdeDatesAndTimes(id);
+		String nextDestinationCollectionTimeFrom = timeMap.get("nextDestinationCollectionTimeFrom").toString();
+		String nextDestinationCollectionDate = timeMap.get("nextDestinationCollectionDate").toString();
+		
+		return compare(nextDestinationCollectionTimeFrom + " " + nextDestinationCollectionDate, 180);
+	}
+	
 }
