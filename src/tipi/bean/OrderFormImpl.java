@@ -84,6 +84,7 @@ public class OrderFormImpl implements OrderForm {
 	private String lastTimeEdited;
 	private int statusOfOrder;
 	private UserProfile userProfile;
+	private int hasNewDestinationForSearchOrders;
 
 	public int getOrders_id() {
 		return orders_id;
@@ -374,4 +375,14 @@ public class OrderFormImpl implements OrderForm {
 	public void setUserProfile(UserProfile userProfile) {
 		this.userProfile = userProfile;
 	}
+
+	public int getHasNewDestinationForSearchOrders() {
+		return hasNewDestinationForSearchOrders;
+	}
+
+	public void setHasNewDestinationForSearchOrders(
+			int hasNewDestinationForSearchOrders) {
+		this.hasNewDestinationForSearchOrders = hasNewDestinationForSearchOrders;
+	}
+	
 }

@@ -155,4 +155,9 @@ public interface OrderForm {
 	public abstract int getStatusOfOrder();
 	
 	public abstract void setStatusOfOrder(int statusOfOrder);
+	
+	public abstract int getHasNewDestinationForSearchOrders();
+
+	public abstract void setHasNewDestinationForSearchOrders(
+			int hasNewDestinationForSearchOrders);
 }

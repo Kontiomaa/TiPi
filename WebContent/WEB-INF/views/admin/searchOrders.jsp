@@ -70,6 +70,35 @@
 												placeholder="esim Espoo" class="input-large" type="text" />
 										</div>
 									</div>
+									<div class="control-group">
+										<form:label path="hasNewDestinationForSearchOrders"
+											class="control-label" for="textinput">Tilauksessa on palautus</form:label>
+										<div class="controls span6">
+											<form:select path="hasNewDestinationForSearchOrders">
+												<c:choose>
+													<c:when
+														test="${searchOrders.hasNewDestinationForSearchOrders == '2'}">
+														<option value="0">Valitse</option>
+														<option value="1">Ei</option>
+														<option value="2" selected>Kyllä</option>
+													</c:when>
+													<c:when
+														test="${searchOrders.hasNewDestinationForSearchOrders == '1'}">
+														<option value="0">Valitse</option>
+														<option value="1" selected>Ei</option>
+														<option value="2">Kyllä</option>
+													</c:when>
+													<c:otherwise>
+														<option value="0" selected>Valitse</option>
+														<option value="1">Ei</option>
+														<option value="2">Kyllä</option>
+
+													</c:otherwise>
+												</c:choose>
+											</form:select>
+
+										</div>
+									</div>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-success">Hae</button>
