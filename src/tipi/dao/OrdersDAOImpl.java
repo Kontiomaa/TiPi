@@ -96,6 +96,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		String nextDestinationCity = "%";
 		boolean hasNewDestination = true;
 		boolean hasNewDestination2 = false;
+		String companyMadeOrder = "%";
 
 		if (!searchOrders.getCarBrand().isEmpty())
 			carBrand = searchOrders.getCarBrand();
@@ -113,16 +114,15 @@ public class OrdersDAOImpl implements OrdersDAO {
 			hasNewDestination = false;
 		else if (searchOrders.getHasNewDestinationForSearchOrders() == 2)
 			hasNewDestination2 = true;
-		
 
 		String sql = "SELECT * FROM orders WHERE carBrand LIKE ? AND carModel LIKE ? AND carRegister LIKE ?"
 				+ " AND collectionCity LIKE ? AND destinationCity LIKE ? AND (nextDestinationCity LIKE ? OR nextDestinationCity IS NULL)"
-				+ "AND (hasNewDestination = ? OR hasNewDestination = ?);";
+				+ "AND (hasNewDestination = ? OR hasNewDestination = ?) AND companyMadeOrder LIKE ?;";
 		Object[] data = new Object[] { 
 				carBrand, carModel,
 				carRegister, collectionCity,
 				destinationCity, nextDestinationCity, hasNewDestination, hasNewDestination2,
-				
+				companyMadeOrder				
 				};
 		List<OrderForm> orders = getJdbcTemplate().query(sql,
 				new BeanPropertyRowMapper(OrderFormImpl.class), data);

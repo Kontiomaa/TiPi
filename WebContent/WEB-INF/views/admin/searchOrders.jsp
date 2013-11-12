@@ -43,7 +43,6 @@
 												placeholder="esim ABC-123" class="input-large" type="text" />
 										</div>
 									</div>
-
 								</div>
 								<div class="span6">
 									<div class="control-group">
@@ -153,15 +152,10 @@
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
+														<input type="hidden" name="backToSearchOrders" id="backToSearchOrders"
+														value="1" />
 														<button class="btn btn-primary" type="submit"
 															value="submit">Avaa</button></td>
-												</form>
-												<form action="changeOrderStatus" method="post" class="span4">
-													<td><input type="hidden" name="statusOfOrder"
-														id="statusOfOrder" value="${order.statusOfOrder}" /> <input
-														type="hidden" name="orderID" id="orderID"
-														value="${order.orders_id}" />
-														<button class="btn btn-success">Laskuta</button></td>
 												</form>
 											</tr>
 										</c:forEach>

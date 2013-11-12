@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import tipi.bean.OrderForm;
 import tipi.bean.OrderFormImpl;
 import tipi.bean.OrdersCount;
+import tipi.bean.UserCompany;
 import tipi.service.OrdersGetService;
+import tipi.service.UserProfileService;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -31,6 +33,17 @@ public class OrdersController {
 
 	public void setFormSendService(OrdersGetService ordersGetService) {
 		this.ordersGetService = ordersGetService;
+	}
+	
+	@Inject
+	private UserProfileService userProfileService;
+	
+	public UserProfileService getUserProfileService() {
+		return userProfileService;
+	}
+	
+	public void setUserProfileService(UserProfileService userProfileService) {
+		this.userProfileService = userProfileService;
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -99,26 +112,38 @@ public class OrdersController {
 		return "admin/billedOrders";
 	}
 	
-	@RequestMapping(value = "/searchOrders", method = RequestMethod.GET)
-	public String searchOrders(Model model) {
-		model.addAttribute("orderPage", "searchOrders");
+	@RequestMapping(value = "/searchOrdersEmpty", method = RequestMethod.GET)
+	public String searchOrdersEmpty(Model model) {
 		OrderForm searchOrders = new OrderFormImpl();
 		model.addAttribute("searchOrders", searchOrders);
+		return "redirect:/admin/searchOrders";
+	}
+	
+	@RequestMapping(value = "/searchOrders", method = RequestMethod.GET)
+	public String searchOrders(Model model) {
+		if (!model.containsAttribute("searchOrders")) {
+			return "redirect:/admin/searchOrdersEmpty";
+		} 
+		model.addAttribute("orderPage", "searchOrdersPage");
 		OrdersCount ordersCount = ordersGetService.getOrdersCount();
 		model.addAttribute("ordersCount", ordersCount);
 		model.addAttribute("pageIdentifier", "orders");
+		List<UserCompany> allCompanies = userProfileService.getAllCompanies();		
+		model.addAttribute("allCompanies", allCompanies);
 		return "admin/searchOrders";
 	}
 	
 	@RequestMapping(value = "/searchOrders", method = RequestMethod.POST)
 	public String searchOrdersForm(Model model, @ModelAttribute(value = "searchOrders") OrderFormImpl searchOrders) {
-		model.addAttribute("orderPage", "searchOrders");
+		model.addAttribute("orderPage", "searchOrdersPage");
 		List<OrderForm> orders = ordersGetService
 				.searchOrdersService(searchOrders);
 		OrdersCount ordersCount = ordersGetService.getOrdersCount();
 		model.addAttribute("ordersCount", ordersCount);
 		model.addAttribute("orders", orders);
 		model.addAttribute("pageIdentifier", "orders");
+		List<UserCompany> allCompanies = userProfileService.getAllCompanies();		
+		model.addAttribute("allCompanies", allCompanies);
 		return "admin/searchOrders";
 	}
 
@@ -129,6 +154,11 @@ public class OrdersController {
 				.parseInt(req.getParameter("orderID")));
 		model.addAttribute("orderInformation", orderInformation);
 		model.addAttribute("pageIdentifier", "orders");
+		if(req.getParameter("backToSearchOrders") != null)
+			model.addAttribute("backToSearchOrders", Integer.parseInt(req.getParameter("backToSearchOrders")));
+		else {
+			model.addAttribute("backToSearchOrders", 0);
+		}
 		
 		if (orderInformation.getStatusOfOrder() == 1) {
 			model.addAttribute("changeStatusButton", "Kuittaa");

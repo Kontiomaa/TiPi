@@ -47,8 +47,8 @@
 					<tr>
 						<th>Kellonaika</th>
 						<td><c:out value="${orderInformation.collectionTimeFrom}"
-								default="-----" /> - <c:out value="${orderInformation.collectionTimeTo}"
-								default="-----" /></td>
+								default="-----" /> - <c:out
+								value="${orderInformation.collectionTimeTo}" default="-----" /></td>
 						<th>Kellonaika</th>
 						<td><c:out value="${orderInformation.destinationTime}"
 								default="-----" /></td>
@@ -228,6 +228,13 @@
 
 					<tr>
 						<c:choose>
+							<c:when test="${backToSearchOrders == 1}">
+								<form action="searchOrders" method="post">
+									<td>
+										<button class="btn btn-primary" type="submit" value="submit">Takaisin</button>
+									</td>
+								</form>
+							</c:when>
 							<c:when test="${orderInformation.statusOfOrder == 1}">
 								<td><a href="new" class="btn btn-primary">Takaisin</a></td>
 							</c:when>
@@ -272,16 +279,15 @@
 								<td></td>
 							</c:when>
 							<c:otherwise>
-								<form action="returnPreviousOrderStatus" method="post" class="span4">
+								<form action="returnPreviousOrderStatus" method="post"
+									class="span4">
 									<td><input type="hidden" name="statusOfOrder"
 										id="statusOfOrder" value="${orderInformation.statusOfOrder}" />
 										<input type="hidden" name="orderID" id="orderID"
 										value="${orderInformation.orders_id}" /> <input type="hidden"
 										name="hasNewDestination" id="hasNewDestination"
 										value="${orderInformation.hasNewDestination}" />
-										<button class="btn btn-danger">
-											Edellinen status
-										</button></td>
+										<button class="btn btn-danger">Edellinen status</button></td>
 								</form>
 							</c:otherwise>
 						</c:choose>
