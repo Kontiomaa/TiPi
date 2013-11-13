@@ -66,7 +66,7 @@
 			</c:choose>
 
 			<c:choose>
-				<c:when test="${orderPage == 'searchOrders'}">
+				<c:when test="${orderPage == 'searchOrdersPage'}">
 					<li class="active"><a href="searchOrders">Hae tilauksia</a></li>
 				</c:when>
 				<c:otherwise>
