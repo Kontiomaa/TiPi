@@ -138,6 +138,8 @@ public interface OrderForm {
 		
 	
 	//Other
+	public abstract int getCompanyMadeOrder();
+	
 	public abstract void setCompanyMadeOrder(int companyMadeOrder);
 
 	public abstract int getUserMadeOrder();

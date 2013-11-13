@@ -43,6 +43,27 @@
 												placeholder="esim ABC-123" class="input-large" type="text" />
 										</div>
 									</div>
+									<div class="control-group">
+										<form:label path="companyMadeOrder" class="control-label"
+											for="textinput">Yritys</form:label>
+										<div class="controls span6">
+											<form:select path="companyMadeOrder">
+												<option value="0">Valitse</option>
+												<c:forEach var="company" items="${allCompanies}">
+													<c:choose>
+														<c:when
+															test="${searchOrders.companyMadeOrder == company.company_id}">
+															<option selected value="${company.company_id}">${company.name}</option>
+														</c:when>
+														<c:otherwise>
+															<option value="${company.company_id}">${company.name}</option>
+														</c:otherwise>
+													</c:choose>
+
+												</c:forEach>
+											</form:select>
+										</div>
+									</div>
 								</div>
 								<div class="span6">
 									<div class="control-group">
@@ -151,8 +172,8 @@
 												<td></td>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
-														value="${order.orders_id}" />
-														<input type="hidden" name="backToSearchOrders" id="backToSearchOrders"
+														value="${order.orders_id}" /> <input type="hidden"
+														name="backToSearchOrders" id="backToSearchOrders"
 														value="1" />
 														<button class="btn btn-primary" type="submit"
 															value="submit">Avaa</button></td>

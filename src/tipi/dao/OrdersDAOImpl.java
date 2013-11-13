@@ -114,6 +114,8 @@ public class OrdersDAOImpl implements OrdersDAO {
 			hasNewDestination = false;
 		else if (searchOrders.getHasNewDestinationForSearchOrders() == 2)
 			hasNewDestination2 = true;
+		if(searchOrders.getCompanyMadeOrder() != 0)
+			companyMadeOrder = Integer.toString(searchOrders.getCompanyMadeOrder());
 
 		String sql = "SELECT * FROM orders WHERE carBrand LIKE ? AND carModel LIKE ? AND carRegister LIKE ?"
 				+ " AND collectionCity LIKE ? AND destinationCity LIKE ? AND (nextDestinationCity LIKE ? OR nextDestinationCity IS NULL)"
