@@ -223,6 +223,12 @@
 							<c:when test="${orderInformation.statusOfOrder == 5}">
 								<td><c:out value="Laskutettu" default="-----" /></td>
 							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 6}">
+								<td><c:out value="Poistettu" default="-----" /></td>
+							</c:when>
+							<c:otherwise>
+								<td>-----</td>
+							</c:otherwise>
 						</c:choose>
 					</tr>
 
@@ -250,13 +256,16 @@
 							<c:when test="${orderInformation.statusOfOrder == 5}">
 								<td><a href="billed" class="btn btn-primary">Takaisin</a></td>
 							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 6}">
+								<td><a href="deletedOrders" class="btn btn-primary">Takaisin</a></td>
+							</c:when>
 							<c:otherwise>
 								<td><a href="new" class="btn btn-primary">Takaisin</a></td>
 							</c:otherwise>
 						</c:choose>
 
 						<c:choose>
-							<c:when test="${orderInformation.statusOfOrder == 5}">
+							<c:when test="${orderInformation.statusOfOrder >= 5}">
 								<td colspan="2"></td>
 							</c:when>
 							<c:otherwise>
@@ -276,6 +285,9 @@
 
 						<c:choose>
 							<c:when test="${orderInformation.statusOfOrder == 1}">
+								<td></td>
+							</c:when>
+							<c:when test="${orderInformation.statusOfOrder == 6}">
 								<td></td>
 							</c:when>
 							<c:otherwise>

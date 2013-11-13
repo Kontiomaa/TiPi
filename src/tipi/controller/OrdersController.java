@@ -112,6 +112,19 @@ public class OrdersController {
 		return "admin/billedOrders";
 	}
 	
+	@RequestMapping(value = "/deletedOrders", method = RequestMethod.GET)
+	public String deletedOrders(Model model) {
+		model.addAttribute("orderPage", "deletedOrders");
+		int statusOfOrder = 6;
+		List<OrderForm> orders = ordersGetService
+				.getOrderListFromDAO(statusOfOrder);
+		OrdersCount ordersCount = ordersGetService.getOrdersCount();
+		model.addAttribute("ordersCount", ordersCount);
+		model.addAttribute("orders", orders);
+		model.addAttribute("pageIdentifier", "orders");
+		return "admin/deletedOrders";
+	}
+	
 	@RequestMapping(value = "/searchOrdersEmpty", method = RequestMethod.GET)
 	public String searchOrdersEmpty(Model model) {
 		OrderForm searchOrders = new OrderFormImpl();
@@ -199,6 +212,8 @@ public class OrdersController {
 			return "redirect:/admin/completed";
 		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 5) {
 			return "redirect:/admin/billed";
+		} else if (Integer.parseInt(req.getParameter("statusOfOrder")) == 6) {
+			return "redirect:/admin/deletedOrders";
 		}
 
 		return "redirect:/admin/new";

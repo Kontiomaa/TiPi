@@ -53,16 +53,18 @@
 				</div>
 			</div>
 		</div>
-		</div>
-		<script type="text/javascript"
+	</div>
+	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript"
-		src="../resources/jquery-tablesorter/jquery.tablesorter.min.js"></script>
+		src="../resources/jquery-tablesorter/jquery.tablesorter.js"></script>
+	<script type="text/javascript"
+		src="../resources/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(function() {
 				$("table#myTable").tablesorter({
-					sortList : [[0,0]]
+					sortList : [ [ 0, 0 ] ]
 				});
 			});
 		});

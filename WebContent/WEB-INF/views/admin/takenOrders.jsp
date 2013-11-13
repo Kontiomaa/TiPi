@@ -34,8 +34,7 @@
 												<td><c:out value="${order.nextDestinationCity}" />, <c:out
 														value="${order.nextDestinationAddress}" /></td>
 												<td><c:out value="${order.nextDestinationCollectionDate}" /> <c:out
-														value="${order.nextDestinationCollectionTimeFrom}" /> - <c:out
-														value="${order.nextDestinationCollectionTimeTo}" /></td>
+														value="${order.nextDestinationCollectionTimeFrom}" /></td>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
@@ -65,12 +64,18 @@
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript"
-		src="../resources/jquery-tablesorter/jquery.tablesorter.min.js"></script>
+		src="../resources/jquery-tablesorter/jquery.tablesorter.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(function() {
 				$("table#myTable").tablesorter({
-					sortList : [[3,0]]
+					sortList : [ [ 3, 0 ] ],
+					dateFormat : "ddmmyyyy",
+					headers : {
+						3 : {
+							sorter : "shortDate"
+						}
+					}
 				});
 			});
 		});

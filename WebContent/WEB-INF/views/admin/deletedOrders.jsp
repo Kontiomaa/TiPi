@@ -1,6 +1,6 @@
 
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Valmiit tilaukset</title>
+<title>Siirtoapu.fi -- Poistetut tilaukset</title>
 </head>
 <body>
 	<div class="container">
@@ -12,7 +12,7 @@
 				<div class="span10 offset1">
 
 					<fieldset>
-						<legend>Valmiit tilaukset</legend>
+						<legend>Poistetut tilaukset</legend>
 						<div class="row-fluid">
 							<div class="span12">
 
@@ -23,7 +23,7 @@
 											<th>Nouto</th>
 											<th>Toimitus</th>
 											<th>Palautus</th>
-											<th>Valmis</th>
+											<th>Muokattu</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -31,37 +31,32 @@
 											<tr>
 												<td><c:out value="${order.userProfile.company.name}" /></td>
 												<td><c:out value="${order.collectionCity}" />, <c:out
-														value="${order.collectionAddress}" /><div style="float:right; text-align:right"><i class="icon-arrow-right"></i></div></td>
+														value="${order.collectionAddress}" />
+													<div style="float: right; text-align: right">
+														<i class="icon-arrow-right"></i>
+													</div></td>
 												<c:choose>
 													<c:when test="${order.hasNewDestination}">
-														<td><c:out value="${order.destinationCity}" /><div style="float:right; text-align:right"><i class="icon-arrow-right"></i></div>,
-														<c:out value="${order.destinationAddress}" /></td>
+														<td><c:out value="${order.destinationCity}" />
+															<div style="float: right; text-align: right">
+																<i class="icon-arrow-right"></i>
+															</div>, <c:out value="${order.destinationAddress}" /></td>
 														<td><c:out value="${order.nextDestinationCity}" />,
 															<c:out value="${order.nextDestinationAddress}" /></td>
-														<td><c:out value="${order.nextDestinationDate}" />,
-															<c:out value="${order.nextDestinationTime}" /></td>
+														<td><c:out value="${order.lastTimeEdited}" /></td>
 													</c:when>
 													<c:otherwise>
 														<td><c:out value="${order.destinationCity}" />, <c:out
-														value="${order.destinationAddress}" /></td>
+																value="${order.destinationAddress}" /></td>
 														<td></td>
-														<td><c:out value="${order.destinationDate}" />,
-															<c:out value="${order.destinationTime}" /></td>
+														<td><c:out value="${order.lastTimeEdited}" /></td>
 													</c:otherwise>
 												</c:choose>
-												<td></td>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
 														<button class="btn btn-primary" type="submit"
 															value="submit">Avaa</button></td>
-												</form>
-												<form action="changeOrderStatus" method="post" class="span4">
-													<td><input type="hidden" name="statusOfOrder"
-														id="statusOfOrder" value="${order.statusOfOrder}" /> <input
-														type="hidden" name="orderID" id="orderID"
-														value="${order.orders_id}" />
-														<button class="btn btn-success">Laskuta</button></td>
 												</form>
 											</tr>
 										</c:forEach>
@@ -70,7 +65,6 @@
 							</div>
 						</div>
 					</fieldset>
-
 				</div>
 			</div>
 		</div>
@@ -83,7 +77,7 @@
 		$(document).ready(function() {
 			$(function() {
 				$("table#myTable").tablesorter({
-					sortList : [ [ 4, 0 ] ],
+					sortList : [ [ 4, 1 ] ],
 					dateFormat : "ddmmyyyy",
 					headers : {
 						4 : {

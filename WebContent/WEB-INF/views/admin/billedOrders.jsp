@@ -31,11 +31,16 @@
 											<tr>
 												<td><c:out value="${order.userProfile.company.name}" /></td>
 												<td><c:out value="${order.collectionCity}" />, <c:out
-														value="${order.collectionAddress}" /><div style="float:right; text-align:right"><i class="icon-arrow-right"></i></div></td>
+														value="${order.collectionAddress}" />
+													<div style="float: right; text-align: right">
+														<i class="icon-arrow-right"></i>
+													</div></td>
 												<c:choose>
 													<c:when test="${order.hasNewDestination}">
-														<td><c:out value="${order.destinationCity}" /><div style="float:right; text-align:right"><i class="icon-arrow-right"></i></div>,
-														<c:out value="${order.destinationAddress}" /></td>
+														<td><c:out value="${order.destinationCity}" />
+															<div style="float: right; text-align: right">
+																<i class="icon-arrow-right"></i>
+															</div>, <c:out value="${order.destinationAddress}" /></td>
 														<td><c:out value="${order.nextDestinationCity}" />,
 															<c:out value="${order.nextDestinationAddress}" /></td>
 														<td><c:out value="${order.nextDestinationDate}" />,
@@ -43,10 +48,10 @@
 													</c:when>
 													<c:otherwise>
 														<td><c:out value="${order.destinationCity}" />, <c:out
-														value="${order.destinationAddress}" /></td>
+																value="${order.destinationAddress}" /></td>
 														<td></td>
-														<td><c:out value="${order.destinationDate}" />,
-															<c:out value="${order.destinationTime}" /></td>
+														<td><c:out value="${order.destinationDate}" />, <c:out
+																value="${order.destinationTime}" /></td>
 													</c:otherwise>
 												</c:choose>
 												<form action="orderInformation" method="post" class="span4">
@@ -70,12 +75,18 @@
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript"
-		src="../resources/jquery-tablesorter/jquery.tablesorter.min.js"></script>
+		src="../resources/jquery-tablesorter/jquery.tablesorter.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(function() {
 				$("table#myTable").tablesorter({
-					sortList : [[4,1]]
+					sortList : [ [ 4, 1 ] ],
+					dateFormat : "ddmmyyyy",
+					headers : {
+						4 : {
+							sorter : "shortDate"
+						}
+					}
 				});
 			});
 		});
