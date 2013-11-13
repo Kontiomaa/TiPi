@@ -29,6 +29,7 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 	
 	/**
 	 * Compares given date to current time. DateString must be given in 'HH:mm:ss yyyy-MM-dd' -format.
+	 * Returns boolean if the editing is allowed anymore. 
 	 * @param dateString
 	 * @param minuteLimit
 	 * @return
@@ -46,22 +47,28 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 		}
 		
 		// Create Calendar from current time
-		Calendar currentTimestampCal = Calendar.getInstance();
+		Calendar currentCal = Calendar.getInstance();
 		
-		// Create Calendar from orders data
-		Calendar compareTimestampCal = Calendar.getInstance();
-		compareTimestampCal.setTime(collectionTimestamp);
-		compareTimestampCal.add(Calendar.MINUTE, minuteLimit);
+		// Create time limit from orders data
+		Calendar timeLimitCal = Calendar.getInstance();
+		timeLimitCal.setTime(collectionTimestamp);
+		timeLimitCal.add(Calendar.MINUTE, minuteLimit);
 		
-		// Compare!
-		if (compareTimestampCal.compareTo(currentTimestampCal) > 0 && compareTimestampCal.compareTo(currentTimestampCal) == 0 ) {
-			// Over timelimit
-			return false;
+		// Compare
+		boolean allowed = true;
+		if (currentCal.before(timeLimitCal)) {
+			allowed = true;
 		}
-		else {
-			// Under timelimit
-			return true;
+		
+		if (currentCal.equals(timeLimitCal)) {
+			allowed = false;
 		}
+		
+		if (currentCal.after(timeLimitCal)) {
+			allowed = false;
+		}
+		
+		return allowed;
 	}
 	
 	@Override
@@ -78,6 +85,11 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 	public boolean checkNextDestinationTime(int id, int minuteLimitBefore) {
 
 		Map<String, Object> timeMap = ordersDAO.getOrdeDatesAndTimes(id);
+		
+		if (timeMap.get("nextDestinationCollectionTimeFrom") == null || timeMap.get("nextDestinationCollectionDate") == null) {
+			return false;
+		}
+		
 		String nextDestinationCollectionTimeFrom = timeMap.get("nextDestinationCollectionTimeFrom").toString();
 		String nextDestinationCollectionDate = timeMap.get("nextDestinationCollectionDate").toString();
 		
