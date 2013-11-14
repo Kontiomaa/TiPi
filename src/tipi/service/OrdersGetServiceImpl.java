@@ -125,33 +125,20 @@ public class OrdersGetServiceImpl implements OrdersGetService {
 		SimpleDateFormat newFormat = new SimpleDateFormat("HH:mm");
 
 		try {
-			order.setCollectionTimeFrom(newFormat.format(oldFormat.parse(order
-					.getCollectionTimeFrom())));
-			order.setCollectionTimeTo(newFormat.format(oldFormat.parse(order
-					.getCollectionTimeTo())));
+			order.setCollectionTime(newFormat.format(oldFormat.parse(order
+					.getCollectionTime())));
 			order.setDestinationTime(newFormat.format(oldFormat.parse(order
 					.getDestinationTime())));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		if (order.getNextDestinationCollectionTimeFrom() != null) {
-			try {
-				order.setNextDestinationCollectionTimeFrom(newFormat
-						.format(oldFormat.parse(order
-								.getNextDestinationCollectionTimeFrom())));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		
-		if (order.getNextDestinationCollectionTimeTo() != null) {
+		if (order.getNextDestinationCollectionTime() != null) {
 			try {
-				order.setNextDestinationCollectionTimeTo(newFormat
+				order.setNextDestinationCollectionTime(newFormat
 						.format(oldFormat.parse(order
-								.getNextDestinationCollectionTimeTo())));
+								.getNextDestinationCollectionTime())));
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

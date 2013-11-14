@@ -98,12 +98,11 @@
 							<div class="control-group">
 								<form:label path="collectionDate" class="control-label"
 									for="textinput">Aika*</form:label>
-								<div class="input-append date span4" id="collectionDate"
+								<div class="input-append date span3" id="collectionDate"
 									data-date="" data-date-format="dd.mm.yyyy">
 									<form:input path="collectionDate" class="span10" type="text"
 										value="" readonly="true" />
-									<span class="add-on"> <i class="icon-calendar"></i>
-									</span>
+									<span class="add-on"><i class="icon-calendar"></i></span>
 								</div>
 								<spring:bind path="collectionDate">
 									<c:if test="${status.error}">
@@ -111,30 +110,13 @@
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
-							</div>
-							<div class="control-group offset4">
-								<div class="input-append bootstrap-timepicker span4">
-									<form:input path="collectionTimeFrom" id="collectionTimeFrom"
-										type="text" class="span8" />
+								<div class="input-append bootstrap-timepicker span2">
+									<form:input path="collectionTime" id="collectionTime"
+										type="text" class="span9" />
 									<span class="add-on"> <i class="icon-time"></i>
 									</span>
 								</div>
-								<spring:bind path="collectionTimeFrom">
-									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
-									</c:if>
-								</spring:bind>
-								<div class="span1" style="text-align: center">
-									<i class="icon-minus"></i>
-								</div>
-								<div class="input-append bootstrap-timepicker span4">
-									<form:input path="collectionTimeTo" id="collectionTimeTo"
-										type="text" class="span8" />
-									<span class="add-on"> <i class="icon-time"></i>
-									</span>
-								</div>
-								<spring:bind path="collectionTimeTo">
+								<spring:bind path="collectionTime">
 									<c:if test="${status.error}">
 										<strong style="font-size: 200%" class="span1 text-error"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
@@ -388,30 +370,17 @@
 												Noutoaika* <i class="icon-info-sign" rel="tooltip"
 													title="Milloin auto on valmis haettavaksi toimituspaikasta"></i>
 											</form:label>
-											<div class="input-append date span4"
-												id="nextDestinationCollectionDate" data-date=""
-												data-date-format="dd.mm.yyyy">
-												<form:input path="nextDestinationCollectionDate"
-													class="span8" type="text" value="" readonly="true" />
+											<div class="input-append date span4" id="nextDestinationCollectionDate"
+												data-date="" data-date-format="dd.mm.yyyy">
+												<form:input path="nextDestinationCollectionDate" class="span8"
+													type="text" value="" readonly="true" />
 												<span class="add-on"> <i class="icon-calendar"></i>
 												</span>
 											</div>
-										</div>
-										<div class="control-group">
-											<div class="input-append bootstrap-timepicker span2 offset4">
-												<form:input path="nextDestinationCollectionTimeFrom"
-													id="nextDestinationCollectionTimeFrom" type="text"
-													class="span10" />
-												<span class="add-on"> <i class="icon-time"></i>
-												</span>
-											</div>
-											<div class="span1" style="text-align: right">
-												<i class="icon-minus"></i>
-											</div>
+
 											<div class="input-append bootstrap-timepicker span2">
-												<form:input path="nextDestinationCollectionTimeTo"
-													id="nextDestinationCollectionTimeTo" type="text"
-													class="span10" />
+												<form:input path="nextDestinationCollectionTime"
+													id="nextDestinationCollectionTime" type="text" class="span10" />
 												<span class="add-on"> <i class="icon-time"></i>
 												</span>
 											</div>
