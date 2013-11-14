@@ -46,9 +46,8 @@
 					</tr>
 					<tr>
 						<th>Kellonaika</th>
-						<td><c:out value="${orderInformation.collectionTimeFrom}"
-								default="-----" /> - <c:out
-								value="${orderInformation.collectionTimeTo}" default="-----" /></td>
+						<td><c:out value="${orderInformation.collectionTime}"
+								default="-----" /></td>
 						<th>Kellonaika</th>
 						<td><c:out value="${orderInformation.destinationTime}"
 								default="-----" /></td>
@@ -136,9 +135,7 @@
 						<tr>
 							<th>Noutoaika</th>
 							<td><c:out
-									value="${orderInformation.nextDestinationCollectionTimeFrom}"
-									default="-----" /> - <c:out
-									value="${orderInformation.nextDestinationCollectionTimeTo}"
+									value="${orderInformation.nextDestinationCollectionTime}"
 									default="-----" /></td>
 							<th>Palautusaika</th>
 							<td><c:out value="${orderInformation.nextDestinationTime}"
