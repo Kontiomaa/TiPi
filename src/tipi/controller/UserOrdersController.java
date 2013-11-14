@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import tipi.bean.OrderForm;
 import tipi.service.OrdersGetService;
 import tipi.service.OrdersTimeCheckService;
+import tipi.service.OrdersUpdateService;
 import tipi.util.PasswordRecoverHashGenerator;
 
 @Controller
@@ -43,6 +44,17 @@ public class UserOrdersController {
 
 	public void setOrdersTimeCheckService(OrdersTimeCheckService ordersTimeCheckService) {
 		this.ordersTimeCheckService = ordersTimeCheckService;
+	}
+	
+	@Inject
+	private OrdersUpdateService ordersUpdateService;
+	
+	public OrdersUpdateService getOrdersUpdateService() {
+		return ordersUpdateService;
+	}
+	
+	public void setOrdersUpdateService(OrdersUpdateService ordersUpdateService) {
+		this.ordersUpdateService = ordersUpdateService;
 	}
 	
 	@RequestMapping(value = "/showOrders", method = RequestMethod.GET)
@@ -82,6 +94,13 @@ public class UserOrdersController {
 		model.addAttribute("pageIdentifier", "orders");
 		
 		return "user/modifyOrder";
+	}
+	
+	@RequestMapping(value = "/updateModifiedOrder", method = RequestMethod.POST)
+	public String updateModifiedOrder(Model model, HttpServletRequest request) {
+		ordersUpdateService.updateModificatedOrder(request.getParameter("carBrand"), request.getParameter("carModel"), request.getParameter("carRegister"), request.getParameter("carColor"), request.getParameter("collectionDate"), request.getParameter("collectionTimeFrom"), request.getParameter("collectionTimeTo"), request.getParameter("collectionAddress"), request.getParameter("collectionPostalCode"), request.getParameter("collectionCity"), request.getParameter("destinationDate"), request.getParameter("destinationTime"), request.getParameter("destinationAddress"), request.getParameter("destinationPostalCode"), request.getParameter("destinationCity"), request.getParameter("clientFname"), request.getParameter("clientLname"), request.getParameter("clientPhoneNo"), request.getParameter("clientCompany"), request.getParameter("additionalInformation"), request.getParameter("hasNewDestination"), request.getParameter("nextDestinationCollectionDate"), request.getParameter("nextDestinationCollectionTimeFrom"), request.getParameter("nextDestinationCollectionTimeTo"), request.getParameter("nextDestinationDate"), request.getParameter("nextDestinationTime"), request.getParameter("nextDestinationAddress"), request.getParameter("nextDestinationPostalCode"), request.getParameter("nextDestinationCity"), request.getParameter("nextAdditionalInformation"), request.getParameter("orders_id"));
+		
+		return "user/orders";
 	}
 	
 }

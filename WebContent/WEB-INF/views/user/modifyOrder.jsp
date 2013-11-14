@@ -20,7 +20,7 @@
 					</thead>
 					<tbody>
 						<c:choose>
-							<c:when test="${collectionTimeLimit}">
+							<c:when test="${!collectionTimeLimit}">
 								<tr>
 									<td colspan="4" class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</td>
 								</tr>
@@ -52,7 +52,7 @@
 					</thead>
 					<tbody>
 						<c:choose>
-							<c:when test="${collectionTimeLimit}">
+							<c:when test="${!collectionTimeLimit}">
 							<tr>
 								<td colspan="2" class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</td>
 								<td colspan="2" class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</td>
@@ -136,7 +136,7 @@
 					</thead>
 					<tbody>
 						<c:choose>
-							<c:when test="${collectionTimeLimit}">
+							<c:when test="${!collectionTimeLimit}">
 								<tr>
 									<td colspan="4" class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</td>
 								</tr>
@@ -167,7 +167,7 @@
 					</thead>
 					<tbody>
 						<c:choose>
-							<c:when test="${collectionTimeLimit}">
+							<c:when test="${!collectionTimeLimit}">
 								<tr>
 									<td class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</td>
 								</tr>
@@ -175,7 +175,7 @@
 							<c:otherwise>
 								<tr>
 									<td>
-										<form:textarea path="order.AdditionalInformation" class="input-xxlarge" row="5" />
+										<form:textarea path="order.additionalInformation" class="input-xxlarge" row="5" />
 									</td>
 								</tr>
 							</c:otherwise>
@@ -192,7 +192,7 @@
 						</thead>
 						<tbody>
 							<c:choose>
-							<c:when test="${nextDestinationTimeLimit}">
+							<c:when test="${!nextDestinationTimeLimit}">
 								<tr>
 									<td colspan="4" class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</td>
 								</tr>
@@ -268,7 +268,7 @@
 						</thead>
 						<tbody>
 						<c:choose>
-							<c:when test="${nextDestinationTimeLimit}">
+							<c:when test="${!nextDestinationTimeLimit}">
 								<tr>
 									<td class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</td>
 								</tr>
@@ -288,7 +288,7 @@
 					<span class="row-fluid">
 						<span class="12">
 							<button class="btn btn-primary" style="float:left;">Takaisin</button>
-							<c:if test="${!nextDestinationTimeLimit}">
+							<c:if test="${nextDestinationTimeLimit}">
 								<button class="btn btn-success" style="float:right;">Muokkaa</button>
 							</c:if>
 						</span>
