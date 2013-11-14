@@ -6,7 +6,7 @@
 		<%@include file="userNavi.jsp"%>
 		<div class="row-fluid" id="area">
 			<div class="span10 offset1">
-				<table class="table" id="orderConfirmationTable">
+				<table class="table table-striped" id="orderConfirmationTable">
 					<thead>
 						<tr>
 							<td colspan="4" style="font-size: 20px; font-weight: 700;">Auto</td>

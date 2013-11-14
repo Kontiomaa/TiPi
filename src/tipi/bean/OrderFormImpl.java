@@ -28,7 +28,6 @@ public class OrderFormImpl implements OrderForm {
 	private String collectionDate;
 	@Pattern(regexp = "\\d{2}[:]\\d{2}",message="Virheellinen Aika")
 	private String collectionTime;
-	@Pattern(regexp = "\\d{2}[:]\\d{2}",message="Virheellinen Aika")
 	@NotEmpty(message="Tyhjä")
 	@Size(max=30,message="Liian pitkä")
 	private String collectionAddress;

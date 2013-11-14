@@ -810,14 +810,7 @@
 										defaultTime : "00:00"
 									});
 
-							var checkoutTime = $('#collectionTimeFrom')
-									.timepicker({
-										minuteStep : 15,
-										showMeridian : false,
-										defaultTime : "00:00"
-									});
-
-							var checkoutTime = $('#collectionTimeTo')
+							var checkoutTime = $('#collectionTime')
 									.timepicker({
 										minuteStep : 15,
 										showMeridian : false,
@@ -825,15 +818,7 @@
 									});
 
 							var nextCheckinTime = $(
-									'#nextDestinationCollectionTimeFrom')
-									.timepicker({
-										minuteStep : 15,
-										showMeridian : false,
-										defaultTime : "00:00"
-									});
-
-							var nextCheckinTime = $(
-									'#nextDestinationCollectionTimeTo')
+									'#nextDestinationCollectionTime')
 									.timepicker({
 										minuteStep : 15,
 										showMeridian : false,
