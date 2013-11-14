@@ -27,9 +27,8 @@ public class OrderFormImpl implements OrderForm {
 	@Pattern(regexp = "\\d{2}[.]\\d{2}[.]\\d{4}",message="Valitse p‰iv‰m‰‰r‰")
 	private String collectionDate;
 	@Pattern(regexp = "\\d{2}[:]\\d{2}",message="Virheellinen Aika")
-	private String collectionTimeFrom;
+	private String collectionTime;
 	@Pattern(regexp = "\\d{2}[:]\\d{2}",message="Virheellinen Aika")
-	private String collectionTimeTo;
 	@NotEmpty(message="Tyhj‰")
 	@Size(max=30,message="Liian pitk‰")
 	private String collectionAddress;
@@ -69,8 +68,7 @@ public class OrderFormImpl implements OrderForm {
 	//Return
 	private boolean hasNewDestination;
 	private String nextDestinationCollectionDate;
-	private String nextDestinationCollectionTimeFrom;
-	private String nextDestinationCollectionTimeTo;
+	private String nextDestinationCollectionTime;
 	private String nextDestinationDate;
 	private String nextDestinationTime;
 	private String nextDestinationAddress;
@@ -134,20 +132,12 @@ public class OrderFormImpl implements OrderForm {
 		this.collectionDate = collectionDate;
 	}
 
-	public String getCollectionTimeFrom() {
-		return collectionTimeFrom;
+	public String getCollectionTime() {
+		return collectionTime;
 	}
 
-	public void setCollectionTimeFrom(String collectionTimeFrom) {
-		this.collectionTimeFrom = collectionTimeFrom;
-	}
-
-	public String getCollectionTimeTo() {
-		return collectionTimeTo;
-	}
-
-	public void setCollectionTimeTo(String collectionTimeTo) {
-		this.collectionTimeTo = collectionTimeTo;
+	public void setCollectionTime(String collectionTime) {
+		this.collectionTime = collectionTime;
 	}
 
 	public String getCollectionAddress() {
@@ -271,22 +261,13 @@ public class OrderFormImpl implements OrderForm {
 		this.nextDestinationCollectionDate = nextDestinationCollectionDate;
 	}
 
-	public String getNextDestinationCollectionTimeFrom() {
-		return nextDestinationCollectionTimeFrom;
+	public String getNextDestinationCollectionTime() {
+		return nextDestinationCollectionTime;
 	}
 
-	public void setNextDestinationCollectionTimeFrom(
-			String nextDestinationCollectionTimeFrom) {
-		this.nextDestinationCollectionTimeFrom = nextDestinationCollectionTimeFrom;
-	}
-
-	public String getNextDestinationCollectionTimeTo() {
-		return nextDestinationCollectionTimeTo;
-	}
-
-	public void setNextDestinationCollectionTimeTo(
-			String nextDestinationCollectionTimeTo) {
-		this.nextDestinationCollectionTimeTo = nextDestinationCollectionTimeTo;
+	public void setNextDestinationCollectionTime(
+			String nextDestinationCollectionTime) {
+		this.nextDestinationCollectionTime = nextDestinationCollectionTime;
 	}
 
 	public String getNextDestinationDate() {
