@@ -48,7 +48,7 @@
 						</tr>
 						<tr>
 							<td class="data-header">Kellonaika</td>
-							<td><c:out value="${order.collectionTimeFrom}" default="-----" /></td>
+							<td></td>
 							<td class="data-header">Kellonaika</td>
 							<td><c:out value="${order.destinationTime}" default="-----" /></td>
 						</tr>
@@ -124,7 +124,7 @@
 							</tr>
 							<tr>
 								<td class="data-header">Noutoaika</td>
-								<td><c:out value="${order.nextDestinationCollectionTimeFrom}" default="-----" /></td>
+								<td><c:out value="${order.nextDestinationCollectionTime}" default="-----" /></td>
 								<td class="data-header">Palautusaika</td>
 								<td><c:out value="${order.nextDestinationTime}" default="-----" /></td>
 							</tr>

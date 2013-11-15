@@ -2,6 +2,7 @@
 <title>Siirtoapu.fi -- Tilauksen tarkastelu</title>
 </head>
 <body>
+	<form action="updateModifiedOrder" method="post">
 	<div class="container">
 		<%@include file="userNavi.jsp"%>
 		<div class="row-fluid" id="area">
@@ -83,13 +84,7 @@
 								<td class="data-header">Kellonaika</td>
 								<td>
 									<div class="input-append bootstrap-timepicker">
-										<form:input path="order.collectionTimeFrom" id="collectionTimeFrom" type="text" />
-										<span class="add-on">
-											<i class="icon-time"></i>
-										</span>
-									</div>
-									<div class="input-append bootstrap-timepicker">
-										<form:input path="order.collectionTimeTo" id="collectionTimeTo" type="text" />
+										<form:input path="order.collectionTime" id="collectionTime" type="text" />
 										<span class="add-on">
 											<i class="icon-time"></i>
 										</span>
@@ -222,13 +217,7 @@
 								<td class="data-header">Noutoaika</td>
 								<td>
 									<div class="input-append bootstrap-timepicker">
-										<form:input path="order.nextDestinationCollectionTimeFrom" id="nextDestinationCollectionTimeFrom" type="text" />
-										<span class="add-on">
-											<i class="icon-time"></i>
-										</span>
-									</div>
-									<div class="input-append bootstrap-timepicker">
-										<form:input path="order.nextDestinationCollectionTimeTo" id="nextDestinationCollectionTimeTo" type="text" />
+										<form:input path="order.nextDestinationCollectionTime" id="nextDestinationCollectionTime" type="text" />
 										<span class="add-on">
 											<i class="icon-time"></i>
 										</span>
@@ -287,7 +276,7 @@
 				
 					<span class="row-fluid">
 						<span class="12">
-							<button class="btn btn-primary" style="float:left;">Takaisin</button>
+							<a href="showOrders" class="btn btn-primary" style="float:left;">Takaisin</a>
 							<c:if test="${nextDestinationTimeLimit}">
 								<button class="btn btn-success" style="float:right;">Muokkaa</button>
 							</c:if>
@@ -297,6 +286,7 @@
 				</div>
 			</div>
 	</div>
+	</form>
 	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="../resources/datepicker/js/bootstrap-datepicker.js"></script>

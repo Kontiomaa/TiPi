@@ -79,7 +79,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 
 	@Override
 	public Map<String, Object> getOrdeDatesAndTimes(int id) {
-		String sql = "SELECT collectionDate, collectionTimeFrom, collectionTimeTo, destinationDate, destinationTime, nextDestinationCollectionDate, nextDestinationCollectionTimeFrom, nextDestinationCollectionTimeTo, nextDestinationDate, nextDestinationTime FROM orders WHERE orders_id = ?;";
+		String sql = "SELECT collectionDate, collectionTime, destinationDate, destinationTime, nextDestinationCollectionDate, nextDestinationCollectionTime, nextDestinationDate, nextDestinationTime FROM orders WHERE orders_id = ?;";
 		Object[] data = new Object[] { id };
 		Map<String, Object> resultMap = jdbcTemplate.queryForMap(sql, data);
 

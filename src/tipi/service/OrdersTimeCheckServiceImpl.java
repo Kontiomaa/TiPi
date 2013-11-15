@@ -75,10 +75,10 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 	public boolean checkCollectionTime(int id, int minuteLimitBefore) {
 
 		Map<String, Object> timeMap = ordersDAO.getOrdeDatesAndTimes(id);
-		String collectionTimeFrom = timeMap.get("collectionTimeFrom").toString();
+		String collectionTime = timeMap.get("collectionTime").toString();
 		String collectionDate = timeMap.get("collectionDate").toString();
 		
-		return compare(collectionTimeFrom + " " + collectionDate, 180);
+		return compare(collectionTime + " " + collectionDate, 180);
 	}
 	
 	@Override
@@ -86,14 +86,14 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 
 		Map<String, Object> timeMap = ordersDAO.getOrdeDatesAndTimes(id);
 		
-		if (timeMap.get("nextDestinationCollectionTimeFrom") == null || timeMap.get("nextDestinationCollectionDate") == null) {
+		if (timeMap.get("nextDestinationCollectionTime") == null || timeMap.get("nextDestinationCollectionDate") == null) {
 			return false;
 		}
 		
-		String nextDestinationCollectionTimeFrom = timeMap.get("nextDestinationCollectionTimeFrom").toString();
+		String nextDestinationCollectionTime = timeMap.get("nextDestinationCollectionTime").toString();
 		String nextDestinationCollectionDate = timeMap.get("nextDestinationCollectionDate").toString();
 		
-		return compare(nextDestinationCollectionTimeFrom + " " + nextDestinationCollectionDate, 180);
+		return compare(nextDestinationCollectionTime + " " + nextDestinationCollectionDate, 180);
 	}
 	
 }
