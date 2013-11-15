@@ -21,5 +21,7 @@ public interface OrdersDAO {
 	public abstract Map<String, Object> getOrdeDatesAndTimes(int id);
 	
 	public abstract List<OrderForm> searchOrdersFromDAO(OrderForm searchOrders);
+	
+	public abstract void deleteOrder(int id);
 
 }

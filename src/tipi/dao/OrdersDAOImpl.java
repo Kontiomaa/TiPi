@@ -130,4 +130,13 @@ public class OrdersDAOImpl implements OrdersDAO {
 				new BeanPropertyRowMapper(OrderFormImpl.class), data);
 		return orders;
 	}
+	
+	@Override
+	public void deleteOrder(int id) {
+		String sql = "DELETE FROM orders WHERE orders_id = ?";
+		Object[] data =  new Object[] { id };
+		getJdbcTemplate().update(sql, data);
+		System.out.println("Sir, you made it.");
+	}
+	
 }
