@@ -17,6 +17,7 @@ import tipi.bean.OrderForm;
 import tipi.service.OrdersDeleteService;
 import tipi.service.OrdersGetService;
 import tipi.service.OrdersTimeCheckService;
+import tipi.service.OrdersUpdateService;
 //import tipi.service.OrdersUpdateService;
 import tipi.util.PasswordRecoverHashGenerator;
 
@@ -58,7 +59,6 @@ public class UserOrdersController {
 		this.ordersDeleteService = ordersDeleteService;
 	}
 	
-	/*
 	@Inject
 	private OrdersUpdateService ordersUpdateService;
 	
@@ -69,7 +69,7 @@ public class UserOrdersController {
 	public void setOrdersUpdateService(OrdersUpdateService ordersUpdateService) {
 		this.ordersUpdateService = ordersUpdateService;
 	}
-	*/
+	
 	@RequestMapping(value = "/showOrders", method = RequestMethod.GET)
 	public String madeOrders(Model model) {
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -111,9 +111,9 @@ public class UserOrdersController {
 	
 	@RequestMapping(value = "/updateModifiedOrder", method = RequestMethod.POST)
 	public String updateModifiedOrder(Model model, HttpServletRequest request) {
-		//ordersUpdateService.updateModificatedOrder(request.getParameter("carBrand"), request.getParameter("carModel"), request.getParameter("carRegister"), request.getParameter("carColor"), request.getParameter("collectionDate"), request.getParameter("collectionTimeFrom"), request.getParameter("collectionTimeTo"), request.getParameter("collectionAddress"), request.getParameter("collectionPostalCode"), request.getParameter("collectionCity"), request.getParameter("destinationDate"), request.getParameter("destinationTime"), request.getParameter("destinationAddress"), request.getParameter("destinationPostalCode"), request.getParameter("destinationCity"), request.getParameter("clientFname"), request.getParameter("clientLname"), request.getParameter("clientPhoneNo"), request.getParameter("clientCompany"), request.getParameter("additionalInformation"), request.getParameter("hasNewDestination"), request.getParameter("nextDestinationCollectionDate"), request.getParameter("nextDestinationCollectionTimeFrom"), request.getParameter("nextDestinationCollectionTimeTo"), request.getParameter("nextDestinationDate"), request.getParameter("nextDestinationTime"), request.getParameter("nextDestinationAddress"), request.getParameter("nextDestinationPostalCode"), request.getParameter("nextDestinationCity"), request.getParameter("nextAdditionalInformation"), request.getParameter("orders_id"));
+		ordersUpdateService.updateModificatedOrder(request.getParameter("carBrand"), request.getParameter("carModel"), request.getParameter("carRegister"), request.getParameter("carColor"), request.getParameter("collectionDate"), request.getParameter("collectionTime"), request.getParameter("collectionAddress"), request.getParameter("collectionPostalCode"), request.getParameter("collectionCity"), request.getParameter("destinationDate"), request.getParameter("destinationTime"), request.getParameter("destinationAddress"), request.getParameter("destinationPostalCode"), request.getParameter("destinationCity"), request.getParameter("clientFname"), request.getParameter("clientLname"), request.getParameter("clientPhoneNo"), request.getParameter("clientCompany"), request.getParameter("additionalInformation"), request.getParameter("hasNewDestination"), request.getParameter("nextDestinationCollectionDate"), request.getParameter("nextDestinationCollectionTime"), request.getParameter("nextDestinationDate"), request.getParameter("nextDestinationTime"), request.getParameter("nextDestinationAddress"), request.getParameter("nextDestinationPostalCode"), request.getParameter("nextDestinationCity"), request.getParameter("nextAdditionalInformation"), request.getParameter("orders_id"));
 		
-		return "user/orders";
+		return "redirect:/user/showOrders";
 	}
 	
 	@RequestMapping(value = "/deleteOrder", method = RequestMethod.POST)

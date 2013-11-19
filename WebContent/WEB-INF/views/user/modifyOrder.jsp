@@ -178,6 +178,8 @@
 					</tbody>
 				</table>
 
+				<form:hidden path="order.hasNewDestination" />
+
 				<c:if test="${order.hasNewDestination}">
 					<table class="table table-striped">
 						<thead>
