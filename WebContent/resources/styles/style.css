@@ -31,18 +31,29 @@ body {
 }
 
 /*For admin's order listing*/
-th.tablesorter-header {
+th.sorting {
 	cursor: pointer;
 	background-repeat: no-repeat;
 	background-position: center right;
 	padding-left: 10px;
-	border-right: 1px solid #BEBEBE;
 }
 
-th.tablesorter-headerDesc {
+th.sorting_desc {
 	background-image: url(arrows/desc.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	padding-left: 10px;
+	background-color: rgba(0,0,0,.03);
 }
 
-th.tablesorter-headerAsc {
+th.sorting_asc {
 	background-image: url(arrows/asc.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	padding-left: 10px;
+	background-color: rgba(0,0,0,.03);
+}
+
+th.sorter-false {
+	border-right: 0px;
 }
