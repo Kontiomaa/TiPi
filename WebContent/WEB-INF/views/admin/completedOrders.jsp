@@ -24,6 +24,8 @@
 											<th>Toimitus</th>
 											<th>Palautus</th>
 											<th>Valmis</th>
+											<th></th>
+											<th></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -38,18 +40,17 @@
 														<c:out value="${order.destinationAddress}" /></td>
 														<td><c:out value="${order.nextDestinationCity}" />,
 															<c:out value="${order.nextDestinationAddress}" /></td>
-														<td><c:out value="${order.nextDestinationDate}" />,
-															<c:out value="${order.nextDestinationTime}" /></td>
+														<td><c:out value="${order.nextDestinationDate}" /> <c:out
+														 value="${order.nextDestinationTime}" /></td>
 													</c:when>
 													<c:otherwise>
 														<td><c:out value="${order.destinationCity}" />, <c:out
 														value="${order.destinationAddress}" /></td>
 														<td></td>
-														<td><c:out value="${order.destinationDate}" />,
-															<c:out value="${order.destinationTime}" /></td>
+														<td><c:out value="${order.destinationDate}" /> <c:out 
+														value="${order.destinationTime}" /></td>
 													</c:otherwise>
 												</c:choose>
-												<td></td>
 												<form action="orderInformation" method="post" class="span4">
 													<td><input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
@@ -78,21 +79,36 @@
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript"
-		src="../resources/jquery-tablesorter/jquery.tablesorter.js"></script>
+		src="../resources/jquery-dataTables/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="../resources/styles/dataTableConf.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$(function() {
-				$("table#myTable").tablesorter({
-					sortList : [ [ 4, 0 ] ],
-					dateFormat : "ddmmyyyy",
-					headers : {
-						4 : {
-							sorter : "shortDate"
-						}
-					}
-				});
-			});
-		});
+	$(document).ready(function() {
+		$('#myTable').dataTable( {
+			"aaSorting": [[ 4, "asc" ]],
+			"bInfo": false,
+			"sDom": "<'row'<'span5 offset1'l><'span5 offset1'f>r>t<'row'<'span5'i><'span5'p>>",
+			"sPaginationType": "bootstrap",
+			"oLanguage": {
+				"sLengthMenu": "_MENU_ ",
+				"sSearch": "Hae",
+				"sZeroRecords": "Ei tilauksia", 
+				"oPaginate": {
+				"sNext": "Seuraava",
+				"sPrevious": "Edellinen",
+				},
+			},
+			"aoColumnDefs": [
+			               { "aTargets": [ 0 ], "bSortable": true },
+			               { "aTargets": [ 1 ], "bSortable": true },
+			               { "aTargets": [ 2 ], "bSortable": true },
+			               { "aTargets": [ 3 ], "bSortable": true },
+			               { "aTargets": [ 4 ], "sType": "date-uk"},
+			               { "aTargets": [ 5 ], "bSortable": false },
+			               { "aTargets": [ 6 ], "bSortable": false },
+			               ],
+		} );
+	} );
 	</script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "date-uk-pre": function ( a ) {
-    	var ukFormat = a.split(', ');
+    	var ukFormat = a.split(' ');
         var ukDatea = ukFormat[0].split('.');
         var ukTimea = ukFormat[1].split(':');
         return (ukDatea[2] + ukDatea[1] + ukDatea[0] + ukTimea[0] + ukTimea[1]) * 1;
