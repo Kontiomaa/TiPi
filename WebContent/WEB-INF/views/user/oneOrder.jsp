@@ -158,9 +158,7 @@
 				
 				<div class="row-fluid">
 					<div class="span6">
-						<form method="post" action="showOrders" style="float:left;">
-							<button class="btn btn-primary">Takaisin</button>
-						</form>
+							<a href="showOrders" class="btn btn-primary">Takaisin</a>
 					</div>
 					<div class="span6">
 						<form method="post" action="getModificateOrder" style="float:right;">

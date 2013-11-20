@@ -279,9 +279,7 @@
 					<span class="row-fluid">
 						<span class="12">
 							<a href="showOrders" class="btn btn-primary" style="float:left;">Takaisin</a>
-							<c:if test="${nextDestinationTimeLimit}">
-								<button class="btn btn-success" style="float:right;">Muokkaa</button>
-							</c:if>
+							<button class="btn btn-success" style="float:right;">Muokkaa</button>
 						</span>
 					</span>
 				

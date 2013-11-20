@@ -94,17 +94,14 @@ public class OrdersUpdateServiceImpl implements OrdersUpdateService {
 	
 
 	@Override
-	public void updateModificatedOrder(String carBrand, String carModel, String carRegister, String carColor, String collectionDate, String collectionTime, String collectionAddress, String collectionPostalCode, String collectionCity, String destinationDate, String destinationTime, String destinationAddress, String destinationPostalCode, String destinationCity, String clientFname, String clientLname, String clientPhoneNo, String clientCompany, String additionalInformation, String hasNewDestination, String nextDestinationCollectionDate, String nextDestinationCollectionTime, String nextDestinationDate, String nextDestinationTime, String nextDestinationAddress, String nextDestinationPostalCode, String nextDestinationCity, String nextAdditionalInformation, String orders_id) {
-		Date collectionDateDate = convertStringToSqlDate(collectionDate);
-		Date destinationDateDate = convertStringToSqlDate(destinationDate);
-		Date nextDestinationCollectionDateDate = convertStringToSqlDate(nextDestinationCollectionDate);
-		Date nextDestinationDateDate = convertStringToSqlDate(nextDestinationDate);
+	public void updateModificatedOrder(OrderForm order, boolean collectionTimeLimit, boolean nextDestinationTimeLimit) {
 		
-		boolean success = ordersDao.updateOrderByUser(carBrand, carModel, carRegister, carColor, collectionDateDate, collectionTime, collectionAddress, collectionPostalCode, collectionCity, destinationDateDate, destinationTime, destinationAddress, destinationPostalCode, destinationCity, clientFname, clientLname, clientPhoneNo, clientCompany, additionalInformation, hasNewDestination, nextDestinationCollectionDateDate, nextDestinationCollectionTime, nextDestinationDateDate, nextDestinationTime, nextDestinationAddress, nextDestinationPostalCode, nextDestinationCity, nextAdditionalInformation, orders_id);
+		boolean success = getOrdersDao().updateOrderByUser(order, collectionTimeLimit, nextDestinationTimeLimit);
+		
 		if (success == true) {
-			System.out.println("----------------------------------- Success: TRUE");
+			System.out.println("Updating done");
 		} else {
-			System.out.println("----------------------------------- Success: FALSE");
+			System.out.println("Updating failed");
 		}
 	}
 
