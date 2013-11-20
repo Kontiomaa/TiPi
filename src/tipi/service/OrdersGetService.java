@@ -21,7 +21,7 @@ public interface OrdersGetService {
 	public abstract void updateOrderStatus(int orders_id, int statusOfOrder);
 	
 	@PreAuthorize("hasRole('ROLE_USER')")
-	public abstract List<OrderForm> getOrderListForUserFromDAO(String userEmail);
+	public abstract List<OrderForm> getOrderListForUserFromDAO(int user_id, int hasNewDestination, int companyMadeOrder, int statusOfOrder);
 	
 	@PreAuthorize("hasRole('ROLE_USER')")
 	public abstract OrderForm getOrderForUserFromDAO(int id);

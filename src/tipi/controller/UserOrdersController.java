@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tipi.bean.OrderForm;
 import tipi.bean.OrderFormImpl;
+import tipi.bean.UserProfileImpl;
 import tipi.service.OrdersDeleteService;
 import tipi.service.OrdersGetService;
 import tipi.service.OrdersTimeCheckService;
@@ -25,7 +26,7 @@ import tipi.util.PasswordRecoverHashGenerator;
 
 @Controller
 @RequestMapping(value = "/user")
-@SessionAttributes({"pageIdentifier"})
+@SessionAttributes({"pageIdentifier", "userProfile", "searchOrders"})
 public class UserOrdersController {
 
 	@Inject
@@ -72,13 +73,32 @@ public class UserOrdersController {
 		this.ordersUpdateService = ordersUpdateService;
 	}
 	
+	@RequestMapping(value = "/ordersEmpty", method = RequestMethod.GET)
+	public String searchOrdersEmpty(Model model) {
+		OrderForm searchOrders = new OrderFormImpl();
+		model.addAttribute("searchOrders", searchOrders);
+		return "redirect:/user/showOrders";
+	}
+	
 	@RequestMapping(value = "/showOrders", method = RequestMethod.GET)
-	public String madeOrders(Model model) {
-		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String userEmail = userDetails.getUsername();
+	public String madeOrders(Model model, @ModelAttribute(value = "userProfile") UserProfileImpl userProfile) {
+		if (!model.containsAttribute("searchOrders")) {
+			return "redirect:/user/ordersEmpty";
+		} 
+		List<OrderForm> orders = ordersGetService.getOrderListForUserFromDAO(userProfile.getUser_id(), 0, 0, 0);
 				
-		List<OrderForm> orders = ordersGetService.getOrderListForUserFromDAO(userEmail);
-				
+		model.addAttribute("orders", orders);
+		model.addAttribute("pageIdentifier", "orders");
+		
+		return "user/orders";
+	}
+	
+	@RequestMapping(value = "/showOrders", method = RequestMethod.POST)
+	public String madeOrdersPost(Model model, @ModelAttribute(value = "userProfile") UserProfileImpl userProfile, @ModelAttribute(value = "searchOrders") OrderFormImpl searchOrders) {
+		if(searchOrders.getCompanyMadeOrder()!=0)
+			searchOrders.setCompanyMadeOrder(userProfile.getMyCompany());
+
+		List<OrderForm> orders = ordersGetService.getOrderListForUserFromDAO(userProfile.getUser_id(), searchOrders.getHasNewDestinationForSearchOrders(),searchOrders.getCompanyMadeOrder(), searchOrders.getStatusOfOrder());
 		model.addAttribute("orders", orders);
 		model.addAttribute("pageIdentifier", "orders");
 		

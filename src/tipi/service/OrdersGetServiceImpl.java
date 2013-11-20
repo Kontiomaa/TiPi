@@ -174,9 +174,11 @@ public class OrdersGetServiceImpl implements OrdersGetService {
 	}
 	
 	@Override
-	public List<OrderForm> getOrderListForUserFromDAO(String userEmail) {
-		List<OrderForm> orderList = ordersDAO.getOrderListForUser(userEmail);
-		
+	public List<OrderForm> getOrderListForUserFromDAO(int user_id, int hasNewDestination, int companyMadeOrder, int statusOfOrder) {
+		List<OrderForm> orderList = ordersDAO.getOrderListForUser(user_id, hasNewDestination, companyMadeOrder, statusOfOrder);
+		for (OrderForm order : orderList) {
+			order = parseMySQLToJavaTimeStamp(order);
+		}
 		return orderList;
 	}
 	

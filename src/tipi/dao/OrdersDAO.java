@@ -14,7 +14,7 @@ public interface OrdersDAO {
 	
 	public abstract void updateOrderStatusDAO(int orders_id, int statusOfOrder);
 	
-	public abstract List<OrderForm> getOrderListForUser(String userEmail);
+	public abstract List<OrderForm> getOrderListForUser(int user_id, int hasNewDestination, int companyMadeOrder, int statusOfOrder);
 	
 	public abstract OrdersCount ordersCountDAO(OrdersCount ordersCount);
 	

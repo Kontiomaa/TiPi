@@ -58,10 +58,10 @@
 
 			<c:choose>
 				<c:when test="${orderPage == 'billed'}">
-					<li class="active"><a href="billed">Laskutettu</a></li>
+					<li class="active"><a href="billed">Laskutetut</a></li>
 				</c:when>
 				<c:otherwise>
-					<li><a href="billed">Laskutettu</a></li>
+					<li><a href="billed">Laskutetut</a></li>
 				</c:otherwise>
 			</c:choose>
 

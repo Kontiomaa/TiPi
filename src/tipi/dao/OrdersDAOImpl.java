@@ -57,9 +57,27 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 
 	@Override
-	public List<OrderForm> getOrderListForUser(String userEmail) {
-		String sql = "SELECT * FROM orders WHERE userMadeOrder = (SELECT user_id FROM registeredUsers WHERE email = ?);";
-		Object[] data = new Object[] { userEmail };
+	public List<OrderForm> getOrderListForUser(int user_id, int hasNewDestination, int companyMadeOrder, int statusOfOrder) {
+		
+		boolean hasNewDestination1 = true;
+		boolean hasNewDestination2 = false;
+		String user_idString = Integer.toString(user_id);
+		String companyMadeOrderString = Integer.toString(companyMadeOrder);
+		String statusOfOrderString = Integer.toString(statusOfOrder);
+		
+		if (hasNewDestination == 1)
+			hasNewDestination1 = false;
+		else if (hasNewDestination == 2)
+			hasNewDestination2 = true;
+		if(companyMadeOrder != 0)
+			user_idString = "%";
+		else
+			companyMadeOrderString = "%";
+		if(statusOfOrder == 0)
+			statusOfOrderString = "%";
+		
+		String sql = "SELECT * FROM orders WHERE userMadeOrder LIKE ? AND (hasNewDestination = ? OR hasNewDestination = ?) AND companyMadeOrder LIKE ? AND statusOfOrder LIKE ?;";
+		Object[] data = new Object[] { user_idString, hasNewDestination1, hasNewDestination2, companyMadeOrderString, statusOfOrderString };
 		List<OrderForm> resultList = jdbcTemplate.query(sql,
 				new BeanPropertyRowMapper(OrderFormImpl.class), data);
 
