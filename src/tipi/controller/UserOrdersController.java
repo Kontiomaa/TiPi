@@ -9,11 +9,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tipi.bean.OrderForm;
+import tipi.bean.OrderFormImpl;
 import tipi.service.OrdersDeleteService;
 import tipi.service.OrdersGetService;
 import tipi.service.OrdersTimeCheckService;
@@ -110,8 +112,13 @@ public class UserOrdersController {
 	}
 	
 	@RequestMapping(value = "/updateModifiedOrder", method = RequestMethod.POST)
-	public String updateModifiedOrder(Model model, HttpServletRequest request) {
-		ordersUpdateService.updateModificatedOrder(request.getParameter("carBrand"), request.getParameter("carModel"), request.getParameter("carRegister"), request.getParameter("carColor"), request.getParameter("collectionDate"), request.getParameter("collectionTime"), request.getParameter("collectionAddress"), request.getParameter("collectionPostalCode"), request.getParameter("collectionCity"), request.getParameter("destinationDate"), request.getParameter("destinationTime"), request.getParameter("destinationAddress"), request.getParameter("destinationPostalCode"), request.getParameter("destinationCity"), request.getParameter("clientFname"), request.getParameter("clientLname"), request.getParameter("clientPhoneNo"), request.getParameter("clientCompany"), request.getParameter("additionalInformation"), request.getParameter("hasNewDestination"), request.getParameter("nextDestinationCollectionDate"), request.getParameter("nextDestinationCollectionTime"), request.getParameter("nextDestinationDate"), request.getParameter("nextDestinationTime"), request.getParameter("nextDestinationAddress"), request.getParameter("nextDestinationPostalCode"), request.getParameter("nextDestinationCity"), request.getParameter("nextAdditionalInformation"), request.getParameter("orders_id"));
+	public String updateModifiedOrder(Model model, HttpServletRequest request, @ModelAttribute(value = "order") OrderFormImpl order) {
+		
+		boolean collectionTimeLimit = ordersTimeCheckService.checkCollectionTime(order.getOrders_id(), 180);
+		boolean nextDestinationTimeLimit = ordersTimeCheckService.checkNextDestinationTime(order.getOrders_id(), 180);
+		
+		System.out.println(order.toString());
+		ordersUpdateService.updateModificatedOrder(order, collectionTimeLimit, nextDestinationTimeLimit);
 		
 		return "redirect:/user/showOrders";
 	}

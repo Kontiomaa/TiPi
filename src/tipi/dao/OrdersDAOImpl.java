@@ -1,8 +1,5 @@
 package tipi.dao;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -143,34 +140,55 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 	
 	@Override
-	public boolean updateOrderByUser(String carBrand, String carModel, String carRegister, String carColor, Date collectionDate, String collectionTime, String collectionAddress, String collectionPostalCode, String collectionCity, Date destinationDate, String destinationTime, String destinationAddress, String destinationPostalCode, String destinationCity, String clientFname, String clientLname, String clientPhoneNo, String clientCompany, String additionalInformation, String hasNewDestination, Date nextDestinationCollectionDate, String nextDestinationCollectionTime, Date nextDestinationDate, String nextDestinationTime, String nextDestinationAddress, String nextDestinationPostalCode, String nextDestinationCity, String nextAdditionalInformation, String orders_id) {
+	public boolean updateOrderByUser(OrderForm order, boolean collectionTimeLimit, boolean nextDestinationTimeLimit) {	
 		
 		Object[] data;
-		String sql = "UPDATE orders ";
+		ArrayList<Object> cacheArray = new ArrayList<Object>();
+		String sql = "UPDATE orders SET ";
 		
-		/*DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-		
-		Date collectionDateDate = dateFormat.parse(collectionDate);
-		Date destinationDateDate = Date.valueOf(destinationDate);
-		Date nextDestinationCollectionDateDate;
-		Date nextDestinationDateDate;*/
-		
-		int hasNewDestinationInt;
-		if (hasNewDestination.equals("true")) {
-			hasNewDestinationInt = 1;
-		} else {
-			hasNewDestinationInt = 0;
+		if (collectionTimeLimit) {
+			System.out.println("collectionTimeLimit = true");
+			sql = sql + "carBrand = ?, carRegister = ?, carModel = ?, carColor = ?, collectionDate = ?, destinationDate = ?, collectionTime = ?, destinationTime = ?, collectionAddress = ?, destinationAddress = ?, collectionPostalCode = ?, destinationPostalCode = ?, collectionCity = ?, destinationCity = ?, clientFname = ?, clientPhoneNo = ?, clientLname = ?, clientCompany = ?, additionalInformation = ?";
+			cacheArray.add(order.getCarBrand());
+			cacheArray.add(order.getCarRegister());
+			cacheArray.add(order.getCarModel());
+			cacheArray.add(order.getCarColor());
+			cacheArray.add(order.getCollectionDate());
+			cacheArray.add(order.getDestinationDate());
+			cacheArray.add(order.getCollectionTime());
+			cacheArray.add(order.getDestinationTime());
+			cacheArray.add(order.getCollectionAddress());
+			cacheArray.add(order.getDestinationAddress());
+			cacheArray.add(order.getCollectionPostalCode());
+			cacheArray.add(order.getDestinationPostalCode());
+			cacheArray.add(order.getCollectionCity());
+			cacheArray.add(order.getDestinationCity());
+			cacheArray.add(order.getClientFname());
+			cacheArray.add(order.getClientPhoneNo());
+			cacheArray.add(order.getClientLname());
+			cacheArray.add(order.getClientCompany());
+			cacheArray.add(order.getAdditionalInformation());
 		}
 		
-		if (hasNewDestinationInt == 1) {
-			sql = sql + "SET carBrand = ?, carModel = ?, carRegister = ?, carColor = ?, collectionDate = ?, collectionTime = ?, collectionAddress = ?, collectionPostalCode = ?, collectionCity = ?, destinationDate = ?, destinationTime = ?, destinationAddress = ?, destinationPostalCode = ?, destinationCity = ?, clientFname = ?, clientLname = ?, clientPhoneNo = ?, clientCompany = ?, additionalInformation = ?, hasNewDestination = ?, nextDestinationCollectionDate = ?, nextDestinationCollectionTime = ?, nextDestinationDate = ?, nextDestinationTime = ?, nextDestinationAddress = ?, nextDestinationPostalCode = ?, nextDestinationCity = ?, nextAdditionalInformation = ?";
-			data = new Object[] { carBrand, carModel, carRegister, carColor, collectionDate, collectionTime, collectionAddress, collectionPostalCode, collectionCity, destinationDate, destinationTime, destinationAddress, destinationPostalCode, destinationCity, clientFname, clientLname, clientPhoneNo, clientCompany, additionalInformation, hasNewDestinationInt, nextDestinationCollectionDate, nextDestinationCollectionTime, nextDestinationDate, nextDestinationTime, nextDestinationAddress, nextDestinationPostalCode, nextDestinationCity, nextAdditionalInformation, orders_id };
-		} else {
-			sql = sql + "SET carBrand = ?, carModel = ?, carRegister = ?, carColor = ?, collectionDate = ?, collectionTime = ?, collectionAddress = ?, collectionPostalCode = ?, collectionCity = ?, destinationDate = ?, destinationTime = ?, destinationAddress = ?, destinationPostalCode = ?, destinationCity = ?, clientFname = ?, clientLname = ?, clientPhoneNo = ?, clientCompany = ?, additionalInformation = ?, hasNewDestination = ?, nextAdditionalInformation = ?";
-			data = new Object[] { carBrand, carModel, carRegister, carColor, collectionDate, collectionTime, collectionAddress, collectionPostalCode, collectionCity, destinationDate, destinationTime, destinationAddress, destinationPostalCode, destinationCity, clientFname, clientLname, clientPhoneNo, clientCompany, additionalInformation, hasNewDestinationInt, nextAdditionalInformation, orders_id };
+		if (order.isHasNewDestination()) {
+			if (nextDestinationTimeLimit) {
+				System.out.println("nextDestinationTimeLimit = true");
+				if (collectionTimeLimit) {sql = sql + ", ";}
+				sql = sql + "nextDestinationCollectionDate = ?, nextDestinationDate = ?, nextDestinationCollectionTime = ?, nextDestinationTime = ?, nextDestinationAddress = ?, nextDestinationPostalCode = ?, nextDestinationCity = ?, nextAdditionalInformation = ?";
+				cacheArray.add(order.getNextDestinationCollectionDate());
+				cacheArray.add(order.getNextDestinationDate());
+				cacheArray.add(order.getNextDestinationCollectionTime());
+				cacheArray.add(order.getNextDestinationTime());
+				cacheArray.add(order.getNextDestinationAddress());
+				cacheArray.add(order.getNextDestinationPostalCode());
+				cacheArray.add(order.getNextDestinationCity());
+				cacheArray.add(order.getNextAdditionalInformation());
+			}
 		}
 		
+		cacheArray.add(order.getOrders_id());
 		sql = sql + " WHERE orders_id = ?";
+		data = cacheArray.toArray();
 		
 		int update = getJdbcTemplate().update(sql, data);
 		
