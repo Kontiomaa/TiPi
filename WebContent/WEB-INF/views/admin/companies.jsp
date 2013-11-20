@@ -28,6 +28,7 @@
 											<th>Osoite</th>
 											<th>Postiosoite</th>
 											<th>Kaupunki</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -57,17 +58,39 @@
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript"
-		src="../resources/jquery-tablesorter/jquery.tablesorter.js"></script>
-	<script type="text/javascript"
 		src="../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="../resources/jquery-dataTables/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="../resources/styles/dataTableConf.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$(function() {
-				$("table#myTable").tablesorter({
-					sortList : [ [ 0, 0 ] ]
-				});
-			});
+	$(document).ready(function() {
+		$("[rel=tooltip]").tooltip({
+			placement : 'bottom'
 		});
+		$('#myTable').dataTable( {
+			"aaSorting": [[ 0, "asc" ]],
+			"bInfo": false,
+			"sDom": "<'row'<'span5 offset1'l><'span5 offset1'f>r>t<'row'<'span5'i><'span5'p>>",
+			"sPaginationType": "bootstrap",
+			"oLanguage": {
+				"sLengthMenu": "_MENU_ ",
+				"sSearch": "Hae",
+				"sZeroRecords": "Ei käyttäjiä", 
+				"oPaginate": {
+				"sNext": "Seuraava",
+				"sPrevious": "Edellinen",
+				},
+			},
+			"aoColumnDefs": [
+			               { "aTargets": [ 0 ], "bSortable": true },
+			               { "aTargets": [ 1 ], "bSortable": true },
+			               { "aTargets": [ 2 ], "bSortable": true },
+			               { "aTargets": [ 3 ], "bSortable": true },
+			               { "aTargets": [ 4 ], "bSortable": false },
+			               ],
+		} );
+	} );
 	</script>
 </body>
 </html>
