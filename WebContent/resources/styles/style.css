@@ -36,6 +36,7 @@ th.sorting {
 	background-repeat: no-repeat;
 	background-position: center right;
 	padding-left: 10px;
+	padding-right: 10px;
 }
 
 th.sorting_desc {
@@ -54,4 +55,10 @@ th.sorting_asc {
 	background-position: center right;
 	padding-left: 10px;
 	background-color: rgba(0,0,0,.03);
+}
+
+td.userOrders {
+	float: center;
+	text-align: center;
+	cursor: pointer;
 }

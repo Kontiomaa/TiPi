@@ -13,7 +13,7 @@
 				<form:form action="showOrders" modelAttribute="searchOrders"
 					method="post" class="form-horizontal">
 					<fieldset>
-						<legend>Hae tilauksia</legend>
+						<legend>Suodata tilauksia</legend>
 						<div class="row-fluid">
 							<div class="span4">
 								<div class="control-group">
@@ -79,8 +79,6 @@
 													<option value="2">Kuitatut</option>
 													<option value="3">Toimitetut</option>
 													<option value="4">Valmiit</option>
-													<option value="5">Laskutetut</option>
-													<option value="6">Poistetut</option>
 												</c:when>
 												<c:when test="${searchOrders.statusOfOrder == '2'}">
 													<option value="0">Kaikki</option>
@@ -88,8 +86,6 @@
 													<option value="2" selected>Kuitatut</option>
 													<option value="3">Toimitetut</option>
 													<option value="4">Valmiit</option>
-													<option value="5">Laskutetut</option>
-													<option value="6">Poistetut</option>
 												</c:when>
 												<c:when test="${searchOrders.statusOfOrder == '3'}">
 													<option value="0">Kaikki</option>
@@ -97,8 +93,6 @@
 													<option value="2">Kuitatut</option>
 													<option value="3" selected>Toimitetut</option>
 													<option value="4">Valmiit</option>
-													<option value="5">Laskutetut</option>
-													<option value="6">Poistetut</option>
 												</c:when>
 												<c:when test="${searchOrders.statusOfOrder == '4'}">
 													<option value="0">Kaikki</option>
@@ -106,26 +100,6 @@
 													<option value="2">Kuitatut</option>
 													<option value="3">Toimitetut</option>
 													<option value="4" selected>Valmiit</option>
-													<option value="5">Laskutetut</option>
-													<option value="6">Poistetut</option>
-												</c:when>
-												<c:when test="${searchOrders.statusOfOrder == '5'}">
-													<option value="0">Kaikki</option>
-													<option value="1">Uudet</option>
-													<option value="2">Kuitatut</option>
-													<option value="3">Toimitetut</option>
-													<option value="4">Valmiit</option>
-													<option value="5" selected>Laskutetut</option>
-													<option value="6">Poistetut</option>
-												</c:when>
-												<c:when test="${searchOrders.statusOfOrder == '6'}">
-													<option value="0">Kaikki</option>
-													<option value="1">Uudet</option>
-													<option value="2">Kuitatut</option>
-													<option value="3">Toimitetut</option>
-													<option value="4">Valmiit</option>
-													<option value="5">Laskutetut</option>
-													<option value="6" selected>Poistetut</option>
 												</c:when>
 												<c:otherwise>
 													<option value="0" selected>Kaikki</option>
@@ -133,15 +107,13 @@
 													<option value="2">Kuitatut</option>
 													<option value="3">Toimitetut</option>
 													<option value="4">Valmiit</option>
-													<option value="5">Laskutetut</option>
-													<option value="6">Poistetut</option>
 												</c:otherwise>
 											</c:choose>
 										</form:select>
 									</div>
 								</div>
 							</div>
-							<button type="submit" class="btn btn-success">Hae</button>
+							<button type="submit" class="btn btn-success">Suodata</button>
 					</fieldset>
 				</form:form>
 
@@ -154,7 +126,7 @@
 							<th>Mistä</th>
 							<th>Mihin</th>
 							<th>Palautetaan</th>
-							<th>Viimeksi muokattu</th>
+							<th>Muokattu</th>
 							<th>Status</th>
 							<th></th>
 						</tr>
@@ -186,7 +158,30 @@
 								</c:choose>
 
 								<td><c:out value="${order.lastTimeEdited}" /></td>
-								<td><c:out value="${order.statusOfOrder}" /></td>
+
+								<c:choose>
+									<c:when test="${order.statusOfOrder=='1'}">
+										<td class="userOrders"><span class="label label-inverse" 
+										rel="tooltip" title="Uusi"
+										>U</span></td>
+									</c:when>
+									<c:when test="${order.statusOfOrder=='2'}">
+										<td class="userOrders"><span class="label label-default" 
+										rel="tooltip" title="Kuitattu">K</span></td>
+									</c:when>
+									<c:when test="${order.statusOfOrder=='3'}">
+										<td class="userOrders"><span class="label label-success" 
+										rel="tooltip" title="Toimitettu">T</span></td>
+									</c:when>
+									<c:when test="${order.statusOfOrder=='4'}">
+										<td class="userOrders"><span class="label label-info" 
+										rel="tooltip" title="Valmis">V</span></td>
+									</c:when>
+									<c:otherwise>
+										<td></td>
+									</c:otherwise>
+								</c:choose>
+
 								<td>
 									<form method="post" action="getOneOrder" class="buttonForm">
 										<input name="orderId" type="hidden" value="${order.orders_id}" />
@@ -201,6 +196,62 @@
 			</div>
 		</div>
 	</div>
-
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="../resources/jquery-dataTables/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="../resources/styles/dataTableConf.js"></script>
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$("[rel=tooltip]").tooltip({
+								placement : 'bottom'
+							});
+							
+							$('#myTable')
+									.dataTable(
+											{
+												"aaSorting" : [ [ 4, "asc" ] ],
+												"bInfo" : false,
+												"sDom" : "<'row'<'span5 offset1'l><'span5 offset1'f>r>t<'row'<'span5'i><'span5'p>>",
+												"sPaginationType" : "bootstrap",
+												"oLanguage" : {
+													"sLengthMenu" : "Näytä _MENU_",
+													"sSearch" : "Hae",
+													"sZeroRecords" : "Ei tilauksia",
+													"oPaginate" : {
+														"sNext" : "Seuraava",
+														"sPrevious" : "Edellinen",
+													},
+												},
+												"aoColumnDefs" : [ {
+													"aTargets" : [ 0 ],
+													"bSortable" : true
+												}, {
+													"aTargets" : [ 1 ],
+													"bSortable" : true
+												}, {
+													"aTargets" : [ 2 ],
+													"bSortable" : true
+												}, {
+													"aTargets" : [ 3 ],
+													"bSortable" : true
+												}, {
+													"aTargets" : [ 4 ],
+													"sType" : "date-uk"
+												}, {
+													"aTargets" : [ 5 ],
+													"bSortable" : true
+												}, {
+													"aTargets" : [ 6 ],
+													"bSortable" : false
+												}, ],
+											});
+						});
+	</script>
 </body>
 </html>

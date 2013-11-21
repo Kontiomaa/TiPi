@@ -78,7 +78,7 @@
 			"sDom": "<'row'<'span5 offset1'l><'span5 offset1'f>r>t<'row'<'span5'i><'span5'p>>",
 			"sPaginationType": "bootstrap",
 			"oLanguage": {
-				"sLengthMenu": "_MENU_ ",
+				"sLengthMenu" : "Näytä _MENU_",
 				"sSearch": "Hae",
 				"sZeroRecords": "Ei tilauksia", 
 				"oPaginate": {
