@@ -10,39 +10,39 @@
 				<table class="table table-striped" id="userProfileTable">
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight: 700;">Käyttäjä</td>
+							<td colspan="4" class="thead-header">Käyttäjä</td>
 						</tr>
 					</thead>
 					<tr>
-						<th>Etunimi</th>
+						<td class="data-header">Etunimi</td>
 						<td><c:out value="${userProfile.fName}" default="-----" /></td>
-						<th>Sukunimi</th>
+						<td class="data-header">Sukunimi</td>
 						<td><c:out value="${userProfile.lName}" default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Puhelinnumero</th>
+						<td class="data-header">Puhelinnumero</td>
 						<td><c:out value="${userProfile.phoneNo}" default="-----" /></td>
-						<th>Sähköposti</th>
+						<td class="data-header">Sähköposti</td>
 						<td><c:out value="${userProfile.email}" default="-----" /></td>
 					</tr>
 
 					<tr>
-						<td colspan="4" style="font-size: 20px; font-weight: 700;">Yritys</td>
+						<td colspan="4" class="thead-header">Yritys</td>
 					</tr>
 					<tr>
-						<th>Nimi</th>
+						<td class="data-header">Nimi</td>
 						<td><c:out value="${userProfile.company.name}"
 								default="-----" /></td>
-						<th>Osoite</th>
+						<td class="data-header">Osoite</td>
 						<td><c:out value="${userProfile.company.address}"
 								default="-----" /></td>
 					</tr>
 
 					<tr>
-						<th>Postinumero</th>
+						<td class="data-header">Postinumero</td>
 						<td><c:out value="${userProfile.company.postalCode}"
 								default="-----" /></td>
-						<th>Kaupunki</th>
+						<td class="data-header">Kaupunki</td>
 						<td><c:out value="${userProfile.company.city}"
 								default="-----" /></td>
 					</tr>

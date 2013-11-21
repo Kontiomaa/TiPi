@@ -13,7 +13,7 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<td colspan="4"><h4>Auto</h4></td>
+							<td colspan="4" class="thead-header">Auto</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -30,13 +30,10 @@
 							<td><c:out value="${order.carColor}" default="-----" /></td>
 						</tr>
 					</tbody>
-				</table>
-				
-				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th colspan="2"><h4>Nouto</h4></th>
-							<th colspan="2"><h4>Toimitus</h4></th>
+							<th colspan="2" class="thead-header">Nouto</th>
+							<th colspan="2" class="thead-header">Toimitus</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -71,12 +68,9 @@
 							<td><c:out value="${order.destinationCity}" default="-----" /></td>
 						</tr>
 					</tbody>
-				</table>
-				
-				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th colspan="4"><h4>Asiakas</h4></th>
+							<th colspan="4" class="thead-header">Asiakas</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -93,12 +87,9 @@
 							<td><c:out value="${order.clientCompany}" default="-----" /></td>
 						</tr>
 					</tbody>
-				</table>
-
-				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th colspan="4"><h4>Toimituksen lisätiedot</h4></th>
+							<th colspan="4" class="thead-header">Toimituksen lisätiedot</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -106,13 +97,10 @@
 							<td colspan="4"><c:out value="${order.additionalInformation}" default="-----" /></td>
 						</tr>
 					</tbody>
-				</table>
-
 				<c:if test="${order.hasNewDestination}">
-					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th colspan="4"><h4>Palautus</h4></th>
+								<th colspan="4" class="thead-header">Palautus</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -140,12 +128,9 @@
 								<td colspan="2"></td>
 							</tr>
 						</tbody>
-					</table>
-
-					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th colspan="4"><h4>Palautuksen lisätiedot</h4></th>
+								<th colspan="4" class="thead-header">Palautuksen lisätiedot</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -153,8 +138,61 @@
 								<td colspan="4"><c:out value="${order.nextAdditionalInformation}" default="-----" /></td>
 							</tr>
 						</tbody>
-					</table>
 				</c:if>
+									<thead>
+						<tr>
+							<td colspan="4" class="thead-header">Tilaajan
+								Tiedot</td>
+						</tr>
+					</thead>
+					<tr>
+						<td class="data-header">Etunimi</td>
+						<td><c:out value="${order.userProfile.fName}"
+								default="-----" /></td>
+						<td class="data-header">Puhelinnumero</td>
+						<td><c:out value="${order.userProfile.phoneNo}"
+								default="-----" /></td>
+					</tr>
+					<tr>
+						<td class="data-header">Sukunimi</td>
+						<td><c:out value="${order.userProfile.lName}"
+								default="-----" /></td>
+						<td class="data-header">Yritys</td>
+						<td><c:out
+								value="${order.userProfile.company.name}"
+								default="-----" /></td>
+					</tr>
+					<tr>
+						<td class="data-header">Muokattu</td>
+						<td><c:out value="${order.lastTimeEdited}"
+								default="-----" /></td>
+						<td class="data-header">Status</td>
+
+						<c:choose>
+							<c:when test="${order.statusOfOrder == 1}">
+								<td><c:out value="Uusi" default="-----" /></td>
+							</c:when>
+							<c:when test="${order.statusOfOrder == 2}">
+								<td><c:out value="Kuitattu" default="-----" /></td>
+							</c:when>
+							<c:when test="${order.statusOfOrder == 3}">
+								<td><c:out value="Toimitettu" default="-----" /></td>
+							</c:when>
+							<c:when test="${order.statusOfOrder == 4}">
+								<td><c:out value="Valmis" default="-----" /></td>
+							</c:when>
+							<c:when test="${order.statusOfOrder == 5}">
+								<td><c:out value="Laskutettu" default="-----" /></td>
+							</c:when>
+							<c:when test="${order.statusOfOrder == 6}">
+								<td><c:out value="Poistettu" default="-----" /></td>
+							</c:when>
+							<c:otherwise>
+								<td>-----</td>
+							</c:otherwise>
+						</c:choose>
+					</tr>
+			</table>
 				
 				<div class="row-fluid">
 					<div class="span6">
@@ -163,7 +201,7 @@
 					<div class="span6">
 						<form method="post" action="getModificateOrder" style="float:right;">
 							<input name="orderId" type="hidden" value="${order.orders_id}" />
-							<button class="btn btn-primary">Muokkaa</button>
+							<button class="btn btn-success">Muokkaa</button>
 						</form>
 					</div>
 				</div>

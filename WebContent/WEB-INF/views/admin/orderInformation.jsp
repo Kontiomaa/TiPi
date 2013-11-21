@@ -9,70 +9,70 @@
 				<table class="table table-striped" id="orderConfirmationTable">
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight: 700;">Auto</td>
+							<td colspan="4" class="thead-header">Auto</td>
 						</tr>
 					</thead>
 					<tr>
-						<th>Automerkki</th>
+						<td class="data-header">Automerkki</td>
 						<td><c:out value="${orderInformation.carBrand}"
 								default="-----" /></td>
-						<th>Rekisterinumero</th>
+						<td class="data-header">Rekisterinumero</td>
 						<td><c:out value="${orderInformation.carRegister}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Automalli</th>
+						<td class="data-header">Automalli</td>
 						<td><c:out value="${orderInformation.carModel}"
 								default="-----" /></td>
-						<th>Autoväri</th>
+						<td class="data-header">Autoväri</td>
 						<td><c:out value="${orderInformation.carColor}"
 								default="-----" /></td>
 					</tr>
 
 					<thead>
 						<tr>
-							<td colspan="2" style="font-size: 20px; font-weight: 700;">Nouto</td>
-							<td colspan="2" style="font-size: 20px; font-weight: 700;">Toimitus</td>
+							<td colspan="2" class="thead-header">Nouto</td>
+							<td colspan="2" class="thead-header">Toimitus</td>
 						</tr>
 					</thead>
 
 					<tr>
-						<th>Päivä</th>
+						<td class="data-header">Päivä</td>
 						<td><c:out value="${orderInformation.collectionDate}"
 								default="-----" /></td>
-						<th>Päivä</th>
+						<td class="data-header">Päivä</td>
 						<td><c:out value="${orderInformation.destinationDate}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Kellonaika</th>
+						<td class="data-header">Kellonaika</td>
 						<td><c:out value="${orderInformation.collectionTime}"
 								default="-----" /></td>
-						<th>Kellonaika</th>
+						<td class="data-header">Kellonaika</td>
 						<td><c:out value="${orderInformation.destinationTime}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Osoite</th>
+						<td class="data-header">Osoite</td>
 						<td><c:out value="${orderInformation.collectionAddress}"
 								default="-----" /></td>
-						<th>Osoite</th>
+						<td class="data-header">Osoite</td>
 						<td><c:out value="${orderInformation.destinationAddress}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Postinumero</th>
+						<td class="data-header">Postinumero</td>
 						<td><c:out value="${orderInformation.collectionPostalCode}"
 								default="-----" /></td>
-						<th>Postinumero</th>
+						<td class="data-header">Postinumero</td>
 						<td><c:out value="${orderInformation.destinationPostalCode}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Toimipaikka</th>
+						<td class="data-header">Toimipaikka</td>
 						<td><c:out value="${orderInformation.collectionCity}"
 								default="-----" /></td>
-						<th>Toimipaikka</th>
+						<td class="data-header">Toimipaikka</td>
 						<td><c:out value="${orderInformation.destinationCity}"
 								default="-----" /></td>
 					</tr>
@@ -80,30 +80,30 @@
 
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight: 700;">Asiakas</td>
+							<td colspan="4" class="thead-header">Asiakas</td>
 						</tr>
 					</thead>
 
 					<tr>
-						<th>Etunimi</th>
+						<td class="data-header">Etunimi</td>
 						<td><c:out value="${orderInformation.clientFname}"
 								default="-----" /></td>
-						<th>Puhelinnumero</th>
+						<td class="data-header">Puhelinnumero</td>
 						<td><c:out value="${orderInformation.clientPhoneNo}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Sukunimi</th>
+						<td class="data-header">Sukunimi</td>
 						<td><c:out value="${orderInformation.clientLname}"
 								default="-----" /></td>
-						<th>Yritys</th>
+						<td class="data-header">Yritys</td>
 						<td><c:out value="${orderInformation.clientCompany}"
 								default="-----" /></td>
 					</tr>
 
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight: 700;">Toimituksen
+							<td colspan="4" class="thead-header">Toimituksen
 								Lisätiedot</td>
 						</tr>
 					</thead>
@@ -118,43 +118,43 @@
 
 						<thead>
 							<tr>
-								<td colspan="4" style="font-size: 20px; font-weight: 700;">Palautus</td>
+								<td colspan="4" class="thead-header">Palautus</td>
 							</tr>
 						</thead>
 
 						<tr>
-							<th>Noutopäivä</th>
+							<td class="data-header">Noutopäivä</td>
 							<td><c:out
 									value="${orderInformation.nextDestinationCollectionDate}"
 									default="-----" /></td>
-							<th>Palautuspäivä</th>
+							<td class="data-header">Palautuspäivä</td>
 							<td><c:out value="${orderInformation.nextDestinationDate}"
 									default="-----" /></td>
 						</tr>
 
 						<tr>
-							<th>Noutoaika</th>
+							<td class="data-header">Noutoaika</td>
 							<td><c:out
 									value="${orderInformation.nextDestinationCollectionTime}"
 									default="-----" /></td>
-							<th>Palautusaika</th>
+							<td class="data-header">Palautusaika</td>
 							<td><c:out value="${orderInformation.nextDestinationTime}"
 									default="-----" /></td>
 						</tr>
 
 						<tr>
-							<th>Osoite</th>
+							<td class="data-header">Osoite</td>
 							<td><c:out
 									value="${orderInformation.nextDestinationAddress}"
 									default="-----" /></td>
-							<th>Postinumero</th>
+							<td class="data-header">Postinumero</td>
 							<td><c:out
 									value="${orderInformation.nextDestinationPostalCode}"
 									default="-----" /></td>
 						</tr>
 
 						<tr>
-							<th>Toimipaikka</th>
+							<td class="data-header">Toimipaikka</td>
 							<td><c:out value="${orderInformation.nextDestinationCity}"
 									default="-----" /></td>
 							<td colspan="2"></td>
@@ -162,9 +162,9 @@
 
 						<thead>
 							<tr>
-								<td colspan="4" style="font-size: 20px; font-weight: 700;">Palautuksen
+								<td colspan="4" class="thead-header">Palautuksen
 									Lisätiedot
-								</th>
+								</td>
 							</tr>
 						</thead>
 
@@ -177,32 +177,32 @@
 
 					<thead>
 						<tr>
-							<td colspan="4" style="font-size: 20px; font-weight: 700;">Tilaajan
+							<td colspan="4" class="thead-header">Tilaajan
 								Tiedot</td>
 						</tr>
 					</thead>
 					<tr>
-						<th>Etunimi</th>
+						<td class="data-header">Etunimi</td>
 						<td><c:out value="${orderInformation.userProfile.fName}"
 								default="-----" /></td>
-						<th>Puhelinnumero</th>
+						<td class="data-header">Puhelinnumero</td>
 						<td><c:out value="${orderInformation.userProfile.phoneNo}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Sukunimi</th>
+						<td class="data-header">Sukunimi</td>
 						<td><c:out value="${orderInformation.userProfile.lName}"
 								default="-----" /></td>
-						<th>Yritys</th>
+						<td class="data-header">Yritys</td>
 						<td><c:out
 								value="${orderInformation.userProfile.company.name}"
 								default="-----" /></td>
 					</tr>
 					<tr>
-						<th>Muokattu</th>
+						<td class="data-header">Muokattu</td>
 						<td><c:out value="${orderInformation.lastTimeEdited}"
 								default="-----" /></td>
-						<th>Status</th>
+						<td class="data-header">Status</td>
 
 						<c:choose>
 							<c:when test="${orderInformation.statusOfOrder == 1}">
