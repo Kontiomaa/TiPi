@@ -1,5 +1,7 @@
 package tipi.dao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -158,63 +160,78 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 	
 	@Override
-	public boolean updateOrderByUser(OrderForm order, boolean collectionTimeLimit, boolean nextDestinationTimeLimit) {	
+	public boolean updateOrderByUser(OrderForm order, boolean collectionTimeLimit, boolean nextDestinationTimeLimit) {
 		
-		Object[] data;
-		ArrayList<Object> cacheArray = new ArrayList<Object>();
-		String sql = "UPDATE orders SET ";
-		
-		if (collectionTimeLimit) {
-			System.out.println("collectionTimeLimit = true");
-			sql = sql + "carBrand = ?, carRegister = ?, carModel = ?, carColor = ?, collectionDate = ?, destinationDate = ?, collectionTime = ?, destinationTime = ?, collectionAddress = ?, destinationAddress = ?, collectionPostalCode = ?, destinationPostalCode = ?, collectionCity = ?, destinationCity = ?, clientFname = ?, clientPhoneNo = ?, clientLname = ?, clientCompany = ?, additionalInformation = ?";
-			cacheArray.add(order.getCarBrand());
-			cacheArray.add(order.getCarRegister());
-			cacheArray.add(order.getCarModel());
-			cacheArray.add(order.getCarColor());
-			cacheArray.add(order.getCollectionDate());
-			cacheArray.add(order.getDestinationDate());
-			cacheArray.add(order.getCollectionTime());
-			cacheArray.add(order.getDestinationTime());
-			cacheArray.add(order.getCollectionAddress());
-			cacheArray.add(order.getDestinationAddress());
-			cacheArray.add(order.getCollectionPostalCode());
-			cacheArray.add(order.getDestinationPostalCode());
-			cacheArray.add(order.getCollectionCity());
-			cacheArray.add(order.getDestinationCity());
-			cacheArray.add(order.getClientFname());
-			cacheArray.add(order.getClientPhoneNo());
-			cacheArray.add(order.getClientLname());
-			cacheArray.add(order.getClientCompany());
-			cacheArray.add(order.getAdditionalInformation());
-		}
-		
-		if (order.isHasNewDestination()) {
-			if (nextDestinationTimeLimit) {
-				System.out.println("nextDestinationTimeLimit = true");
-				if (collectionTimeLimit) {sql = sql + ", ";}
-				sql = sql + "nextDestinationCollectionDate = ?, nextDestinationDate = ?, nextDestinationCollectionTime = ?, nextDestinationTime = ?, nextDestinationAddress = ?, nextDestinationPostalCode = ?, nextDestinationCity = ?, nextAdditionalInformation = ?";
-				cacheArray.add(order.getNextDestinationCollectionDate());
-				cacheArray.add(order.getNextDestinationDate());
-				cacheArray.add(order.getNextDestinationCollectionTime());
-				cacheArray.add(order.getNextDestinationTime());
-				cacheArray.add(order.getNextDestinationAddress());
-				cacheArray.add(order.getNextDestinationPostalCode());
-				cacheArray.add(order.getNextDestinationCity());
-				cacheArray.add(order.getNextAdditionalInformation());
+		SimpleDateFormat oldFormat = new SimpleDateFormat("dd.MM.yyyy");
+		SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		if (collectionTimeLimit || nextDestinationTimeLimit) {
+			Object[] data;
+			ArrayList<Object> cacheArray = new ArrayList<Object>();
+			String sql = "UPDATE orders SET ";
+			
+			if (collectionTimeLimit) {
+				try  {
+					System.out.println("collectionTimeLimit = true");
+					sql = sql + "carBrand = ?, carRegister = ?, carModel = ?, carColor = ?, collectionDate = ?, destinationDate = ?, collectionTime = ?, destinationTime = ?, collectionAddress = ?, destinationAddress = ?, collectionPostalCode = ?, destinationPostalCode = ?, collectionCity = ?, destinationCity = ?, clientFname = ?, clientPhoneNo = ?, clientLname = ?, clientCompany = ?, additionalInformation = ?";
+					cacheArray.add(order.getCarBrand());
+					cacheArray.add(order.getCarRegister());
+					cacheArray.add(order.getCarModel());
+					cacheArray.add(order.getCarColor());
+					cacheArray.add(newFormat.format(oldFormat.parse(order.getCollectionDate())));
+					cacheArray.add(newFormat.format(oldFormat.parse(order.getDestinationDate())));
+					cacheArray.add(order.getCollectionTime());
+					cacheArray.add(order.getDestinationTime());
+					cacheArray.add(order.getCollectionAddress());
+					cacheArray.add(order.getDestinationAddress());
+					cacheArray.add(order.getCollectionPostalCode());
+					cacheArray.add(order.getDestinationPostalCode());
+					cacheArray.add(order.getCollectionCity());
+					cacheArray.add(order.getDestinationCity());
+					cacheArray.add(order.getClientFname());
+					cacheArray.add(order.getClientPhoneNo());
+					cacheArray.add(order.getClientLname());
+					cacheArray.add(order.getClientCompany());
+					cacheArray.add(order.getAdditionalInformation());
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if (order.isHasNewDestination()) {
+				if (nextDestinationTimeLimit) {
+					try {
+						System.out.println("nextDestinationTimeLimit = true");
+						if (collectionTimeLimit) {sql = sql + ", ";}
+						sql = sql + "nextDestinationCollectionDate = ?, nextDestinationDate = ?, nextDestinationCollectionTime = ?, nextDestinationTime = ?, nextDestinationAddress = ?, nextDestinationPostalCode = ?, nextDestinationCity = ?, nextAdditionalInformation = ?";
+						cacheArray.add(newFormat.format(oldFormat.parse(order.getNextDestinationCollectionDate())));
+						cacheArray.add(newFormat.format(oldFormat.parse(order.getNextDestinationDate())));
+						cacheArray.add(order.getNextDestinationCollectionTime());
+						cacheArray.add(order.getNextDestinationTime());
+						cacheArray.add(order.getNextDestinationAddress());
+						cacheArray.add(order.getNextDestinationPostalCode());
+						cacheArray.add(order.getNextDestinationCity());
+						cacheArray.add(order.getNextAdditionalInformation());
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+			cacheArray.add(order.getOrders_id());
+			sql = sql + " WHERE orders_id = ?";
+			data = cacheArray.toArray();
+			
+			int update = getJdbcTemplate().update(sql, data);
+			
+			if (update == 1) {
+				return true;
+			} else { 
+				return false;
 			}
 		}
 		
-		cacheArray.add(order.getOrders_id());
-		sql = sql + " WHERE orders_id = ?";
-		data = cacheArray.toArray();
-		
-		int update = getJdbcTemplate().update(sql, data);
-		
-		if (update == 1) {
-			return true;
-		} else { 
-			return false;
-		}
+		return false;
 	}
 	
 }
