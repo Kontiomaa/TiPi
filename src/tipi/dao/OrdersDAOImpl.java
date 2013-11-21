@@ -78,7 +78,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		if(statusOfOrder == 0)
 			statusOfOrderString = "%";
 		
-		String sql = "SELECT * FROM orders WHERE userMadeOrder LIKE ? AND (hasNewDestination = ? OR hasNewDestination = ?) AND companyMadeOrder LIKE ? AND statusOfOrder LIKE ?;";
+		String sql = "SELECT * FROM orders WHERE userMadeOrder LIKE ? AND (hasNewDestination = ? OR hasNewDestination = ?) AND companyMadeOrder LIKE ? AND (statusOfOrder LIKE ? AND statusOfOrder NOT LIKE 6 AND statusOfOrder NOT LIKE 5);";
 		Object[] data = new Object[] { user_idString, hasNewDestination1, hasNewDestination2, companyMadeOrderString, statusOfOrderString };
 		List<OrderForm> resultList = jdbcTemplate.query(sql,
 				new BeanPropertyRowMapper(OrderFormImpl.class), data);

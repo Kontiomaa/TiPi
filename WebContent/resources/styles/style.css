@@ -1,3 +1,7 @@
+table {
+	border-collapse: separate;
+}
+
 body {
 	padding-top: 40px;
 	background-color: #f5f5f5;
@@ -6,11 +10,6 @@ body {
 #area {
 	padding-top: 10px;
 	background-color: white;
-}
-
-
-#orderConfirmationTable th {
-	color: rgb(100,100,100);
 }
 
 /* Class for buttons in forms which will do requests */
@@ -22,6 +21,12 @@ body {
 /* Used for td-cells with header-like content */
 .data-header {
 	font-weight: bolder;
+	color: rgb(100,100,100);
+}
+
+.thead-header {
+	font-size: 20px;
+	font-weight: 700;
 }
 
 /* Font style for  */
@@ -36,6 +41,7 @@ th.sorting {
 	background-repeat: no-repeat;
 	background-position: center right;
 	padding-left: 10px;
+	padding-right: 10px;
 }
 
 th.sorting_desc {
@@ -54,4 +60,10 @@ th.sorting_asc {
 	background-position: center right;
 	padding-left: 10px;
 	background-color: rgba(0,0,0,.03);
+}
+
+td.userOrders {
+	float: center;
+	text-align: center;
+	cursor: pointer;
 }
