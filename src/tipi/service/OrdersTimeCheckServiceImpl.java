@@ -79,7 +79,7 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 		Map<String, Object> timeMap = ordersDAO.getOrdeDatesAndTimes(id);
 		String collectionTime = timeMap.get("collectionTime").toString();
 		String collectionDate = timeMap.get("collectionDate").toString();
-		
+
 		return compare(collectionTime + " " + collectionDate, 180);
 	}
 	

@@ -8,7 +8,7 @@ import tipi.bean.OrderForm;
 
 public interface OrdersUpdateService {
 
-	public abstract Date convertStringToSqlDate (String inputDate);
+	public abstract String convertStringToSqlDate (String inputDate);
 	/*public abstract OrderForm parseMySQLToJavaTime(OrderForm order);
 	public abstract OrderForm parseMySQLToJavaTimeStamp(OrderForm order);*/
 	

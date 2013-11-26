@@ -162,7 +162,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		
 		Object[] data;
 		ArrayList<Object> cacheArray = new ArrayList<Object>();
-		String sql = "UPDATE orders SET ";
+		String sql = "UPDATE orders SET lastTimeEdited = now(),";
 		
 		if (collectionTimeLimit) {
 			System.out.println("collectionTimeLimit = true");

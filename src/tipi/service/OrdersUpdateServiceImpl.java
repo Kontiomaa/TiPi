@@ -28,23 +28,19 @@ public class OrdersUpdateServiceImpl implements OrdersUpdateService {
 	}
 	
 	@Override
-	public Date convertStringToSqlDate(String inputDate) {
-		DateFormat inputFormat = new SimpleDateFormat("dd.MM.yyyy");
-		DateFormat sqlFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date(0);
-		java.util.Date middle;
-		String sqlDateString;
+	public String convertStringToSqlDate(String inputDate) {
+		SimpleDateFormat oldFormat = new SimpleDateFormat("dd.MM.yyyy");
+		SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		String date = "";
 		
 		try {
-			middle = inputFormat.parse(inputDate);
-			sqlDateString = sqlFormat.format(middle);
-			date = Date.valueOf(sqlDateString);
-		} catch(ParseException e) {
-			e.printStackTrace();
-		} catch (NullPointerException e) {
+			date = newFormat.format(oldFormat.parse(inputDate));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return date;
 	}
 	
@@ -95,7 +91,15 @@ public class OrdersUpdateServiceImpl implements OrdersUpdateService {
 
 	@Override
 	public void updateModificatedOrder(OrderForm order, boolean collectionTimeLimit, boolean nextDestinationTimeLimit) {
-		
+		if(!order.getCollectionDate().isEmpty())
+			order.setCollectionDate(convertStringToSqlDate(order.getCollectionDate()));
+		if(!order.getDestinationDate().isEmpty())
+			order.setDestinationDate(convertStringToSqlDate(order.getDestinationDate()));
+		if(!order.getNextDestinationCollectionDate().isEmpty())
+			order.setNextDestinationCollectionDate(convertStringToSqlDate(order.getNextDestinationCollectionDate()));
+		if(!order.getNextDestinationDate().isEmpty())
+			order.setNextDestinationDate(convertStringToSqlDate(order.getNextDestinationDate()));
+
 		boolean success = getOrdersDao().updateOrderByUser(order, collectionTimeLimit, nextDestinationTimeLimit);
 		
 		if (success == true) {
@@ -103,6 +107,7 @@ public class OrdersUpdateServiceImpl implements OrdersUpdateService {
 		} else {
 			System.out.println("Updating failed");
 		}
+		
 	}
 
 }
