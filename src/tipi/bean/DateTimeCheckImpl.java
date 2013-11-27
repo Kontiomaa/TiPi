@@ -14,6 +14,14 @@ public class DateTimeCheckImpl implements DateTimeCheck {
 	private boolean destinationBeforeNextCollection;
 	private boolean nextCollectionBeforeNextDestination;
 	
+	private boolean nextDestinationAddressEmpty;
+	private boolean nextDestinationPostalCodeEmpty;
+	private boolean nextDestinationCityEmpty;
+	
+	private boolean nextDestinationAddressTooLong;
+	private boolean nextDestinationPostalCodeIsNotValid;
+	private boolean nextDestinationCityTooLong;
+	
 	//Constructor
 	public DateTimeCheckImpl() {
 		this.everythingOk = true;
@@ -24,6 +32,14 @@ public class DateTimeCheckImpl implements DateTimeCheck {
 		this.collectionBeforeDestination = true;
 		this.destinationBeforeNextCollection = true;
 		this.nextCollectionBeforeNextDestination = true;
+		
+		this.nextDestinationAddressEmpty = false;
+		this.nextDestinationPostalCodeEmpty = false;
+		this.nextDestinationCityEmpty = false;
+		
+		this.nextDestinationAddressTooLong = false;
+		this.nextDestinationPostalCodeIsNotValid = false;
+		this.nextDestinationCityTooLong = false;
 	}
 	//getters & setters
 	public boolean isEverythingOk() {
@@ -79,5 +95,46 @@ public class DateTimeCheckImpl implements DateTimeCheck {
 	public void setNextCollectionBeforeNextDestination(
 			boolean nextCollectionBeforeNextDestination) {
 		this.nextCollectionBeforeNextDestination = nextCollectionBeforeNextDestination;
+	}
+	public boolean isNextDestinationAddressEmpty() {
+		return nextDestinationAddressEmpty;
+	}
+	public void setNextDestinationAddressEmpty(boolean nextDestinationAddressEmpty) {
+		this.nextDestinationAddressEmpty = nextDestinationAddressEmpty;
+	}
+	public boolean isNextDestinationPostalCodeEmpty() {
+		return nextDestinationPostalCodeEmpty;
+	}
+	public void setNextDestinationPostalCodeEmpty(
+			boolean nextDestinationPostalCodeEmpty) {
+		this.nextDestinationPostalCodeEmpty = nextDestinationPostalCodeEmpty;
+	}
+	public boolean isNextDestinationCityEmpty() {
+		return nextDestinationCityEmpty;
+	}
+	public void setNextDestinationCityEmpty(boolean nextDestinationCityEmpty) {
+		this.nextDestinationCityEmpty = nextDestinationCityEmpty;
+	}
+	public boolean isNextDestinationAddressTooLong() {
+		return nextDestinationAddressTooLong;
+	}
+	public void setNextDestinationAddressTooLong(
+			boolean nextDestinationAddressTooLong) {
+		this.nextDestinationAddressTooLong = nextDestinationAddressTooLong;
+	}
+	
+	public boolean isNextDestinationPostalCodeIsNotValid() {
+		return nextDestinationPostalCodeIsNotValid;
+	}
+	public void setNextDestinationPostalCodeIsNotValid(
+			boolean nextDestinationPostalCodeIsNotValid) {
+		this.nextDestinationPostalCodeIsNotValid = nextDestinationPostalCodeIsNotValid;
+	}
+	
+	public boolean isNextDestinationCityTooLong() {
+		return nextDestinationCityTooLong;
+	}
+	public void setNextDestinationCityTooLong(boolean nextDestinationCityTooLong) {
+		this.nextDestinationCityTooLong = nextDestinationCityTooLong;
 	}
 }
