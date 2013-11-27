@@ -4,7 +4,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 public interface OrdersDeleteService {
 
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("isAuthenticated()")
 	public abstract void deleteOrder(int orderId);
 	
 }

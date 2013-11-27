@@ -16,6 +16,7 @@ import tipi.bean.OrderForm;
 import tipi.bean.OrderFormImpl;
 import tipi.bean.OrdersCount;
 import tipi.bean.UserCompany;
+import tipi.service.OrdersDeleteService;
 import tipi.service.OrdersGetService;
 import tipi.service.UserProfileService;
 
@@ -44,6 +45,17 @@ public class OrdersController {
 	
 	public void setUserProfileService(UserProfileService userProfileService) {
 		this.userProfileService = userProfileService;
+	}
+	
+	@Inject
+	private OrdersDeleteService ordersDeleteService;
+
+	public OrdersDeleteService getOrdersDeleteService() {
+		return ordersDeleteService;
+	}
+
+	public void setOrdersDeleteService(OrdersDeleteService ordersDeleteService) {
+		this.ordersDeleteService = ordersDeleteService;
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -247,5 +259,11 @@ public class OrdersController {
 
 		return "redirect:/admin/new";
 	}
-
+	
+	@RequestMapping(value = "/deleteOrder", method = RequestMethod.POST)
+	public String deleteOrder(Model model, HttpServletRequest request) {
+		int orderId = Integer.parseInt(request.getParameter("orderId"));
+		ordersDeleteService.deleteOrder(orderId);
+		return "redirect:/admin/deletedOrders";
+	}
 }

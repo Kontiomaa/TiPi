@@ -103,8 +103,7 @@
 
 					<thead>
 						<tr>
-							<td colspan="4" class="thead-header">Toimituksen
-								Lisätiedot</td>
+							<td colspan="4" class="thead-header">Toimituksen Lisätiedot</td>
 						</tr>
 					</thead>
 
@@ -162,8 +161,7 @@
 
 						<thead>
 							<tr>
-								<td colspan="4" class="thead-header">Palautuksen
-									Lisätiedot
+								<td colspan="4" class="thead-header">Palautuksen Lisätiedot
 								</td>
 							</tr>
 						</thead>
@@ -177,8 +175,7 @@
 
 					<thead>
 						<tr>
-							<td colspan="4" class="thead-header">Tilaajan
-								Tiedot</td>
+							<td colspan="4" class="thead-header">Tilaajan Tiedot</td>
 						</tr>
 					</thead>
 					<tr>
@@ -202,7 +199,7 @@
 						<td class="data-header">Muokattu</td>
 						<td><c:out value="${orderInformation.lastTimeEdited}"
 								default="-----" /></td>
-						<td class="data-header">Status</td>
+						<td class="data-header">Tila</td>
 
 						<c:choose>
 							<c:when test="${orderInformation.statusOfOrder == 1}">
@@ -263,11 +260,11 @@
 
 						<c:choose>
 							<c:when test="${orderInformation.statusOfOrder >= 5}">
-								<td colspan="2"></td>
+								<td></td>
 							</c:when>
 							<c:otherwise>
 								<form action="changeOrderStatus" method="post" class="span4">
-									<td colspan="2"><input type="hidden" name="statusOfOrder"
+									<td><input type="hidden" name="statusOfOrder"
 										id="statusOfOrder" value="${orderInformation.statusOfOrder}" />
 										<input type="hidden" name="orderID" id="orderID"
 										value="${orderInformation.orders_id}" /> <input type="hidden"
@@ -288,22 +285,35 @@
 								<td></td>
 							</c:when>
 							<c:otherwise>
-								<form action="returnPreviousOrderStatus" method="post"
-									class="span4">
-									<td><input type="hidden" name="statusOfOrder"
-										id="statusOfOrder" value="${orderInformation.statusOfOrder}" />
-										<input type="hidden" name="orderID" id="orderID"
-										value="${orderInformation.orders_id}" /> <input type="hidden"
-										name="hasNewDestination" id="hasNewDestination"
-										value="${orderInformation.hasNewDestination}" />
-										<button class="btn btn-danger">Edellinen status</button></td>
-								</form>
+								<td>
+									<form action="returnPreviousOrderStatus" method="post">
+										<input type="hidden" name="statusOfOrder" id="statusOfOrder"
+											value="${orderInformation.statusOfOrder}" /> <input
+											type="hidden" name="orderID" id="orderID"
+											value="${orderInformation.orders_id}" /> <input
+											type="hidden" name="hasNewDestination" id="hasNewDestination"
+											value="${orderInformation.hasNewDestination}" />
+										<button class="btn btn-primary">Edellinen tila</button>
+									</form>
+								</td>
 							</c:otherwise>
 						</c:choose>
 
+						<c:choose>
+							<c:when test="${orderInformation.statusOfOrder == 6}">
+								<td></td>
+							</c:when>
+							<c:otherwise>
+								<td>
+									<form method="post" action="deleteOrder" style="float: right;">
+										<input name="orderId" type="hidden" value="${orderInformation.orders_id}" />
+										<button class="btn btn-danger">Poista</button>
+									</form>
+								</td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 				</table>
-
 			</div>
 		</div>
 	</div>
