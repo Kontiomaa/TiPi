@@ -1,5 +1,18 @@
 <%@include file="header.jsp"%>
 <title>Siirtoapu.fi -- Tilauksen tiedot</title>
+	<script type="text/javascript">
+		
+		// Käyttäjän poistamisen varmistus. Antaa suomeksi OK ja Peruuta-valinnat.
+		// OK palauttaa true ja Peruuta false.
+		function deleteConfirmation() {
+			var a = new Boolean();
+			a = window.confirm('Oletko varma että haluat poistaa tilauksen?');
+			if (a) {
+				document.deleteOrderForm.submit();
+			}
+		}
+			
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -305,9 +318,9 @@
 							</c:when>
 							<c:otherwise>
 								<td>
-									<form method="post" action="deleteOrder" style="float: right;">
+									<form name="deleteOrderForm" method="post" action="deleteOrder" style="float: right;">
 										<input name="orderId" type="hidden" value="${orderInformation.orders_id}" />
-										<button class="btn btn-danger">Poista</button>
+										<a class="btn btn-danger" onClick="deleteConfirmation()">Poista</a>
 									</form>
 								</td>
 							</c:otherwise>
