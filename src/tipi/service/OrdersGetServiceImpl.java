@@ -188,12 +188,12 @@ public class OrdersGetServiceImpl implements OrdersGetService {
 		order = parseMySQLToJavaDate(order);
 		order = parseMySQLToJavaTime(order);
 		order = parseMySQLToJavaTimeStamp(order);
-		//UserProfile userProfile = new UserProfileImpl();
-		//userProfile = userDao.getUsersInformationWithIdDAO(order.getUserMadeOrder(), userProfile);
-		//UserCompany userCompany = new UserCompanyImpl();
-		//userCompany = userDao.getRegisteredUsersCompanyInformationDAO(userProfile.getMyCompany(), userCompany);
-		//userProfile.setCompany(userCompany);
-		//order.setUserProfile(userProfile);
+		UserProfile userProfile = new UserProfileImpl();
+		userProfile = userDao.getUsersInformationWithIdDAO(order.getUserMadeOrder(), userProfile);
+		UserCompany userCompany = new UserCompanyImpl();
+		userCompany = userDao.getRegisteredUsersCompanyInformationDAO(userProfile.getMyCompany(), userCompany);
+		userProfile.setCompany(userCompany);
+		order.setUserProfile(userProfile);
 		return order;
 	}
 	

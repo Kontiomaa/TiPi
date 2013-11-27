@@ -6,8 +6,6 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,8 +21,6 @@ import tipi.service.OrdersDeleteService;
 import tipi.service.OrdersGetService;
 import tipi.service.OrdersTimeCheckService;
 import tipi.service.OrdersUpdateService;
-//import tipi.service.OrdersUpdateService;
-import tipi.util.PasswordRecoverHashGenerator;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -139,11 +135,13 @@ public class UserOrdersController {
 	}
 	
 	@RequestMapping(value = "/updateModifiedOrder", method = RequestMethod.POST)
-	public String updateModifiedOrder(Model model, HttpServletRequest request, @ModelAttribute(value = "order") @Valid OrderFormImpl order, BindingResult result) {
+	public String updateModifiedOrder(Model model, HttpServletRequest request, @ModelAttribute(value = "order") @Valid OrderFormImpl order, BindingResult result,
+			 @ModelAttribute(value = "userProfile") UserProfileImpl profile) {
 		
 		boolean collectionTimeLimit = ordersTimeCheckService.checkCollectionTime(order.getOrders_id(), 180);
 		boolean nextDestinationTimeLimit = ordersTimeCheckService.checkNextDestinationTime(order.getOrders_id(), 180);
-		
+		order.setCompanyMadeOrder(profile.getMyCompany());
+		order.setUserMadeOrder(profile.getUser_id());
 		System.out.println(order.toString());
 		
 		model.addAttribute("collectionTimeLimit", collectionTimeLimit);

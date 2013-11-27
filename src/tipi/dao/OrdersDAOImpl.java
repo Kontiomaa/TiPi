@@ -168,7 +168,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		if (collectionTimeLimit || nextDestinationTimeLimit) {
 			Object[] data;
 			ArrayList<Object> cacheArray = new ArrayList<Object>();
-			String sql = "UPDATE orders SET lastTimeEdited = now(),";
+			String sql = "UPDATE orders SET lastTimeEdited = now(), companyMadeOrder = ?, userMadeOrder = ?, ";
+			cacheArray.add(order.getCompanyMadeOrder());
+			cacheArray.add(order.getUserMadeOrder());
 			
 			if (collectionTimeLimit) {
 				try  {
