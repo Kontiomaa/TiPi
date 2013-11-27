@@ -18,6 +18,7 @@ import tipi.bean.OrderFormImpl;
 import tipi.bean.UserProfileImpl;
 import tipi.service.FormSendService;
 import tipi.service.OrdersTimeCheckService;
+import tipi.service.OrderFormValidationService;
   
 @Controller
 @RequestMapping(value = "/user") 
@@ -48,6 +49,17 @@ public class FormController {
     	this.ordersTimeCheckService = ordersTimeCheckService;
     }
     
+    @Inject
+    private OrderFormValidationService orderFormValidationService;
+    
+    public OrderFormValidationService getOrderFormValidationService() {
+    	return orderFormValidationService;
+    }
+    
+    public void setOrderFormValidationService(OrderFormValidationService orderFormValidationService) {
+    	this.orderFormValidationService = orderFormValidationService;
+    }
+    
     // FORMIN TEKEMINEN 
     @RequestMapping(value = "orderFormEmpty", method = RequestMethod.GET) 
     public String getCreateForm(Model model) { 
@@ -63,7 +75,7 @@ public class FormController {
     	
     	DateTimeCheck checkValid=new DateTimeCheckImpl();
     	
-    	checkValid = ordersTimeCheckService.checkDateAndTimeCorrectness(orderForm);
+    	checkValid = orderFormValidationService.checkDateAndTimeCorrectness(orderForm);
     	System.out.println("True/False: "+checkValid.isEverythingOk());
         model.addAttribute("pageIdentifier", "orderForm");
         

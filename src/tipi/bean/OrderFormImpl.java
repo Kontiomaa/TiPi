@@ -31,7 +31,7 @@ public class OrderFormImpl implements OrderForm {
 	@NotEmpty(message="Tyhj‰")
 	@Size(max=30,message="Liian pitk‰")
 	private String collectionAddress;
-	@Pattern(regexp = "\\d{5}",message="Postinumeron pit‰‰ olla 5 numeroa")
+	@Pattern(regexp = "\\d{5}",message="Postinumeron pit‰‰ olla 5 numeroinen")
 	private String collectionPostalCode;
 	@NotEmpty(message="Tyhj‰")
 	@Size(max=30,message="Liian pitk‰")

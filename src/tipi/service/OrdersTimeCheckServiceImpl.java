@@ -188,8 +188,8 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 		
 			//turn Strings to Dates and compare them with each other
 			try {
-				Date collectionDateTime = new SimpleDateFormat().parse(orderForm.getCollectionDate()+orderForm.getCollectionTime());
-				Date destinationDateTime = new SimpleDateFormat().parse(orderForm.getDestinationDate()+orderForm.getDestinationTime());
+				Date collectionDateTime = new SimpleDateFormat().parse(orderForm.getCollectionDate()+" "+orderForm.getCollectionTime());
+				Date destinationDateTime = new SimpleDateFormat().parse(orderForm.getDestinationDate()+" "+orderForm.getDestinationTime());
 			
 				if(!collectionDateTime.before(destinationDateTime)) {
 					sendValue.setCollectionBeforeDestination(false);
@@ -199,8 +199,8 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 			
 				if(orderForm.isHasNewDestination()) {
 
-					Date nextDestinationCollectionDateTime = new SimpleDateFormat().parse(orderForm.getNextDestinationCollectionDate()+orderForm.getNextDestinationCollectionTime());
-					Date nextDestinationDateTime =new SimpleDateFormat().parse(orderForm.getNextDestinationDate()+orderForm.getNextDestinationTime());
+					Date nextDestinationCollectionDateTime = new SimpleDateFormat().parse(orderForm.getNextDestinationCollectionDate()+" "+orderForm.getNextDestinationCollectionTime());
+					Date nextDestinationDateTime =new SimpleDateFormat().parse(orderForm.getNextDestinationDate()+" "+orderForm.getNextDestinationTime());
 				
 					if(!destinationDateTime.before(nextDestinationCollectionDateTime)) {
 						sendValue.setDestinationBeforeNextCollection(false);

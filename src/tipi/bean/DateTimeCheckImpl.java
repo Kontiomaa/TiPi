@@ -2,8 +2,12 @@ package tipi.bean;
 
 public class DateTimeCheckImpl implements DateTimeCheck {
 	
+	
+	
 	private boolean everythingOk;
 
+	//Dates & Times
+	
 	private boolean valueNullNextDestinationCollectionDate;
 	private boolean valueNullNextDestinationCollectionTime;
 	
@@ -13,6 +17,8 @@ public class DateTimeCheckImpl implements DateTimeCheck {
 	private boolean collectionBeforeDestination;
 	private boolean destinationBeforeNextCollection;
 	private boolean nextCollectionBeforeNextDestination;
+	
+	//other input
 	
 	private boolean nextDestinationAddressEmpty;
 	private boolean nextDestinationPostalCodeEmpty;

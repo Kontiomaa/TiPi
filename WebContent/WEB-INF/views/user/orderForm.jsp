@@ -464,6 +464,19 @@
 													placeholder="esim Kesäkatu 95" class="input-large"
 													type="text" />
 											</div>
+											<c:choose>
+												<c:when test="${isItValid.nextDestinationAddressEmpty}">
+													<strong style="font-size: 200%" class="span1 text-error"
+													rel="tooltip" title="Lisää osoite"> x </strong>
+												</c:when>
+												<c:when test="${isItValid.nextDestinationAddressTooLong}">
+													<strong style="font-size: 200%" class="span1 text-error"
+													rel="tooltip" title="Osoite on liian pitkä"> x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
 									<div class="span6">
@@ -477,6 +490,19 @@
 													name="textinput" placeholder="esim 02100"
 													class="input-large" type="text" />
 											</div>
+											<c:choose>
+												<c:when test="${isItValid.nextDestinationPostalCodeEmpty}">
+													<strong style="font-size: 200%" class="span1 text-error"
+													rel="tooltip" title="Lisää postinumero"> x </strong>
+												</c:when>
+												<c:when test="${isItValid.nextDestinationPostalCodeIsNotValid}">
+													<strong style="font-size: 200%" class="span1 text-error"
+													rel="tooltip" title="Postinumeron pitää olla 5 numeroinen"> x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
+											</c:choose>
 										</div>
 
 										<div class="control-group">
@@ -488,6 +514,19 @@
 												<form:input path="nextDestinationCity" name="textinput"
 													placeholder="esim Espoo" class="input-large" type="text" />
 											</div>
+											<c:choose>
+												<c:when test="${isItValid.nextDestinationCityEmpty}">
+													<strong style="font-size: 200%" class="span1 text-error"
+													rel="tooltip" title="Lisää kaupunki"> x </strong>
+												</c:when>
+												<c:when test="${isItValid.nextDestinationCityTooLong}">
+													<strong style="font-size: 200%" class="span1 text-error"
+													rel="tooltip" title="Kaupungin nimi on liian pitkä"> x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
 								</div>					

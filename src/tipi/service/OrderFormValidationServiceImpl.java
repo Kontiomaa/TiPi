@@ -4,10 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.stereotype.Service;
+
 import tipi.bean.DateTimeCheck;
 import tipi.bean.DateTimeCheckImpl;
 import tipi.bean.OrderForm;
 
+@Service
 public class OrderFormValidationServiceImpl implements OrderFormValidationService {
 
 	//Check that dates and times are in correct order. For example you can't return a car before it's collected
@@ -15,6 +18,7 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 		//nulls need to be checked first as they will return false immediately. Other type of errors should be collected in order for the user to fix them all at the same time.
 		
 		DateTimeCheck sendValue=new DateTimeCheckImpl(); //returnaa tämä!!
+		System.out.println("1 " + orderForm.isHasNewDestination());
 		
 		//Check if empty
 		if(orderForm.getCollectionDate().equals(null)) {
@@ -139,31 +143,38 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 		}
 		
 		if(orderForm.isHasNewDestination()) {
-			if(orderForm.getNextDestinationAddress().equals(null)) {
+			System.out.println("Service: Has new destination");
+			if(orderForm.getNextDestinationAddress().isEmpty()) {
+				System.out.println("Address is null");
 				sendValue.setEverythingOk(false);
 				sendValue.setNextDestinationAddressEmpty(true);
 			} else if (orderForm.getNextDestinationAddress().length() > 30) {
+				System.out.println("Address is too long");
 				sendValue.setEverythingOk(false);
 				sendValue.setNextDestinationAddressTooLong(true);
 			}
 			
-			if(orderForm.getNextDestinationPostalCode().equals(null)) {
+			if(orderForm.getNextDestinationPostalCode().isEmpty()) {
+				System.out.println("Postal code is null");
 				sendValue.setEverythingOk(false);
 				sendValue.setNextDestinationPostalCodeEmpty(true);
-			} else if (orderForm.getNextDestinationPostalCode().matches("\\d{5}")) {
+			} else if (!orderForm.getNextDestinationPostalCode().matches("\\d{5}")) {
+				System.out.println("Postal code doesn't match");
 				sendValue.setEverythingOk(false);
 				sendValue.setNextDestinationPostalCodeIsNotValid(true);
 			}
 			
-			if(orderForm.getNextDestinationCity().equals(null)) {
+			if(orderForm.getNextDestinationCity().isEmpty()) {
+				System.out.println("City is null");
 				sendValue.setEverythingOk(false);
 				sendValue.setNextDestinationCityEmpty(true);
 			} else if (orderForm.getNextDestinationCity().length() > 30) {
+				System.out.println("City is too long");
 				sendValue.setEverythingOk(false);
 				sendValue.setNextDestinationCityTooLong(true);
 			}
 		}
-		
+		System.out.println("2 " + orderForm.isHasNewDestination());
 		return sendValue;
 	}
 	
