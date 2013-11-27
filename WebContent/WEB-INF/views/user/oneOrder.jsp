@@ -7,7 +7,7 @@
 		// OK palauttaa true ja Peruuta false.
 		function deleteConfirmation() {
 			var a = new Boolean();
-			a = window.confirm('Haluatko varmasti poistaa käyttäjän Xxxx Xxxxx?');
+			a = window.confirm('Oletko varma että haluat poistaa tilauksen?');
 			if (a) {
 				document.deleteOrderForm.submit();
 			}
