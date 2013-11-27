@@ -51,15 +51,15 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 		
 		// Create Calendar from current time
 		Calendar currentCal = Calendar.getInstance();
+		currentCal.add(Calendar.MINUTE, minuteLimit);
 		
 		// Create time limit from orders data
 		Calendar timeLimitCal = Calendar.getInstance();
 		timeLimitCal.setTime(collectionTimestamp);
-		timeLimitCal.add(Calendar.MINUTE, minuteLimit);
 		
 		// Compare
 		boolean allowed = true;
-		if (currentCal.before(timeLimitCal)) {
+		if (currentCal.after(timeLimitCal)) {
 			allowed = false;
 		}
 		
@@ -67,7 +67,7 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 			allowed = false;
 		}
 		
-		if (currentCal.after(timeLimitCal)) {
+		if (currentCal.before(timeLimitCal)) {
 			allowed = true;
 		}
 		
@@ -96,7 +96,7 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 		String nextDestinationCollectionTime = timeMap.get("nextDestinationCollectionTime").toString();
 		String nextDestinationCollectionDate = timeMap.get("nextDestinationCollectionDate").toString();
 		
-		return compare(nextDestinationCollectionTime + " " + nextDestinationCollectionDate, 180);
+		return compare(nextDestinationCollectionTime + " " + nextDestinationCollectionDate, minuteLimitBefore);
 	}
 	
 	//Check that dates and times are in correct order. For example you can't return a car before it's collected

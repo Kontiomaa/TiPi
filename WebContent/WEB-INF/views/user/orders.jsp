@@ -114,6 +114,7 @@
 								</div>
 							</div>
 							<button type="submit" class="btn btn-success">Suodata</button>
+						</div>
 					</fieldset>
 				</form:form>
 
@@ -161,21 +162,20 @@
 
 								<c:choose>
 									<c:when test="${order.statusOfOrder=='1'}">
-										<td class="userOrders"><span class="label label-inverse" 
-										rel="tooltip" title="Uusi"
-										>U</span></td>
+										<td class="userOrders"><span class="label label-inverse"
+											rel="tooltip" title="Uusi">U</span></td>
 									</c:when>
 									<c:when test="${order.statusOfOrder=='2'}">
-										<td class="userOrders"><span class="label label-default" 
-										rel="tooltip" title="Kuitattu">K</span></td>
+										<td class="userOrders"><span class="label label-default"
+											rel="tooltip" title="Kuitattu">K</span></td>
 									</c:when>
 									<c:when test="${order.statusOfOrder=='3'}">
-										<td class="userOrders"><span class="label label-success" 
-										rel="tooltip" title="Toimitettu">T</span></td>
+										<td class="userOrders"><span class="label label-success"
+											rel="tooltip" title="Toimitettu">T</span></td>
 									</c:when>
 									<c:when test="${order.statusOfOrder=='4'}">
-										<td class="userOrders"><span class="label label-info" 
-										rel="tooltip" title="Valmis">V</span></td>
+										<td class="userOrders"><span class="label label-info"
+											rel="tooltip" title="Valmis">V</span></td>
 									</c:when>
 									<c:otherwise>
 										<td></td>
@@ -211,7 +211,7 @@
 							$("[rel=tooltip]").tooltip({
 								placement : 'bottom'
 							});
-							
+
 							$('#myTable')
 									.dataTable(
 											{
