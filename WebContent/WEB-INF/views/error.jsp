@@ -66,7 +66,8 @@ body {
 </head>
 <body>
 	<div class="area">
-		<h1>Tapahtui virhe</h1>
+		<h1>Hupsista!</h1>
+		<p>Ei hätää! Mutterit vain levisivät</p>
 		<form action="/TiPi/main" method="get" class="form-horizontal">
 				<button type="submit" class="inverse">Jatka
 					käyttämistä</button>
