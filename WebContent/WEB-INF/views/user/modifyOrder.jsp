@@ -1,5 +1,5 @@
 <%@include file="header.jsp"%>
-<title>Siirtoapu.fi -- Uusi tilaus</title>
+<title>Siirtoapu.fi -- Muokkaa tilausta</title>
 <link rel="stylesheet" href="../resources/datepicker/css/datepicker.css">
 <link rel="stylesheet"
 	href="../resources/bootstrap-timepicker-master/css/bootstrap-timepicker.min.css">
