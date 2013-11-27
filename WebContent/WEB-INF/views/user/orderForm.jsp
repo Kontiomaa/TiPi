@@ -187,10 +187,19 @@
 									<span class="add-on"><i class="icon-calendar"></i></span>
 								</div>
 								<spring:bind path="destinationDate">
-									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+									<c:choose>
+										<c:when test="${status.error}">
+											<strong style="font-size: 200%" class="span1 text-error"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
-									</c:if>
+										</c:when>
+										<c:when test="${!isItValid.collectionBeforeDestination}">
+											<strong style="font-size: 200%" class="span1 text-error"
+											rel="tooltip" title="Toimitus on sama tai ennen noutoa"> x </strong>
+										</c:when>
+										<c:otherwise>
+											<!-- Everything is ok! -->
+										</c:otherwise>
+									</c:choose>
 								</spring:bind>
 								<div class="input-append bootstrap-timepicker span2">
 									<form:input path="destinationTime" id="destinationTime"
@@ -380,7 +389,19 @@
 												<span class="add-on"> <i class="icon-calendar"></i>
 												</span>
 											</div>
-
+											<c:choose>
+											<c:when test="${isItValid.valueNullNextDestinationCollectionDate}">
+											<strong style="font-size: 200%" class="span1 text-error"
+											rel="tooltip" title="Valitse päivämäärä"> x </strong>
+											</c:when>
+											<c:when test="${!isItValid.destinationBeforeNextCollection}">
+											<strong style="font-size: 200%" class="span1 text-error"
+											rel="tooltip" title="Palautuksen noutoaika on sama tai ennen toimitusaikaa"> x </strong>
+											</c:when>
+											<c:otherwise>
+											<!-- Everything is ok! -->
+											</c:otherwise>
+											</c:choose>
 											<div class="input-append bootstrap-timepicker span2">
 												<form:input path="nextDestinationCollectionTime"
 													id="nextDestinationCollectionTime" type="text" class="span10" />
@@ -401,8 +422,20 @@
 													type="text" value="" readonly="true" />
 												<span class="add-on"> <i class="icon-calendar"></i>
 												</span>
-											</div>
-
+											</div>								
+											<c:choose>
+											<c:when test="${isItValid.valueNullNextDestinationDate}">
+											<strong style="font-size: 200%" class="span1 text-error"
+											rel="tooltip" title="Valitse päivämäärä"> x </strong>
+											</c:when>
+											<c:when test="${!isItValid.nextCollectionBeforeNextDestination}">
+											<strong style="font-size: 200%" class="span1 text-error"
+											rel="tooltip" title="Palautusaika on sama tai ennen noutoaikaa"> x </strong>
+											</c:when>
+											<c:otherwise>
+											<!-- Everything is ok! -->
+											</c:otherwise>
+											</c:choose>
 											<div class="input-append bootstrap-timepicker span2">
 												<form:input path="nextDestinationTime"
 													id="nextDestinationTime" type="text" class="span10" />
@@ -476,6 +509,7 @@
 										</div>
 									</div>
 								</div>
+							</div>
 							</div>
 						</div>
 						<div class="row-fluid">
