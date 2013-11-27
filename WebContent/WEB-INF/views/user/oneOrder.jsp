@@ -203,22 +203,41 @@
 				</table>
 
 				<div class="row-fluid">
-					<div class="span6">
+					<div class="span4">
 						<a href="showOrders" class="btn btn-primary">Takaisin</a>
 					</div>
-					<div class="span6">
+					<div class="span4">
 						<c:choose>
-							<c:when test="${!nextDestinationTimeLimit && !collectionTimeLimit}">
-								<strong style="float: right;">Et voi en‰‰ muokata t‰t‰ tilausta.</strong>
+							<c:when
+								test="${!nextDestinationTimeLimit && !collectionTimeLimit}">
+								<strong style="float: center;">Et voi muokata t‰t‰
+									tilausta.</strong>
 							</c:when>
 							<c:otherwise>
 								<form method="post" action="getModificateOrder"
-									style="float: right;">
+									style="float: center;">
 									<input name="orderId" type="hidden" value="${order.orders_id}" />
 									<button class="btn btn-success">Muokkaa</button>
 								</form>
-								</c:otherwise>
-					</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<div class="span4">
+						<c:choose>
+							<c:when
+								test="${(nextDestinationTimeLimit && collectionTimeLimit) &&
+									order.statusOfOrder < 3}">
+								<form method="post" action="deleteOrder"
+									style="float: right;">
+									<input name="orderId" type="hidden" value="${order.orders_id}" />
+									<button class="btn btn-danger">Poista</button>
+								</form>
+							</c:when>
+							<c:otherwise>
+								<strong style="float: right;">Et voi poistaa t‰t‰
+									tilausta.</strong>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 

@@ -21,8 +21,8 @@ public class OrdersDeleteServiceImpl implements OrdersDeleteService {
 	}
 	
 	@Override
-	public void deleteOrder(int id) {
-		getOrdersDao().deleteOrder(id);
+	public void deleteOrder(int orderId) {
+		getOrdersDao().deleteOrder(orderId);
 	}
 	
 }

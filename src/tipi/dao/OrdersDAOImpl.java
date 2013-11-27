@@ -152,11 +152,10 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 	
 	@Override
-	public void deleteOrder(int id) {
-		String sql = "DELETE FROM orders WHERE orders_id = ?";
-		Object[] data =  new Object[] { id };
+	public void deleteOrder(int orderId) {
+		String sql = "UPDATE orders SET lastTimeEdited = now(), statusOfOrder = 6 WHERE orders_id = ?";
+		Object[] data =  new Object[] { orderId };
 		getJdbcTemplate().update(sql, data);
-		System.out.println("Sir, you made it.");
 	}
 	
 	@Override

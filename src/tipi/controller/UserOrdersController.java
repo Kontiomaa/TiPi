@@ -159,9 +159,8 @@ public class UserOrdersController {
 	
 	@RequestMapping(value = "/deleteOrder", method = RequestMethod.POST)
 	public String deleteOrder(Model model, HttpServletRequest request) {
-		int id = Integer.parseInt((String)request.getAttribute("orders_id"));
-		ordersDeleteService.deleteOrder(id);
-		return "user/orders";
+		int orderId = Integer.parseInt(request.getParameter("orderId"));
+		ordersDeleteService.deleteOrder(orderId);
+		return "redirect:/user/showOrders";
 	}
-	
 }

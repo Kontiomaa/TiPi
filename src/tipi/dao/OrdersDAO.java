@@ -22,7 +22,7 @@ public interface OrdersDAO {
 	
 	public abstract List<OrderForm> searchOrdersFromDAO(OrderForm searchOrders);
 	
-	public abstract void deleteOrder(int id);
+	public abstract void deleteOrder(int orderId);
 	
 	public abstract boolean updateOrderByUser(OrderForm order, boolean collectionTimeLimit, boolean nextDestinationTimeLimit);
 	
