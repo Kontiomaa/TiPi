@@ -3,6 +3,8 @@ package tipi.service;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import tipi.bean.OrderForm;
+import tipi.bean.DateTimeCheck;
+
 
 public interface OrdersTimeCheckService {
 	
@@ -12,5 +14,6 @@ public interface OrdersTimeCheckService {
 	@PreAuthorize("hasRole('ROLE_USER')")
 	public abstract boolean checkNextDestinationTime(int id, int minutes);
 	
-	public abstract boolean checkDateAndTimeCorrectness(OrderForm orderForm);
+	@PreAuthorize("isAuthenticated()")
+	public abstract DateTimeCheck checkDateAndTimeCorrectness(OrderForm orderForm);
 }

@@ -14,6 +14,9 @@
 					<c:if test="${not empty orderSuccessful}">
 						<p class="alert alert-success">Tilaus lähetetty onnistuneesti</p>
 					</c:if>
+					<c:if test="${!isItValid.everythingOk}">
+						<p class="alert alert-error">Tilauksen lähetys epäonnistui</p>
+					</c:if>
 
 					<!-- Tilauslomake -->
 					<legend>
@@ -454,147 +457,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
-
-
-								<%--
-					<!--  Palautus & Palautusaika -->
-					<div id="returnArea" class="row-fluid">
-						<div class="span6">
-						
-							<!-- Palautus -->
-							<legend>
-								Palautus <i class="icon-info-sign" rel="tooltip" title="Rastita jos tilaukseen liittyy palautus ja täytä palautuksen tiedot"></i>
-							</legend>
-							
-							<div class="row-fluid">
-								<div class="span6 offset2">
-									<div class="control-group">
-										<div class="span2 offset2">
-											<form:label path="nextDestinationCollectionDate" for="textinput">Aika*</form:label>
-										</div>
-										<div class="input-append date span7" id="nextDestinationCollectionDate" data-date="" data-date-format="dd.mm.yyyy">
-											<form:input path="nextDestinationCollectionDate" class="span9" type="text" value="" readonly="true" />
-											<span class="add-on">
-												<i class="icon-calendar"></i>
-											</span>
-										</div>
-										<spring:bind path="collectionDate">
-											<c:if test="${status.error}">
-												<strong style="font-size: 200%" class="span1 text-error" rel="tooltip" title="${status.errorMessage}"> x </strong>
-											</c:if>
-										</spring:bind>
-									</div>
-								</div>
-								<div class="span4">
-									<div class="control-group">
-										<div class="input-append bootstrap-timepicker span7">
-											<form:input path="nextDestinationCollectionTimeFrom" id="nextDestinationCollectionTimeFrom" type="text" class="span8" />
-											<span class="add-on">
-												<i class="icon-time"></i>
-											</span>
-										</div>
-										<spring:bind path="nextDestinationCollectionTimeFrom">
-											<c:if test="${status.error}">
-												<strong style="font-size: 200%" class="span1 text-error" rel="tooltip" title="${status.errorMessage}"> x </strong>
-											</c:if>
-										</spring:bind>
-									</div>
-								</div>
-							</div>
-							<div class="row-fluid">
-								<div class="span4 offset8">
-									<div class="control-group">
-										<div class="input-append bootstrap-timepicker span7">
-											<form:input path="nextDestinationCollectionTimeTo" id="nextDestinationCollectionTimeTo" type="text" class="span8" />
-											<span class="add-on">
-												<i class="icon-time"></i>
-											</span>
-										</div>
-										<spring:bind path="nextDestinationCollectionTimeTo">
-											<c:if test="${status.error}">
-												<strong style="font-size: 200%" class="span1 text-error" rel="tooltip" title="${status.errorMessage}"> x </strong>
-											</c:if>
-										</spring:bind>
-									</div>
-								</div>
-							</div>
-							</div>
-							<div class="span6">
-							
-								<!-- Palautusaika -->
-								<legend>
-									Palautusaika
-									<i class="icon-info-sign" rel="tooltip" title="Milloin auton tulee olla palautettuna"></i>
-								</legend>
-								<div class="row-fluid">
-									<div class="span6 offset2">
-										<div class="span2 offset2">Päivä</div>
-										<div class="input-append date span7" id="nextDestinationDate" data-date="" data-date-format="dd.mm.yyyy">
-											<form:input class="span9" path="nextDestinationDate" type="text" value="" readonly="true" />
-											<span class="add-on">
-												<i class="icon-calendar"></i>
-											</span>
-										</div>
-									</div>
-									<div class="span4">
-										<div class="input-append bootstrap-timepicker span7">
-											<form:input path="nextDestinationCollectionTimeFrom" id="nextDestinationCollectionTimeFrom" type="text" class="span8" />
-											<span class="add-on">
-												<i class="icon-time"></i>
-											</span>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						
-						<!-- Palautuspaikka & X -->
-						<div class="row-fluid">
-							<div class="span6">
-							
-								<!--  Palautuspaikka -->
-								<legend>
-									Palautuspaikka
-								</legend>
-								<div class="checkbox span10 offset1 control-group">
-									<label>
-										<input type="checkbox" id="sameAsCollectionAddress"> Sama palautuspaikka kuin noudettaessa <i class="icon-info-sign" rel="tooltip" title="Rastita tämä jos auto palautetaan nouto-osoitteeseen"></i>
-									</label>
-								</div>
-								<div class="control-group">
-									<form:label path="nextDestinationAddress"
-										class="control-label" for="textinput">Osoite*</form:label>
-									<div class="controls span6">
-										<form:input path="nextDestinationAddress" name="textinput"
-											placeholder="esim Kesäkatu 95" class="input-large"
-											type="text" />
-									</div>
-								</div>
-
-								<div class="control-group">
-									<form:label path="nextDestinationPostalCode" class="control-label" for="textinput">Postinumero*</form:label>
-									<div class="controls span6">
-										<form:input path="nextDestinationPostalCode" name="textinput" placeholder="esim 02100" class="input-large" type="text" />
-									</div>
-								</div>
-
-								<div class="control-group">
-									<form:label path="nextDestinationCity" class="control-label" for="textinput">Toimipaikka*</form:label>
-									<div class="controls span6">
-										<form:input path="nextDestinationCity" name="textinput" placeholder="esim Espoo" class="input-large" type="text" />
-									</div>
-								</div>
-							</div>
-							<span class="span6">
-							
-								<!-- X -->
-							
-								
-							</span>
-						</div>
-						--%>
+								</div>					
 
 								<div class="row-fluid">
 									<div class="span12">

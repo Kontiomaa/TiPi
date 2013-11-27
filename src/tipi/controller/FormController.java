@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import tipi.bean.DateTimeCheck;
+import tipi.bean.DateTimeCheckImpl;
 import tipi.bean.OrderForm;
 import tipi.bean.OrderFormImpl;
 import tipi.bean.UserProfileImpl;
@@ -57,28 +59,21 @@ public class FormController {
   
     // FORMIN TIETOJEN VASTAANOTTO 
     @RequestMapping(value = "orderForm", method = RequestMethod.POST) 
-    public String create(Model model, 
-            @ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm, 
-            BindingResult result) { 
-
-    	boolean dateTimeCorrect = ordersTimeCheckService.checkDateAndTimeCorrectness(orderForm);
-    	System.out.println("True/False: "+dateTimeCorrect);
+    public String create(Model model, @ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm, BindingResult result) { 
     	
-    	if(dateTimeCorrect) {
-    		System.out.println("Date & time true functions");
-    	}
-    	else {
-    		System.out.println("Date & time false functions");
-    	}
+    	DateTimeCheck checkValid=new DateTimeCheckImpl();
     	
-        if (result.hasErrors()) { 
-            model.addAttribute("pageIdentifier", "orderForm"); 
+    	checkValid = ordersTimeCheckService.checkDateAndTimeCorrectness(orderForm);
+    	System.out.println("True/False: "+checkValid.isEverythingOk());
+        model.addAttribute("pageIdentifier", "orderForm");
+        
+        if (result.hasErrors()||!checkValid.isEverythingOk()) {
+            model.addAttribute("isItValid", checkValid);
             return "/user/orderForm"; 
         } else { 
-            model.addAttribute("pageIdentifier", "orderForm"); 
             return "/user/orderConfirmation"; 
         } 
-    } 
+    }
   
     // FORMIN TEKEMINEN 
     @RequestMapping(value = "orderForm", method = RequestMethod.GET) 
@@ -86,12 +81,15 @@ public class FormController {
   
         if (!model.containsAttribute("orderForm")) { 
             return "redirect:/user/orderFormEmpty"; 
-        } 
+        }
+
         if(orderSuccessful){ 
             model.addAttribute("orderSuccessful", "true"); 
         } 
         orderSuccessful=false; 
-  
+        
+    	DateTimeCheck checkValid=new DateTimeCheckImpl();
+        model.addAttribute("isItValid", checkValid);
         model.addAttribute("pageIdentifier", "orderForm"); 
         return "/user/orderForm"; 
     } 
@@ -101,13 +99,10 @@ public class FormController {
     public String sendOrderForm(Model model, @ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm, 
             BindingResult result, @ModelAttribute(value = "userProfile") UserProfileImpl userProfile) { 
   
-
-    	
-    	if(true) {
-    		formSendService.sendFormToDAO(orderForm, userProfile.getUser_id(), userProfile.getMyCompany()); 
-            orderSuccessful=true;      
-            model.addAttribute("pageIdentifier", "orderForm");
-    	}
+  		formSendService.sendFormToDAO(orderForm, userProfile.getUser_id(), userProfile.getMyCompany()); 
+        orderSuccessful=true;      
+        model.addAttribute("pageIdentifier", "orderForm");
+        
         return "redirect:/user/orderFormEmpty"; 
     } 
       
