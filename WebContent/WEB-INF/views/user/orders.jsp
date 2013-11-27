@@ -215,7 +215,7 @@
 							$('#myTable')
 									.dataTable(
 											{
-												"aaSorting" : [ [ 4, "asc" ] ],
+												"aaSorting" : [ [ 4, "desc" ] ],
 												"bInfo" : false,
 												"sDom" : "<'row'<'span5 offset1'l><'span5 offset1'f>r>t<'row'<'span5'i><'span5'p>>",
 												"sPaginationType" : "bootstrap",

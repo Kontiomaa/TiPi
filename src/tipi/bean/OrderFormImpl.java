@@ -53,7 +53,7 @@ public class OrderFormImpl implements OrderForm {
 	@NotEmpty(message="Tyhjä")
 	@Size(max=30,message="Liian pitkä")
 	private String clientFname;
-	@NotEmpty(message="TyhjäclientLname")
+	@NotEmpty(message="Tyhjä")
 	@Size(max=30,message="Liian pitkä")
 	private String clientLname;
 	@NotEmpty(message="Tyhjä")
@@ -363,6 +363,40 @@ public class OrderFormImpl implements OrderForm {
 	public void setHasNewDestinationForSearchOrders(
 			int hasNewDestinationForSearchOrders) {
 		this.hasNewDestinationForSearchOrders = hasNewDestinationForSearchOrders;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderFormImpl [orders_id=" + orders_id + ", carBrand="
+				+ carBrand + ", carModel=" + carModel + ", carRegister="
+				+ carRegister + ", carColor=" + carColor + ", collectionDate="
+				+ collectionDate + ", collectionTime=" + collectionTime
+				+ ", collectionAddress=" + collectionAddress
+				+ ", collectionPostalCode=" + collectionPostalCode
+				+ ", collectionCity=" + collectionCity + ", destinationDate="
+				+ destinationDate + ", destinationTime=" + destinationTime
+				+ ", destinationAddress=" + destinationAddress
+				+ ", destinationPostalCode=" + destinationPostalCode
+				+ ", destinationCity=" + destinationCity + ", clientFname="
+				+ clientFname + ", clientLname=" + clientLname
+				+ ", clientPhoneNo=" + clientPhoneNo + ", clientCompany="
+				+ clientCompany + ", additionalInformation="
+				+ additionalInformation + ", hasNewDestination="
+				+ hasNewDestination + ", nextDestinationCollectionDate="
+				+ nextDestinationCollectionDate
+				+ ", nextDestinationCollectionTime="
+				+ nextDestinationCollectionTime + ", nextDestinationDate="
+				+ nextDestinationDate + ", nextDestinationTime="
+				+ nextDestinationTime + ", nextDestinationAddress="
+				+ nextDestinationAddress + ", nextDestinationPostalCode="
+				+ nextDestinationPostalCode + ", nextDestinationCity="
+				+ nextDestinationCity + ", nextAdditionalInformation="
+				+ nextAdditionalInformation + ", companyMadeOrder="
+				+ companyMadeOrder + ", userMadeOrder=" + userMadeOrder
+				+ ", lastTimeEdited=" + lastTimeEdited + ", statusOfOrder="
+				+ statusOfOrder + ", userProfile=" + userProfile
+				+ ", hasNewDestinationForSearchOrders="
+				+ hasNewDestinationForSearchOrders + "]";
 	}
 	
 }

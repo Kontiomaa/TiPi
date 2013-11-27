@@ -45,21 +45,25 @@
 						</tr>
 						<tr>
 							<td class="data-header">Kellonaika</td>
-							<td></td>
+							<td><c:out value="${order.collectionTime}" default="-----" /></td>
 							<td class="data-header">Kellonaika</td>
 							<td><c:out value="${order.destinationTime}" default="-----" /></td>
 						</tr>
 						<tr>
 							<td class="data-header">Osoite</td>
-							<td><c:out value="${order.collectionAddress}" default="-----" /></td>
+							<td><c:out value="${order.collectionAddress}"
+									default="-----" /></td>
 							<td class="data-header">Osoite</td>
-							<td><c:out value="${order.destinationAddress}" default="-----" /></td>
+							<td><c:out value="${order.destinationAddress}"
+									default="-----" /></td>
 						</tr>
 						<tr>
 							<td class="data-header">Postinumero</td>
-							<td><c:out value="${order.collectionPostalCode}" default="-----" /></td>
+							<td><c:out value="${order.collectionPostalCode}"
+									default="-----" /></td>
 							<td class="data-header">Postinumero</td>
-							<td><c:out value="${order.destinationPostalCode}" default="-----" /></td>
+							<td><c:out value="${order.destinationPostalCode}"
+									default="-----" /></td>
 						</tr>
 						<tr>
 							<td class="data-header">Toimipaikka</td>
@@ -94,10 +98,11 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="4"><c:out value="${order.additionalInformation}" default="-----" /></td>
+							<td colspan="4"><c:out
+									value="${order.additionalInformation}" default="-----" /></td>
 						</tr>
 					</tbody>
-				<c:if test="${order.hasNewDestination}">
+					<c:if test="${order.hasNewDestination}">
 						<thead>
 							<tr>
 								<th colspan="4" class="thead-header">Palautus</th>
@@ -106,25 +111,32 @@
 						<tbody>
 							<tr>
 								<td class="data-header">Noutop‰iv‰</td>
-								<td><c:out value="${order.nextDestinationCollectionDate}" default="-----" /></td>
+								<td><c:out value="${order.nextDestinationCollectionDate}"
+										default="-----" /></td>
 								<td class="data-header">Palautusp‰iv‰</td>
-								<td><c:out value="${order.nextDestinationDate}" default="-----" /></td>
+								<td><c:out value="${order.nextDestinationDate}"
+										default="-----" /></td>
 							</tr>
 							<tr>
 								<td class="data-header">Noutoaika</td>
-								<td><c:out value="${order.nextDestinationCollectionTime}" default="-----" /></td>
+								<td><c:out value="${order.nextDestinationCollectionTime}"
+										default="-----" /></td>
 								<td class="data-header">Palautusaika</td>
-								<td><c:out value="${order.nextDestinationTime}" default="-----" /></td>
+								<td><c:out value="${order.nextDestinationTime}"
+										default="-----" /></td>
 							</tr>
 							<tr>
 								<td class="data-header">Osoite</td>
-								<td><c:out value="${order.nextDestinationAddress}" default="-----" /></td>
+								<td><c:out value="${order.nextDestinationAddress}"
+										default="-----" /></td>
 								<td class="data-header">Postinumero</td>
-								<td><c:out value="${order.nextDestinationPostalCode}" default="-----" /></td>
+								<td><c:out value="${order.nextDestinationPostalCode}"
+										default="-----" /></td>
 							</tr>
 							<tr>
 								<td class="data-header">Toimipaikka</td>
-								<td><c:out value="${order.nextDestinationCity}" default="-----" /></td>
+								<td><c:out value="${order.nextDestinationCity}"
+										default="-----" /></td>
 								<td colspan="2"></td>
 							</tr>
 						</tbody>
@@ -135,37 +147,33 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td colspan="4"><c:out value="${order.nextAdditionalInformation}" default="-----" /></td>
+								<td colspan="4"><c:out
+										value="${order.nextAdditionalInformation}" default="-----" /></td>
 							</tr>
 						</tbody>
-				</c:if>
-									<thead>
+					</c:if>
+					<thead>
 						<tr>
-							<td colspan="4" class="thead-header">Tilaajan
-								Tiedot</td>
+							<td colspan="4" class="thead-header">Tilaajan Tiedot</td>
 						</tr>
 					</thead>
 					<tr>
 						<td class="data-header">Etunimi</td>
-						<td><c:out value="${order.userProfile.fName}"
-								default="-----" /></td>
+						<td><c:out value="${order.userProfile.fName}" default="-----" /></td>
 						<td class="data-header">Puhelinnumero</td>
 						<td><c:out value="${order.userProfile.phoneNo}"
 								default="-----" /></td>
 					</tr>
 					<tr>
 						<td class="data-header">Sukunimi</td>
-						<td><c:out value="${order.userProfile.lName}"
-								default="-----" /></td>
+						<td><c:out value="${order.userProfile.lName}" default="-----" /></td>
 						<td class="data-header">Yritys</td>
-						<td><c:out
-								value="${order.userProfile.company.name}"
+						<td><c:out value="${order.userProfile.company.name}"
 								default="-----" /></td>
 					</tr>
 					<tr>
 						<td class="data-header">Muokattu</td>
-						<td><c:out value="${order.lastTimeEdited}"
-								default="-----" /></td>
+						<td><c:out value="${order.lastTimeEdited}" default="-----" /></td>
 						<td class="data-header">Status</td>
 
 						<c:choose>
@@ -192,20 +200,28 @@
 							</c:otherwise>
 						</c:choose>
 					</tr>
-			</table>
-				
+				</table>
+
 				<div class="row-fluid">
 					<div class="span6">
-							<a href="showOrders" class="btn btn-primary">Takaisin</a>
+						<a href="showOrders" class="btn btn-primary">Takaisin</a>
 					</div>
 					<div class="span6">
-						<form method="post" action="getModificateOrder" style="float:right;">
-							<input name="orderId" type="hidden" value="${order.orders_id}" />
-							<button class="btn btn-success">Muokkaa</button>
-						</form>
+						<c:choose>
+							<c:when test="${!nextDestinationTimeLimit && !collectionTimeLimit}">
+								<strong style="float: right;">Et voi en‰‰ muokata t‰t‰ tilausta.</strong>
+							</c:when>
+							<c:otherwise>
+								<form method="post" action="getModificateOrder"
+									style="float: right;">
+									<input name="orderId" type="hidden" value="${order.orders_id}" />
+									<button class="btn btn-success">Muokkaa</button>
+								</form>
+								</c:otherwise>
+					</c:choose>
 					</div>
 				</div>
-				
+
 			</div>
 			<div class="span1"></div>
 		</div>

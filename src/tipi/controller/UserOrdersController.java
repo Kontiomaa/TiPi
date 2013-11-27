@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,8 +21,6 @@ import tipi.service.OrdersDeleteService;
 import tipi.service.OrdersGetService;
 import tipi.service.OrdersTimeCheckService;
 import tipi.service.OrdersUpdateService;
-//import tipi.service.OrdersUpdateService;
-import tipi.util.PasswordRecoverHashGenerator;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -109,7 +107,11 @@ public class UserOrdersController {
 	public String showOrder(Model model, HttpServletRequest request) {
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
 		OrderForm order = ordersGetService.getOrderForUserFromDAO(orderId);
+		boolean collectionTimeLimit = ordersTimeCheckService.checkCollectionTime(orderId, 180);
+		boolean nextDestinationTimeLimit = ordersTimeCheckService.checkNextDestinationTime(orderId, 180);
 		
+		model.addAttribute("collectionTimeLimit", collectionTimeLimit);
+		model.addAttribute("nextDestinationTimeLimit", nextDestinationTimeLimit);
 		model.addAttribute("order", order);
 		model.addAttribute("pageIdentifier", "orders");
 		
@@ -127,20 +129,32 @@ public class UserOrdersController {
 		model.addAttribute("nextDestinationTimeLimit", nextDestinationTimeLimit);
 		model.addAttribute("order", order);
 		model.addAttribute("pageIdentifier", "orders");
-		
+
 		return "user/modifyOrder";
+
 	}
 	
 	@RequestMapping(value = "/updateModifiedOrder", method = RequestMethod.POST)
-	public String updateModifiedOrder(Model model, HttpServletRequest request, @ModelAttribute(value = "order") OrderFormImpl order) {
+	public String updateModifiedOrder(Model model, HttpServletRequest request, @ModelAttribute(value = "order") @Valid OrderFormImpl order, BindingResult result,
+			 @ModelAttribute(value = "userProfile") UserProfileImpl profile) {
 		
 		boolean collectionTimeLimit = ordersTimeCheckService.checkCollectionTime(order.getOrders_id(), 180);
 		boolean nextDestinationTimeLimit = ordersTimeCheckService.checkNextDestinationTime(order.getOrders_id(), 180);
-		
+		order.setCompanyMadeOrder(profile.getMyCompany());
+		order.setUserMadeOrder(profile.getUser_id());
 		System.out.println(order.toString());
-		ordersUpdateService.updateModificatedOrder(order, collectionTimeLimit, nextDestinationTimeLimit);
 		
-		return "redirect:/user/showOrders";
+		model.addAttribute("collectionTimeLimit", collectionTimeLimit);
+		model.addAttribute("nextDestinationTimeLimit", nextDestinationTimeLimit);
+		model.addAttribute("order", order);
+		model.addAttribute("pageIdentifier", "orders");
+		
+		if (result.hasErrors()) { 
+			return "user/modifyOrder";
+		} else {
+			ordersUpdateService.updateModificatedOrder(order, collectionTimeLimit, nextDestinationTimeLimit);
+			return "redirect:/user/showOrders";
+		}
 	}
 	
 	@RequestMapping(value = "/deleteOrder", method = RequestMethod.POST)
