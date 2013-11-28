@@ -4,7 +4,7 @@
 					<div class="container">
 
 						<ul class="nav">
-							<li><a class="brand" href="orderForm">Siirtoapu.fi</a></li>
+							<li class="active"><a class="brand" href="orderForm">Siirtoapu.fi</a></li>
 							
 							<c:choose>
 								<c:when test="${pageIdentifier == 'orderForm'}">
