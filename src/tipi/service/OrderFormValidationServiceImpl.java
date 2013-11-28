@@ -117,10 +117,12 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 					Date nextDestinationCollectionDateTime = new SimpleDateFormat().parse(orderForm.getNextDestinationCollectionDate()+" "+orderForm.getNextDestinationCollectionTime());
 					Date nextDestinationDateTime =new SimpleDateFormat().parse(orderForm.getNextDestinationDate()+" "+orderForm.getNextDestinationTime());
 				
-					if(!destinationDateTime.before(nextDestinationCollectionDateTime)) {
-						sendValue.setDestinationBeforeNextCollection(false);
-						System.out.println("Palautuksen nouto on ennen toimitusta!");
-						sendValue.setEverythingOk(false);
+					if(orderForm.getStatusOfOrder() < 3) {
+						if(!destinationDateTime.before(nextDestinationCollectionDateTime)) {
+							sendValue.setDestinationBeforeNextCollection(false);
+							System.out.println("Palautuksen nouto on ennen toimitusta!");
+							sendValue.setEverythingOk(false);
+						}
 					}
 				
 					if(!nextDestinationCollectionDateTime.before(nextDestinationDateTime)) {

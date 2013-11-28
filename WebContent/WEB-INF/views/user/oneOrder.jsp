@@ -224,7 +224,7 @@
 					<div class="span4">
 						<c:choose>
 							<c:when
-								test="${!nextDestinationTimeLimit && !collectionTimeLimit}">
+								test="${(!nextDestinationTimeLimit && !collectionTimeLimit) ||  order.statusOfOrder > 3}">
 								<strong style="float: center;">Et voi muokata tätä
 									tilausta.</strong>
 							</c:when>
