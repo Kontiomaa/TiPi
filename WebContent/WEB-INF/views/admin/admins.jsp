@@ -47,8 +47,7 @@
 														<button class="btn btn-primary" type="submit"
 															value="submit">Muokkaa</button></td>
 													<td><c:if test="${!user.userIsActive}">
-															<strong style="font-size: 200%"
-																class="text-error text-center" rel="tooltip"
+															<strong	class="text-error text-center errorX" rel="tooltip"
 																title="Poistettu"> x </strong>
 														</c:if></td>
 												</form>

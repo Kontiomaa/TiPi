@@ -32,7 +32,7 @@
 									</div>
 									<spring:bind path="fName">
 										<c:if test="${status.error}">
-											<strong style="font-size: 200%" class="span1 text-error"
+											<strong class="span1 text-error errorX"
 												rel="tooltip" title="${status.errorMessage}"> x </strong>
 										</c:if>
 									</spring:bind>
@@ -46,7 +46,7 @@
 									</div>
 									<spring:bind path="lName">
 										<c:if test="${status.error}">
-											<strong style="font-size: 200%" class="span1 text-error"
+											<strong class="span1 text-error errorX"
 												rel="tooltip" title="${status.errorMessage}"> x </strong>
 										</c:if>
 									</spring:bind>
@@ -82,7 +82,7 @@
 									</div>
 									<spring:bind path="phoneNo">
 										<c:if test="${status.error}">
-											<strong style="font-size: 200%" class="span1 text-error"
+											<strong class="span1 text-error errorX"
 												rel="tooltip" title="${status.errorMessage}"> x </strong>
 										</c:if>
 									</spring:bind>
@@ -96,7 +96,7 @@
 									</div>
 									<spring:bind path="email">
 										<c:if test="${status.error}">
-											<strong style="font-size: 200%" class="span1 text-error"
+											<strong class="span1 text-error errorX"
 												rel="tooltip" title="${status.errorMessage}"> x </strong>
 										</c:if>
 									</spring:bind>

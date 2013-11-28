@@ -67,3 +67,8 @@ td.userOrders {
 	text-align: center;
 	cursor: pointer;
 }
+
+.errorX {
+	cursor: pointer;
+	font-size: 200%;
+}
