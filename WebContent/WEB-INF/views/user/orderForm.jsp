@@ -36,7 +36,7 @@
 
 								<spring:bind path="carBrand">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -54,7 +54,7 @@
 								</div>
 								<spring:bind path="carModel">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -70,7 +70,7 @@
 								</div>
 								<spring:bind path="carRegister">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -85,7 +85,7 @@
 								</div>
 								<spring:bind path="carColor">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -109,7 +109,7 @@
 								</div>
 								<spring:bind path="collectionDate">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -121,7 +121,7 @@
 								</div>
 								<spring:bind path="collectionTime">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -136,7 +136,7 @@
 								</div>
 								<spring:bind path="collectionAddress">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -151,7 +151,7 @@
 								</div>
 								<spring:bind path="collectionPostalCode">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -166,7 +166,7 @@
 								</div>
 								<spring:bind path="collectionCity">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -189,11 +189,11 @@
 								<spring:bind path="destinationDate">
 									<c:choose>
 										<c:when test="${status.error}">
-											<strong style="font-size: 200%" class="span1 text-error"
+											<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 										</c:when>
 										<c:when test="${!isItValid.collectionBeforeDestination}">
-											<strong style="font-size: 200%" class="span1 text-error"
+											<strong class="span1 text-error errorX"
 											rel="tooltip" title="Toimitus on sama tai ennen noutoa"> x </strong>
 										</c:when>
 										<c:otherwise>
@@ -209,7 +209,7 @@
 								</div>
 								<spring:bind path="destinationTime">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -224,7 +224,7 @@
 								</div>
 								<spring:bind path="destinationAddress">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -239,7 +239,7 @@
 								</div>
 								<spring:bind path="destinationPostalCode">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -254,7 +254,7 @@
 								</div>
 								<spring:bind path="destinationCity">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -279,7 +279,7 @@
 								</div>
 								<spring:bind path="clientFname">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -294,7 +294,7 @@
 								</div>
 								<spring:bind path="clientLname">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -311,7 +311,7 @@
 								</div>
 								<spring:bind path="clientPhoneNo">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -327,7 +327,7 @@
 								</div>
 								<spring:bind path="clientCompany">
 									<c:if test="${status.error}">
-										<strong style="font-size: 200%" class="span1 text-error"
+										<strong class="span1 text-error errorX"
 											rel="tooltip" title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
@@ -350,7 +350,7 @@
 							</div>
 							<spring:bind path="additionalInformation">
 								<c:if test="${status.error}">
-									<strong style="font-size: 200%" class="span1 text-error"
+									<strong class="span1 text-error errorX"
 										rel="tooltip" title="${status.errorMessage}"> x </strong>
 								</c:if>
 							</spring:bind>
@@ -391,11 +391,11 @@
 											</div>
 											<c:choose>
 											<c:when test="${isItValid.valueNullNextDestinationCollectionDate}">
-											<strong style="font-size: 200%" class="span1 text-error"
+											<strong class="span1 text-error errorX"
 											rel="tooltip" title="Valitse päivämäärä"> x </strong>
 											</c:when>
 											<c:when test="${!isItValid.destinationBeforeNextCollection}">
-											<strong style="font-size: 200%" class="span1 text-error"
+											<strong class="span1 text-error errorX"
 											rel="tooltip" title="Palautuksen noutoaika on sama tai ennen toimitusaikaa"> x </strong>
 											</c:when>
 											<c:otherwise>
@@ -425,11 +425,11 @@
 											</div>								
 											<c:choose>
 											<c:when test="${isItValid.valueNullNextDestinationDate}">
-											<strong style="font-size: 200%" class="span1 text-error"
+											<strong class="span1 text-error errorX"
 											rel="tooltip" title="Valitse päivämäärä"> x </strong>
 											</c:when>
 											<c:when test="${!isItValid.nextCollectionBeforeNextDestination}">
-											<strong style="font-size: 200%" class="span1 text-error"
+											<strong class="span1 text-error errorX"
 											rel="tooltip" title="Palautusaika on sama tai ennen noutoaikaa"> x </strong>
 											</c:when>
 											<c:otherwise>
@@ -466,11 +466,11 @@
 											</div>
 											<c:choose>
 												<c:when test="${isItValid.nextDestinationAddressEmpty}">
-													<strong style="font-size: 200%" class="span1 text-error"
+													<strong class="span1 text-error errorX"
 													rel="tooltip" title="Lisää osoite"> x </strong>
 												</c:when>
 												<c:when test="${isItValid.nextDestinationAddressTooLong}">
-													<strong style="font-size: 200%" class="span1 text-error"
+													<strong class="span1 text-error errorX"
 													rel="tooltip" title="Osoite on liian pitkä"> x </strong>
 												</c:when>
 												<c:otherwise>
@@ -492,11 +492,11 @@
 											</div>
 											<c:choose>
 												<c:when test="${isItValid.nextDestinationPostalCodeEmpty}">
-													<strong style="font-size: 200%" class="span1 text-error"
+													<strong class="span1 text-error errorX"
 													rel="tooltip" title="Lisää postinumero"> x </strong>
 												</c:when>
 												<c:when test="${isItValid.nextDestinationPostalCodeIsNotValid}">
-													<strong style="font-size: 200%" class="span1 text-error"
+													<strong class="span1 text-error errorX"
 													rel="tooltip" title="Postinumeron pitää olla 5 numeroinen"> x </strong>
 												</c:when>
 												<c:otherwise>
@@ -516,11 +516,11 @@
 											</div>
 											<c:choose>
 												<c:when test="${isItValid.nextDestinationCityEmpty}">
-													<strong style="font-size: 200%" class="span1 text-error"
+													<strong class="span1 text-error errorX"
 													rel="tooltip" title="Lisää kaupunki"> x </strong>
 												</c:when>
 												<c:when test="${isItValid.nextDestinationCityTooLong}">
-													<strong style="font-size: 200%" class="span1 text-error"
+													<strong class="span1 text-error errorX"
 													rel="tooltip" title="Kaupungin nimi on liian pitkä"> x </strong>
 												</c:when>
 												<c:otherwise>
