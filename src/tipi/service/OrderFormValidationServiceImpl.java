@@ -17,7 +17,7 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 	public DateTimeCheck checkDateAndTimeCorrectness(OrderForm orderForm) {
 		//nulls need to be checked first as they will return false immediately. Other type of errors should be collected in order for the user to fix them all at the same time.
 		
-		DateTimeCheck sendValue=new DateTimeCheckImpl(); //returnaa tämä!!
+		DateTimeCheck sendValue=new DateTimeCheckImpl();
 		System.out.println("1 " + orderForm.isHasNewDestination());
 		
 		//Check if empty
@@ -103,8 +103,8 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 		
 			//turn Strings to Dates and compare them with each other
 			try {
-				Date collectionDateTime = new SimpleDateFormat().parse(orderForm.getCollectionDate()+orderForm.getCollectionTime());
-				Date destinationDateTime = new SimpleDateFormat().parse(orderForm.getDestinationDate()+orderForm.getDestinationTime());
+				Date collectionDateTime = new SimpleDateFormat().parse(orderForm.getCollectionDate()+" "+orderForm.getCollectionTime());
+				Date destinationDateTime = new SimpleDateFormat().parse(orderForm.getDestinationDate()+" "+orderForm.getDestinationTime());
 			
 				if(!collectionDateTime.before(destinationDateTime)) {
 					sendValue.setCollectionBeforeDestination(false);
@@ -114,8 +114,8 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 			
 				if(orderForm.isHasNewDestination()) {
 
-					Date nextDestinationCollectionDateTime = new SimpleDateFormat().parse(orderForm.getNextDestinationCollectionDate()+orderForm.getNextDestinationCollectionTime());
-					Date nextDestinationDateTime =new SimpleDateFormat().parse(orderForm.getNextDestinationDate()+orderForm.getNextDestinationTime());
+					Date nextDestinationCollectionDateTime = new SimpleDateFormat().parse(orderForm.getNextDestinationCollectionDate()+" "+orderForm.getNextDestinationCollectionTime());
+					Date nextDestinationDateTime =new SimpleDateFormat().parse(orderForm.getNextDestinationDate()+" "+orderForm.getNextDestinationTime());
 				
 					if(!destinationDateTime.before(nextDestinationCollectionDateTime)) {
 						sendValue.setDestinationBeforeNextCollection(false);

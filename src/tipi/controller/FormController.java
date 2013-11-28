@@ -17,7 +17,7 @@ import tipi.bean.OrderForm;
 import tipi.bean.OrderFormImpl;
 import tipi.bean.UserProfileImpl;
 import tipi.service.FormSendService;
-import tipi.service.OrdersTimeCheckService;
+//import tipi.service.OrdersTimeCheckService;
 import tipi.service.OrderFormValidationService;
   
 @Controller
@@ -38,7 +38,7 @@ public class FormController {
         this.formSendService = formSendService; 
     }
     
-    @Inject
+   /* @Inject
     private OrdersTimeCheckService ordersTimeCheckService;
     
     public OrdersTimeCheckService getOrdersTimeCheckService() {
@@ -47,7 +47,7 @@ public class FormController {
     
     public void setOrdersTimeCheckService(OrdersTimeCheckService ordersTimeCheckService) {
     	this.ordersTimeCheckService = ordersTimeCheckService;
-    }
+    } */
     
     @Inject
     private OrderFormValidationService orderFormValidationService;
