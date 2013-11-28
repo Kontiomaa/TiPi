@@ -103,11 +103,11 @@
 							<c:choose>
 								<c:when test="${!collectionTimeLimit}">
 									<p class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</p>
-								<form:hidden path="collectionDate" />
-								<form:hidden path="collectionTime" />
-								<form:hidden path="collectionAddress" />
-								<form:hidden path="collectionPostalCode" />
-								<form:hidden path="collectionCity" />
+									<form:hidden path="collectionDate" />
+									<form:hidden path="collectionTime" />
+									<form:hidden path="collectionAddress" />
+									<form:hidden path="collectionPostalCode" />
+									<form:hidden path="collectionCity" />
 								</c:when>
 								<c:otherwise>
 									<div class="control-group">
@@ -194,11 +194,11 @@
 							<c:choose>
 								<c:when test="${!collectionTimeLimit}">
 									<p class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</p>
-								<form:hidden path="destinationDate" />
-								<form:hidden path="destinationTime" />
-								<form:hidden path="destinationAddress" />
-								<form:hidden path="destinationPostalCode" />
-								<form:hidden path="destinationCity" />
+									<form:hidden path="destinationDate" />
+									<form:hidden path="destinationTime" />
+									<form:hidden path="destinationAddress" />
+									<form:hidden path="destinationPostalCode" />
+									<form:hidden path="destinationCity" />
 								</c:when>
 								<c:otherwise>
 									<div class="control-group">
@@ -211,10 +211,19 @@
 											<span class="add-on"><i class="icon-calendar"></i></span>
 										</div>
 										<spring:bind path="destinationDate">
-											<c:if test="${status.error}">
-												<strong style="font-size: 200%" class="span1 text-error"
-													rel="tooltip" title="${status.errorMessage}"> x </strong>
-											</c:if>
+											<c:choose>
+												<c:when test="${status.error}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="${status.errorMessage}"> x </strong>
+												</c:when>
+												<c:when test="${!isItValid.collectionBeforeDestination}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Toimitus on sama tai ennen noutoa"> x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
+											</c:choose>
 										</spring:bind>
 										<div class="input-append bootstrap-timepicker span2">
 											<form:input path="destinationTime" id="destinationTime"
@@ -426,7 +435,21 @@
 												<span class="add-on"> <i class="icon-calendar"></i>
 												</span>
 											</div>
-
+											<c:choose>
+												<c:when
+													test="${isItValid.valueNullNextDestinationCollectionDate}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Valitse p‰iv‰m‰‰r‰"> x </strong>
+												</c:when>
+												<c:when test="${!isItValid.destinationBeforeNextCollection}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Palautuksen noutoaika on sama tai ennen toimitusaikaa">
+														x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
+											</c:choose>
 											<div class="input-append bootstrap-timepicker span2">
 												<form:input path="nextDestinationCollectionTime"
 													id="nextDestinationCollectionTime" type="text"
@@ -449,6 +472,21 @@
 												<span class="add-on"> <i class="icon-calendar"></i>
 												</span>
 											</div>
+											<c:choose>
+												<c:when test="${isItValid.valueNullNextDestinationDate}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Valitse p‰iv‰m‰‰r‰"> x </strong>
+												</c:when>
+												<c:when
+													test="${!isItValid.nextCollectionBeforeNextDestination}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Palautusaika on sama tai ennen noutoaikaa">
+														x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
+											</c:choose>
 
 											<div class="input-append bootstrap-timepicker span2">
 												<form:input path="nextDestinationTime"
@@ -469,6 +507,19 @@
 													placeholder="esim Kes‰katu 95" class="input-large"
 													type="text" />
 											</div>
+											<c:choose>
+												<c:when test="${isItValid.nextDestinationAddressEmpty}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Lis‰‰ osoite"> x </strong>
+												</c:when>
+												<c:when test="${isItValid.nextDestinationAddressTooLong}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Osoite on liian pitk‰"> x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
 									<div class="span6">
@@ -482,6 +533,20 @@
 													name="textinput" placeholder="esim 02100"
 													class="input-large" type="text" />
 											</div>
+											<c:choose>
+												<c:when test="${isItValid.nextDestinationPostalCodeEmpty}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Lis‰‰ postinumero"> x </strong>
+												</c:when>
+												<c:when
+													test="${isItValid.nextDestinationPostalCodeIsNotValid}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Postinumeron pit‰‰ olla 5 numeroinen"> x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
+											</c:choose>
 										</div>
 
 										<div class="control-group">
@@ -493,6 +558,19 @@
 												<form:input path="nextDestinationCity" name="textinput"
 													placeholder="esim Espoo" class="input-large" type="text" />
 											</div>
+											<c:choose>
+												<c:when test="${isItValid.nextDestinationCityEmpty}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Lis‰‰ kaupunki"> x </strong>
+												</c:when>
+												<c:when test="${isItValid.nextDestinationCityTooLong}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Kaupungin nimi on liian pitk‰"> x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
 								</div>
@@ -511,6 +589,12 @@
 													name="textarea" class="input-xxlarge"></form:textarea>
 											</div>
 										</div>
+										<spring:bind path="nextAdditionalInformation">
+											<c:if test="${status.error}">
+												<strong class="span1 text-error errorX" rel="tooltip"
+													title="${status.errorMessage}"> x </strong>
+											</c:if>
+										</spring:bind>
 									</div>
 								</div>
 							</c:otherwise>

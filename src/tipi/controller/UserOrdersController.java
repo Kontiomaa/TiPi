@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import tipi.bean.DateTimeCheck;
+import tipi.bean.DateTimeCheckImpl;
 import tipi.bean.OrderForm;
 import tipi.bean.OrderFormImpl;
 import tipi.bean.UserProfileImpl;
+import tipi.service.OrderFormValidationService;
 import tipi.service.OrdersDeleteService;
 import tipi.service.OrdersGetService;
 import tipi.service.OrdersTimeCheckService;
@@ -70,6 +73,17 @@ public class UserOrdersController {
 	public void setOrdersUpdateService(OrdersUpdateService ordersUpdateService) {
 		this.ordersUpdateService = ordersUpdateService;
 	}
+	
+    @Inject
+    private OrderFormValidationService orderFormValidationService;
+    
+    public OrderFormValidationService getOrderFormValidationService() {
+    	return orderFormValidationService;
+    }
+    
+    public void setOrderFormValidationService(OrderFormValidationService orderFormValidationService) {
+    	this.orderFormValidationService = orderFormValidationService;
+    }
 	
 	@RequestMapping(value = "/ordersEmpty", method = RequestMethod.GET)
 	public String searchOrdersEmpty(Model model) {
@@ -125,6 +139,9 @@ public class UserOrdersController {
 		boolean collectionTimeLimit = ordersTimeCheckService.checkCollectionTime(orderId, 180);
 		boolean nextDestinationTimeLimit = ordersTimeCheckService.checkNextDestinationTime(orderId, 180);
 		
+    	DateTimeCheck checkValid=new DateTimeCheckImpl();
+        model.addAttribute("isItValid", checkValid);
+        
 		model.addAttribute("collectionTimeLimit", collectionTimeLimit);
 		model.addAttribute("nextDestinationTimeLimit", nextDestinationTimeLimit);
 		model.addAttribute("order", order);
@@ -138,18 +155,23 @@ public class UserOrdersController {
 	public String updateModifiedOrder(Model model, HttpServletRequest request, @ModelAttribute(value = "order") @Valid OrderFormImpl order, BindingResult result,
 			 @ModelAttribute(value = "userProfile") UserProfileImpl profile) {
 		
+    	DateTimeCheck checkValid=new DateTimeCheckImpl();
+		
 		boolean collectionTimeLimit = ordersTimeCheckService.checkCollectionTime(order.getOrders_id(), 180);
 		boolean nextDestinationTimeLimit = ordersTimeCheckService.checkNextDestinationTime(order.getOrders_id(), 180);
 		order.setCompanyMadeOrder(profile.getMyCompany());
 		order.setUserMadeOrder(profile.getUser_id());
 		System.out.println(order.toString());
 		
+    	checkValid = orderFormValidationService.checkDateAndTimeCorrectness(order);
+		
 		model.addAttribute("collectionTimeLimit", collectionTimeLimit);
 		model.addAttribute("nextDestinationTimeLimit", nextDestinationTimeLimit);
 		model.addAttribute("order", order);
 		model.addAttribute("pageIdentifier", "orders");
 		
-		if (result.hasErrors()) { 
+		if (result.hasErrors()||!checkValid.isEverythingOk()) {
+            model.addAttribute("isItValid", checkValid);
 			return "user/modifyOrder";
 		} else {
 			ordersUpdateService.updateModificatedOrder(order, collectionTimeLimit, nextDestinationTimeLimit);
