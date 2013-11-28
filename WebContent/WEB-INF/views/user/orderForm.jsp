@@ -412,6 +412,10 @@
 												<span class="add-on"> <i class="icon-time"></i>
 												</span>
 											</div>
+											<c:if test="${isItValid.valueNullNextDestinationCollectionTime}">
+												<strong class="span1 text-error errorX" rel="tooltip"
+												title="Virheellinen aika"> x </strong>
+											</c:if>
 										</div>
 										<!--  Palautusaika -->
 										<div class="control-group">
@@ -448,6 +452,10 @@
 												<span class="add-on"> <i class="icon-time"></i>
 												</span>
 											</div>
+											<c:if test="${isItValid.valueNullNextDestinationTime}">
+												<strong class="span1 text-error errorX" rel="tooltip"
+												title="Virheellinen aika"> x </strong>
+											</c:if>
 										</div>
 									</div>
 									<div class="span6">
