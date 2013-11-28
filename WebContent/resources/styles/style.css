@@ -72,3 +72,7 @@ td.userOrders {
 	cursor: pointer;
 	font-size: 200%;
 }
+
+.icon-info-sign {
+	cursor: pointer;
+}

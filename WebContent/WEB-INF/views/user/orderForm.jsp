@@ -36,8 +36,8 @@
 
 								<spring:bind path="carBrand">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 								<%-- 
@@ -54,8 +54,8 @@
 								</div>
 								<spring:bind path="carModel">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -70,8 +70,8 @@
 								</div>
 								<spring:bind path="carRegister">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -85,8 +85,8 @@
 								</div>
 								<spring:bind path="carColor">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -109,8 +109,8 @@
 								</div>
 								<spring:bind path="collectionDate">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 								<div class="input-append bootstrap-timepicker span2">
@@ -121,8 +121,8 @@
 								</div>
 								<spring:bind path="collectionTime">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -136,8 +136,8 @@
 								</div>
 								<spring:bind path="collectionAddress">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -151,8 +151,8 @@
 								</div>
 								<spring:bind path="collectionPostalCode">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -166,8 +166,8 @@
 								</div>
 								<spring:bind path="collectionCity">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -189,12 +189,12 @@
 								<spring:bind path="destinationDate">
 									<c:choose>
 										<c:when test="${status.error}">
-											<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+											<strong class="span1 text-error errorX" rel="tooltip"
+												title="${status.errorMessage}"> x </strong>
 										</c:when>
 										<c:when test="${!isItValid.collectionBeforeDestination}">
-											<strong class="span1 text-error errorX"
-											rel="tooltip" title="Toimitus on sama tai ennen noutoa"> x </strong>
+											<strong class="span1 text-error errorX" rel="tooltip"
+												title="Toimitus on sama tai ennen noutoa"> x </strong>
 										</c:when>
 										<c:otherwise>
 											<!-- Everything is ok! -->
@@ -209,8 +209,8 @@
 								</div>
 								<spring:bind path="destinationTime">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -224,8 +224,8 @@
 								</div>
 								<spring:bind path="destinationAddress">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -239,8 +239,8 @@
 								</div>
 								<spring:bind path="destinationPostalCode">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -254,8 +254,8 @@
 								</div>
 								<spring:bind path="destinationCity">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -279,8 +279,8 @@
 								</div>
 								<spring:bind path="clientFname">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -294,8 +294,8 @@
 								</div>
 								<spring:bind path="clientLname">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -311,8 +311,8 @@
 								</div>
 								<spring:bind path="clientPhoneNo">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -327,8 +327,8 @@
 								</div>
 								<spring:bind path="clientCompany">
 									<c:if test="${status.error}">
-										<strong class="span1 text-error errorX"
-											rel="tooltip" title="${status.errorMessage}"> x </strong>
+										<strong class="span1 text-error errorX" rel="tooltip"
+											title="${status.errorMessage}"> x </strong>
 									</c:if>
 								</spring:bind>
 							</div>
@@ -350,8 +350,8 @@
 							</div>
 							<spring:bind path="additionalInformation">
 								<c:if test="${status.error}">
-									<strong class="span1 text-error errorX"
-										rel="tooltip" title="${status.errorMessage}"> x </strong>
+									<strong class="span1 text-error errorX" rel="tooltip"
+										title="${status.errorMessage}"> x </strong>
 								</c:if>
 							</spring:bind>
 						</div>
@@ -382,29 +382,33 @@
 												Noutoaika* <i class="icon-info-sign" rel="tooltip"
 													title="Milloin auto on valmis haettavaksi toimituspaikasta"></i>
 											</form:label>
-											<div class="input-append date span4" id="nextDestinationCollectionDate"
-												data-date="" data-date-format="dd.mm.yyyy">
-												<form:input path="nextDestinationCollectionDate" class="span8"
-													type="text" value="" readonly="true" />
+											<div class="input-append date span4"
+												id="nextDestinationCollectionDate" data-date=""
+												data-date-format="dd.mm.yyyy">
+												<form:input path="nextDestinationCollectionDate"
+													class="span8" type="text" value="" readonly="true" />
 												<span class="add-on"> <i class="icon-calendar"></i>
 												</span>
 											</div>
 											<c:choose>
-											<c:when test="${isItValid.valueNullNextDestinationCollectionDate}">
-											<strong class="span1 text-error errorX"
-											rel="tooltip" title="Valitse päivämäärä"> x </strong>
-											</c:when>
-											<c:when test="${!isItValid.destinationBeforeNextCollection}">
-											<strong class="span1 text-error errorX"
-											rel="tooltip" title="Palautuksen noutoaika on sama tai ennen toimitusaikaa"> x </strong>
-											</c:when>
-											<c:otherwise>
-											<!-- Everything is ok! -->
-											</c:otherwise>
+												<c:when
+													test="${isItValid.valueNullNextDestinationCollectionDate}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Valitse päivämäärä"> x </strong>
+												</c:when>
+												<c:when test="${!isItValid.destinationBeforeNextCollection}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Palautuksen noutoaika on sama tai ennen toimitusaikaa">
+														x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
 											</c:choose>
 											<div class="input-append bootstrap-timepicker span2">
 												<form:input path="nextDestinationCollectionTime"
-													id="nextDestinationCollectionTime" type="text" class="span10" />
+													id="nextDestinationCollectionTime" type="text"
+													class="span10" />
 												<span class="add-on"> <i class="icon-time"></i>
 												</span>
 											</div>
@@ -422,19 +426,21 @@
 													type="text" value="" readonly="true" />
 												<span class="add-on"> <i class="icon-calendar"></i>
 												</span>
-											</div>								
+											</div>
 											<c:choose>
-											<c:when test="${isItValid.valueNullNextDestinationDate}">
-											<strong class="span1 text-error errorX"
-											rel="tooltip" title="Valitse päivämäärä"> x </strong>
-											</c:when>
-											<c:when test="${!isItValid.nextCollectionBeforeNextDestination}">
-											<strong class="span1 text-error errorX"
-											rel="tooltip" title="Palautusaika on sama tai ennen noutoaikaa"> x </strong>
-											</c:when>
-											<c:otherwise>
-											<!-- Everything is ok! -->
-											</c:otherwise>
+												<c:when test="${isItValid.valueNullNextDestinationDate}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Valitse päivämäärä"> x </strong>
+												</c:when>
+												<c:when
+													test="${!isItValid.nextCollectionBeforeNextDestination}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Palautusaika on sama tai ennen noutoaikaa">
+														x </strong>
+												</c:when>
+												<c:otherwise>
+													<!-- Everything is ok! -->
+												</c:otherwise>
 											</c:choose>
 											<div class="input-append bootstrap-timepicker span2">
 												<form:input path="nextDestinationTime"
@@ -466,12 +472,12 @@
 											</div>
 											<c:choose>
 												<c:when test="${isItValid.nextDestinationAddressEmpty}">
-													<strong class="span1 text-error errorX"
-													rel="tooltip" title="Lisää osoite"> x </strong>
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Lisää osoite"> x </strong>
 												</c:when>
 												<c:when test="${isItValid.nextDestinationAddressTooLong}">
-													<strong class="span1 text-error errorX"
-													rel="tooltip" title="Osoite on liian pitkä"> x </strong>
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Osoite on liian pitkä"> x </strong>
 												</c:when>
 												<c:otherwise>
 													<!-- Everything is ok! -->
@@ -492,12 +498,13 @@
 											</div>
 											<c:choose>
 												<c:when test="${isItValid.nextDestinationPostalCodeEmpty}">
-													<strong class="span1 text-error errorX"
-													rel="tooltip" title="Lisää postinumero"> x </strong>
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Lisää postinumero"> x </strong>
 												</c:when>
-												<c:when test="${isItValid.nextDestinationPostalCodeIsNotValid}">
-													<strong class="span1 text-error errorX"
-													rel="tooltip" title="Postinumeron pitää olla 5 numeroinen"> x </strong>
+												<c:when
+													test="${isItValid.nextDestinationPostalCodeIsNotValid}">
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Postinumeron pitää olla 5 numeroinen"> x </strong>
 												</c:when>
 												<c:otherwise>
 													<!-- Everything is ok! -->
@@ -516,12 +523,12 @@
 											</div>
 											<c:choose>
 												<c:when test="${isItValid.nextDestinationCityEmpty}">
-													<strong class="span1 text-error errorX"
-													rel="tooltip" title="Lisää kaupunki"> x </strong>
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Lisää kaupunki"> x </strong>
 												</c:when>
 												<c:when test="${isItValid.nextDestinationCityTooLong}">
-													<strong class="span1 text-error errorX"
-													rel="tooltip" title="Kaupungin nimi on liian pitkä"> x </strong>
+													<strong class="span1 text-error errorX" rel="tooltip"
+														title="Kaupungin nimi on liian pitkä"> x </strong>
 												</c:when>
 												<c:otherwise>
 													<!-- Everything is ok! -->
@@ -529,7 +536,7 @@
 											</c:choose>
 										</div>
 									</div>
-								</div>					
+								</div>
 
 								<div class="row-fluid">
 									<div class="span12">
@@ -546,17 +553,23 @@
 													name="textarea" class="input-xxlarge"></form:textarea>
 											</div>
 										</div>
+										<spring:bind path="nextAdditionalInformation">
+											<c:if test="${status.error}">
+												<strong class="span1 text-error errorX" rel="tooltip"
+													title="${status.errorMessage}"> x </strong>
+											</c:if>
+										</spring:bind>
 									</div>
 								</div>
 							</div>
-							</div>
 						</div>
-						<div class="row-fluid">
-							<div class="span12">
-								<br> <a href="orderFormEmpty" class="btn btn-danger">Tyhjennä</a>
-								<button type="submit" class="btn btn-primary">Seuraava</button>
-							</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<br> <a href="orderFormEmpty" class="btn btn-danger">Tyhjennä</a>
+							<button type="submit" class="btn btn-primary">Seuraava</button>
 						</div>
+					</div>
 				</form:form>
 			</div>
 		</div>
@@ -746,8 +759,8 @@
 										defaultTime : "00:00"
 									});
 
-							var checkoutTime = $('#collectionTime')
-									.timepicker({
+							var checkoutTime = $('#collectionTime').timepicker(
+									{
 										minuteStep : 15,
 										showMeridian : false,
 										defaultTime : "00:00"
