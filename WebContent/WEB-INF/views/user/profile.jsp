@@ -43,7 +43,7 @@
 						<td class="data-header">Postinumero</td>
 						<td><c:out value="${userProfile.company.postalCode}"
 								default="-----" /></td>
-						<td class="data-header">Kaupunki</td>
+						<td class="data-header">Toimipaikka</td>
 						<td><c:out value="${userProfile.company.city}"
 								default="-----" /></td>
 					</tr>

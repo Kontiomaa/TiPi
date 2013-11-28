@@ -27,7 +27,7 @@
 											<th>Nimi</th>
 											<th>Osoite</th>
 											<th>Postiosoite</th>
-											<th>Kaupunki</th>
+											<th>Toimipaikka</th>
 											<th></th>
 										</tr>
 									</thead>

@@ -22,7 +22,7 @@
 						<th>Postinumero</th>
 						<td><c:out value="${registerCompany.postalCode}"
 								default="-----" /></td>
-						<th>Kaupunki</th>
+						<th>Toimipaikka</th>
 						<td><c:out value="${registerCompany.city}" default="-----" /></td>
 					</tr>
 					<tr>

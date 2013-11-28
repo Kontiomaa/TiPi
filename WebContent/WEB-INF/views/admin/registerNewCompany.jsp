@@ -71,7 +71,7 @@
 									</spring:bind>
 								</div>
 								<div class="control-group">
-									<form:label path="city" class="control-label" for="textinput">Kaupunki*</form:label>
+									<form:label path="city" class="control-label" for="textinput">Toimipaikka*</form:label>
 									<div class="controls span6">
 										<form:input path="city" name="textinput"
 											placeholder="esim Helsinki" class="input-large" type="text" />
