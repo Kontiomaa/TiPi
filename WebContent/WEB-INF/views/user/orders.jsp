@@ -45,18 +45,18 @@
 											<c:choose>
 												<c:when
 													test="${searchOrders.hasNewDestinationForSearchOrders == '2'}">
-													<option value="0">Valitse</option>
+													<option value="0">Kaikki</option>
 													<option value="1">Ei</option>
 													<option value="2" selected>Kyllä</option>
 												</c:when>
 												<c:when
 													test="${searchOrders.hasNewDestinationForSearchOrders == '1'}">
-													<option value="0">Valitse</option>
+													<option value="0">Kaikki</option>
 													<option value="1" selected>Ei</option>
 													<option value="2">Kyllä</option>
 												</c:when>
 												<c:otherwise>
-													<option value="0" selected>Valitse</option>
+													<option value="0" selected>Kaikki</option>
 													<option value="1">Ei</option>
 													<option value="2">Kyllä</option>
 
