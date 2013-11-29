@@ -8,16 +8,16 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class UserCompanyImpl implements UserCompany {
 
 	private int company_id;
-	@NotEmpty(message="Tyhj‰")
-	@Size(max=30,message="Liian pitk‰")
+	@NotEmpty(message="Lis√§√§ nimi")
+	@Size(max=30,message="Nimi on liian pitk√§")
 	private String name;
-	@NotEmpty(message="Tyhj‰")
-	@Size(max=30,message="Liian pitk‰")
+	@NotEmpty(message="Lis√§√§ osoite")
+	@Size(max=30,message="Liian pitk√§ osoite")
 	private String address;
-	@Pattern(regexp = "\\d{5}",message="Postinumeron pit‰‰ olla 5 numeroa")
+	@Pattern(regexp = "\\d{5}",message="Postinumeron pit√§√§ olla 5 numeroinen")
 	private String postalCode;
-	@NotEmpty(message="Tyhj‰")
-	@Size(max=30,message="Liian pitk‰")
+	@NotEmpty(message="Lis√§√§ kaupunki")
+	@Size(max=30,message="Kaupunki on liian pitk√§")
 	private String city;
 	
 	public int getCompany_id() {

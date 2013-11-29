@@ -7,17 +7,17 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class UserProfileImpl implements UserProfile {
 	
 	private int user_id;
-	@NotEmpty(message="Tyhj�")
-	@Size(max=30,message="Liian pitk�")
+	@NotEmpty(message="Lisää etunimi")
+	@Size(max=30,message="Etunimi liian pitkä")
 	private String fName;
-	@NotEmpty(message="Tyhj�")
-	@Size(max=30,message="Liian pitk�")
+	@NotEmpty(message="Lisää sukunimi")
+	@Size(max=30,message="Sukunimi liian pitkä")
 	private String lName;
-	@NotEmpty(message="Tyhj�")
-	@Size(max=30,message="Liian pitk�")
+	@NotEmpty(message="Lisää puhelinnumero")
+	@Size(max=30,message="Puhelinnumero on liian pitkä")
 	private String phoneNo;
-	@NotEmpty(message="Tyhj�")
-	@Size(max=40,message="Liian pitk�")
+	@NotEmpty(message="Lisää sähköposti")
+	@Size(max=40,message="Sähköposti liian pitkä")
 	private String email;
 	private String password;
 	private boolean userIsActive;

@@ -103,26 +103,26 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 	public DateTimeCheck checkDateAndTimeCorrectness(OrderForm orderForm) {
 		//nulls need to be checked first as they will return false immediately. Other type of errors should be collected in order for the user to fix them all at the same time.
 		
-		DateTimeCheck sendValue=new DateTimeCheckImpl(); //returnaa t‰m‰!!
+		DateTimeCheck sendValue=new DateTimeCheckImpl(); //returnaa t√§m√§!!
 		
 		//Check if empty
 		if(orderForm.getCollectionDate().equals(null)) {
-			System.out.println("Noutop‰iv‰ on tyhj‰");
+			System.out.println("Noutop√§iv√§ on tyhj√§");
 			//already checked if empty. Only to ascertain if a compare is necessary.
 			sendValue.setEverythingOk(false);
 		}
 		if(orderForm.getCollectionTime().equals(null)) {
-			System.out.println("Noutoaika on tyhj‰");
+			System.out.println("Noutoaika on tyhj√§");
 			//already checked if empty. Only to ascertain if a compare is necessary.
 			sendValue.setEverythingOk(false);
 		}
 		if(orderForm.getDestinationDate().equals(null)) {
-			System.out.println("Toimitusp‰iv‰ on tyhj‰");
+			System.out.println("Toimitusp√§iv√§ on tyhj√§");
 			//already checked if empty. Only to ascertain if a compare is necessary.
 			sendValue.setEverythingOk(false);
 		}
 		if(orderForm.getDestinationTime().equals(null)) {
-			System.out.println("Toimitusaika on tyhj‰");
+			System.out.println("Toimitusaika on tyhj√§");
 			//already checked if empty. Only to ascertain if a compare is necessary.
 			sendValue.setEverythingOk(false);
 		}
@@ -142,7 +142,7 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 				}
 			}
 			else {
-				System.out.println("Palautuksen noutop‰iv‰ on tyhj‰");
+				System.out.println("Palautuksen noutop√§iv√§ on tyhj√§");
 				sendValue.setValueNullNextDestinationCollectionDate(true);
 				sendValue.setEverythingOk(false);
 			}
@@ -153,7 +153,7 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 				}
 			}
 			else {
-				System.out.println("Palautuksen noutoaika on tyhj‰");
+				System.out.println("Palautuksen noutoaika on tyhj√§");
 				sendValue.setValueNullNextDestinationCollectionTime(true);
 				sendValue.setEverythingOk(false);
 			}
@@ -164,7 +164,7 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 				}
 			}
 			else {
-				System.out.println("Palautuksen palautusp‰iv‰ on tyhj‰");
+				System.out.println("Palautuksen palautusp√§iv√§ on tyhj√§");
 				sendValue.setValueNullNextDestinationDate(true);
 				sendValue.setEverythingOk(false);
 			}
@@ -176,7 +176,7 @@ public class OrdersTimeCheckServiceImpl implements OrdersTimeCheckService {
 				
 			}
 			else {
-				System.out.println("Palautuksen palautusaika on tyhj‰");
+				System.out.println("Palautuksen palautusaika on tyhj√§");
 				sendValue.setValueNullNextDestinationTime(true);
 				sendValue.setEverythingOk(false);
 			}
