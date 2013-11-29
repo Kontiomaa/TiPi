@@ -9,16 +9,16 @@
 			<div class="row-fluid">
 				<div class="span12">
 					<ul class="nav nav-tabs">
-						<li><a href="users">Asiakas</a></li>
-						<li><a href="admins">Admin</a></li>
-						<li class="active"><a href="companies">Yritys</a></li>
+						<li><a href="users">Asiakkaat</a></li>
+						<li><a href="admins">Adminit</a></li>
+						<li class="active"><a href="companies">Yritykset</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="row-fluid">
 				<div class="span10 offset1">
 					<fieldset>
-						<legend>Yritys</legend>
+						<legend>Yritykset</legend>
 						<div class="row-fluid">
 							<div class="span12">
 								<table id="myTable" class="table table-striped">

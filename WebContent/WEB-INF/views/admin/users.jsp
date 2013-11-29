@@ -10,9 +10,9 @@
 			<div class="row-fluid">
 				<div class="span12">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="users">Asiakas</a></li>
-						<li><a href="admins">Admin</a></li>
-						<li><a href="companies">Yritys</a></li>
+						<li class="active"><a href="users">Asiakkaat</a></li>
+						<li><a href="admins">Adminit</a></li>
+						<li><a href="companies">Yritykset</a></li>
 					</ul>
 				</div>
 			</div>

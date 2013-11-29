@@ -25,7 +25,7 @@
 					<strong> * (t‰hdell‰) merkityt kent‰t ovat pakollisia</strong>
 					<div class="row-fluid" style="padding-top: 10px;">
 						<c:choose>
-							<c:when test="${!collectionTimeLimit}">
+							<c:when test="${!collectionTimeLimit || order.statusOfOrder > 2}">
 								<p class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</p>
 								<form:hidden path="carBrand" />
 								<form:hidden path="carModel" />
@@ -105,7 +105,7 @@
 									title="T‰yt‰ t‰h‰n milloin ja mist‰ auto on noudettavissa"></i>
 							</legend>
 							<c:choose>
-								<c:when test="${!collectionTimeLimit}">
+								<c:when test="${!collectionTimeLimit || order.statusOfOrder > 2}">
 									<p class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</p>
 									<form:hidden path="collectionDate" />
 									<form:hidden path="collectionTime" />
@@ -196,7 +196,7 @@
 									title="T‰yt‰ t‰h‰n milloin ja miss‰ auton pit‰‰ olla toimitettuna"></i>
 							</legend>
 							<c:choose>
-								<c:when test="${!collectionTimeLimit}">
+								<c:when test="${!collectionTimeLimit || order.statusOfOrder > 2}">
 									<p class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</p>
 									<form:hidden path="destinationDate" />
 									<form:hidden path="destinationTime" />
@@ -300,7 +300,7 @@
 					</legend>
 					<div class="row-fluid">
 						<c:choose>
-							<c:when test="${!collectionTimeLimit}">
+							<c:when test="${!collectionTimeLimit || order.statusOfOrder > 2}">
 								<p class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</p>
 								<form:hidden path="clientFname" />
 								<form:hidden path="clientLname" />
@@ -386,7 +386,7 @@
 									title="Kirjoita t‰h‰n toimitukseen liittyvi‰ lis‰tietoja"></i>
 							</legend>
 							<c:choose>
-								<c:when test="${!collectionTimeLimit}">
+								<c:when test="${!collectionTimeLimit || order.statusOfOrder > 2}">
 									<p class="timeLimitOver">Et voi en‰‰ muokata n‰it‰ tietoja.</p>
 									<form:hidden path="additionalInformation" />
 								</c:when>
@@ -614,6 +614,7 @@
 					</c:if>
 					<div class="row-fluid">
 						<div class="span12">
+							<form:hidden path="statusOfOrder" />
 							<a href="showOrders" class="btn btn-primary" style="float: left;">Takaisin</a>
 							<button class="btn btn-success" style="float: right;">Muokkaa</button>
 						</div>

@@ -10,59 +10,59 @@ public class OrderFormImpl implements OrderForm {
 	private int orders_id;
 	
 	//Car
-	@NotEmpty(message="Lis‰‰ automerkki")
-	@Size(max=30,message="Automerkki on liian pitk‰")
+	@NotEmpty(message="Lis√§√§ automerkki")
+	@Size(max=30,message="Automerkki on liian pitk√§")
 	private String carBrand;
-	@NotEmpty(message="Lis‰‰ automalli")
-	@Size(max=30,message="Automalli on liian pitk‰")
+	@NotEmpty(message="Lis√§√§ automalli")
+	@Size(max=30,message="Automalli on liian pitk√§")
 	private String carModel;
-	@NotEmpty(message="Lis‰‰ rekisterinumero")
-	@Size(max=30,message="Rekisterinumero on liian pitk‰")
+	@NotEmpty(message="Lis√§√§ rekisterinumero")
+	@Size(max=30,message="Rekisterinumero on liian pitk√§")
 	private String carRegister;
-	@Size(max=30,message="Autonv‰ri on liian pitk‰")
+	@Size(max=30,message="Autonv√§ri on liian pitk√§")
 	private String carColor;
 	
 	//Delivery
-	@Pattern(regexp = "\\d{2}[.]\\d{2}[.]\\d{4}",message="Valitse p‰iv‰m‰‰r‰")
+	@Pattern(regexp = "\\d{2}[.]\\d{2}[.]\\d{4}",message="Valitse p√§iv√§m√§√§r√§")
 	private String collectionDate;
 	@Pattern(regexp = "\\d{2}[:]\\d{2}",message="Virheellinen Aika")
 	private String collectionTime;
-	@NotEmpty(message="Lis‰‰ osoite")
-	@Size(max=30,message="Osoite on liian pitk‰")
+	@NotEmpty(message="Lis√§√§ osoite")
+	@Size(max=30,message="Osoite on liian pitk√§")
 	private String collectionAddress;
-	@NotEmpty(message="Lis‰‰ postinumero")
-	@Pattern(regexp = "\\d{5}",message="Postinumeron pit‰‰ olla 5 numeroinen")
+	@NotEmpty(message="Lis√§√§ postinumero")
+	@Pattern(regexp = "\\d{5}",message="Postinumeron pit√§√§ olla 5 numeroinen")
 	private String collectionPostalCode;
-	@NotEmpty(message="Lis‰‰ kaupunki")
-	@Size(max=30,message="Kaupungin nimi on liian pitk‰")
+	@NotEmpty(message="Lis√§√§ kaupunki")
+	@Size(max=30,message="Kaupungin nimi on liian pitk√§")
 	private String collectionCity;
-	@Pattern(regexp = "\\d{2}[.]\\d{2}[.]\\d{4}",message="Valitse p‰iv‰m‰‰r‰")
+	@Pattern(regexp = "\\d{2}[.]\\d{2}[.]\\d{4}",message="Valitse p√§iv√§m√§√§r√§")
 	private String destinationDate;
 	@Pattern(regexp = "\\d{2}[:]\\d{2}",message="Virheellinen Aika")
 	private String destinationTime;
-	@NotEmpty(message="Lis‰‰ osoite")
-	@Size(max=30,message="Osoite on liian pitk‰")
+	@NotEmpty(message="Lis√§√§ osoite")
+	@Size(max=30,message="Osoite on liian pitk√§")
 	private String destinationAddress;
-	@NotEmpty(message="Lis‰‰ postinumero")
-	@Pattern(regexp = "\\d{5}",message="Postinumeron pit‰‰ olla 5 numeroinen")
+	@NotEmpty(message="Lis√§√§ postinumero")
+	@Pattern(regexp = "\\d{5}",message="Postinumeron pit√§√§ olla 5 numeroinen")
 	private String destinationPostalCode;
-	@NotEmpty(message="Lis‰‰ kaupunki")
-	@Size(max=30,message="Kaupungin nimi on liian pitk‰")
+	@NotEmpty(message="Lis√§√§ kaupunki")
+	@Size(max=30,message="Kaupungin nimi on liian pitk√§")
 	private String destinationCity;
 	
 	//Client
-	@NotEmpty(message="Lis‰‰ etunimi")
-	@Size(max=30,message="Asiakkaan etunimi on liian pitk‰")
+	@NotEmpty(message="Lis√§√§ etunimi")
+	@Size(max=30,message="Asiakkaan etunimi on liian pitk√§")
 	private String clientFname;
-	@NotEmpty(message="Lis‰‰ sukunimi")
-	@Size(max=30,message="Asiakkaan sukunimi on liian pitk‰")
+	@NotEmpty(message="Lis√§√§ sukunimi")
+	@Size(max=30,message="Asiakkaan sukunimi on liian pitk√§")
 	private String clientLname;
-	@NotEmpty(message="Lis‰‰ puhelinnumero")
-	@Size(max=30,message="Puhelinnumero on liian pitk‰")
+	@NotEmpty(message="Lis√§√§ puhelinnumero")
+	@Size(max=30,message="Puhelinnumero on liian pitk√§")
 	private String clientPhoneNo;
-	@Size(max=30,message="Yrityksen nimi on liian pitk‰")
+	@Size(max=30,message="Yrityksen nimi on liian pitk√§")
 	private String clientCompany;
-	@Size(max=1000,message="Lis‰tieto teksti on liian pitk‰")
+	@Size(max=1000,message="Lis√§tieto teksti on liian pitk√§")
 	private String additionalInformation;
 	
 	//Return
@@ -74,7 +74,7 @@ public class OrderFormImpl implements OrderForm {
 	private String nextDestinationAddress;
 	private String nextDestinationPostalCode;
 	private String nextDestinationCity;
-	@Size(max=1000,message="Lis‰tieto teksti on liian pitk‰")
+	@Size(max=1000,message="Lis√§tieto teksti on liian pitk√§")
 	private String nextAdditionalInformation;
 	
 	//Other
