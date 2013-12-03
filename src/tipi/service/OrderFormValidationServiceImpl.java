@@ -103,8 +103,8 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 		
 			//turn Strings to Dates and compare them with each other
 			try {
-				Date collectionDateTime = new SimpleDateFormat().parse(orderForm.getCollectionDate()+" "+orderForm.getCollectionTime());
-				Date destinationDateTime = new SimpleDateFormat().parse(orderForm.getDestinationDate()+" "+orderForm.getDestinationTime());
+				Date collectionDateTime = new SimpleDateFormat("dd.MM.yyyy HH:mm").parse(orderForm.getCollectionDate()+" "+orderForm.getCollectionTime());
+				Date destinationDateTime = new SimpleDateFormat("dd.MM.yyyy HH:mm").parse(orderForm.getDestinationDate()+" "+orderForm.getDestinationTime());
 			
 				if(!collectionDateTime.before(destinationDateTime)) {
 					sendValue.setCollectionBeforeDestination(false);
@@ -114,9 +114,9 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 			
 				if(orderForm.isHasNewDestination()) {
 
-					Date nextDestinationCollectionDateTime = new SimpleDateFormat().parse(orderForm.getNextDestinationCollectionDate()+" "+orderForm.getNextDestinationCollectionTime());
-					Date nextDestinationDateTime =new SimpleDateFormat().parse(orderForm.getNextDestinationDate()+" "+orderForm.getNextDestinationTime());
-				
+					Date nextDestinationCollectionDateTime = new SimpleDateFormat("dd.MM.yyyy HH:mm").parse(orderForm.getNextDestinationCollectionDate()+" "+orderForm.getNextDestinationCollectionTime());
+					Date nextDestinationDateTime =new SimpleDateFormat("dd.MM.yyyy HH:mm").parse(orderForm.getNextDestinationDate()+" "+orderForm.getNextDestinationTime());
+
 					if(orderForm.getStatusOfOrder() < 3) {
 						if(!destinationDateTime.before(nextDestinationCollectionDateTime)) {
 							sendValue.setDestinationBeforeNextCollection(false);
@@ -134,13 +134,15 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 					System.out.println("CollectionDatetime: "+collectionDateTime+"\n DestinationDateTime: "+destinationDateTime+"\n nextDestinationCollectionDateTime: "+nextDestinationCollectionDateTime+"\n nextDestinationDateTime: "+nextDestinationDateTime);
 				}
 				else {
-					System.out.println("CollectionDatetime: "+collectionDateTime+"\nDestinationDateTime: "+destinationDateTime);
+					System.out.println("CollectionDatetime: "+collectionDateTime+"\n DestinationDateTime: "+destinationDateTime);
 				}
 			}
 			catch(ParseException e) {
 				System.out.println("ParseException: "+e);
 				System.out.println("try failed. Catch instead.");
 				sendValue.setEverythingOk(false);
+				System.out.println(orderForm.getCollectionDate());
+				System.out.println(orderForm.getDestinationDate());
 			}
 		}
 		
