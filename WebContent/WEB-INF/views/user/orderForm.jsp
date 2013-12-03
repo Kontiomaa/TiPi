@@ -764,14 +764,14 @@
 									{
 										minuteStep : 15,
 										showMeridian : false,
-										defaultTime : "00:00"
+										defaultTime : "12:00"
 									});
 
 							var checkoutTime = $('#collectionTime').timepicker(
 									{
 										minuteStep : 15,
 										showMeridian : false,
-										defaultTime : "00:00"
+										defaultTime : "12:00"
 									});
 
 							var nextCheckinTime = $(
@@ -779,14 +779,14 @@
 									.timepicker({
 										minuteStep : 15,
 										showMeridian : false,
-										defaultTime : "00:00"
+										defaultTime : "12:00"
 									});
 
 							var nextCheckoutTime = $('#nextDestinationTime')
 									.timepicker({
 										minuteStep : 15,
 										showMeridian : false,
-										defaultTime : "00:00"
+										defaultTime : "12:00"
 									});
 						});
 	</script>
