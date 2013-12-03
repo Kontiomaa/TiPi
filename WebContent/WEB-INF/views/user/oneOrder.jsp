@@ -239,7 +239,8 @@
 					</div>
 					<div class="span4">
 						<c:choose>
-							<c:when test="${(nextDestinationTimeLimit && collectionTimeLimit) && order.statusOfOrder < 3}">
+							<c:when test="${((nextDestinationTimeLimit || !order.hasNewDestination) && collectionTimeLimit)
+							 && order.statusOfOrder < 3}">
 								<form name="deleteOrderForm" method="post" action="deleteOrder" style="float: right;">
 									<input name="orderId" type="hidden" value="${order.orders_id}" />
 									<a class="btn btn-danger" onClick="deleteConfirmation()">Poista</a>
