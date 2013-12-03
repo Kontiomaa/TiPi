@@ -22,22 +22,22 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 		
 		//Check if empty
 		if(orderForm.getCollectionDate().equals(null)) {
-			System.out.println("Noutop‰iv‰ on tyhj‰");
+			System.out.println("Noutop√§iv√§ on tyhj√§");
 			//already checked if empty. Only to ascertain if a compare is necessary.
 			sendValue.setEverythingOk(false);
 		}
 		if(orderForm.getCollectionTime().equals(null)) {
-			System.out.println("Noutoaika on tyhj‰");
+			System.out.println("Noutoaika on tyhj√§");
 			//already checked if empty. Only to ascertain if a compare is necessary.
 			sendValue.setEverythingOk(false);
 		}
 		if(orderForm.getDestinationDate().equals(null)) {
-			System.out.println("Toimitusp‰iv‰ on tyhj‰");
+			System.out.println("Toimitusp√§iv√§ on tyhj√§");
 			//already checked if empty. Only to ascertain if a compare is necessary.
 			sendValue.setEverythingOk(false);
 		}
 		if(orderForm.getDestinationTime().equals(null)) {
-			System.out.println("Toimitusaika on tyhj‰");
+			System.out.println("Toimitusaika on tyhj√§");
 			//already checked if empty. Only to ascertain if a compare is necessary.
 			sendValue.setEverythingOk(false);
 		}
@@ -57,7 +57,7 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 				}
 			}
 			else {
-				System.out.println("Palautuksen noutop‰iv‰ on tyhj‰");
+				System.out.println("Palautuksen noutop√§iv√§ on tyhj√§");
 				sendValue.setValueNullNextDestinationCollectionDate(true);
 				sendValue.setEverythingOk(false);
 			}
@@ -68,7 +68,7 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 				}
 			}
 			else {
-				System.out.println("Palautuksen noutoaika on tyhj‰");
+				System.out.println("Palautuksen noutoaika on tyhj√§");
 				sendValue.setValueNullNextDestinationCollectionTime(true);
 				sendValue.setEverythingOk(false);
 			}
@@ -79,7 +79,7 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 				}
 			}
 			else {
-				System.out.println("Palautuksen palautusp‰iv‰ on tyhj‰");
+				System.out.println("Palautuksen palautusp√§iv√§ on tyhj√§");
 				sendValue.setValueNullNextDestinationDate(true);
 				sendValue.setEverythingOk(false);
 			}
@@ -91,7 +91,7 @@ public class OrderFormValidationServiceImpl implements OrderFormValidationServic
 				
 			}
 			else {
-				System.out.println("Palautuksen palautusaika on tyhj‰");
+				System.out.println("Palautuksen palautusaika on tyhj√§");
 				sendValue.setValueNullNextDestinationTime(true);
 				sendValue.setEverythingOk(false);
 			}
