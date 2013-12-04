@@ -616,7 +616,7 @@
 						<div class="span12">
 							<form:hidden path="statusOfOrder" />
 							<a href="showOrders" class="btn btn-primary" style="float: left;">Takaisin</a>
-							<button class="btn btn-success" style="float: right;">Muokkaa</button>
+							<button class="btn btn-success" type="submit" style="float: right;">Muokkaa</button>
 						</div>
 					</div>
 				</form:form>
