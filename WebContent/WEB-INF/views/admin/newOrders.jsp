@@ -36,19 +36,18 @@
 												<td><c:out value="${order.destinationCity}" />, <c:out
 														value="${order.destinationAddress}" /></td>
 												<td><c:out value="${order.lastTimeEdited}" /></td>
-												<form action="orderInformation" method="post" class="span4">
-													<td><input type="hidden" name="orderID" id="orderID"
+												<td><form action="orderInformation" method="post" class="span4">
+													<input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
-														<button class="btn btn-primary" type="submit"
-															value="submit">Avaa</button></td>
-												</form>
+														<button class="btn btn-primary" type="submit">Avaa</button>
+												</form></td><td>
 												<form action="changeOrderStatus" method="post" class="span4">
-													<td><input type="hidden" name="statusOfOrder"
+													<input type="hidden" name="statusOfOrder"
 														id="statusOfOrder" value="${order.statusOfOrder}" /> <input
 														type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
-														<button class="btn btn-success">Kuittaa</button></td>
-												</form>
+														<button class="btn btn-success" type="submit">Kuittaa</button>
+												</form></td>
 											</tr>
 										</c:forEach>
 									</tbody>

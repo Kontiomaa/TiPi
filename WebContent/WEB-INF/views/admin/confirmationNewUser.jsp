@@ -71,7 +71,7 @@
 									<div>
 										<a href="registerNewUser" class="btn btn-primary">Takaisin</a>
 
-										<button type="submit" class="btn btn-success" value="submit"
+										<button type="submit" class="btn btn-success"
 											id="submit">Rekisteröi käyttäjä</button>
 									</div>
 								</div>

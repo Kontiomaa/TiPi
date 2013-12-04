@@ -42,16 +42,18 @@
 												<td><c:out value="${user.phoneNo}" /></td>
 												<td><c:out value="${user.email}" /></td>
 												<td><c:out value="${user.company.name}" /></td>
+												<td>
 												<form action="modifyUser" method="post">
-													<td><input type="hidden" name="user_id" id="user_id"
+													<input type="hidden" name="user_id" id="user_id"
 														value="${user.user_id}" />
 														<button class="btn btn-primary" type="submit"
-															value="submit">Muokkaa</button></td>
-													<td><c:if test="${!user.userIsActive}">
+															value="submit">Muokkaa</button>
+												</form>
+												</td>
+												<td><c:if test="${!user.userIsActive}">
 														<strong class="text-error text-center errorX"
 															rel="tooltip" title="Poistettu"> x </strong>
 													</c:if></td>
-												</form>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -73,34 +75,49 @@
 	<script type="text/javascript"
 		src="../resources/styles/dataTableConf.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function() {
-		$("[rel=tooltip]").tooltip({
-			placement : 'bottom'
-		});
-		$('#myTable').dataTable( {
-			"aaSorting": [[ 0, "asc" ]],
-			"bInfo": false,
-			"sDom": "<'row'<'span5 offset1'l><'span5 offset1'f>r>t<'row'<'span5'i><'span5'p>>",
-			"sPaginationType": "bootstrap",
-			"oLanguage": {
-				"sLengthMenu" : "Näytä _MENU_",
-				"sSearch": "Hae",
-				"sZeroRecords": "Ei käyttäjiä", 
-				"oPaginate": {
-				"sNext": "Seuraava",
-				"sPrevious": "Edellinen",
-				},
-			},
-			"aoColumnDefs": [
-			               { "aTargets": [ 0 ], "bSortable": true },
-			               { "aTargets": [ 1 ], "bSortable": true },
-			               { "aTargets": [ 2 ], "bSortable": true },
-			               { "aTargets": [ 3 ], "bSortable": true },
-			               { "aTargets": [ 4 ], "bSortable": false },
-			               { "aTargets": [ 5 ], "bSortable": false },
-			               ],
-		} );
-	} );
+		$(document)
+				.ready(
+						function() {
+							$("[rel=tooltip]").tooltip({
+								placement : 'bottom'
+							});
+							$('#myTable')
+									.dataTable(
+											{
+												"aaSorting" : [ [ 0, "asc" ] ],
+												"bInfo" : false,
+												"sDom" : "<'row'<'span5 offset1'l><'span5 offset1'f>r>t<'row'<'span5'i><'span5'p>>",
+												"sPaginationType" : "bootstrap",
+												"oLanguage" : {
+													"sLengthMenu" : "Näytä _MENU_",
+													"sSearch" : "Hae",
+													"sZeroRecords" : "Ei käyttäjiä",
+													"oPaginate" : {
+														"sNext" : "Seuraava",
+														"sPrevious" : "Edellinen",
+													},
+												},
+												"aoColumnDefs" : [ {
+													"aTargets" : [ 0 ],
+													"bSortable" : true
+												}, {
+													"aTargets" : [ 1 ],
+													"bSortable" : true
+												}, {
+													"aTargets" : [ 2 ],
+													"bSortable" : true
+												}, {
+													"aTargets" : [ 3 ],
+													"bSortable" : true
+												}, {
+													"aTargets" : [ 4 ],
+													"bSortable" : false
+												}, {
+													"aTargets" : [ 5 ],
+													"bSortable" : false
+												}, ],
+											});
+						});
 	</script>
 </body>
 </html>

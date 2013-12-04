@@ -37,21 +37,24 @@
 														value="${order.destinationAddress}" /></td>
 												<td><c:out value="${order.collectionDate}" /> <c:out
 														value="${order.collectionTime}" /></td>
+												<td>
 												<form action="orderInformation" method="post" class="span4">
-													<td><input type="hidden" name="orderID" id="orderID"
+													<input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
-														<button class="btn btn-primary" type="submit"
-															value="submit">Avaa</button></td>
+														<button class="btn btn-primary" type="submit" >Avaa</button>
 												</form>
+												</td>
+												<td>
 												<form action="changeOrderStatus" method="post" class="span4">
-													<td><input type="hidden" name="statusOfOrder"
+													<input type="hidden" name="statusOfOrder"
 														id="statusOfOrder" value="${order.statusOfOrder}" /> <input
 														type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" /> <input type="hidden"
 														name="hasNewDestination" id="hasNewDestination"
 														value="${order.hasNewDestination}" />
-														<button class="btn btn-success">Toimita</button></td>
+														<button class="btn btn-success" type="submit">Toimita</button>
 												</form>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>

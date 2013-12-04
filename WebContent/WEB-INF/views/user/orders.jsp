@@ -185,7 +185,7 @@
 								<td>
 									<form method="post" action="getOneOrder" class="buttonForm">
 										<input name="orderId" type="hidden" value="${order.orders_id}" />
-										<button class="btn btn-primary">Avaa</button>
+										<button type="submit" class="btn btn-primary">Avaa</button>
 									</form>
 								</td>
 							</tr>

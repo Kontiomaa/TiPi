@@ -51,19 +51,22 @@
 														value="${order.destinationTime}" /></td>
 													</c:otherwise>
 												</c:choose>
+												<td>
 												<form action="orderInformation" method="post" class="span4">
-													<td><input type="hidden" name="orderID" id="orderID"
+													<input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
-														<button class="btn btn-primary" type="submit"
-															value="submit">Avaa</button></td>
+														<button class="btn btn-primary" type="submit">Avaa</button>
 												</form>
+												</td>
+												<td>
 												<form action="changeOrderStatus" method="post" class="span4">
-													<td><input type="hidden" name="statusOfOrder"
+													<input type="hidden" name="statusOfOrder"
 														id="statusOfOrder" value="${order.statusOfOrder}" /> <input
 														type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" />
-														<button class="btn btn-success">Laskuta</button></td>
+														<button class="btn btn-success" type="submit">Laskuta</button>
 												</form>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
