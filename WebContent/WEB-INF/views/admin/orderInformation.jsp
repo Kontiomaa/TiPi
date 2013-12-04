@@ -244,7 +244,7 @@
 							<c:when test="${backToSearchOrders == 1}">
 								<form action="searchOrders" method="post">
 									<td>
-										<button class="btn btn-primary" type="submit" value="submit">Takaisin</button>
+										<button class="btn btn-primary" type="submit">Takaisin</button>
 									</td>
 								</form>
 							</c:when>
@@ -276,17 +276,19 @@
 								<td></td>
 							</c:when>
 							<c:otherwise>
+							<td>
 								<form action="changeOrderStatus" method="post" class="span4">
-									<td><input type="hidden" name="statusOfOrder"
+									<input type="hidden" name="statusOfOrder"
 										id="statusOfOrder" value="${orderInformation.statusOfOrder}" />
 										<input type="hidden" name="orderID" id="orderID"
 										value="${orderInformation.orders_id}" /> <input type="hidden"
 										name="hasNewDestination" id="hasNewDestination"
 										value="${orderInformation.hasNewDestination}" />
-										<button class="btn btn-success">
+										<button class="btn btn-success" type="submit">
 											<c:out value="${changeStatusButton}" default="-----" />
-										</button></td>
+										</button>
 								</form>
+							</td>
 							</c:otherwise>
 						</c:choose>
 
@@ -306,7 +308,7 @@
 											value="${orderInformation.orders_id}" /> <input
 											type="hidden" name="hasNewDestination" id="hasNewDestination"
 											value="${orderInformation.hasNewDestination}" />
-										<button class="btn btn-primary">Edellinen tila</button>
+										<button class="btn btn-primary" type="submit">Edellinen tila</button>
 									</form>
 								</td>
 							</c:otherwise>

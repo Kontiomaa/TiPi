@@ -38,12 +38,12 @@
 												<td><c:out value="${company.address}" /></td>
 												<td><c:out value="${company.postalCode}" /></td>
 												<td><c:out value="${company.city}" /></td>
+												<td>
 												<form action="modifyCompany" method="post" class="span4">
-													<td><input type="hidden" name="company_id"
+													<input type="hidden" name="company_id"
 														id="company_id" value="${company.company_id}" />
-														<button class="btn btn-primary" type="submit"
-															value="submit">Muokkaa</button></td>
-												</form>
+														<button class="btn btn-primary" type="submit">Muokkaa</button>
+												</form></td>
 											</tr>
 										</c:forEach>
 									</tbody>

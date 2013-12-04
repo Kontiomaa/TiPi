@@ -170,14 +170,15 @@
 																value="${order.destinationTime}" /></td>
 													</c:otherwise>
 												</c:choose>
+												<td>
 												<form action="orderInformation" method="post" class="span4">
-													<td><input type="hidden" name="orderID" id="orderID"
+													<input type="hidden" name="orderID" id="orderID"
 														value="${order.orders_id}" /> <input type="hidden"
 														name="backToSearchOrders" id="backToSearchOrders"
 														value="1" />
-														<button class="btn btn-primary" type="submit"
-															value="submit">Avaa</button></td>
+														<button class="btn btn-primary" type="submit">Avaa</button>
 												</form>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>

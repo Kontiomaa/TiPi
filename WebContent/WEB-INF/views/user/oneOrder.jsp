@@ -232,7 +232,7 @@
 								<form method="post" action="getModificateOrder"
 									style="float: center;">
 									<input name="orderId" type="hidden" value="${order.orders_id}" />
-									<button class="btn btn-success">Muokkaa</button>
+									<button type="submit" class="btn btn-success">Muokkaa</button>
 								</form>
 							</c:otherwise>
 						</c:choose>
