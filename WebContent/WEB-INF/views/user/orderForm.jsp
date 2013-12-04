@@ -645,6 +645,7 @@
 							var checkin = $('#collectionDate')
 									.datepicker(
 											{
+												weekStart : 1,
 												onRender : function(date) {
 													return date.valueOf() < now
 															.valueOf() ? 'disabled'
@@ -690,6 +691,7 @@
 							var checkout = $('#destinationDate')
 									.datepicker(
 											{
+												weekStart : 1,
 												onRender : function(date) {
 													return date.valueOf() < checkin.date
 															.valueOf() ? 'disabled'
@@ -726,6 +728,7 @@
 									'#nextDestinationCollectionDate')
 									.datepicker(
 											{
+												weekStart : 1,
 												onRender : function(date) {
 													return date.valueOf() < checkout.date
 															.valueOf() ? 'disabled'
@@ -751,6 +754,7 @@
 							var nextCheckout = $('#nextDestinationDate')
 									.datepicker(
 											{
+												weekStart : 1,
 												onRender : function(date) {
 													return date.valueOf() < nextCheckin.date
 															.valueOf() ? 'disabled'
