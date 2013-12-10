@@ -46,8 +46,9 @@ public class UserProfileController {
 		boolean correctPassword = spe.matches(req.getParameter("oldPassword"), userProfile.getPassword());
 		
 		if(correctPassword){
-			String email = userProfile.getEmail();
-			userProfileService.sendNewPasswordToDao(email, newPassword);
+//			String email = userProfile.getEmail(); //old version, problems if changing email & password on same login.
+			int usersId = userProfile.getUser_id();
+			userProfileService.sendNewPasswordToDao(usersId, newPassword);
 			model.addAttribute("passwordChangeSuccessful", "true");
 			userProfile.setPassword(newPassword); //In case you want  to change your password multiple times.
 		}

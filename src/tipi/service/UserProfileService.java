@@ -22,7 +22,7 @@ public interface UserProfileService {
 	public abstract List<UserCompany> getAllCompanies();
 	
 	@PreAuthorize("isAuthenticated()")
-	public abstract void sendNewPasswordToDao(String email, String newPassword);
+	public abstract void sendNewPasswordToDao(int usersId, String newPassword);
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public abstract UserCompany getCompany(int company_id, UserCompany company);

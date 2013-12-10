@@ -17,7 +17,7 @@ public interface UserDAO {
 	
 	public abstract List<UserCompany> getAllCompaniesDAO();
 	
-	public abstract void saveRegisteredUsersNewPassword(String email, String newPassword);
+	public abstract void saveRegisteredUsersNewPassword(int usersId, String newPassword);
 	
 	public abstract UserProfile getUsersInformationWithIdDAO(int id, UserProfile userProfile);
 	

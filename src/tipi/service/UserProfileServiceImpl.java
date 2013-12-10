@@ -51,9 +51,9 @@ public class UserProfileServiceImpl implements UserProfileService {
 	}
 	
 	@Override
-	public void sendNewPasswordToDao(String email, String newPassword){
-		System.out.println("Service: "+email+" "+newPassword);
-		userDao.saveRegisteredUsersNewPassword(email, newPassword);
+	public void sendNewPasswordToDao(int usersId, String newPassword){
+		System.out.println("Service: "+usersId+" "+newPassword);
+		userDao.saveRegisteredUsersNewPassword(usersId, newPassword);
 	}
 	
 	@Override
