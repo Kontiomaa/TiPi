@@ -1,11 +1,14 @@
 package tipi.controller;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -103,5 +106,21 @@ public class UsersController {
 			return "redirect:/admin/admins";
 		}
 		return "redirect:/admin/users";
+	}
+	
+	@RequestMapping(value = "/modifyUserResetPassword", method = RequestMethod.POST)
+	public String modifyUserResetPassword(Model model, HttpServletRequest req) {
+		int user_id = Integer.parseInt(req.getParameter("user_id"));
+		String email = req.getParameter("email");
+		SecureRandom random = new SecureRandom();
+		String newPassword = new BigInteger(50, random).toString(20);
+		
+		StandardPasswordEncoder spe = new StandardPasswordEncoder();
+		String cryptedPassword=spe.encode(newPassword);
+		
+		model.addAttribute("email", email);
+		model.addAttribute("newPassword", newPassword);
+		userProfileService.sendNewPasswordToDao(user_id, cryptedPassword);
+		return "/admin/passwordReseted";
 	}
 }

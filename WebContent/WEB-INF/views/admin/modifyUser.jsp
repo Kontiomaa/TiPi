@@ -7,10 +7,21 @@
 		<%@include file="navi.jsp"%>
 		<div class="row-fluid" id="area">
 			<div class="span10 offset1">
-				<form:form action="saveModifiedUser" modelAttribute="modifyUser"
-					method="post" class="form-horizontal">
-					<fieldset>
-						<legend>Muokkaa k‰ytt‰j‰‰</legend>
+					<form name="modifyUserResetPassword" method="post"
+						action="modifyUserResetPassword">
+						<input type="hidden" name="user_id" id="user_id"
+								value="${modifyUser.user_id}" />
+						<input type="hidden" name="email" id="email"
+								value="${modifyUser.email}" />
+						<legend>
+							Muokkaa k‰ytt‰j‰‰
+							<a class="btn" onClick="deleteConfirmation()">Palauta
+								salasana</a>
+						</legend>
+					</form>
+					<form:form action="saveModifiedUser" modelAttribute="modifyUser"
+						method="post" class="form-horizontal">
+						<fieldset>
 						<div class="row-fluid">
 							<div class="span6">
 								<div class="control-group">
@@ -134,7 +145,7 @@
 									value="true" class="btn btn-success pull-right">Palauta</button>
 							</c:otherwise>
 						</c:choose>
-					</fieldset>
+				</fieldset>
 				</form:form>
 			</div>
 		</div>
@@ -149,6 +160,13 @@
 				placement : 'bottom'
 			});
 		});
+		function deleteConfirmation() {
+			var a = new Boolean();
+			a = window.confirm('Haluatko varmasti korvata k‰ytt‰j‰n salasanan?');
+			if (a) {
+				document.modifyUserResetPassword.submit();
+			}
+		}
 	</script>
 </body>
 </html>

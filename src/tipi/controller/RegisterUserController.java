@@ -1,5 +1,7 @@
 package tipi.controller;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -68,7 +70,10 @@ public class RegisterUserController {
 	@RequestMapping(value = "/registerNewUser", method = RequestMethod.POST)
 	public String getUserConfirmation(
 			@ModelAttribute(value = "registerUser") @Valid UserProfileImpl registerUser,
-			BindingResult result) {
+			BindingResult result, Model model) {
+		SecureRandom random = new SecureRandom();
+		String generatedPassword = new BigInteger(50, random).toString(20);
+		model.addAttribute("generatedPassword", generatedPassword);
 		
 		if (result.hasErrors()) {
 			return "/admin/registerNewUser";
