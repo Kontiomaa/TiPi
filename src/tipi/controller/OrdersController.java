@@ -1,5 +1,7 @@
 package tipi.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -265,5 +267,37 @@ public class OrdersController {
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
 		ordersDeleteService.deleteOrder(orderId);
 		return "redirect:/admin/deletedOrders";
+	}
+	
+	@RequestMapping(value = "/backupOrders", method = RequestMethod.POST)
+	public String backupOrders(Model model, HttpServletRequest req) {
+		int statusOfOrder = 1;
+		model.addAttribute("status", "Uudet");
+		String orderPage = req.getParameter("orderPage");
+		if(orderPage.equals("accepted")) {
+		model.addAttribute("status", "Kuitatut");
+		statusOfOrder = 2;
+		} else if(orderPage.equals("taken")) {
+			model.addAttribute("status", "Toimitetut");
+			statusOfOrder = 3;
+		}  else if(orderPage.equals("completed")) {
+			model.addAttribute("status", "Valmiit");
+			statusOfOrder = 4;
+		}  else if(orderPage.equals("billed")) {
+			model.addAttribute("status", "Laskutetut");
+			statusOfOrder = 5;
+		}  else if(orderPage.equals("deletedOrders")) {
+			model.addAttribute("status", "Poistetut");
+			statusOfOrder = 6;
+		}
+		
+		List<OrderForm> orders = ordersGetService
+				.getOrderListFromDAO(statusOfOrder);
+		Date myDate = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+		String myDateString = sdf.format(myDate);
+		model.addAttribute("thisdate", myDateString);
+		model.addAttribute("orders", orders);
+		return "admin/backup";
 	}
 }

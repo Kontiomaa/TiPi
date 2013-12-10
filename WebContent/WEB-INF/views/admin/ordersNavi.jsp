@@ -82,6 +82,14 @@
 					<li><a href="deletedOrders">Poistetut</a></li>
 				</c:otherwise>
 			</c:choose>
+			<c:if test="${orderPage != 'searchOrdersPage'}">
+			<li>
+			<form class="navbar-form" action="backupOrders" method="post">
+			<input type="hidden" name="orderPage" id="orderPage" value="${orderPage}" />
+				<button type="submit" class="btn">Varmuuskopioi</button>
+			</form>
+			</li>
+			</c:if>
 		</ul>
 	</div>
 </div>
