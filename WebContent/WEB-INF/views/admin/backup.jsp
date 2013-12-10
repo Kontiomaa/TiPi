@@ -73,8 +73,8 @@
 <tr>
 <td>Tilaaja</td>
 <td><c:out value="${order.userProfile.fName}" /></td>
-<td><c:out value="${order.userProfile.phoneNo}" /></td>
 <td><c:out value="${order.userProfile.lName}" /></td>
+<td><c:out value="${order.userProfile.phoneNo}" /></td>
 <td><c:out value="${order.userProfile.company.name}" /></td>
 <td><c:out value="${order.lastTimeEdited}" /></td>
 </tr>

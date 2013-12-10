@@ -47,12 +47,11 @@
 				<form action="registerNewUserSend" method="post"
 					class="form-horizontal">
 					<fieldset>
-						<legend>Käyttäjän salasana</legend>
 						<div class="row-fluid">
 							<div class="span12">
 										<input type="hidden" class="input-xlarge" name="password"
 											id="password" value="${generatedPassword}"/>
-								<h3>Salasana on: <c:out value="${generatedPassword}" default="-----" /></h3>
+								<h3>Uuden käyttäjän salasana on: <c:out value="${generatedPassword}" default="-----" /></h3>
 								<div class="row-fluid">
 									<div>
 										<a href="registerNewUser" class="btn btn-primary">Takaisin</a>
