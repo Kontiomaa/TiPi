@@ -594,15 +594,10 @@
 	<script type="text/javascript">
 		$(document)
 				.ready(
-						function() {
-							$("#hasNewDestination").is(function() {
-								if ($('#hasNewDestination').is(':checked')) {
-									$("#returnArea").collapse('hide');
-								}
-							});
-
-							$("#hasNewDestination").change(function() {
-								$("#returnArea").collapse('toggle');
+						function() {														
+							$("#returnArea").collapse({toggle: $('#hasNewDestination').is(':checked')});
+							$("#hasNewDestination").click(function() {
+							    $("#returnArea").collapse("toggle");
 							});
 
 							$("#sameAsCollectionAddress")
