@@ -42,7 +42,7 @@
 			<div class="span4">
 				<form class="form-signin" action="j_spring_security_check"
 					method="post">
-					<h2 class="form-signin-heading">Kirjaudu sisään</h2>
+					<h2 class="form-signin-heading">TiPi-Beta<br />Kirjaudu sisään</h2>
 					<c:if test="${not empty loginerror}">
 						<p class="alert alert-error">Kirjautuminen epäonnistui</p>
 					</c:if>
@@ -58,6 +58,11 @@
          <input type="checkbox" value="remember-me"> Remember me
         </label>  -->
 					<button class="btn btn-large btn-inverse" type="submit">Kirjaudu</button>
+					<br />
+					<b>Testatut selaimet:</b>
+					<img alt="Google Chrome" src="resources/logos/chrome-30.png">
+					<img alt="Firefox" src="resources/logos/firefox-32-noshadow.png">
+					<img alt="Internet Exporer 10" src="resources/logos/ie10-102.jpg">
 				</form>
 			</div>
 		</div>
