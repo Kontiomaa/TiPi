@@ -50,13 +50,13 @@
                 <property name="url" value="${db.url}?autoReconnect=true" />
                 <property name="username" value="${db.username}" />
                 <property name="password" value="${db.password}" />  
- 				<property name="initialSize" value="2" />
- 				<property name="maxActive" value="30" />
+ 				<!--<property name="initialSize" value="2" />
+ 				<property name="maxActive" value="30" />-->
  				<property name="validationQuery" value="SELECT 1" />
     			<property name="testOnBorrow" value="true" />
    				<property name="removeAbandoned" value="true" />
      			<property name="removeAbandonedTimeout" value="60" />
-     			<property name="logAbandoned" value="true" />
+     			<!--<property name="logAbandoned" value="true" />-->
         </bean>
 
 
