@@ -1,5 +1,12 @@
 package tipi.filter;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Filter makes sure if user profile exist. If it isn't clear security context
+ */
+
 import java.io.IOException;
 
 import javax.servlet.Filter;

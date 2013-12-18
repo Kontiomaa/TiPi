@@ -1,5 +1,12 @@
 package tipi.controller; 
-  
+
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Controller creates new empty orderform, shows orderform and validates it, sends validated form to service
+ */
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 
@@ -19,7 +26,8 @@ import tipi.bean.UserProfileImpl;
 import tipi.service.FormSendService;
 //import tipi.service.OrdersTimeCheckService;
 import tipi.service.OrderFormValidationService;
-  
+
+
 @Controller
 @RequestMapping(value = "/user") 
 @SessionAttributes({"orderForm", "userProfile", "pageIdentifier"}) 
@@ -38,17 +46,6 @@ public class FormController {
         this.formSendService = formSendService; 
     }
     
-   /* @Inject
-    private OrdersTimeCheckService ordersTimeCheckService;
-    
-    public OrdersTimeCheckService getOrdersTimeCheckService() {
-    	return ordersTimeCheckService;
-    }
-    
-    public void setOrdersTimeCheckService(OrdersTimeCheckService ordersTimeCheckService) {
-    	this.ordersTimeCheckService = ordersTimeCheckService;
-    } */
-    
     @Inject
     private OrderFormValidationService orderFormValidationService;
     
@@ -60,7 +57,9 @@ public class FormController {
     	this.orderFormValidationService = orderFormValidationService;
     }
     
-    // FORMIN TEKEMINEN 
+    /**
+     * Method creates new empty form
+     */
     @RequestMapping(value = "orderFormEmpty", method = RequestMethod.GET) 
     public String getCreateForm(Model model) { 
         OrderForm orderForm = new OrderFormImpl(); 
@@ -69,7 +68,9 @@ public class FormController {
         return "redirect:/user/orderForm"; 
     } 
   
-    // FORMIN TIETOJEN VASTAANOTTO 
+    /**
+     * Method validates orderForm and sends it to orderConfirmation.jsp
+     */
     @RequestMapping(value = "orderForm", method = RequestMethod.POST) 
     public String create(Model model, @ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm, BindingResult result) { 
     	
@@ -87,7 +88,9 @@ public class FormController {
         } 
     }
   
-    // FORMIN TEKEMINEN 
+    /**
+     * Method shows orderform. If orderform object doesn't exist. Create new empty form.
+     */
     @RequestMapping(value = "orderForm", method = RequestMethod.GET) 
     public String getOldForm(Model model) { 
   
@@ -106,7 +109,9 @@ public class FormController {
         return "/user/orderForm"; 
     } 
       
-    // FORMIN TALLENTAMINEN 
+    /**
+     * Method sends orderform to service.
+     */
     @RequestMapping(value = "orderSend", method = RequestMethod.POST) 
     public String sendOrderForm(Model model, @ModelAttribute(value = "orderForm") @Valid OrderFormImpl orderForm, 
             BindingResult result, @ModelAttribute(value = "userProfile") UserProfileImpl userProfile) { 

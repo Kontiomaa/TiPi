@@ -17,6 +17,14 @@ import tipi.bean.OrderFormImpl;
 import tipi.bean.OrdersCount;
 import tipi.bean.OrdersCountImpl;
 
+/**
+ * 
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * DAO saves, updates and gets orders
+ */
+
 @Repository
 public class OrdersDAOImpl implements OrdersDAO {
 
@@ -31,6 +39,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	/**
+	 * Method gets all orders from DAO by statusOfOrder
+	 */
 	@Override
 	public List<OrderForm> getOrderList(int statusOfOrder) {
 		String sql = "SELECT * FROM orders WHERE statusOfOrder = ?;";
@@ -41,6 +52,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		return resultList;
 	}
 
+	/**
+	 * Method searches one order with id from database
+	 */
 	@Override
 	public OrderForm getOrderBean(int id) {
 		String sql = "SELECT * FROM orders WHERE orders_id = ?;";
@@ -51,6 +65,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		return resultObject;
 	}
 
+	/**
+	 * Method updates orders status
+	 */
 	@Override
 	public void updateOrderStatusDAO(int orders_id, int statusOfOrder) {
 		String newPasswordQuery = "UPDATE orders SET statusOfOrder=? WHERE orders_id=?;";
@@ -58,6 +75,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 				orders_id });
 	}
 
+	/**
+	 * Method gets orderlist for user with criteria what user wants
+	 */
 	@Override
 	public List<OrderForm> getOrderListForUser(int user_id, int hasNewDestination, int companyMadeOrder, int statusOfOrder) {
 		
@@ -86,6 +106,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		return resultList;
 	}
 
+	/**
+	 * Method gets count of orders from database: new, accepted, taken, completed
+	 */
 	@Override
 	public OrdersCount ordersCountDAO(OrdersCount ordersCount) {
 		String sql = "SELECT COUNT(CASE WHEN statusOfOrder =1 THEN 1 end) as newOrdersCount,"
@@ -97,6 +120,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		return ordersCount;
 	}
 
+	/**
+	 * Method gets dates and times of order. Used to compare times to current in controller.
+	 */
 	@Override
 	public Map<String, Object> getOrdeDatesAndTimes(int id) {
 		String sql = "SELECT collectionDate, collectionTime, destinationDate, destinationTime, nextDestinationCollectionDate, nextDestinationCollectionTime, nextDestinationDate, nextDestinationTime FROM orders WHERE orders_id = ?;";
@@ -106,6 +132,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		return resultMap;
 	}
 
+	/**
+	 * Method searches orders to admin. If admin some values are null method changes values to wildcards
+	 */
 	@Override
 	public List<OrderForm> searchOrdersFromDAO(OrderForm searchOrders) {
 		String carBrand = "%";
@@ -151,6 +180,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		return orders;
 	}
 	
+	/**
+	 * Method changes order status to deleted. Not really deleting the order from dao
+	 */
 	@Override
 	public void deleteOrder(int orderId) {
 		String sql = "UPDATE orders SET lastTimeEdited = now(), statusOfOrder = 6 WHERE orders_id = ?";
@@ -158,6 +190,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		getJdbcTemplate().update(sql, data);
 	}
 	
+	/**
+	 * Method updates modified order.
+	 */
 	@Override
 	public boolean updateOrderByUser(OrderForm order, boolean collectionTimeLimit, boolean nextDestinationTimeLimit) {
 		

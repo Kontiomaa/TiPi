@@ -1,5 +1,12 @@
 package tipi.controller;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Controller moves user to profile and changes admins password
+ */
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tipi.bean.UserProfileImpl;
 import tipi.service.UserProfileService;
+
 
 @Controller
 @RequestMapping(value="/admin")
@@ -36,6 +44,9 @@ public class AdminController {
 		this.userProfileService = userProfileService;
 	}
 	
+	/**
+	 * Samuel
+	 */
 	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
 	public String changePassword(Model model, HttpServletRequest req, @ModelAttribute(value = "userProfile") UserProfileImpl userProfile) {
 		

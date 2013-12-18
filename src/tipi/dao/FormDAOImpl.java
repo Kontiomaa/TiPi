@@ -1,5 +1,12 @@
 package tipi.dao;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * DAO saves order form to database
+ */
+
 import javax.inject.Inject;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import tipi.bean.OrderForm;
+
 
 @Repository
 public class FormDAOImpl implements FormDAO {
@@ -24,6 +32,10 @@ public class FormDAOImpl implements FormDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	/**
+	 * Method parses date and time to sql form (dd.MM.yyyy to yyyy-MM-dd)
+	 * Method adds order to database
+	 */
 	@Override
 	public void saveOrderFormDAO(OrderForm orderForm, int userID, int userCompanyID) {
 

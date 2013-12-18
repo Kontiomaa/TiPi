@@ -1,5 +1,12 @@
 package tipi.controller;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Controller registers companies and users
+ */
+
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.List;
@@ -23,7 +30,6 @@ import tipi.bean.UserProfile;
 import tipi.bean.UserProfileImpl;
 import tipi.service.UserProfileService;
 
-
 @Controller
 @RequestMapping(value="/admin")
 @SessionAttributes({"registerUser","registerCompany","allCompanies", "pageIdentifier"})
@@ -43,7 +49,9 @@ public class RegisterUserController {
 		this.userProfileService = userProfileService;
 	}
 	
-	
+	/**
+	 * Method creates empty user object
+	 */
 	@RequestMapping(value = "/registerEmptyUser", method = RequestMethod.GET)
 	public String getEmptyUser(Model model) {
 		UserProfile registerUser = new UserProfileImpl();
@@ -51,6 +59,9 @@ public class RegisterUserController {
 		return "redirect:/admin/registerNewUser";
 	}
 	
+    /**
+     * Method shows user object. If registerUser doesn't exist create empty.
+     */
 	@RequestMapping(value = "/registerNewUser", method = RequestMethod.GET)
 	public String registerNewUser(Model model) {
 		model.addAttribute("pageIdentifier", "register");
@@ -67,6 +78,9 @@ public class RegisterUserController {
 		return "admin/registerNewUser";
 	}
 	
+	/**
+	 * Method validates user information and sends information to confirmation page. Users password is generated.
+	 */
 	@RequestMapping(value = "/registerNewUser", method = RequestMethod.POST)
 	public String getUserConfirmation(
 			@ModelAttribute(value = "registerUser") @Valid UserProfileImpl registerUser,
@@ -82,6 +96,9 @@ public class RegisterUserController {
 		}
 	}
 	
+	/**
+	 * Method sends new user information to service
+	 */
 	@RequestMapping(value = "registerNewUserSend", method = RequestMethod.POST)
 	public String registerNewUserSend(@ModelAttribute(value = "registerUser") @Valid UserProfileImpl registerUser,
 			BindingResult result, HttpServletRequest req) {
@@ -93,7 +110,9 @@ public class RegisterUserController {
 	}
 	
 	
-	
+	/**
+	 * Method creates empty company object
+	 */
 	@RequestMapping(value = "/registerEmptyCompany", method = RequestMethod.GET)
 	public String getCompanyUser(Model model) {
 		UserCompany registerCompany = new UserCompanyImpl();
@@ -102,6 +121,9 @@ public class RegisterUserController {
 		return "redirect:/admin/registerNewCompany";
 	}
 	
+    /**
+     * Method shows company object. If registerCompany doesn't exist create empty.
+     */
 	@RequestMapping(value = "/registerNewCompany", method = RequestMethod.GET)
 	public String registerNewCompany(Model model) {
 		if (!model.containsAttribute("registerCompany")) {
@@ -115,6 +137,9 @@ public class RegisterUserController {
 		return "admin/registerNewCompany";
 	}
 	
+	/**
+	 * Method validates company information and sends information to confirmation page.
+	 */
 	@RequestMapping(value = "/registerNewCompany", method = RequestMethod.POST)
 	public String getCompanyConfirmation(
 			@ModelAttribute(value = "registerCompany") @Valid UserCompanyImpl registerCompany,
@@ -127,6 +152,9 @@ public class RegisterUserController {
 		}
 	}
 	
+	/**
+	 * Method sends new company information to service
+	 */
 	@RequestMapping(value = "registerNewCompanySend", method = RequestMethod.POST)
 	public String registerNewCompanySend(@ModelAttribute(value = "registerCompany") @Valid UserCompanyImpl registerCompany,
 			BindingResult result) {
@@ -134,5 +162,4 @@ public class RegisterUserController {
 		newCompanyAdded=true;
 		return "redirect:/admin/registerEmptyCompany";
 	}
-
 }

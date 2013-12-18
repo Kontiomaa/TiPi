@@ -1,5 +1,13 @@
 package tipi.controller;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Controller determines if user is logged in as ADMIN go to admin side if USER go to user side
+ * if it's neither go back to login page.
+ */
+
 import java.util.Set;
 
 import javax.inject.Inject;

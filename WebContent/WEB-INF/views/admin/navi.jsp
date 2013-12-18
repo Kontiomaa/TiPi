@@ -41,13 +41,6 @@
 									<li><a href="profile">Profiili</a></li>
 								</c:otherwise>
 							</c:choose>
-							
-							<%--
-							<li><a href="new">Etusivu</a></li>
-							<li><a href="users">Käyttäjät</a></li>
-							<li><a href="registerNewUser">Rekisteröinti</a></li>
-							<li><a href="profile">Profiili</a></li>
-							--%>
 						</ul>
 
 						<form class="navbar-form pull-right">

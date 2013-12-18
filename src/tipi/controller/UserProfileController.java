@@ -1,5 +1,12 @@
 package tipi.controller;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Controller 
+ */
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +20,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import tipi.bean.UserProfileImpl;
 import tipi.service.UserProfileService;
-
 
 @Controller
 @RequestMapping(value = "/user")
@@ -46,7 +52,6 @@ public class UserProfileController {
 		boolean correctPassword = spe.matches(req.getParameter("oldPassword"), userProfile.getPassword());
 		
 		if(correctPassword){
-//			String email = userProfile.getEmail(); //old version, problems if changing email & password on same login.
 			int usersId = userProfile.getUser_id();
 			userProfileService.sendNewPasswordToDao(usersId, newPassword);
 			model.addAttribute("passwordChangeSuccessful", "true");

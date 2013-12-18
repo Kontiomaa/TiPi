@@ -1,9 +1,6 @@
 <%@include file="header.jsp"%>
 <title>Siirtoapu.fi -- Tilauksen tiedot</title>
 	<script type="text/javascript">
-		
-		// Käyttäjän poistamisen varmistus. Antaa suomeksi OK ja Peruuta-valinnat.
-		// OK palauttaa true ja Peruuta false.
 		function deleteConfirmation() {
 			var a = new Boolean();
 			a = window.confirm('Oletko varma että haluat poistaa tilauksen?');

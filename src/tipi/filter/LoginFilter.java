@@ -1,5 +1,12 @@
 package tipi.filter;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Filter makes sure user is logged.
+ */
+
 import java.io.IOException;
 
 import javax.servlet.Filter;

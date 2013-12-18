@@ -15,6 +15,13 @@ import tipi.bean.UserCompanyImpl;
 import tipi.bean.UserProfile;
 import tipi.bean.UserProfileImpl;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * DAO saves,updates and gets users and companies
+ */
+
 @Repository
 public class UserDAOImpl implements UserDAO {
 
@@ -29,6 +36,10 @@ public class UserDAOImpl implements UserDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	/**
+	 * Method gets userprofile with email.
+	 * @param email is users that is registered
+	 */
 	@Override
 	public UserProfile getRegisteredUsersInformationWithEmailDAO(
 			String userEmail, UserProfile userProfile) {
@@ -42,6 +53,9 @@ public class UserDAOImpl implements UserDAO {
 		return userProfile;
 	}
 
+	/**
+	 * Method gets registered user company
+	 */
 	@Override
 	public UserCompany getRegisteredUsersCompanyInformationDAO(int companyID,
 			UserCompany userCompany) {
@@ -55,6 +69,9 @@ public class UserDAOImpl implements UserDAO {
 		return userCompany;
 	}
 
+	/**
+	 * Method inserts new company to database.
+	 */
 	@Override
 	public void registerNewCompanyDAO(UserCompany registerCompany) {
 
@@ -65,6 +82,9 @@ public class UserDAOImpl implements UserDAO {
 				registerCompany.getCity() });
 	}
 
+	/**
+	 * Method inserts new user to database
+	 */
 	@Override
 	public void registerNewUserDAO(UserProfile registerUser) {
 
@@ -76,6 +96,9 @@ public class UserDAOImpl implements UserDAO {
 				registerUser.getMyRole(), registerUser.getMyCompany() });
 	}
 
+	/**
+	 * Method gets all companies
+	 */
 	@Override
 	public List<UserCompany> getAllCompaniesDAO() {
 		String sql = "SELECT * FROM companies;";
@@ -85,6 +108,9 @@ public class UserDAOImpl implements UserDAO {
 
 	}
 
+	/**
+	 * Method changes users password
+	 */
 	@Override
 	public void saveRegisteredUsersNewPassword(int usersId, String newPassword) {
 		System.out.println("DAO: " + usersId + ": " + newPassword);
@@ -96,6 +122,9 @@ public class UserDAOImpl implements UserDAO {
 		System.out.println("Accessed the database...");
 	}
 
+	/**
+	 * Method gets users information with id
+	 */
 	@Override
 	public UserProfile getUsersInformationWithIdDAO(int id,
 			UserProfile userProfile) {
@@ -109,6 +138,9 @@ public class UserDAOImpl implements UserDAO {
 		return userProfile;
 	}
 
+	/**
+	 * Method updates modified company
+	 */
 	@Override
 	public void updateCompanyInformationDAO(UserCompany company) {
 		String newPasswordQuery = "UPDATE companies SET name=?, address=?, postalCode=?, city=? WHERE company_id=?;";
@@ -119,6 +151,9 @@ public class UserDAOImpl implements UserDAO {
 						company.getCompany_id() });
 	}
 
+	/**
+	 * Method updates modified user
+	 */
 	@Override
 	public void updateUserInformationDAO(UserProfile user) {
 		String newPasswordQuery = "UPDATE registeredUsers SET fName = ?, lName = ?, phoneNo = ?,"
@@ -134,6 +169,9 @@ public class UserDAOImpl implements UserDAO {
 		});
 	}
 	
+	/**
+	 * Method changes is user active or not
+	 */
 	@Override
 	public void changeUserIsActiveStatusDAO(UserProfile user) {
 		String newPasswordQuery = "UPDATE registeredUsers SET userIsActive = ? WHERE user_id = ?;";
@@ -143,6 +181,9 @@ public class UserDAOImpl implements UserDAO {
 		});
 	}
 
+	/**
+	 * Method gets all Admins or Users
+	 */
 	@Override
 	public List<UserProfile> getUsersByRoleDAO(int role) {
 

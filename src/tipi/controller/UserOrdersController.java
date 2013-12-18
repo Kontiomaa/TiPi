@@ -1,5 +1,12 @@
 package tipi.controller;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Controller gets orders and orderinformation to user, deletes and modifies orders
+ */
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -85,6 +92,9 @@ public class UserOrdersController {
     	this.orderFormValidationService = orderFormValidationService;
     }
 	
+    /**
+     * Method creates empty searchOrders object
+     */
 	@RequestMapping(value = "/ordersEmpty", method = RequestMethod.GET)
 	public String searchOrdersEmpty(Model model) {
 		OrderForm searchOrders = new OrderFormImpl();
@@ -92,6 +102,9 @@ public class UserOrdersController {
 		return "redirect:/user/showOrders";
 	}
 	
+	/**
+	 * Method gets all users orders
+	 */
 	@RequestMapping(value = "/showOrders", method = RequestMethod.GET)
 	public String madeOrders(Model model, @ModelAttribute(value = "userProfile") UserProfileImpl userProfile) {
 		if (!model.containsAttribute("searchOrders")) {
@@ -105,6 +118,9 @@ public class UserOrdersController {
 		return "user/orders";
 	}
 	
+	/**
+	 * Method gets all orders that fits users search criteria
+	 */
 	@RequestMapping(value = "/showOrders", method = RequestMethod.POST)
 	public String madeOrdersPost(Model model, @ModelAttribute(value = "userProfile") UserProfileImpl userProfile, @ModelAttribute(value = "searchOrders") OrderFormImpl searchOrders) {
 		if(searchOrders.getCompanyMadeOrder()!=0)
@@ -117,6 +133,9 @@ public class UserOrdersController {
 		return "user/orders";
 	}
 	
+	/**
+	 * Method gets all orderinformation what order contains: Order, user and company.
+	 */
 	@RequestMapping(value = "/getOneOrder", method = RequestMethod.POST)
 	public String showOrder(Model model, HttpServletRequest request) {
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
@@ -132,6 +151,9 @@ public class UserOrdersController {
 		return "user/oneOrder";
 	}
 	
+	/**
+	 * Method gets all information to form what user can modify
+	 */
 	@RequestMapping(value = "/getModificateOrder", method = RequestMethod.POST)
 	public String showOrderForModification(Model model, HttpServletRequest request) {
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
@@ -151,6 +173,9 @@ public class UserOrdersController {
 
 	}
 	
+	/**
+	 * Method sends modified orderForm to service.
+	 */
 	@RequestMapping(value = "/updateModifiedOrder", method = RequestMethod.POST)
 	public String updateModifiedOrder(Model model, HttpServletRequest request, @ModelAttribute(value = "order") @Valid OrderFormImpl order, BindingResult result,
 			 @ModelAttribute(value = "userProfile") UserProfileImpl profile) {
@@ -179,6 +204,10 @@ public class UserOrdersController {
 		}
 	}
 	
+	/**
+	 * Method sends orders id to service that admin wants to delete. Orderstatus is changed to delete. Order is not really
+	 * beeing deleted from database.
+	 */
 	@RequestMapping(value = "/deleteOrder", method = RequestMethod.POST)
 	public String deleteOrder(Model model, HttpServletRequest request) {
 		int orderId = Integer.parseInt(request.getParameter("orderId"));

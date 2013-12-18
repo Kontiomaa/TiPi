@@ -1,5 +1,12 @@
 package tipi.controller;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Controller searches orders, deletes and changes ordesStatus of orders. 
+ */
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -60,6 +67,9 @@ public class OrdersController {
 		this.ordersDeleteService = ordersDeleteService;
 	}
 
+	/**
+	 * Method get's all new orders and counts orders in new, accepted, taken, completed
+	 */
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newOrders(Model model) {
 		model.addAttribute("orderPage", "new");
@@ -73,6 +83,9 @@ public class OrdersController {
 		return "admin/newOrders";
 	}
 
+	/**
+	 * Method get's all accepted orders and counts orders in new, accepted, taken, completed
+	 */
 	@RequestMapping(value = "/accepted", method = RequestMethod.GET)
 	public String acceptedOrders(Model model) {
 		model.addAttribute("orderPage", "accepted");
@@ -86,6 +99,9 @@ public class OrdersController {
 		return "admin/acceptedOrders";
 	}
 
+	/**
+	 * Method get's all taken orders and counts orders in new, accepted, taken, completed
+	 */
 	@RequestMapping(value = "/taken", method = RequestMethod.GET)
 	public String takenOrders(Model model) {
 		model.addAttribute("orderPage", "taken");
@@ -100,6 +116,9 @@ public class OrdersController {
 	}
 
 
+	/**
+	 * Method get's all completed orders and counts orders in new, accepted, taken, completed
+	 */
 	@RequestMapping(value = "/completed", method = RequestMethod.GET)
 	public String completedOrders(Model model) {
 		model.addAttribute("orderPage", "completed");
@@ -113,6 +132,9 @@ public class OrdersController {
 		return "admin/completedOrders";
 	}
 
+	/**
+	 * Method get's all billed orders and counts orders in new, accepted, taken, completed
+	 */
 	@RequestMapping(value = "/billed", method = RequestMethod.GET)
 	public String billedOrders(Model model) {
 		model.addAttribute("orderPage", "billed");
@@ -126,6 +148,9 @@ public class OrdersController {
 		return "admin/billedOrders";
 	}
 	
+	/**
+	 * Method get's all deleted orders and counts orders in new, accepted, taken, completed
+	 */
 	@RequestMapping(value = "/deletedOrders", method = RequestMethod.GET)
 	public String deletedOrders(Model model) {
 		model.addAttribute("orderPage", "deletedOrders");
@@ -139,6 +164,9 @@ public class OrdersController {
 		return "admin/deletedOrders";
 	}
 	
+	/**
+	 * Method Creates empty seachOrders object
+	 */
 	@RequestMapping(value = "/searchOrdersEmpty", method = RequestMethod.GET)
 	public String searchOrdersEmpty(Model model) {
 		OrderForm searchOrders = new OrderFormImpl();
@@ -146,6 +174,9 @@ public class OrdersController {
 		return "redirect:/admin/searchOrders";
 	}
 	
+	/**
+	 * Method creates empty searchOrders if it doesn't exist. Counts orders in new, accepted, taken, completed
+	 */
 	@RequestMapping(value = "/searchOrders", method = RequestMethod.GET)
 	public String searchOrders(Model model) {
 		if (!model.containsAttribute("searchOrders")) {
@@ -160,6 +191,9 @@ public class OrdersController {
 		return "admin/searchOrders";
 	}
 	
+	/**
+	 * Method gets all orders that fit the search criteria
+	 */
 	@RequestMapping(value = "/searchOrders", method = RequestMethod.POST)
 	public String searchOrdersForm(Model model, @ModelAttribute(value = "searchOrders") OrderFormImpl searchOrders) {
 		model.addAttribute("orderPage", "searchOrdersPage");
@@ -174,6 +208,9 @@ public class OrdersController {
 		return "admin/searchOrders";
 	}
 
+	/**
+	 * Method gets all orderinformation what order contains: Order, user and company.
+	 */
 	@RequestMapping(value = "/orderInformation", method = RequestMethod.POST)
 	public String orderInformation(Model model, HttpServletRequest req) {
 		OrderForm orderInformation = new OrderFormImpl();
@@ -202,6 +239,9 @@ public class OrdersController {
 		return "admin/orderInformation";
 	}
 
+	/**
+	 * Method changes orderStatus. StatusID is sended to service.
+	 */
 	@RequestMapping(value = "/changeOrderStatus", method = RequestMethod.POST)
 	public String changeOrderStatus(Model model, HttpServletRequest req) {
 		int orderStatus = Integer.parseInt(req.getParameter("statusOfOrder"));
@@ -233,6 +273,9 @@ public class OrdersController {
 		return "redirect:/admin/new";
 	}
 	
+	/**
+	 * Method changes status to previous one. StatusID is sended to service.
+	 */
 	@RequestMapping(value = "/returnPreviousOrderStatus", method = RequestMethod.POST)
 	public String returnPreviousOrderStatus(Model model, HttpServletRequest req) {
 		int orderStatus = Integer.parseInt(req.getParameter("statusOfOrder"));
@@ -262,6 +305,10 @@ public class OrdersController {
 		return "redirect:/admin/new";
 	}
 	
+	/**
+	 * Method sends orders id to service that admin wants to delete. Orderstatus is changed to delete. Order is not really
+	 * beeing deleted from database.
+	 */
 	@RequestMapping(value = "/deleteOrder", method = RequestMethod.POST)
 	public String deleteOrder(Model model, HttpServletRequest request) {
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
@@ -269,6 +316,9 @@ public class OrdersController {
 		return "redirect:/admin/deletedOrders";
 	}
 	
+	/**
+	 * Method searches orders by statusID what admin wants to backup.
+	 */
 	@RequestMapping(value = "/backupOrders", method = RequestMethod.POST)
 	public String backupOrders(Model model, HttpServletRequest req) {
 		int statusOfOrder = 1;

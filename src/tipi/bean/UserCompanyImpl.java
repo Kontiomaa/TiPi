@@ -1,5 +1,11 @@
 package tipi.bean;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ */
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -56,7 +62,4 @@ public class UserCompanyImpl implements UserCompany {
 				+ ", address=" + address + ", postalCode=" + postalCode
 				+ ", city=" + city + "]";
 	}
-	
-	
-	
 }

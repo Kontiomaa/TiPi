@@ -1,5 +1,12 @@
 package tipi.controller;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Controller gets all users,admins,companies. Sends modified users,admins and companies to service
+ */
+
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.List;
@@ -39,6 +46,9 @@ public class UsersController {
 		this.userProfileService = userProfileService;
 	}
 	
+	/**
+	 * Method gets all users
+	 */
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public String users(Model model) {
 		model.addAttribute("pageIdentifier", "users");
@@ -47,6 +57,9 @@ public class UsersController {
 		return "admin/users";
 	}
 	
+	/**
+	 * Method gets all admins
+	 */
 	@RequestMapping(value = "/admins", method = RequestMethod.GET)
 	public String admins(Model model) {
 		List<UserProfile> users = userProfileService.getUsersByRole(2);
@@ -54,6 +67,9 @@ public class UsersController {
 		return "admin/admins";
 	}
 	
+	/**
+	 * Method gets all companies
+	 */
 	@RequestMapping(value = "/companies", method = RequestMethod.GET)
 	public String companies(Model model) {
 		List<UserCompany> allCompanies = userProfileService.getAllCompanies();
@@ -61,6 +77,9 @@ public class UsersController {
 		return "admin/companies";
 	}
 	
+	/**
+	 * Method gets company information and adds it to object
+	 */
 	@RequestMapping(value = "/modifyCompany", method = RequestMethod.POST)
 	public String modifyCompany(Model model, HttpServletRequest req) {
 		UserCompany company = new UserCompanyImpl();
@@ -69,6 +88,9 @@ public class UsersController {
 		return "admin/modifyCompany";
 	}
 	
+	/**
+	 * Method sends modified company to service
+	 */
 	@RequestMapping(value = "/saveModifiedCompany", method = RequestMethod.POST)
 	public String saveModifiedCompany(@ModelAttribute(value = "modifyCompany") @Valid UserCompanyImpl company,
 			BindingResult result) {
@@ -80,6 +102,9 @@ public class UsersController {
 		}	
 	}
 	
+	/**
+	 * Method gets user information and adds it to object
+	 */
 	@RequestMapping(value = "/modifyUser", method = RequestMethod.POST)
 	public String modifyUser(Model model, HttpServletRequest req) {
 		UserProfile user = new UserProfileImpl();
@@ -90,6 +115,9 @@ public class UsersController {
 		return "admin/modifyUser";
 	}
 	
+	/**
+	 * Method sends modified user to service
+	 */
 	@RequestMapping(value = "/saveModifiedUser", method = RequestMethod.POST)
 	public String saveModifiedUser(@ModelAttribute(value = "modifyUser") @Valid UserProfileImpl user,
 			BindingResult result, Model model, HttpServletRequest req) {
@@ -108,6 +136,9 @@ public class UsersController {
 		return "redirect:/admin/users";
 	}
 	
+	/**
+	 * Method generates new password and adds it to users password
+	 */
 	@RequestMapping(value = "/modifyUserResetPassword", method = RequestMethod.POST)
 	public String modifyUserResetPassword(Model model, HttpServletRequest req) {
 		int user_id = Integer.parseInt(req.getParameter("user_id"));

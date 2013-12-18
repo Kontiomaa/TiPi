@@ -1,5 +1,11 @@
 package tipi.bean;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ */
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -83,6 +89,12 @@ public class OrderFormImpl implements OrderForm {
 	private String lastTimeEdited;
 	private int statusOfOrder;
 	private UserProfile userProfile;
+	/**
+	 * hasNewDestinationForSearchOrders variable is used in searching orders. 
+	 * If this variable is 0 don't care about newDestination
+	 * If it's 1 search only orders that doesn't have newDestination
+	 * If it's 2 search only orders that does have newDestination
+	 */
 	private int hasNewDestinationForSearchOrders;
 
 	public int getOrders_id() {

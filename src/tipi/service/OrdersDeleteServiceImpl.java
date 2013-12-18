@@ -1,5 +1,12 @@
 package tipi.service;
 
+/**
+ * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
+ * @version 1.0
+ * @since 18.12.2013
+ * Service sends order id to DAO. DAO changes orderstatus to delete. Not really deleting order from database
+ */
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
