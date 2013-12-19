@@ -4,28 +4,30 @@ package tipi.bean;
  * @author Lauri Soivi, Joona Viertola, Samuel Kontiomaa
  * @version 1.0
  * @since 18.12.2013
+ * Checks that the form values are correct before they are saved in to the database
  */
 
 public class DateTimeCheckImpl implements DateTimeCheck {
-	
-	
 	
 	private boolean everythingOk;
 
 	//Dates & Times
 	
+	//Should be false (as in not null) when everything is ok
 	private boolean valueNullNextDestinationCollectionDate;
 	private boolean valueNullNextDestinationCollectionTime;
 	
 	private boolean valueNullNextDestinationDate;
 	private boolean valueNullNextDestinationTime;
 	
+	//should be true when everything is ok
 	private boolean collectionBeforeDestination;
 	private boolean destinationBeforeNextCollection;
 	private boolean nextCollectionBeforeNextDestination;
 	
 	//other input
 	
+	//Should be false (as in not null) when everything is ok
 	private boolean nextDestinationAddressEmpty;
 	private boolean nextDestinationPostalCodeEmpty;
 	private boolean nextDestinationCityEmpty;
