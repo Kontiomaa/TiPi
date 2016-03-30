@@ -35,8 +35,8 @@ VALUES ('testii firma', 'testiosoitee', '01000', 'Helsinki');
 
 #TestUser
 INSERT INTO registeredUsers (fName, lName, phoneNo, email, password, myRole, myCompany)
-VALUES ('Matti', 'Meikäläinen', '0400123123', 'matti.meikalainen@email.com', 'b3881fd2ec0d1f20b35b4dd589f536975db9240f26c399be23ed5bdc6764908feee54dba9763b069', 1, 1);
+VALUES ('Matti', 'Meikäläinen', '0400123123', 'matti.meikalainen@email.com', 'b8e4f2849d72a1ed34599ebffcedd0babf0ea84aa3f815ca498a7f50f14ee327a0577d8ef7336fb4', 1, 1);
 
 #TestAdmin
 INSERT INTO registeredUsers (fName, lName, phoneNo, email, password, myRole, myCompany)
-VALUES ('Timo', 'Tomera', '0400456456', 'timo.tomera@email.com', 'b3881fd2ec0d1f20b35b4dd589f536975db9240f26c399be23ed5bdc6764908feee54dba9763b069', 2, 2);
+VALUES ('Timo', 'Tomera', '0400456456', 'timo.tomera@email.com', '6cc7ef452efe0fef758c3fe2d0d8f23dc4d0a8fb26eff1a64598a02d8c1117a106b8507b65c206ba', 2, 2);
